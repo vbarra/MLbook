@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modèle du processus d’apprentissage supervisé &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SVM linéaire" href="svmGeom.html" />
+    <link rel="prev" title="Modèle statistique de l’apprentissage" href="approchestat.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="possible.html">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebook_SVMlin.html">
+   Notebook SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebook_SVR.html">
+   Notebook SVR
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ehnr.html">
+   EHNR
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification - Clustering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knn.html">
+     K plus proches voisins
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebook_knn.html">
+     Notebook k-ppv
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="clustering.html">
+   Clustering
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="kmeans.html">
+     KMeans
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodelesup.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/modelesup.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimisation-du-risque-empirique">
+   Minimisation du risque empirique
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vc-dimension">
+   VC dimension
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Définition
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#une-application-minimisation-du-risque-structurel">
+     Une application : minimisation du risque structurel
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modèle du processus d’apprentissage supervisé</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimisation-du-risque-empirique">
+   Minimisation du risque empirique
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vc-dimension">
+   VC dimension
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Définition
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#une-application-minimisation-du-risque-structurel">
+     Une application : minimisation du risque structurel
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="admonition note" name="html-admonition" style="background: lightblue; padding: 10px">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="modele-du-processus-d-apprentissage-supervise">
+<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Permalink to this headline">#</a></h1>
+<p>Un modèle classique de description du processus d’apprentissage supervisé est composé de trois composantes <span id="id1">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>:</p>
+<ul class="simple">
+<li><p>Un environnement, qui fournit des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> avec une probabilité fixe mais inconnue <span class="math notranslate nohighlight">\(P_X\)</span> ;</p></li>
+<li><p>Un superviseur qui fournit pour chaque vecteur <span class="math notranslate nohighlight">\(\mathbf x\)</span> reçu de l’environnement une réponse désirée <span class="math notranslate nohighlight">\(y\in Y\)</span>, selon une probabilité <span class="math notranslate nohighlight">\(P(\mathbf x\mid y)\)</span> fixe mais inconnue. La réponse <span class="math notranslate nohighlight">\(y\)</span> et <span class="math notranslate nohighlight">\(\mathbf x\)</span> sont liés par une relation <span class="math notranslate nohighlight">\(y=f(\mathbf x,\epsilon)\)</span>, <span class="math notranslate nohighlight">\(\epsilon\)</span> étant un bruit permettant au superviseur d’être “bruité” ;</p></li>
+<li><p>Un algorithme d’apprentissage qui implémente une classe de fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, définies par un paramètre vectoriel <span class="math notranslate nohighlight">\(\theta\)</span>, reliant l’espace des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\)</span> à l’espace des réponses <span class="math notranslate nohighlight">\(Y\)</span> : <span class="math notranslate nohighlight">\(\mathcal{F} = \{F(\mathbf x,\theta),\theta\in\Theta\}\)</span></p></li>
+</ul>
+<p>Le problème de l’apprentissage supervisé consiste alors à choisir dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> une fonction qui approche la réponse <span class="math notranslate nohighlight">\(y\)</span> pour tout <span class="math notranslate nohighlight">\(\mathbf x\)</span> d’une manière optimale, au sens statistique du terme. La recherche de cet optimum est basée sur un ensemble de <span class="math notranslate nohighlight">\(n\)</span> exemples i.i.d., dit ensemble  d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\mathbf x_i\in X,y_i\in Y\right \}\)</span>. Chaque exemple <span class="math notranslate nohighlight">\((\mathbf x_i,y_i)\)</span> est tiré par l’algorithme d’apprentissage depuis <span class="math notranslate nohighlight">\(Z\)</span> avec une probabilité jointe fixe mais inconnue <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
+<p>Trouver un “bon” candidat dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> qui approche <span class="math notranslate nohighlight">\(f\)</span> repose sur le fait que <span class="math notranslate nohighlight">\(Z\)</span> contient “suffisamment” d’information pour permettre d’une part d’apprendre correctement <span class="math notranslate nohighlight">\(Z\)</span> (facile), mais aussi d’être capable de généraliser de manière cohérente sur <span class="math notranslate nohighlight">\(X\times Y\)</span>. La quantification de cette information a été apportée par les travaux de Vapnik et Chervonenkis <span id="id2">[<a class="reference internal" href="svmGeom.html#id51">VC71</a>]</span>.</p>
+<p>Soit <span class="math notranslate nohighlight">\(L\left (y,F(\mathbf x,\theta)\right )\)</span> une fonction de perte, qui mesure l’écart entre la réponse <span class="math notranslate nohighlight">\(y\)</span> fournie par le superviseur et la réponse calculée par l’algorithme d’apprentissage. L’espérance de <span class="math notranslate nohighlight">\(L\)</span> définit le risque fonctionnel</p>
+<div class="math notranslate nohighlight">
+\[R(\theta) = \int L\left (y,F(\mathbf x,\theta)\right )dP_{X,Y}\]</div>
+<p>que l’algorithme d’apprentissage doit donc minimiser sur la classe des fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<p>Cette minimisation est difficile, la probabilité <span class="math notranslate nohighlight">\(P_{X,Y}\)</span> étant inconnue. La seule connaissance sur les couples <span class="math notranslate nohighlight">\((\mathbf x,y)\)</span> est contenue dans <span class="math notranslate nohighlight">\(Z\)</span>, et on remplace le problème de minimisation précédent par la minimisation du risque empirique :</p>
+<div class="math notranslate nohighlight">
+\[R_{emp}(\theta) = \frac{1}{n}\displaystyle\sum_{i=1}^n L\left (y_i,F(\mathbf x_i,\theta)\right )\]</div>
+<p>qui ne nécessite pas la connaissance de <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="minimisation-du-risque-empirique">
+<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Permalink to this headline">#</a></h1>
+<p>Soit <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> (respectivement <span class="math notranslate nohighlight">\(F(\mathbf x\,\hat{\theta})\)</span>) le vecteur (resp. la fonction) optimal(e) pour le problème de minimisation du risque empirique. Pour une valeur <span class="math notranslate nohighlight">\(\theta^*\in\Theta\)</span>, le risque <span class="math notranslate nohighlight">\(R(\theta^*)\)</span> est l’espérance d’une certaine variable aléatoire définie par <span class="math notranslate nohighlight">\(M_{\theta^*} = L(y,F(\mathbf x,\theta^*))\)</span>. Le risque empirique <span class="math notranslate nohighlight">\(R_{emp}(\theta^*)\)</span>, quant à lui, est la moyenne arithmétique de <span class="math notranslate nohighlight">\(M_{\theta^*}\)</span>. D’après la loi des grands nombres, si <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, la moyenne de <span class="math notranslate nohighlight">\(M_{\theta^*}\)</span> tend vers son espérance, et donc vers <span class="math notranslate nohighlight">\(R(\theta^*)\)</span>, ce qui justifie d’utiliser le risque empirique en lieu et place de <span class="math notranslate nohighlight">\(R(\theta)\)</span>.</p>
+<p>Il n’y a cependant aucune raison a priori pour que <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> minimise également <span class="math notranslate nohighlight">\(R(\theta)\)</span>.</p>
+<p>Nous allons montrer que si <span class="math notranslate nohighlight">\(R_{emp}(\theta)\)</span> approche uniformément <span class="math notranslate nohighlight">\(R(\theta)\)</span> avec une précision <span class="math notranslate nohighlight">\(\epsilon\)</span>, alors le minimum du risque empirique s’écarte du minimum de <span class="math notranslate nohighlight">\(R(\theta)\)</span> d’au plus <span class="math notranslate nohighlight">\(2\epsilon\)</span>.</p>
+<p>Supposons</p>
+<div class="math notranslate nohighlight">
+\[(\forall \epsilon&gt;0)\quad (\forall \theta\in\Theta)\quad \displaystyle\lim\limits_{n\rightarrow\infty}P\left (\displaystyle\sup_{\theta}\mid R(\theta)-R_{emp}(\theta)\mid&gt;\epsilon\right ) =0\]</div>
+<p>De manière équivalente, puisque pour tout <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span> on a <span class="math notranslate nohighlight">\(P\left (\displaystyle\sup_{\theta}\mid R(\theta)-R_{emp}(\theta)\mid&gt;\epsilon\right ) &lt;\alpha\)</span> pour <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span>, alors</p>
+<div class="math notranslate nohighlight">
+\[P\left (\mid R(\hat{\theta})-R(\theta_0)\mid  &gt;2\epsilon\right )&lt;\alpha\]</div>
+<p><span class="math notranslate nohighlight">\(\theta_0\)</span>  minimisant <span class="math notranslate nohighlight">\(R(\theta)\)</span>. Ainsi, si <span class="math notranslate nohighlight">\(P\left (\displaystyle\sup_{\theta}\mid R(\theta)-R_{emp}(\theta)\mid&gt;\epsilon\right ) &lt;\alpha\)</span> est vraie, alors avec probabilité au moins 1-<span class="math notranslate nohighlight">\(\alpha\)</span> la fonction <span class="math notranslate nohighlight">\(F(\mathbf x,\hat{\theta})\)</span> donnera un risque <span class="math notranslate nohighlight">\(R(\hat\theta)\)</span> qui s’écartera du minimum <span class="math notranslate nohighlight">\(R(\theta_0)\)</span>  d’au plus <span class="math notranslate nohighlight">\(2\epsilon\)</span>.</p>
+<p>En effet on a</p>
+<ul class="simple">
+<li><p>avec probabilité 1-<span class="math notranslate nohighlight">\(\alpha\)</span> <span class="math notranslate nohighlight">\(\mid R(\hat\theta)-R_{emp}(\hat\theta)\mid&lt;\epsilon\)</span> et  <span class="math notranslate nohighlight">\(\mid R(\theta_0)-R_{emp}(\theta_0)\mid&lt;\epsilon\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\theta}\)</span> et <span class="math notranslate nohighlight">\(\theta_0\)</span> étant les optimum de <span class="math notranslate nohighlight">\(R_{emp}\)</span> et <span class="math notranslate nohighlight">\(R\)</span>, <span class="math notranslate nohighlight">\(R_{emp}(\hat{\theta})&lt;R_{emp}(\theta_0)\)</span></p></li>
+</ul>
+<p>Ces trois équations permettent alors d’écrire</p>
+<div class="math notranslate nohighlight">
+\[\mid R(\hat\theta)-R(\theta_0)\mid&lt;2\epsilon\]</div>
+<p>La minimisation du risque empirique consiste donc à :</p>
+<ol class="simple">
+<li><p>Calculer le risque empirique sur <span class="math notranslate nohighlight">\(Z\)</span> et la valeur <span class="math notranslate nohighlight">\(\hat\theta\)</span> de son paramètre réalisant le minimum de ce risque</p></li>
+<li><p>Affirmer que <span class="math notranslate nohighlight">\(R(\hat\theta)\)</span> converge en probabilité vers le risque minimum sur tout <span class="math notranslate nohighlight">\(X\times Y\)</span>, lorsque la taille de l’ensemble d’apprentissage tend vers l’infini, et ce en supposant que <span class="math notranslate nohighlight">\(R_{emp}(\theta\)</span> converge uniformément vers <span class="math notranslate nohighlight">\(R(\theta)\)</span>
+\end{enumerate}</p></li>
+</ol>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="vc-dimension">
+<h1>VC dimension<a class="headerlink" href="#vc-dimension" title="Permalink to this headline">#</a></h1>
+<div class="section" id="definition">
+<h2>Définition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<p>La VC dimension (ou dimension de Vapnik-Chervonenkis) est une mesure du pouvoir d’expression d’une famille de fonctions de classification réalisées par un algorithme d’apprentissage.</p>
+<p>Considérons un problème de classification binaire, i.e. le superviseur assigne chaque <span class="math notranslate nohighlight">\(\mathbf x\)</span> à une des deux classes, notées 0 et 1. Une fonction de classification binaire est appelée une dichotomie. Un algorithme d’apprentissage construit alors un ensemble de dichotomies <span class="math notranslate nohighlight">\(\mathcal{F} =\left  \{F:X\times \Theta\rightarrow \{0,1\}\right \}\)</span>.</p>
+<p>On note <span class="math notranslate nohighlight">\(\mathcal{L} = \left \{\mathbf x_i\in X,1\leq i\leq n \right \}\)</span> un ensemble de <span class="math notranslate nohighlight">\(n\)</span> points de <span class="math notranslate nohighlight">\(X\)</span> . Une dichotomie réalisée par l’algorithme d’apprentissage partitionne <span class="math notranslate nohighlight">\(\mathcal{L}=\mathcal{L}_0\cup \mathcal{L}_1\)</span>  de sorte que <span class="math notranslate nohighlight">\(F(\mathbf x,\theta)=k\)</span> si <span class="math notranslate nohighlight">\(\mathbf x\in \mathcal{L}_k, k\in\{0,1\}\)</span>.</p>
+<p>On note <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(\mathcal{L})\)</span> le nombre de dichotomies distinctes réalisées par l’algorithme et on définit la fonction de croissance <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}:\mathbb{N}\rightarrow\mathbb{N}\)</span> par</p>
+<div class="math notranslate nohighlight">
+\[\Delta_\mathcal{F}(l)=\displaystyle\max_{\mathcal{L},\mid \mathcal{L}\mid=l}\Delta_\mathcal{F}(\mathcal{L})\]</div>
+<p>On dit que <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> est pulvérisé par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> si <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(\mathcal{L})=2^{\mid \mathcal{L}\mid}\)</span>, i.e. si toutes les dichotomies possibles sur <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> peuvent être décrites par des fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (VC-dimension.)</p>
+<div class="definition-content section" id="proof-content">
+<p>La dimension de Vapnik-Chervonenkis (VC dim) d’un ensemble de dichotomies <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est la cardinalité du plus grand ensemble <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> pulvérisé par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+</div>
+</div><p>En d’autres termes, la VC-dim de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est le plus grand <span class="math notranslate nohighlight">\(n\)</span> tel que <span class="math notranslate nohighlight">\( \Delta_\mathcal{F}(n)=2^n\)</span>, ou encore le nombre maximum d’exemples d’apprentissage qui peuvent être appris par l’algorithme sans erreur pour tous les étiquetages binaires possibles des fonctions de classification <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<p>La VC-dim joue un rôle important dans la théorie de l’apprentissage statistique. Ainsi, par exemple, le nombre d’exemples nécessaires pour apprendre de manière fiable une classe de fonctions est proportionnel à la VC-dim de cette classe.</p>
+<p>Cette dimension est difficile à évaluer analytiquement. Cependant, quelques résultats existent et par exemple :</p>
+<ol class="simple">
+<li><p>si l’algorithme d’apprentissage est un réseau de neurones, dont les cellules ont des fonctions d’activation de Heaviside, alors la VC-dim associée est en <span class="math notranslate nohighlight">\(O(W log(W))\)</span>, où <span class="math notranslate nohighlight">\(W\)</span> est le nombre de paramètres libres du réseau</p></li>
+<li><p>Si l’algorithme d’apprentissage est un perceptron multicouches, dont les cellules ont des fonctions d’activation sigmoïde, alors la VC-dim associée est en <span class="math notranslate nohighlight">\(O(W^2)\)</span>, où <span class="math notranslate nohighlight">\(W\)</span> est le nombre de paramètres libres du réseau</p></li>
+</ol>
+</div>
+<div class="section" id="une-application-minimisation-du-risque-structurel">
+<h2>Une application : minimisation du risque structurel<a class="headerlink" href="#une-application-minimisation-du-risque-structurel" title="Permalink to this headline">#</a></h2>
+<p>L’erreur d’entraînement <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> d’un algorithme d’apprentissage est reliée à la fréquence des erreurs obtenues par cet algorithme sur <span class="math notranslate nohighlight">\(Z\)</span>. On demande à un tel algorithme non seulement d’avoir une faible erreur d’entraînement, mais aussi d’être capable de donner des valeurs justes, sur des données non vues lors de la phase d’entraînement. On parle de bonne capacité de généralisation.\
+L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(\theta)\)</span> mesure les erreurs effectuées par l’algorithme sur des exemples qu’il n’a jamais vu, appelés exemples test. On suppose que des exemples sont issus de la même population que les données d’entraînement.</p>
+<p>Soit <span class="math notranslate nohighlight">\(h\)</span> la dimension de Vapnik-Chervonenkis d’une famille de classifieurs <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. On peut montrer <span id="id3">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>  qu’avec probabilité <span class="math notranslate nohighlight">\(1-\alpha\)</span>, pour un nombre d’exemples <span class="math notranslate nohighlight">\(n&gt;h\)</span> que pour toutes les fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[E_g(\theta) = E_t(\theta) + \epsilon_1\left (n,h,\alpha,E_t(\theta)\right )\]</div>
+<p>avec</p>
+<div class="math notranslate nohighlight">
+\[ \epsilon_1\left (n,h,\alpha,E_t(\theta)\right ) = 2\epsilon_0^2(n,h,\alpha)\left (1+\sqrt{1+\frac{E_t(\theta)}{\epsilon_0^2(n,h,\alpha)}}\right )\]</div>
+<p>et où</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_0(n,h,\alpha) = \sqrt{\frac{h}{n}\left ( log\left ( \frac{2n}{h}\right ) +1 \right ) -\frac{1}{n}log\alpha}\]</div>
+<p>est l’intervalle de confiance. Pour <span class="math notranslate nohighlight">\(n\)</span> fixé, <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> décroît lorsque <span class="math notranslate nohighlight">\(h\)</span> augmente, alors que l’intervalle de confiance croît. Ainsi, le risque garanti et l’erreur en généralisation passent par un minimum. Avant cet optimum, le problème d’apprentissage est surdéterminé (<span class="math notranslate nohighlight">\(h\)</span> est trop petit par rapport au niveau d’information contenu dans <span class="math notranslate nohighlight">\(Z\)</span>). Au-delà, il est sous-déterminé (l’algorithme est trop “complexe”) (<a class="reference internal" href="#vcdim-ref"><span class="std std-numref">Fig. 6</span></a>).</p>
+<div class="figure align-default" id="vcdim-ref">
+<img alt="_images/vcdim.png" src="_images/vcdim.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Permalink to this image">#</a></p>
+</div>
+<p>Un des objectifs dans la résolution d’un problème d’apprentissage supervisé est donc d’atteindre la meilleure capacité de généralisation (minimiser <span class="math notranslate nohighlight">\(E_g(\theta)\)</span>). La minimisation du risque structurel propose une méthode inductive permettant d’atteindre cet objectif, en faisant de <span class="math notranslate nohighlight">\(h\)</span> une variable de contrôle.</p>
+<p>Soit pour <span class="math notranslate nohighlight">\(k\in\{1\ldots n\}\)</span> <span class="math notranslate nohighlight">\(\mathcal{F}_k=\{F(\mathbf x,\theta),\theta\in\Theta_k\}\)</span> un ensemble emboité de classes de fonctions tel que <span class="math notranslate nohighlight">\(\mathcal{F}_1\subset\mathcal{F}_2\ldots \mathcal{F}_n\)</span>. Les dimensions de Vapnik-Chervonenkis correspondantes vérifient <span class="math notranslate nohighlight">\(h_1\leq h_2\ldots h_n\)</span>. La minimisation du risque structurel consiste à :</p>
+<ul class="simple">
+<li><p>Minimiser <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> pour chaque fonction</p></li>
+<li><p>Idenfifier la classe <span class="math notranslate nohighlight">\(\mathcal{F}^*\)</span> dont le risque garanti est le plus faible. Une des fonctions dans <span class="math notranslate nohighlight">\(\mathcal{F}^*\)</span> fournit le meilleur compromis entre <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> (qualité d’approximation de <span class="math notranslate nohighlight">\(Z\)</span>) et intervalle de confiance (complexité de la fonction d’approximation).</p></li>
+</ul>
+<p>En pratique, la variation de <span class="math notranslate nohighlight">\(h\)</span>, et donc la création des ensembles emboîtés, peut être réalisée dans des réseaux de neurones à nombre de neurones cachés croissant.</p>
+<p id="id4"><dl class="citation">
+<dt class="label" id="id64"><span class="brackets">Cov65</span></dt>
+<dd><p>Thomas M. Cover. Geometrical and statistical properties of systems of linear inequalities with applications in pattern recognition. <em>Electronic Computers, IEEE Transactions on</em>, EC-14(3):326–334, 1965. URL: <a class="reference external" href="http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf">http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf</a>.</p>
+</dd>
+<dt class="label" id="id54"><span class="brackets"><a class="fn-backref" href="#id2">VC71</a></span></dt>
+<dd><p>V. N. Vapnik and A. Ya. Chervonenkis. On the uniform convergence of relative frequencies of events to their probabilities. <em>Theory of Probability and its Applications</em>, 16(2):264–280, 1971.</p>
+</dd>
+<dt class="label" id="id53"><span class="brackets">Vap91</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Vladimir Vapnik. Principles of risk minimization for learning theory. In <em>NIPS</em>, 831–838. Morgan Kaufmann, 1991.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="approchestat.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modèle statistique de l’apprentissage</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="svmGeom.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SVM linéaire</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By V Barra<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
