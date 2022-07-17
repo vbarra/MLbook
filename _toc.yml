@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+  - caption: Introduction
+    chapters:
+      - file: possible
+      - file: approchestat
+      - file: modelesup
+  - caption: Méthodes à noyau
+    chapters:
+      - file: svmGeom
+      - file: notebook_SVMlin
+      - file: notebook_SVR
+      - file: kernelTrick
+      - file: ehnr
+        title: EHNR
+  - caption: Classification - Clustering
+    chapters:
+    - file: classification
+      sections:
+      - file: knn     
+      - file: notebook_knn 
+    - file: clustering
+      sections:
+      - file: kmeans
