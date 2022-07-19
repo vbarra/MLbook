@@ -33,7 +33,6 @@ def set_default(figsize=(7, 4), dpi=100):
     plt.rcParams['savefig.bbox'] = 'tight'
     plt.rcParams['legend.frameon'] = False
     
-    plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
 
 def set_aspect(ax):
@@ -42,7 +41,6 @@ def set_aspect(ax):
     ax.spines['bottom'].set_position(('data', 0))
     ax.spines['right'].set_position(('data', -1))
     ax.spines['top'].set_position(('data', -1))
-#    ax.set_aspect('equal')
     ax.grid(True,ls=':')
 
 
@@ -63,6 +61,7 @@ from sklearn.datasets import make_blobs
 Xblobs, yblobs = make_blobs(n_samples=500, centers=2,random_state=0, cluster_std=0.6)
 fig, ax = plt.subplots(1, 1, figsize=(5, 5))
 ax.scatter(Xblobs[:, 0], Xblobs[:, 1], c=yblobs, s=30);
+plt.tight_layout()
 
 
 # Pour la génération de données non linéairement séparables, on utilise les fonctions make_moons et make_circle
@@ -77,9 +76,10 @@ Xcircle, ycircle = make_circles(200, factor=.1, noise=.1)
 
 fig, ax = plt.subplots(1, 2, figsize=(9, 3))
 ax[0].scatter(Xcircle[:, 0], Xcircle[:, 1], c=ycircle, s=30)
-ax[0].set_title("Données circle")
+ax[0].set_title("Données circle",fontsize=14)
 ax[1].scatter(Xmoons[:, 0], Xmoons[:, 1], c=ymoons, s=30)
-ax[1].set_title("Données moons")
+ax[1].set_title("Données moons",fontsize=14)
+plt.tight_layout()
 
 
 # On définit une fonction qui affiche la frontière de décision d'un classifieur
@@ -124,6 +124,7 @@ ax.plot([0], [1.4],'.', color='b', markeredgewidth=10)
 
 for m, b,c  in [(0.9, 1.15,'red'), (0.5, 1.6,'green')]:
     ax.plot(xfit, m * xfit + b, c)
+plt.tight_layout()
 
 
 # Suivant le modèle retenu, le point bleu sera alors affecté à l'une ou l'autre des classes. On se pose alors la question : quel est le meilleur séparateur linéaire possible dans ce cas ? 
@@ -167,8 +168,7 @@ fig, ax = plt.subplots(1, 1, figsize=(5, 5))
 ax.scatter(Xblobs[:, 0], Xblobs[:, 1], c=yblobs, s=30)
 plot_svc_frontiere(svm_clf);
 
-plt.savefig("images/SVC_plot")
-plt.show()
+plt.tight_layout()
 
 
 # Les points de données cerclés sont les vecteurs supports, et définissent le séparateur linéaire. 
@@ -244,7 +244,7 @@ ax[1].scatter(Xblobs[:, 0], Xblobs[:, 1], c=yblobs, s=30)
 plot_svc_frontiere(svm_clf2,ax=ax[1])
 ax[1].set_title("$C = {}$".format(svm_clf2.C), fontsize=14)
 
-plt.savefig("images/C_plot")
+plt.tight_layout()
 
 
 # ## Cas multiclasses
@@ -277,7 +277,7 @@ ax[0].imshow(pred.reshape(xx.shape), cmap="Accent", alpha=.2,
 line = np.linspace(-15, 15)
 for coef, intercept, color in zip(linear_svm.coef_, linear_svm.intercept_, colors):
     ax[0].plot(-(line * coef[1] + intercept) / coef[0], line, c=color)
-ax[0].set_title("Un contre tous")
+ax[0].set_title("Un contre tous",fontsize=14)
 
 
 classes = [(0, 1), (0, 2), (1, 2)]
@@ -295,9 +295,8 @@ for coef, intercept, col in zip(svm.coef_, svm.intercept_, classes):
     line2 = -(line * coef[1] + intercept) / coef[0]
     ax[1].plot(line2, line, "-", c=colors[col[0]])
     ax[1].plot(line2, line, "--", c=colors[col[1]])
-ax[1].set_title("Un contre tous")
+ax[1].set_title("Un contre un",fontsize=14)
 
+plt.tight_layout()
 
-
-plt.savefig('images/multiclasses.png')
 
