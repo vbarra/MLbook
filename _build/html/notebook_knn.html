@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -48,11 +49,11 @@ const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Clustering" href="clustering.html" />
     <link rel="prev" title="K plus proches voisins" href="knn.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -268,20 +269,20 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebook_knn.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
 data-placement="left"
-title="Launch on Binder"
+title="Launch Thebe"
 >
   
 
 <span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
+  <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -311,7 +312,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -328,7 +329,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebook_knn.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fnotebook_knn.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -455,7 +456,7 @@ title="Print to PDF"
               <div>
                 
   <div class="section" id="notebook-k-ppv">
-<h1>Notebook k-ppv<a class="headerlink" href="#notebook-k-ppv" title="Permalink to this headline">#</a></h1>
+<h1>Notebook k-ppv<a class="headerlink" href="#notebook-k-ppv" title="Lien permanent vers ce titre">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -512,7 +513,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="section" id="donnees">
-<h2>Données<a class="headerlink" href="#donnees" title="Permalink to this headline">#</a></h2>
+<h2>Données<a class="headerlink" href="#donnees" title="Lien permanent vers ce titre">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">cluster_std</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -571,8 +572,8 @@ title="Print to PDF"
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -594,16 +595,16 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="knn.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="knn.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">K plus proches voisins</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="clustering.html" title="next page">
+    <a class='right-next' id="next-link" href="clustering.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Clustering</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -615,7 +616,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

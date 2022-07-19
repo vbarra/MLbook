@@ -27,3 +27,15 @@ parts:
     - file: clustering
       sections:
       - file: kmeans
+  - caption: Méthodes d'ensemble
+    chapters:
+        - file: ensemble
+  - caption: Manifold learning
+    chapters:
+        - file: manifold
+  - caption: Chaînes de Markov cachées
+    chapters:
+        - file: hmm
+  - caption: Réseaux de neurones
+    chapters:
+        - file: nn

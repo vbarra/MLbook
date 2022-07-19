@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Modèle du processus d’apprentissage supervisé" href="modelesup.html" />
     <link rel="prev" title="Exemple introductif" href="possible.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -284,7 +285,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +302,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fapprochestat.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fapprochestat.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -465,7 +466,7 @@ title="Print to PDF"
 On trouvera ci-dessous une courte présentation de l'approche statistique de l'apprentissage automatique, où l'on introduit notamment les notions importantes de biais et de variance d'un modèle.
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="modele-statistique-de-l-apprentissage">
-<h1>Modèle statistique de l’apprentissage<a class="headerlink" href="#modele-statistique-de-l-apprentissage" title="Permalink to this headline">#</a></h1>
+<h1>Modèle statistique de l’apprentissage<a class="headerlink" href="#modele-statistique-de-l-apprentissage" title="Lien permanent vers ce titre">#</a></h1>
 <p>Soient un phénomène aléatoire décrit par un vecteur aléatoire <span class="math notranslate nohighlight">\(X\)</span> dont les composantes sont supposées indépendantes, et une variable aléatoire <span class="math notranslate nohighlight">\(Y\)</span> (on suppose pour simplifier l’exposé que <span class="math notranslate nohighlight">\(Y\)</span> est une variable, mais le discours s’applique sans perte de généralité s’il s’agit d’un vecteur aléatoire).</p>
 <p>On suppose disposer de <span class="math notranslate nohighlight">\(n\)</span> réalisations de <span class="math notranslate nohighlight">\(X\)</span>, notées <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et un ensemble correspondant de réalisations de <span class="math notranslate nohighlight">\(Y\)</span>, le tout constituant l’ensemble d’apprentissage  <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n\right \}\)</span>.</p>
 <p>Le plus souvent, la relation entre <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> est inconnue, et on la modélise par un modèle régressif</p>
@@ -497,9 +498,9 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
 \[L_{av}\left (f(\mathbf x),F(\mathbf x,\mathbf w) \right ) = \mathbb{E}_Z \left (f(\mathbf x)-F(\mathbf x,Z)\right )^2\]</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="dilemne-biais-variance">
-<h1>Dilemne biais/variance<a class="headerlink" href="#dilemne-biais-variance" title="Permalink to this headline">#</a></h1>
+<h1>Dilemne biais/variance<a class="headerlink" href="#dilemne-biais-variance" title="Lien permanent vers ce titre">#</a></h1>
 <div class="section" id="biais-et-variance">
-<h2>Biais et Variance<a class="headerlink" href="#biais-et-variance" title="Permalink to this headline">#</a></h2>
+<h2>Biais et Variance<a class="headerlink" href="#biais-et-variance" title="Lien permanent vers ce titre">#</a></h2>
 <p>Puisque <span class="math notranslate nohighlight">\(f(\mathbf x)=\mathbb{E}(Y\mid X=\mathbf x)\)</span>, l’erreur quadratique entre <span class="math notranslate nohighlight">\(f(\mathbf x)\)</span> et <span class="math notranslate nohighlight">\(F(\mathbf x,Z)\)</span> peut s’écrire</p>
 <div class="math notranslate nohighlight">
 \[L_{av}\left (f(\mathbf x),F(\mathbf x,w) \right ) = \mathbb{E}_Z \left (\mathbb{E}(Y\mid X=\mathbf x)-F(\mathbf x,Z)\right )^2\]</div>
@@ -518,7 +519,7 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
 <p>Pour de bonnes performances de la fonction d’approximation <span class="math notranslate nohighlight">\(F(\mathbf x,\mathbf w)\)</span>, <span class="math notranslate nohighlight">\(B(\mathbf w)\)</span> et <span class="math notranslate nohighlight">\(V(\mathbf w)\)</span> doivent simultanément être petits. Cependant, sur des processus d’apprentissage sur un ensemble <span class="math notranslate nohighlight">\(Z\)</span> de taille <span class="math notranslate nohighlight">\(n\)</span> fixée, le prix à payer pour un biais faible est une grande variance. On peut montrer, pour un réseau de neurones par exemple, que le biais et la variance diminuent simultanément lorsque <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>. Ce compromis s’appelle le dilemne biais-variance.</p>
 </div>
 <div class="section" id="illustrations">
-<h2>Illustrations<a class="headerlink" href="#illustrations" title="Permalink to this headline">#</a></h2>
+<h2>Illustrations<a class="headerlink" href="#illustrations" title="Lien permanent vers ce titre">#</a></h2>
 <p>De l’analyse précédente, on en déduit que plus complexe sera l’espace des fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, meilleure sera la chance d’approcher <span class="math notranslate nohighlight">\(f\)</span>, et que plus petit cet espace sera, meilleure sera la chance que l’algorithme généralise bien.</p>
 <p>Supposons  <span class="math notranslate nohighlight">\(f(x) = sin(x),x\in[-\pi,\pi]\)</span> et que l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span> soit constitué de deux points tirés au hasard sur cette courbe. Supposons de plus que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> soit composé des fonctions constantes et des polynomes de degré 1.</p>
 <p>On apprend sur <span class="math notranslate nohighlight">\(N\)</span> ensembles d’apprentissage <span class="math notranslate nohighlight">\(Z_i\)</span> <span class="math notranslate nohighlight">\(N\)</span> modèles constants et <span class="math notranslate nohighlight">\(N\)</span> modèles linéaires <span class="math notranslate nohighlight">\(F^{Z_i}(x,w)\)</span>, pour reprendre les notations précédentes</p>
@@ -544,7 +545,7 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
 <li><p>pour le modèle constant, <span class="math notranslate nohighlight">\(B\)</span>=0.5, <span class="math notranslate nohighlight">\(V\)</span>=0.25 et <span class="math notranslate nohighlight">\(L_{av}\left (f(x),F(x,w) \right )=0.75\)</span></p></li>
 <li><p>pour le modèle affine, <span class="math notranslate nohighlight">\(B\)</span>=0.21, <span class="math notranslate nohighlight">\(V\)</span>=1.69 et <span class="math notranslate nohighlight">\(L_{av}\left (f(x),F(x,w) \right )=1.90\)</span></p></li>
 </ul>
-<p>et le “meilleur” modèle (en généralisation) est le modèle constant (soit le “moins compliqué”).</p>
+<p>et le « meilleur » modèle (en généralisation) est le modèle constant (soit le « moins compliqué »).</p>
 <p>Si l’on étend cette approche à 5 points d’apprentissage, on montre facilement que <span class="math notranslate nohighlight">\(L_{av}\left (f(x),F(x,w) \right )\)</span> est égal à 0.6 pour le modèle constant, et 0.42 pour le modèle affine</p>
 <p><img alt="" src="_images/biaisvariance2.png" /></p>
 <p><img alt="" src="_images/biaisvariancemean2.png" /></p>
@@ -557,8 +558,8 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -580,16 +581,16 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="possible.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="possible.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Exemple introductif</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="modelesup.html" title="next page">
+    <a class='right-next' id="next-link" href="modelesup.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Modèle du processus d’apprentissage supervisé</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -601,7 +602,7 @@ On trouvera ci-dessous une courte présentation de l'approche statistique de l'a
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

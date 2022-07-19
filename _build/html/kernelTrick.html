@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Espaces de Hilbert à noyau reproduisant" href="ehnr.html" />
     <link rel="prev" title="Notebook SVR" href="notebook_SVR.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -284,7 +285,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +302,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FkernelTrick.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2FkernelTrick.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -510,16 +511,16 @@ Il est possible de construire des séparateurs non linéaires très performants,
 <p>De manière très macroscopique, il s’agit de transformer les données de <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> en des vecteurs <span class="math notranslate nohighlight">\(\mathbf z\in \mathbb{R}^{d'},d'&gt;d\)</span> (voire dans un espace <span class="math notranslate nohighlight">\(E\)</span> général, de dimension possiblement infinie), via une fonction <span class="math notranslate nohighlight">\(\mathbf z = \phi(\mathbf x)\)</span> en choisissant <span class="math notranslate nohighlight">\(\phi\)</span> de sorte que les données d’entraînement <span class="math notranslate nohighlight">\(\{ \phi(\mathbf  x_i), y_i \}\)</span> soient linéairement séparables dans <span class="math notranslate nohighlight">\(\mathbb{R}^{d'}\)</span> (ou linéairement séparables avec probabilité 1, en vertu du théorème de Cover).</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="astuce-du-noyau">
-<h1>Astuce du noyau<a class="headerlink" href="#astuce-du-noyau" title="Permalink to this headline">#</a></h1>
+<h1>Astuce du noyau<a class="headerlink" href="#astuce-du-noyau" title="Lien permanent vers ce titre">#</a></h1>
 <p>La <code class="xref std std-numref docutils literal notranslate"><span class="pre">kellipse-ref</span></code> présente un  exemple simple du principe développé ci-après.</p>
 <div class="figure align-default" id="kellipse-ref">
 <img alt="_images/Kellipse.png" src="_images/Kellipse.png" />
 </div>
 <p>Exemple simple de données concentriques 2D, non linéairement séparables dans le plan, mais séparables en 3D lorsque <span class="math notranslate nohighlight">\(\phi\)</span> est une simple fonction à base radiale</p>
 <div class="section" id="choix-de-phi">
-<h2>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#choix-de-phi" title="Permalink to this headline">#</a></h2>
+<h2>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#choix-de-phi" title="Lien permanent vers ce titre">#</a></h2>
 <div class="section" id="existence-de-phi">
-<h3>Existence de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#existence-de-phi" title="Permalink to this headline">#</a></h3>
+<h3>Existence de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#existence-de-phi" title="Lien permanent vers ce titre">#</a></h3>
 <p>Première question à se poser, <span class="math notranslate nohighlight">\(\phi\)</span> existe t elle ? La réponse est donnée par le théorème de Cover.</p>
 <p>Soient <span class="math notranslate nohighlight">\(\mathcal S\)</span> une famille de surfaces et <span class="math notranslate nohighlight">\(\mathcal{H} = \{\mathbf x_1\ldots \mathbf x_n\}\)</span> un ensemble de vecteurs <span class="math notranslate nohighlight">\(\mathbf x_i\in X\)</span>, <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> de classe <span class="math notranslate nohighlight">\(y_i \)</span>. On considère un problème de classification binaire pour lequel <span class="math notranslate nohighlight">\(y_i\in \mathcal{H}_1\)</span> où <span class="math notranslate nohighlight">\(y_i\in\mathcal{H}_2\)</span></p>
 <p>On dira que <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> est séparable par rapport à <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> s’il existe <span class="math notranslate nohighlight">\(S_i\in\mathcal{S}\)</span> réalisant la classification <span class="math notranslate nohighlight">\(\mathcal{H}_1 / \mathcal{H}_2\)</span> de <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>.</p>
@@ -570,7 +571,7 @@ Il est possible de construire des séparateurs non linéaires très performants,
 <p>Le résultat précédent, valable pour des fonctions polynomiales, se généralise à d’autres familles de fonctions. Notons que la définition analytique des fonctions <span class="math notranslate nohighlight">\(\phi_i\)</span> n’est pas toujours facile, et l’astuce du noyau  permet de s’affranchir de cette difficulté.</p>
 </div>
 <div class="section" id="id2">
-<h3>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#id2" title="Lien permanent vers ce titre">#</a></h3>
 <p>Deuxième question : comment choisir <span class="math notranslate nohighlight">\(\phi\)</span> ? Il ne s’agit bien sur pas de construire explicitement cette fonction. Il s’agit également de prendre garde à la taille de l’espace d’arrivée (<span class="math notranslate nohighlight">\(d'\)</span>), les calculs  pouvant devenir prohibitifs et le sur apprentissage pouvant également apparaître.</p>
 <p>Etant donné <span class="math notranslate nohighlight">\(\mathbf z = \phi(\mathbf x)\)</span>, on remplace alors <span class="math notranslate nohighlight">\(\mathbf x\)</span> par <span class="math notranslate nohighlight">\(\mathbf z\)</span> dans la formulation du problème QP :</p>
 <div class="math notranslate nohighlight">
@@ -604,7 +605,7 @@ f(\mathbf x) = \textrm{sign}(\displaystyle\sum_{i=1}^n \alpha_i y_i ( K(\mathbf 
 </div>
 </div>
 <div class="section" id="choix-de-k">
-<h2>Choix de <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#choix-de-k" title="Permalink to this headline">#</a></h2>
+<h2>Choix de <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#choix-de-k" title="Lien permanent vers ce titre">#</a></h2>
 <p>Pour construire un noyau <span class="math notranslate nohighlight">\(K\)</span>, il faut que ce noyau calcule un produit scalaire dans l’espace d’arrivée, pour une certaine fonction <span class="math notranslate nohighlight">\(\phi\)</span>. Pour ce faire, deux stratégies sont possibles :</p>
 <ul class="simple">
 <li><p>Poser une fonction <span class="math notranslate nohighlight">\(\phi\)</span> et en déduire <span class="math notranslate nohighlight">\(K\)</span>. Hormis dans des cas très simples, cela n’est pas réalisable. On peut par exemple, dans le cas de <span class="math notranslate nohighlight">\(\phi:\mathbb{R}^2\rightarrow \mathbb{R}^3\)</span>, trouver un séparateur non linéaire dans <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> (ellipses) en construisant un séparateur linéaire dans <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. En effet :</p></li>
@@ -638,7 +639,7 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
 <p>Deux choix classiques de noyau sont décrits ci-dessous.</p>
 </div>
 <div class="section" id="noyaux-de-donnees-non-quantitatives">
-<h2>Noyaux de données non quantitatives<a class="headerlink" href="#noyaux-de-donnees-non-quantitatives" title="Permalink to this headline">#</a></h2>
+<h2>Noyaux de données non quantitatives<a class="headerlink" href="#noyaux-de-donnees-non-quantitatives" title="Lien permanent vers ce titre">#</a></h2>
 <p>Il est également possible de définir des noyaux sur des données non numériques, telles que des chaînes de caractères, des graphes. Il suffit pour cela de disposer d’une mesure de similarité entre deux objets. Par exemple :</p>
 <ul class="simple">
 <li><p>si <span class="math notranslate nohighlight">\(s,s'\)</span> sont deux chaînes de caractères, <span class="math notranslate nohighlight">\(K(s,s')\)</span> peut quantifier la différence de longueur, le nombre de lettres différentes, la distance d’édition minimale,…</p></li>
@@ -646,7 +647,7 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
 </ul>
 </div>
 <div class="section" id="generalisation-d-algorithmes">
-<h2>Généralisation d’algorithmes<a class="headerlink" href="#generalisation-d-algorithmes" title="Permalink to this headline">#</a></h2>
+<h2>Généralisation d’algorithmes<a class="headerlink" href="#generalisation-d-algorithmes" title="Lien permanent vers ce titre">#</a></h2>
 <p>L’astuce du noyau se généralise à tout algorithme fondé sur un produit scalaire. On peut citer par exemple :</p>
 <ul class="simple">
 <li><p>le perceptron linéaire</p></li>
@@ -676,8 +677,8 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -699,16 +700,16 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="notebook_SVR.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="notebook_SVR.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Notebook SVR</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ehnr.html" title="next page">
+    <a class='right-next' id="next-link" href="ehnr.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Espaces de Hilbert à noyau reproduisant</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -720,7 +721,7 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Astuce du noyau" href="kernelTrick.html" />
     <link rel="prev" title="Notebook SVM linéaire" href="notebook_SVMlin.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -270,20 +271,20 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebook_SVR.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
 data-placement="left"
-title="Launch on Binder"
+title="Launch Thebe"
 >
   
 
 <span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
+  <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -313,7 +314,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -330,7 +331,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebook_SVR.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fnotebook_SVR.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -467,7 +468,7 @@ title="Print to PDF"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="notebook-svr">
-<h1>Notebook SVR<a class="headerlink" href="#notebook-svr" title="Permalink to this headline">#</a></h1>
+<h1>Notebook SVR<a class="headerlink" href="#notebook-svr" title="Lien permanent vers ce titre">#</a></h1>
 <p><a name='haut'> </a></p>
 <p>Il est également possible, en changeant les fonctions de perte,  d’utiliser les SVM  en régression non paramétrique (SVR : Support Vector Regression)
 , i.e. approcher une fonction de <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> dans <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> par les mêmes mécanismes d’optimisation.</p>
@@ -515,7 +516,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="section" id="tendance-lineaire">
-<h2>Tendance linéaire<a class="headerlink" href="#tendance-lineaire" title="Permalink to this headline">#</a></h2>
+<h2>Tendance linéaire<a class="headerlink" href="#tendance-lineaire" title="Lien permanent vers ce titre">#</a></h2>
 <p>Pour illustrer les SVR, on génère des données aléatoires 2D à tendance linéaire et on utilise LinearSVR pour effectuer une régression linéaire.</p>
 <p><a name='donnees'></a></p>
 <div class="cell docutils container">
@@ -596,7 +597,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="section" id="tendance-quadratique">
-<h2>Tendance quadratique<a class="headerlink" href="#tendance-quadratique" title="Permalink to this headline">#</a></h2>
+<h2>Tendance quadratique<a class="headerlink" href="#tendance-quadratique" title="Lien permanent vers ce titre">#</a></h2>
 <p>On génère maintenant des données aléatoires 2D à tendance quadratique et on utilise un SVR polynomial pour la régression</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -652,8 +653,8 @@ title="Print to PDF"
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -675,16 +676,16 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="notebook_SVMlin.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="notebook_SVMlin.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Notebook SVM linéaire</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="kernelTrick.html" title="next page">
+    <a class='right-next' id="next-link" href="kernelTrick.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Astuce du noyau</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -696,7 +697,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
