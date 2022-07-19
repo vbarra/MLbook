@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,9 +51,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -268,20 +269,20 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
 data-placement="left"
-title="Launch on Binder"
+title="Launch Thebe"
 >
   
 
 <span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
+  <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
 
       </li>
       
@@ -311,7 +312,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -328,7 +329,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -475,11 +476,11 @@ title="Print to PDF"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="content-with-notebooks">
-<h1>Content with notebooks<a class="headerlink" href="#content-with-notebooks" title="Permalink to this headline">#</a></h1>
+<h1>Content with notebooks<a class="headerlink" href="#content-with-notebooks" title="Lien permanent vers ce titre">#</a></h1>
 <p>You can also create content with Jupyter Notebooks. This means that you can include
 code blocks and their outputs in your book.</p>
 <div class="section" id="markdown-notebooks">
-<h2>Markdown + notebooks<a class="headerlink" href="#markdown-notebooks" title="Permalink to this headline">#</a></h2>
+<h2>Markdown + notebooks<a class="headerlink" href="#markdown-notebooks" title="Lien permanent vers ce titre">#</a></h2>
 <p>As it is markdown, you can embed images, HTML, etc into your posts!</p>
 <p><img alt="" src="https://myst-parser.readthedocs.io/en/latest/_static/logo-wide.svg" /></p>
 <p>You can also <span class="math notranslate nohighlight">\(add_{math}\)</span> and</p>
@@ -498,13 +499,13 @@ math blocks
 <p>But make sure you $Escape $your $dollar signs $you want to keep!</p>
 </div>
 <div class="section" id="myst-markdown">
-<h2>MyST markdown<a class="headerlink" href="#myst-markdown" title="Permalink to this headline">#</a></h2>
+<h2>MyST markdown<a class="headerlink" href="#myst-markdown" title="Lien permanent vers ce titre">#</a></h2>
 <p>MyST markdown works in Jupyter Notebooks as well. For more information about MyST markdown, check
 out <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST guide in Jupyter Book</a>,
 or see <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">the MyST markdown documentation</a>.</p>
 </div>
 <div class="section" id="code-blocks-and-outputs">
-<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Permalink to this headline">#</a></h2>
+<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Lien permanent vers ce titre">#</a></h2>
 <p>Jupyter Book will also embed your code blocks and output in your book.
 For example, here’s some sample Matplotlib code:</p>
 <div class="cell docutils container">
@@ -517,7 +518,7 @@ For example, here’s some sample Matplotlib code:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x10cdce970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.pyplot._IonContext at 0x10ecec460&gt;
 </pre></div>
 </div>
 </div>
@@ -558,8 +559,8 @@ with your book. For more information about this, see <a class="reference externa
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -588,7 +589,7 @@ with your book. For more information about this, see <a class="reference externa
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="SVM linéaire" href="svmGeom.html" />
     <link rel="prev" title="Modèle statistique de l’apprentissage" href="approchestat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -284,7 +285,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +302,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodelesup.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fmodelesup.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -474,15 +475,15 @@ title="Print to PDF"
   <div class="admonition note" name="html-admonition" style="background: lightblue; padding: 10px">
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="modele-du-processus-d-apprentissage-supervise">
-<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Permalink to this headline">#</a></h1>
+<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Lien permanent vers ce titre">#</a></h1>
 <p>Un modèle classique de description du processus d’apprentissage supervisé est composé de trois composantes <span id="id1">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>:</p>
 <ul class="simple">
 <li><p>Un environnement, qui fournit des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> avec une probabilité fixe mais inconnue <span class="math notranslate nohighlight">\(P_X\)</span> ;</p></li>
-<li><p>Un superviseur qui fournit pour chaque vecteur <span class="math notranslate nohighlight">\(\mathbf x\)</span> reçu de l’environnement une réponse désirée <span class="math notranslate nohighlight">\(y\in Y\)</span>, selon une probabilité <span class="math notranslate nohighlight">\(P(\mathbf x\mid y)\)</span> fixe mais inconnue. La réponse <span class="math notranslate nohighlight">\(y\)</span> et <span class="math notranslate nohighlight">\(\mathbf x\)</span> sont liés par une relation <span class="math notranslate nohighlight">\(y=f(\mathbf x,\epsilon)\)</span>, <span class="math notranslate nohighlight">\(\epsilon\)</span> étant un bruit permettant au superviseur d’être “bruité” ;</p></li>
+<li><p>Un superviseur qui fournit pour chaque vecteur <span class="math notranslate nohighlight">\(\mathbf x\)</span> reçu de l’environnement une réponse désirée <span class="math notranslate nohighlight">\(y\in Y\)</span>, selon une probabilité <span class="math notranslate nohighlight">\(P(\mathbf x\mid y)\)</span> fixe mais inconnue. La réponse <span class="math notranslate nohighlight">\(y\)</span> et <span class="math notranslate nohighlight">\(\mathbf x\)</span> sont liés par une relation <span class="math notranslate nohighlight">\(y=f(\mathbf x,\epsilon)\)</span>, <span class="math notranslate nohighlight">\(\epsilon\)</span> étant un bruit permettant au superviseur d’être « bruité » ;</p></li>
 <li><p>Un algorithme d’apprentissage qui implémente une classe de fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, définies par un paramètre vectoriel <span class="math notranslate nohighlight">\(\theta\)</span>, reliant l’espace des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\)</span> à l’espace des réponses <span class="math notranslate nohighlight">\(Y\)</span> : <span class="math notranslate nohighlight">\(\mathcal{F} = \{F(\mathbf x,\theta),\theta\in\Theta\}\)</span></p></li>
 </ul>
 <p>Le problème de l’apprentissage supervisé consiste alors à choisir dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> une fonction qui approche la réponse <span class="math notranslate nohighlight">\(y\)</span> pour tout <span class="math notranslate nohighlight">\(\mathbf x\)</span> d’une manière optimale, au sens statistique du terme. La recherche de cet optimum est basée sur un ensemble de <span class="math notranslate nohighlight">\(n\)</span> exemples i.i.d., dit ensemble  d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\mathbf x_i\in X,y_i\in Y\right \}\)</span>. Chaque exemple <span class="math notranslate nohighlight">\((\mathbf x_i,y_i)\)</span> est tiré par l’algorithme d’apprentissage depuis <span class="math notranslate nohighlight">\(Z\)</span> avec une probabilité jointe fixe mais inconnue <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
-<p>Trouver un “bon” candidat dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> qui approche <span class="math notranslate nohighlight">\(f\)</span> repose sur le fait que <span class="math notranslate nohighlight">\(Z\)</span> contient “suffisamment” d’information pour permettre d’une part d’apprendre correctement <span class="math notranslate nohighlight">\(Z\)</span> (facile), mais aussi d’être capable de généraliser de manière cohérente sur <span class="math notranslate nohighlight">\(X\times Y\)</span>. La quantification de cette information a été apportée par les travaux de Vapnik et Chervonenkis <span id="id2">[<a class="reference internal" href="svmGeom.html#id51">VC71</a>]</span>.</p>
+<p>Trouver un « bon » candidat dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> qui approche <span class="math notranslate nohighlight">\(f\)</span> repose sur le fait que <span class="math notranslate nohighlight">\(Z\)</span> contient « suffisamment » d’information pour permettre d’une part d’apprendre correctement <span class="math notranslate nohighlight">\(Z\)</span> (facile), mais aussi d’être capable de généraliser de manière cohérente sur <span class="math notranslate nohighlight">\(X\times Y\)</span>. La quantification de cette information a été apportée par les travaux de Vapnik et Chervonenkis <span id="id2">[<a class="reference internal" href="svmGeom.html#id51">VC71</a>]</span>.</p>
 <p>Soit <span class="math notranslate nohighlight">\(L\left (y,F(\mathbf x,\theta)\right )\)</span> une fonction de perte, qui mesure l’écart entre la réponse <span class="math notranslate nohighlight">\(y\)</span> fournie par le superviseur et la réponse calculée par l’algorithme d’apprentissage. L’espérance de <span class="math notranslate nohighlight">\(L\)</span> définit le risque fonctionnel</p>
 <div class="math notranslate nohighlight">
 \[R(\theta) = \int L\left (y,F(\mathbf x,\theta)\right )dP_{X,Y}\]</div>
@@ -493,7 +494,7 @@ title="Print to PDF"
 <p>qui ne nécessite pas la connaissance de <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="minimisation-du-risque-empirique">
-<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Permalink to this headline">#</a></h1>
+<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Lien permanent vers ce titre">#</a></h1>
 <p>Soit <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> (respectivement <span class="math notranslate nohighlight">\(F(\mathbf x\,\hat{\theta})\)</span>) le vecteur (resp. la fonction) optimal(e) pour le problème de minimisation du risque empirique. Pour une valeur <span class="math notranslate nohighlight">\(\theta^*\in\Theta\)</span>, le risque <span class="math notranslate nohighlight">\(R(\theta^*)\)</span> est l’espérance d’une certaine variable aléatoire définie par <span class="math notranslate nohighlight">\(M_{\theta^*} = L(y,F(\mathbf x,\theta^*))\)</span>. Le risque empirique <span class="math notranslate nohighlight">\(R_{emp}(\theta^*)\)</span>, quant à lui, est la moyenne arithmétique de <span class="math notranslate nohighlight">\(M_{\theta^*}\)</span>. D’après la loi des grands nombres, si <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, la moyenne de <span class="math notranslate nohighlight">\(M_{\theta^*}\)</span> tend vers son espérance, et donc vers <span class="math notranslate nohighlight">\(R(\theta^*)\)</span>, ce qui justifie d’utiliser le risque empirique en lieu et place de <span class="math notranslate nohighlight">\(R(\theta)\)</span>.</p>
 <p>Il n’y a cependant aucune raison a priori pour que <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> minimise également <span class="math notranslate nohighlight">\(R(\theta)\)</span>.</p>
 <p>Nous allons montrer que si <span class="math notranslate nohighlight">\(R_{emp}(\theta)\)</span> approche uniformément <span class="math notranslate nohighlight">\(R(\theta)\)</span> avec une précision <span class="math notranslate nohighlight">\(\epsilon\)</span>, alors le minimum du risque empirique s’écarte du minimum de <span class="math notranslate nohighlight">\(R(\theta)\)</span> d’au plus <span class="math notranslate nohighlight">\(2\epsilon\)</span>.</p>
@@ -520,9 +521,9 @@ title="Print to PDF"
 </ol>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="vc-dimension">
-<h1>VC dimension<a class="headerlink" href="#vc-dimension" title="Permalink to this headline">#</a></h1>
+<h1>VC dimension<a class="headerlink" href="#vc-dimension" title="Lien permanent vers ce titre">#</a></h1>
 <div class="section" id="definition">
-<h2>Définition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<h2>Définition<a class="headerlink" href="#definition" title="Lien permanent vers ce titre">#</a></h2>
 <p>La VC dimension (ou dimension de Vapnik-Chervonenkis) est une mesure du pouvoir d’expression d’une famille de fonctions de classification réalisées par un algorithme d’apprentissage.</p>
 <p>Considérons un problème de classification binaire, i.e. le superviseur assigne chaque <span class="math notranslate nohighlight">\(\mathbf x\)</span> à une des deux classes, notées 0 et 1. Une fonction de classification binaire est appelée une dichotomie. Un algorithme d’apprentissage construit alors un ensemble de dichotomies <span class="math notranslate nohighlight">\(\mathcal{F} =\left  \{F:X\times \Theta\rightarrow \{0,1\}\right \}\)</span>.</p>
 <p>On note <span class="math notranslate nohighlight">\(\mathcal{L} = \left \{\mathbf x_i\in X,1\leq i\leq n \right \}\)</span> un ensemble de <span class="math notranslate nohighlight">\(n\)</span> points de <span class="math notranslate nohighlight">\(X\)</span> . Une dichotomie réalisée par l’algorithme d’apprentissage partitionne <span class="math notranslate nohighlight">\(\mathcal{L}=\mathcal{L}_0\cup \mathcal{L}_1\)</span>  de sorte que <span class="math notranslate nohighlight">\(F(\mathbf x,\theta)=k\)</span> si <span class="math notranslate nohighlight">\(\mathbf x\in \mathcal{L}_k, k\in\{0,1\}\)</span>.</p>
@@ -544,7 +545,7 @@ title="Print to PDF"
 </ol>
 </div>
 <div class="section" id="une-application-minimisation-du-risque-structurel">
-<h2>Une application : minimisation du risque structurel<a class="headerlink" href="#une-application-minimisation-du-risque-structurel" title="Permalink to this headline">#</a></h2>
+<h2>Une application : minimisation du risque structurel<a class="headerlink" href="#une-application-minimisation-du-risque-structurel" title="Lien permanent vers ce titre">#</a></h2>
 <p>L’erreur d’entraînement <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> d’un algorithme d’apprentissage est reliée à la fréquence des erreurs obtenues par cet algorithme sur <span class="math notranslate nohighlight">\(Z\)</span>. On demande à un tel algorithme non seulement d’avoir une faible erreur d’entraînement, mais aussi d’être capable de donner des valeurs justes, sur des données non vues lors de la phase d’entraînement. On parle de bonne capacité de généralisation.\
 L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(\theta)\)</span> mesure les erreurs effectuées par l’algorithme sur des exemples qu’il n’a jamais vu, appelés exemples test. On suppose que des exemples sont issus de la même population que les données d’entraînement.</p>
 <p>Soit <span class="math notranslate nohighlight">\(h\)</span> la dimension de Vapnik-Chervonenkis d’une famille de classifieurs <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. On peut montrer <span id="id3">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>  qu’avec probabilité <span class="math notranslate nohighlight">\(1-\alpha\)</span>, pour un nombre d’exemples <span class="math notranslate nohighlight">\(n&gt;h\)</span> que pour toutes les fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>,</p>
@@ -556,10 +557,10 @@ L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(
 <p>et où</p>
 <div class="math notranslate nohighlight">
 \[\epsilon_0(n,h,\alpha) = \sqrt{\frac{h}{n}\left ( log\left ( \frac{2n}{h}\right ) +1 \right ) -\frac{1}{n}log\alpha}\]</div>
-<p>est l’intervalle de confiance. Pour <span class="math notranslate nohighlight">\(n\)</span> fixé, <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> décroît lorsque <span class="math notranslate nohighlight">\(h\)</span> augmente, alors que l’intervalle de confiance croît. Ainsi, le risque garanti et l’erreur en généralisation passent par un minimum. Avant cet optimum, le problème d’apprentissage est surdéterminé (<span class="math notranslate nohighlight">\(h\)</span> est trop petit par rapport au niveau d’information contenu dans <span class="math notranslate nohighlight">\(Z\)</span>). Au-delà, il est sous-déterminé (l’algorithme est trop “complexe”) (<a class="reference internal" href="#vcdim-ref"><span class="std std-numref">Fig. 6</span></a>).</p>
+<p>est l’intervalle de confiance. Pour <span class="math notranslate nohighlight">\(n\)</span> fixé, <span class="math notranslate nohighlight">\(E_t(\theta)\)</span> décroît lorsque <span class="math notranslate nohighlight">\(h\)</span> augmente, alors que l’intervalle de confiance croît. Ainsi, le risque garanti et l’erreur en généralisation passent par un minimum. Avant cet optimum, le problème d’apprentissage est surdéterminé (<span class="math notranslate nohighlight">\(h\)</span> est trop petit par rapport au niveau d’information contenu dans <span class="math notranslate nohighlight">\(Z\)</span>). Au-delà, il est sous-déterminé (l’algorithme est trop « complexe ») (<a class="reference internal" href="#vcdim-ref"><span class="std std-numref">Fig. 6</span></a>).</p>
 <div class="figure align-default" id="vcdim-ref">
 <img alt="_images/vcdim.png" src="_images/vcdim.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>Un des objectifs dans la résolution d’un problème d’apprentissage supervisé est donc d’atteindre la meilleure capacité de généralisation (minimiser <span class="math notranslate nohighlight">\(E_g(\theta)\)</span>). La minimisation du risque structurel propose une méthode inductive permettant d’atteindre cet objectif, en faisant de <span class="math notranslate nohighlight">\(h\)</span> une variable de contrôle.</p>
 <p>Soit pour <span class="math notranslate nohighlight">\(k\in\{1\ldots n\}\)</span> <span class="math notranslate nohighlight">\(\mathcal{F}_k=\{F(\mathbf x,\theta),\theta\in\Theta_k\}\)</span> un ensemble emboité de classes de fonctions tel que <span class="math notranslate nohighlight">\(\mathcal{F}_1\subset\mathcal{F}_2\ldots \mathcal{F}_n\)</span>. Les dimensions de Vapnik-Chervonenkis correspondantes vérifient <span class="math notranslate nohighlight">\(h_1\leq h_2\ldots h_n\)</span>. La minimisation du risque structurel consiste à :</p>
@@ -587,8 +588,8 @@ L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -610,16 +611,16 @@ L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="approchestat.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="approchestat.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Modèle statistique de l’apprentissage</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="svmGeom.html" title="next page">
+    <a class='right-next' id="next-link" href="svmGeom.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">SVM linéaire</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -631,7 +632,7 @@ L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

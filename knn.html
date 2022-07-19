@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Notebook k-ppv" href="notebook_knn.html" />
     <link rel="prev" title="Classification" href="classification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -284,7 +285,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +302,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fknn.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fknn.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -555,14 +556,14 @@ title="Print to PDF"
 <p>Soit un ensemble d’exemples  <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\ \mathbf x_i\in X,y_i\in [\![1,C]\!] \right \}\)</span>, les <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> étant des échantillons d’une certaine distribution <span class="math notranslate nohighlight">\(P\)</span>.  On s’intéressera dans la suite, pour illustration, au cas dans le cas où <span class="math notranslate nohighlight">\(X=\mathbb{R}^d\)</span>.</p>
 <p>Etant donnée une métrique <span class="math notranslate nohighlight">\(\delta\)</span> sur <span class="math notranslate nohighlight">\(X\)</span>, la méthode des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins (k-PPV ou K-NN) détermine pour <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> les <span class="math notranslate nohighlight">\(k\)</span> points <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_k\)</span> de <span class="math notranslate nohighlight">\(Z\)</span> les plus proches de <span class="math notranslate nohighlight">\(\mathbf x\)</span> au sens de <span class="math notranslate nohighlight">\(\delta\)</span>. La règle de décision consiste à affecter <span class="math notranslate nohighlight">\(\mathbf x\)</span> à la classe majoritairement représentée dans les appartenances des <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>.</div></p>
 <div class="section" id="k-plus-proches-voisins">
-<h1>K plus proches voisins<a class="headerlink" href="#k-plus-proches-voisins" title="Permalink to this headline">#</a></h1>
+<h1>K plus proches voisins<a class="headerlink" href="#k-plus-proches-voisins" title="Lien permanent vers ce titre">#</a></h1>
 <p>Notons tout d’abord que dans le cas où <span class="math notranslate nohighlight">\(k = 1\)</span>, on a la règle de  classification du plus proche voisin.  Elle assigne à <span class="math notranslate nohighlight">\(\mathbf x\)</span> simplement  la même étiquette que le point d’apprentissage le plus proche.  Dans ce cas, les frontières de décision dans l’espace <span class="math notranslate nohighlight">\(X\)</span> prennent la forme  d’un pavage convexe (<a class="reference internal" href="#pavage-ref"><span class="std std-numref">Fig. 12</span></a>).  Cette règle extrêmement simple possède un comportement asymptotique excellent vis-à-vis du risque minimal de Bayes.</p>
 <div class="section" id="principe">
-<h2>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">#</a></h2>
+<h2>Principe<a class="headerlink" href="#principe" title="Lien permanent vers ce titre">#</a></h2>
 <p>La règle de décision par <span class="math notranslate nohighlight">\(k\)</span>-ppv est facile à illustrer (<a class="reference internal" href="#kppv-ref"><span class="std std-numref">Fig. 10</span></a>).</p>
 <div class="figure align-default" id="kppv-ref">
 <img alt="_images/kppv.png" src="_images/kppv.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv (bleu) dans un ensemble d’exemples appartenant à deux classes.</span><a class="headerlink" href="#kppv-ref" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv (bleu) dans un ensemble d’exemples appartenant à deux classes.</span><a class="headerlink" href="#kppv-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>Les points à classer sont <span class="math notranslate nohighlight">\(\bullet_1\)</span> et <span class="math notranslate nohighlight">\(\bullet_2\)</span> . Les données d’apprentissage appartiennent à l’une des deux classes <span class="math notranslate nohighlight">\(\Box\)</span> ou  <span class="math notranslate nohighlight">\(\Diamond\)</span>.  On cherche, au sens de la métrique   choisie pour
 le problème (ici, euclidienne), les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins des points <span class="math notranslate nohighlight">\(\bullet\)</span>.</p>
@@ -580,9 +581,9 @@ problème à trois classes :</p>
 </ul>
 <div class="figure align-default" id="kppv2-ref">
 <img alt="_images/kppv2.png" src="_images/kppv2.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv  (bleu) dans un ensemble d’exemples appartenant à trois classes.</span><a class="headerlink" href="#kppv2-ref" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv  (bleu) dans un ensemble d’exemples appartenant à trois classes.</span><a class="headerlink" href="#kppv2-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
-<p>La méthode des <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins est proposée dans l’<a class="reference internal" href="#kppv-algorithm">Algorithm 1</a>.</p>
+<p>La méthode des <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins est proposée dans l”<a class="reference internal" href="#kppv-algorithm">Algorithm 1</a>.</p>
 <div class="proof algorithm admonition" id="kppv-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Algorithme des k plus proches voisins.)</p>
 <div class="algorithm-content section" id="proof-content">
@@ -600,7 +601,7 @@ problème à trois classes :</p>
 </div>
 </div></div>
 <div class="section" id="validite-bayesienne">
-<h2>Validité bayésienne<a class="headerlink" href="#validite-bayesienne" title="Permalink to this headline">#</a></h2>
+<h2>Validité bayésienne<a class="headerlink" href="#validite-bayesienne" title="Lien permanent vers ce titre">#</a></h2>
 <p>La validité de cette simple règle est conforme aux règles de l’estimation bayésienne, sous l’hypothèse que les<br />
 probabilités a priori des classes sont bien estimées par leur proportion  d’échantillons d’apprentissage.</p>
 <p>La règle des <span class="math notranslate nohighlight">\(k\)</span>-ppv fait implicitement une estimation comparative de toutes les densités de probabilités des classes apparaissant dans le voisinage
@@ -625,11 +626,11 @@ classe est donc celle qui maximise la valeur <span class="math notranslate nohig
 s’être assuré de la validité de cette hypothèse.</p>
 </div>
 <div class="section" id="convergence">
-<h2>Convergence<a class="headerlink" href="#convergence" title="Permalink to this headline">#</a></h2>
+<h2>Convergence<a class="headerlink" href="#convergence" title="Lien permanent vers ce titre">#</a></h2>
 <p>Il est assez facile de démontrer que la probabilit’e d’erreur <span class="math notranslate nohighlight">\(R_{k-ppv}\)</span>
 de la règle des <span class="math notranslate nohighlight">\(k\)</span>-ppv converge vers le risque bayésien <span class="math notranslate nohighlight">\(R_B\)</span>  quand <span class="math notranslate nohighlight">\(n\)</span> croît vers l’infini et ceci  pour tout <span class="math notranslate nohighlight">\(k\)</span>. On démontre dans la suite cette propriété  pour <span class="math notranslate nohighlight">\(k=1\)</span>.</p>
 <div class="section" id="demonstration-de-la-convergence">
-<h3>Démonstration de la convergence<a class="headerlink" href="#demonstration-de-la-convergence" title="Permalink to this headline">#</a></h3>
+<h3>Démonstration de la convergence<a class="headerlink" href="#demonstration-de-la-convergence" title="Lien permanent vers ce titre">#</a></h3>
 <p>On note  <span class="math notranslate nohighlight">\(S=\{{\mathbf x}_1, {\mathbf x}_2,..., {\mathbf x}_m\}\)</span> les vecteurs de <span class="math notranslate nohighlight">\(X\)</span> dans l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(\mathbf x\)</span>
 le point dont on cherche la classe par la règle du 1-ppv et <span class="math notranslate nohighlight">\(\mathbf x_0\)</span> le point de <span class="math notranslate nohighlight">\(X\)</span> le plus proche de <span class="math notranslate nohighlight">\(\mathbf x\)</span>.</p>
 <p>Notons <span class="math notranslate nohighlight">\(B(\mathbf x, \rho)\)</span> la sphère de rayon <span class="math notranslate nohighlight">\(\rho\)</span> centrée en <span class="math notranslate nohighlight">\(\mathbf x\)</span>.
@@ -641,7 +642,7 @@ dans <span class="math notranslate nohighlight">\(B( \mathbf x, \rho)\)</span> e
 Par conséquent, <span class="math notranslate nohighlight">\( \mathbf x_0\)</span> tend en probabilité vers <span class="math notranslate nohighlight">\( \mathbf x\)</span>, ce qui assure la convergence désirée.</p>
 </div>
 <div class="section" id="majoration-de-l-erreur">
-<h3>Majoration de l’erreur<a class="headerlink" href="#majoration-de-l-erreur" title="Permalink to this headline">#</a></h3>
+<h3>Majoration de l’erreur<a class="headerlink" href="#majoration-de-l-erreur" title="Lien permanent vers ce titre">#</a></h3>
 <p>L’erreur moyenne réalisée par la règle du 1-ppv peut se calculer en remarquant qu’en attribuant à <span class="math notranslate nohighlight">\( \mathbf x\)</span> la classe de <span class="math notranslate nohighlight">\( \mathbf x_0\)</span>, on
 commet l’erreur :</p>
 <div class="math notranslate nohighlight">
@@ -664,13 +665,13 @@ donnerait la décision bayésienne et <span class="math notranslate nohighlight"
 \[ \lim_{n \rightarrow \infty}err_{ppv} \leq 2 err_B\]</div>
 </div>
 <div class="section" id="autres-proprietes-de-convergence">
-<h3>Autres propriétés de convergence<a class="headerlink" href="#autres-proprietes-de-convergence" title="Permalink to this headline">#</a></h3>
+<h3>Autres propriétés de convergence<a class="headerlink" href="#autres-proprietes-de-convergence" title="Lien permanent vers ce titre">#</a></h3>
 <p>On a de plus les propriétés suivantes, dans le cas de deux classes,
-toujours à la limite sur <span class="math notranslate nohighlight">\(n\)</span>  (en pratique, pour <span class="math notranslate nohighlight">\(n\)</span> “assez grand”) :</p>
+toujours à la limite sur <span class="math notranslate nohighlight">\(n\)</span>  (en pratique, pour <span class="math notranslate nohighlight">\(n\)</span> « assez grand ») :</p>
 <div class="math notranslate nohighlight">
 \[ R_B\leq  R_{k-ppv} \leq R_{(k-1)-ppv} \dots \leq R_{1-ppv} \leq  2 R_B\]</div>
 <p>avec <span class="math notranslate nohighlight">\( R_{k-ppv} \leq R_B + R_{1-ppv}\sqrt{\frac{2}{\pi k}}\)</span>.</p>
-<p>ce que l’on pourrait résumer par : “la moitié de l’information sur la classification optimale d’un point inconnu est disponible dans son seul plus proche voisin”.</p>
+<p>ce que l’on pourrait résumer par : « la moitié de l’information sur la classification optimale d’un point inconnu est disponible dans son seul plus proche voisin ».</p>
 <p>Plus généralement, pour un nombre quelconque <span class="math notranslate nohighlight">\(C\)</span> de classes :</p>
 <div class="math notranslate nohighlight">
 \[R_{1-ppv} \leq R_B \left(2 - \frac{C}{C-1} R_B \right)\]</div>
@@ -679,9 +680,9 @@ règle simple du plus proche voisin (<span class="math notranslate nohighlight">
 </div>
 </div>
 <div class="section" id="considerations-pratiques">
-<h2>Considérations pratiques<a class="headerlink" href="#considerations-pratiques" title="Permalink to this headline">#</a></h2>
+<h2>Considérations pratiques<a class="headerlink" href="#considerations-pratiques" title="Lien permanent vers ce titre">#</a></h2>
 <div class="section" id="quelle-valeur-pour-k">
-<h3>Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?<a class="headerlink" href="#quelle-valeur-pour-k" title="Permalink to this headline">#</a></h3>
+<h3>Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?<a class="headerlink" href="#quelle-valeur-pour-k" title="Lien permanent vers ce titre">#</a></h3>
 <p>Il faut trouver un compromis  dans l’intervalle  <span class="math notranslate nohighlight">\([\![ 1,n ]\!] \)</span> entre une valeur faible de <span class="math notranslate nohighlight">\(k\)</span>, qui
 semble moins favorable selon les formules précédentes, et une valeur trop grande (prendre <span class="math notranslate nohighlight">\(k = n\)</span> mène  au
 résultat suivant : un point sera toujours classé comme appartenant à la classe la plus nombreuse dans l’ensemble d’apprentissage). Diverses
@@ -689,7 +690,7 @@ considérations théoriques et expérimentales mènent à choisir <span class="m
 nombre moyen de points d’apprentissage par classe.  La dimension de <span class="math notranslate nohighlight">\(X\)</span> n’apparaît pas dans cette  heuristique.</p>
 </div>
 <div class="section" id="quelle-decision-prendre-en-cas-d-egalite">
-<h3>Quelle décision prendre en cas d’égalité ?<a class="headerlink" href="#quelle-decision-prendre-en-cas-d-egalite" title="Permalink to this headline">#</a></h3>
+<h3>Quelle décision prendre en cas d’égalité ?<a class="headerlink" href="#quelle-decision-prendre-en-cas-d-egalite" title="Lien permanent vers ce titre">#</a></h3>
 <p>On peut augmenter <span class="math notranslate nohighlight">\(k\)</span> de <span class="math notranslate nohighlight">\(1\)</span> pour trancher, mais  l’ambiguïté peut subsister si le nombre de classes est supérieur à 2. On peut également tirer au hasard la classe à attribuer au point ambigu , l’analyse de cette heuristique démontrant qu’elle donne de bons résultats.</p>
 <p>Plusieurs variantes de la règle du <span class="math notranslate nohighlight">\(k\)</span>-ppv ont été par ailleurs proposées pour aborder ce problème. Par exemple, au lieu de compter simplement les points de chaque classe parmi les <span class="math notranslate nohighlight">\(k\)</span> (ce que l’on peut traduire par  les faire voter avec une
 voix chacun), on peut pondérer ces votes par la distance au point <span class="math notranslate nohighlight">\(\mathbf x\)</span>, qui est de toute façon calculée.  On est  dans ce cas
@@ -697,28 +698,28 @@ dans des méthodes intermédiaires entre les <span class="math notranslate nohig
 </div>
 </div>
 <div class="section" id="surfaces-separatrices-de-la-regle-de-decision-k-ppv">
-<h2>Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv<a class="headerlink" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv" title="Permalink to this headline">#</a></h2>
+<h2>Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv<a class="headerlink" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv" title="Lien permanent vers ce titre">#</a></h2>
 <p>La   zone de Voronoï d’un exemple <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> est  le lieu des points de <span class="math notranslate nohighlight">\(X\)</span> qui sont plus proches de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> que de tout autre exemple.
 Elle est l’intersection de <span class="math notranslate nohighlight">\(n-1\)</span> demi-espaces, définis par les hyperplans médiateurs entre <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et tous les autres exemples de <span class="math notranslate nohighlight">\(Z\)</span>.</p>
-<p>La zone de Voronoï d’un exemple est donc un volume convexe (pour <span class="math notranslate nohighlight">\(d=2\)</span>, c’est un polygone convexe)  et la frontière entre deux zones de Voronoï est un “polygone” en dimension <span class="math notranslate nohighlight">\(d-1\)</span>.</p>
+<p>La zone de Voronoï d’un exemple est donc un volume convexe (pour <span class="math notranslate nohighlight">\(d=2\)</span>, c’est un polygone convexe)  et la frontière entre deux zones de Voronoï est un « polygone » en dimension <span class="math notranslate nohighlight">\(d-1\)</span>.</p>
 <p>Pour <span class="math notranslate nohighlight">\(k=1\)</span>, la surface séparatrice entre deux classes est la surface séparatrice entre les deux volumes obtenus par l’union des surfaces de Voronoï des exemples de chaque classe (<a class="reference internal" href="#pavage-ref"><span class="std std-numref">Fig. 12</span></a>). On peut montrer que pour <span class="math notranslate nohighlight">\(k &gt; 1\)</span>, les séparatrices sont
 encore des hyperplans par morceaux.</p>
 <div class="figure align-default" id="pavage-ref">
 <img alt="_images/fig-3-9.pdf" src="_images/fig-3-9.pdf" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Un ensemble de points appartenant à deux classes et leurs zones de Voronoï.  La séparatrice entre les  deux classes par la règle de décision <span class="math notranslate nohighlight">\(1\)</span>-ppv est en trait plein.</span><a class="headerlink" href="#pavage-ref" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Un ensemble de points appartenant à deux classes et leurs zones de Voronoï.  La séparatrice entre les  deux classes par la règle de décision <span class="math notranslate nohighlight">\(1\)</span>-ppv est en trait plein.</span><a class="headerlink" href="#pavage-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
 <div class="section" id="fleau-de-la-dimension">
-<h2>Fléau de la dimension<a class="headerlink" href="#fleau-de-la-dimension" title="Permalink to this headline">#</a></h2>
+<h2>Fléau de la dimension<a class="headerlink" href="#fleau-de-la-dimension" title="Lien permanent vers ce titre">#</a></h2>
 <p>Les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins font implicitement l’hypothèse que des points proches appartiennent à la même classe. Dans des espaces de grande dimension, des points tirés selon une distribution de probabilité tendent cependant à n’être que rarement proches.</p>
 <p>Une manière simple d’illustrer ce fait est de tirer uniformément des points dans le cube unité et de calculer la taille de l’espace occupé par les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins d’un point donné.</p>
 <p>Dans le cube <span class="math notranslate nohighlight">\([0,1]^d\subset\mathbb{R}^d\)</span>, on considère les <span class="math notranslate nohighlight">\(k=10\)</span> plus proches voisins d’un point <span class="math notranslate nohighlight">\(\mathbf x\)</span>.  Soit <span class="math notranslate nohighlight">\(l\)</span> la taille de l’arête du plus petit hypercube contenant les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. Alors <span class="math notranslate nohighlight">\(l^d\approx \frac{k}{n}\)</span> et par exemple la (<a class="reference internal" href="#fleau-ref"><span class="std std-numref">Fig. 13</span></a>) donne l’évolution de <span class="math notranslate nohighlight">\(l\)</span> en fonction de <span class="math notranslate nohighlight">\(d\)</span> pour <span class="math notranslate nohighlight">\(n=1000\)</span>.</p>
 <div class="figure align-default" id="fleau-ref">
 <img alt="_images/ld10.png" src="_images/ld10.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Evolution de la taille du voisinage d’un point en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Evolution de la taille du voisinage d’un point en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>Ainsi, lorsque <span class="math notranslate nohighlight">\(d\)</span> croît, il est rapidement nécessaire de chercher pratiquement dans tout <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> pour trouver les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins.</p>
-<p>On pourrait penser qu’augmenter la taille de <span class="math notranslate nohighlight">\(Z\)</span> résout ce problème. Cependant il n’en est rien. Quelle doit être la valeur de <span class="math notranslate nohighlight">\(n\)</span> qui permet à <span class="math notranslate nohighlight">\(l\)</span> d’être “petit” ? En fixant par exemple <span class="math notranslate nohighlight">\(l=0.1\)</span>, alors <span class="math notranslate nohighlight">\(n=k.l^{-d}=k.10^d\)</span> et la croissance de <span class="math notranslate nohighlight">\(n\)</span> est exponentielle. Pour <span class="math notranslate nohighlight">\(d&gt;100\)</span>, <span class="math notranslate nohighlight">\(n\)</span> doit par exemple être plus grand que le nombre de particules dans l’Univers…</p>
+<p>On pourrait penser qu’augmenter la taille de <span class="math notranslate nohighlight">\(Z\)</span> résout ce problème. Cependant il n’en est rien. Quelle doit être la valeur de <span class="math notranslate nohighlight">\(n\)</span> qui permet à <span class="math notranslate nohighlight">\(l\)</span> d’être « petit » ? En fixant par exemple <span class="math notranslate nohighlight">\(l=0.1\)</span>, alors <span class="math notranslate nohighlight">\(n=k.l^{-d}=k.10^d\)</span> et la croissance de <span class="math notranslate nohighlight">\(n\)</span> est exponentielle. Pour <span class="math notranslate nohighlight">\(d&gt;100\)</span>, <span class="math notranslate nohighlight">\(n\)</span> doit par exemple être plus grand que le nombre de particules dans l’Univers…</p>
 </div>
 </div>
 
@@ -726,8 +727,8 @@ encore des hyperplans par morceaux.</p>
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -749,16 +750,16 @@ encore des hyperplans par morceaux.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="classification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="classification.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Classification</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="notebook_knn.html" title="next page">
+    <a class='right-next' id="next-link" href="notebook_knn.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Notebook k-ppv</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -770,7 +771,7 @@ encore des hyperplans par morceaux.</p>
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

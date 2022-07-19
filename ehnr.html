@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,6 +39,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -50,11 +51,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Classification" href="classification.html" />
     <link rel="prev" title="Astuce du noyau" href="kernelTrick.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="fr">
     
 
     <!-- Google Analytics -->
@@ -284,7 +285,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/vbarra/anbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +302,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fehnr.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fehnr.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -471,9 +472,9 @@ title="Print to PDF"
 Les espaces de Hilbert à noyau reproduisant (EHNR) sont des espaces d'hypothèses ayant de bonnes propriétés vis à vis du problème d'apprentissage. La principale de ces propriétés est la propriété de reproduction, qui relie les normes dans l'espace de Hilbert à l'algèbre linéaire. 
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="espaces-de-hilbert-a-noyau-reproduisant">
-<h1>Espaces de Hilbert à noyau reproduisant<a class="headerlink" href="#espaces-de-hilbert-a-noyau-reproduisant" title="Permalink to this headline">#</a></h1>
+<h1>Espaces de Hilbert à noyau reproduisant<a class="headerlink" href="#espaces-de-hilbert-a-noyau-reproduisant" title="Lien permanent vers ce titre">#</a></h1>
 <div class="section" id="rappel-sur-les-espaces-de-hilbert">
-<h2>Rappel sur les espaces de Hilbert<a class="headerlink" href="#rappel-sur-les-espaces-de-hilbert" title="Permalink to this headline">#</a></h2>
+<h2>Rappel sur les espaces de Hilbert<a class="headerlink" href="#rappel-sur-les-espaces-de-hilbert" title="Lien permanent vers ce titre">#</a></h2>
 <p>On suppose connues ici les notions de normes, d’espaces vectoriels normés et de produit scalaire.</p>
 <div class="proof definition admonition" id="definition-0">
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
@@ -513,7 +514,7 @@ Soit <span class="math notranslate nohighlight">\((\mathbf x_t)_{t\in T}\)</span
 </div><p>Dans la suite, nous considérerons des espaces de Hilbert séparables.</p>
 </div>
 <div class="section" id="ecriture-simplifiee-du-noyau-reproduisant">
-<h2>Ecriture simplifiée du noyau reproduisant<a class="headerlink" href="#ecriture-simplifiee-du-noyau-reproduisant" title="Permalink to this headline">#</a></h2>
+<h2>Ecriture simplifiée du noyau reproduisant<a class="headerlink" href="#ecriture-simplifiee-du-noyau-reproduisant" title="Lien permanent vers ce titre">#</a></h2>
 <p>Soit <span class="math notranslate nohighlight">\(H\)</span> un espace de Hilbert de fonctions : <span class="math notranslate nohighlight">\(f :E\rightarrow \\mathbb R\)</span>.\</p>
 <div class="proof definition admonition" id="definition-4">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span> (Noyau reproduisant)</p>
@@ -541,7 +542,7 @@ Le produit scalaire sur <span class="math notranslate nohighlight">\(H\)</span> 
 <p>Nous introduisons les EHNR de deux manières, une première abstraite et une seconde plus intuitive.</p>
 </div>
 <div class="section" id="forme-lineaire-et-noyau-reproduisant">
-<h2>Forme linéaire et noyau reproduisant<a class="headerlink" href="#forme-lineaire-et-noyau-reproduisant" title="Permalink to this headline">#</a></h2>
+<h2>Forme linéaire et noyau reproduisant<a class="headerlink" href="#forme-lineaire-et-noyau-reproduisant" title="Lien permanent vers ce titre">#</a></h2>
 <div class="proof definition admonition" id="definition-5">
 <p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
 <div class="definition-content section" id="proof-content">
@@ -609,7 +610,7 @@ L_t :H&amp;\rightarrow&amp; \mathbb R\\
 <p>Puisque <span class="math notranslate nohighlight">\(K\)</span> est semi définie positive, le produit scalaire est bien défini et on peut vérifier que pour tout <span class="math notranslate nohighlight">\(f\in H_K\)</span>, <span class="math notranslate nohighlight">\(\left\langle K_t,f\right\rangle=f(t)\)</span>.</p>
 </div>
 <div class="section" id="le-noyau-integral">
-<h2>Le noyau intégral<a class="headerlink" href="#le-noyau-integral" title="Permalink to this headline">#</a></h2>
+<h2>Le noyau intégral<a class="headerlink" href="#le-noyau-integral" title="Lien permanent vers ce titre">#</a></h2>
 <p>Soit <span class="math notranslate nohighlight">\(K:E\times E\rightarrow \mathbb{R}\)</span> une fonction (noyau) symétrique continue. On définit pour <span class="math notranslate nohighlight">\(H\in L^2\)</span> de dimension finie l’opérateur <span class="math notranslate nohighlight">\(L_K : H\rightarrow \mathbb{R}\)</span> par :</p>
 <div class="math notranslate nohighlight">
 \[L_K(f) = \int_E K(\bullet,t)f(t)dt\]</div>
@@ -633,8 +634,8 @@ L_t :H&amp;\rightarrow&amp; \mathbb R\\
 \[\left\langle f,g\right\rangle_{H_K} = \left\langle \displaystyle\sum_j c_j\phi_j(s),\displaystyle\sum_j d_j\phi_j(s) \right\rangle_{H_K}=\displaystyle\sum_j\frac{c_jd_j}{\lambda_j}\]</div>
 </div>
 <div class="section" id="connexion-avec-les-noyaux">
-<h2>Connexion avec les noyaux<a class="headerlink" href="#connexion-avec-les-noyaux" title="Permalink to this headline">#</a></h2>
-<p>On rencontre souvent le concept d’espace de Hilbert à noyau reproduisant sous le vocable “astuce du noyau’” <a class="reference internal" href="kernelTrick.html"><span class="doc std std-doc">Kernel trick</span></a>, en particulier lorsque l’on étudie les Machines à Vecteurs de Support, ou plus généralement les méthodes à noyau. Les points <span class="math notranslate nohighlight">\(\mathbf x\in E\subset\mathbb{R}^d\)</span> sont projetés dans un espace de grande dimension par les éléments propres du noyau reproduisant (la dimension de l’espace est égale au nombre de valeurs propres non nulles de l’opérateur intégral) :</p>
+<h2>Connexion avec les noyaux<a class="headerlink" href="#connexion-avec-les-noyaux" title="Lien permanent vers ce titre">#</a></h2>
+<p>On rencontre souvent le concept d’espace de Hilbert à noyau reproduisant sous le vocable « astuce du noyau” » <a class="reference internal" href="kernelTrick.html"><span class="doc std std-doc">Kernel trick</span></a>, en particulier lorsque l’on étudie les Machines à Vecteurs de Support, ou plus généralement les méthodes à noyau. Les points <span class="math notranslate nohighlight">\(\mathbf x\in E\subset\mathbb{R}^d\)</span> sont projetés dans un espace de grande dimension par les éléments propres du noyau reproduisant (la dimension de l’espace est égale au nombre de valeurs propres non nulles de l’opérateur intégral) :</p>
 <div class="math notranslate nohighlight">
 \[\mathbf x\mapsto\phi(\mathbf x) = (\sqrt{\lambda_1}\phi_1(\mathbf x)\cdots \sqrt{\lambda_k}\phi_k(\mathbf x))\]</div>
 <p id="id1"><dl class="citation">
@@ -656,8 +657,8 @@ L_t :H&amp;\rightarrow&amp; \mathbb R\\
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "vbarra/anbook.git",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -679,16 +680,16 @@ L_t :H&amp;\rightarrow&amp; \mathbb R\\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="kernelTrick.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="kernelTrick.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-subtitle">précédent</p>
             <p class="prev-next-title">Astuce du noyau</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="classification.html" title="next page">
+    <a class='right-next' id="next-link" href="classification.html" title="suivant page">
     <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Classification</p>
     </div>
     <i class="fas fa-angle-right"></i>
@@ -700,7 +701,7 @@ L_t :H&amp;\rightarrow&amp; \mathbb R\\
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By V Barra<br/>
+    By Vincent BARRA<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

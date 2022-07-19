@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Notebook SVM linéaire" href="notebook_SVMlin.html" />
-    <link rel="prev" title="Modèle du processus d’apprentissage supervisé" href="modelesup.html" />
+    <link rel="next" title="SVM linéaire" href="hmm.html" />
+    <link rel="prev" title="SVM linéaire" href="ensemble.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="fr">
     
@@ -140,9 +140,9 @@ const thebe_selector_output = ".output, .cell_output"
   Méthodes à noyau
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
    SVM linéaire
   </a>
  </li>
@@ -211,6 +211,54 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ensemble.html">
+   SVM linéaire
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SVM linéaire
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Chaînes de Markov cachées
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="hmm.html">
+   SVM linéaire
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Réseaux de neurones
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn.html">
+   SVM linéaire
+  </a>
  </li>
 </ul>
 
@@ -302,7 +350,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2FsvmGeom.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fmanifold.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -330,7 +378,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/svmGeom.md"
+        <a href="_sources/manifold.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -571,10 +619,10 @@ min \label{eq:qp1}  W(\alpha) = {-\alpha}^T \mathbf{1} + \frac{1}{2}\alpha^T H \
 <div class="math notranslate nohighlight">
 \[b = - \frac{1}{2} ( \mathbf w ^T \mathbf x^+ + \mathbf w ^T \mathbf x^- )
 \]</div>
-<p>L’hyperplan ainsi défini a besoin de très peu de vecteurs de support (méthode éparse) (<a class="reference internal" href="#svmlin-ref"><span class="std std-numref">Fig. 7</span></a>).</p>
+<p>L’hyperplan ainsi défini a besoin de très peu de vecteurs de support (méthode éparse) (<a class="reference internal" href="nn.html#svmlin-ref"><span class="std std-numref">Fig. 23</span></a>).</p>
 <div class="figure align-default" id="svmlin-ref">
 <img alt="_images/svmLin.png" src="_images/svmLin.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Deux jeux de points à respectivement 50 et 500 points par classe, tirées selon les mêmes lois. Dans les deux cas, l’hyperplan est défini par un très faible nombre de vecteurs support (en vert)</span><a class="headerlink" href="#svmlin-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Deux jeux de points à respectivement 50 et 500 points par classe, tirées selon les mêmes lois. Dans les deux cas, l’hyperplan est défini par un très faible nombre de vecteurs support (en vert)</span><a class="headerlink" href="#svmlin-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>En Scikit-learn</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -601,18 +649,18 @@ Lorsque <span class="math notranslate nohighlight">\(C\rightarrow\infty\)</span>
 <p><span class="math notranslate nohighlight">\(C\)</span> représente alors un compromis entre la marge possible entre les exemples et le nombre d’erreurs admissibles.
 Nous illustrons dans la suite deux situations influencées par <span class="math notranslate nohighlight">\(C\)</span> :</p>
 <ul class="simple">
-<li><p>La <a class="reference internal" href="#soft1-ref"><span class="std std-numref">Fig. 8</span></a> présente une première illustration du rôle de <span class="math notranslate nohighlight">\(C\)</span> : dans le cas de données linéairement séparables, un <span class="math notranslate nohighlight">\(C\)</span> faible autorisera des  vecteurs à rentrer dans la marge (vert). Plus <span class="math notranslate nohighlight">\(C\)</span> devient grand, plus le nombre de vecteurs support diminue, pour ne laisser aucun vecteur à distance inférieure à la marge de l’hyperplan optimal</p></li>
+<li><p>La <a class="reference internal" href="nn.html#soft1-ref"><span class="std std-numref">Fig. 24</span></a> présente une première illustration du rôle de <span class="math notranslate nohighlight">\(C\)</span> : dans le cas de données linéairement séparables, un <span class="math notranslate nohighlight">\(C\)</span> faible autorisera des  vecteurs à rentrer dans la marge (vert). Plus <span class="math notranslate nohighlight">\(C\)</span> devient grand, plus le nombre de vecteurs support diminue, pour ne laisser aucun vecteur à distance inférieure à la marge de l’hyperplan optimal</p></li>
 </ul>
 <div class="figure align-default" id="soft1-ref">
 <img alt="_images/soft1.png" src="_images/soft1.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <ul class="simple">
-<li><p>La <a class="reference internal" href="#soft2-ref"><span class="std std-numref">Fig. 9</span></a> présente un ensemble de données non linéairement séparables. La valeur de <span class="math notranslate nohighlight">\(C\)</span> contrôle le nombre d’erreurs de classification dans le résultat final.</p></li>
+<li><p>La <a class="reference internal" href="nn.html#soft2-ref"><span class="std std-numref">Fig. 25</span></a> présente un ensemble de données non linéairement séparables. La valeur de <span class="math notranslate nohighlight">\(C\)</span> contrôle le nombre d’erreurs de classification dans le résultat final.</p></li>
 </ul>
 <div class="figure align-default" id="soft2-ref">
 <img alt="_images/soft2.png" src="_images/soft2.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>En Scikit-learn</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -680,17 +728,17 @@ Nous illustrons dans la suite deux situations influencées par <span class="math
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="modelesup.html" title="précédent page">
+    <a class='left-prev' id="prev-link" href="ensemble.html" title="précédent page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">Modèle du processus d’apprentissage supervisé</p>
+            <p class="prev-next-title">SVM linéaire</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="notebook_SVMlin.html" title="suivant page">
+    <a class='right-next' id="next-link" href="hmm.html" title="suivant page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title">Notebook SVM linéaire</p>
+        <p class="prev-next-title">SVM linéaire</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
