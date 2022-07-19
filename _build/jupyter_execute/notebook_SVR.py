@@ -35,7 +35,6 @@ def set_default(figsize=(7, 4), dpi=100):
     plt.rcParams['savefig.bbox'] = 'tight'
     plt.rcParams['legend.frameon'] = False
     
-    plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
 
 def set_aspect(ax):
@@ -62,9 +61,9 @@ m = 50
 X = 2 * np.random.rand(m, 1)
 y = (4 + 3 * X + np.random.randn(m, 1)).ravel()
 fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-#set_aspect(ax)
 
 ax.plot(X, y,"bo");
+plt.tight_layout()
 
 
 # Un SVR linéaire est principalement défini par le paramètre $\epsilon$, qui spécifie la largeur du tube dans lequel aucune pénalité n'est associée.
@@ -118,8 +117,7 @@ plt.annotate(
 plt.text(0.91, 5.6, r"$\epsilon$", fontsize=14)
 plot_svm_regression(svm_reg2,ax[1], X, y, [0, 2, 3, 11])
 plt.title(r"$\epsilon = {}$".format(svm_reg2.epsilon), fontsize=14)
-plt.savefig("svr_linear_plot")
-plt.show()
+plt.tight_layout()
 
 
 # ## Tendance quadratique
@@ -132,8 +130,6 @@ np.random.seed(42)
 m = 100
 X = 2 * np.random.rand(m, 1) - 1
 y = (2 * X *X + np.random.randn(m, 1)).ravel()
-
-
 
 
 # Un SVR polynomial est défini, outre par le paramètre $\epsilon$ précisé précedemment, par le degré. Ici on impose $d=2$, et on fait varier le paramètre de régularisation du modèle $C$
@@ -161,5 +157,5 @@ ax[0].set_ylabel(r"$y$", fontsize=14)
 plot_svm_regression(svm_poly_reg2,ax[1], X, y, [-1, 1, 0, 1])
 ax[1].set_title(r"$d={}, C={}, \epsilon = {}$".format(svm_poly_reg2.degree, svm_poly_reg2.C, 
                                                 svm_poly_reg2.epsilon),fontsize=14)
-plt.savefig("svr_polynomial_plot")
+plt.tight_layout()
 
