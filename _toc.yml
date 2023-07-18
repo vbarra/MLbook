@@ -1,0 +1,44 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+options:
+  numbered: true
+
+parts:
+  - caption: Introduction
+    chapters:
+      - file: possible
+      - file: approchestat
+      - file: modelesup
+  - caption: Classification 
+    chapters:
+      - file: bayes   
+      - file: LDAQDA   
+      - file: knn     
+      - file: arbres_decision     
+  - caption: Méthodes à noyau
+    chapters:
+      - file: svmGeom
+      - file: kernelTrick
+  - caption: Méthodes d'ensemble
+    chapters:
+        - file: baggingboosting
+        - file: adaboost
+        - file: combinaison
+        - file: randomforest
+        - file: gradientboosting
+  - caption: Manifold learning
+    chapters:
+        - file: mds
+        - file: isomap
+        - file: lle
+<<<<<<< HEAD
+        - file: manifold
+<<<<<<< HEAD
+=======
+        - file: manifold
+>>>>>>> 635759c (changes)
+=======
+>>>>>>> main

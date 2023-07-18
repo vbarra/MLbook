@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classifieur naïf de Bayes &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Analyses discriminantes" href="LDAQDA.html" />
+    <link rel="prev" title="Modèle du processus d’apprentissage supervisé" href="modelesup.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="fr">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="possible.html">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelesup.html">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Classifieur naïf de Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LDAQDA.html">
+   Analyses discriminantes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="knn.html">
+   K plus proches voisins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arbres_decision.html">
+   Arbres de décision
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="baggingboosting.html">
+   Bootstraping et bagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaboost.html">
+   Boosting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinaison.html">
+   Méthodes de combinaison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomforest.html">
+   Forêts aléatoires
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gradientboosting.html">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mds.html">
+   Positionnement multidimensionnel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="isomap.html">
+   ISOMAP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lle.html">
+   Local Linear Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manifold.html">
+   Unification
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/vbarra/anbook.git"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fbayes.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/bayes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/bayes.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-de-la-probabilite-a-priori-des-classes">
+   Estimation de la probabilité a priori des classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-des-densites-conditionnelles-a-priori">
+   Estimation des densités conditionnelles a priori
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimalite">
+   Optimalité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quand-utiliser-un-classifieur-naif-de-bayes">
+   Quand utiliser un classifieur naïf de Bayes ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple">
+   Exemple
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Classifieur naïf de Bayes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-de-la-probabilite-a-priori-des-classes">
+   Estimation de la probabilité a priori des classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-des-densites-conditionnelles-a-priori">
+   Estimation des densités conditionnelles a priori
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimalite">
+   Optimalité
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quand-utiliser-un-classifieur-naif-de-bayes">
+   Quand utiliser un classifieur naïf de Bayes ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemple">
+   Exemple
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="classifieur-naif-de-bayes">
+<h1>Classifieur naïf de Bayes<a class="headerlink" href="#classifieur-naif-de-bayes" title="Lien permanent vers ce titre">#</a></h1>
+<p>Soit un ensemble d’apprentissage  <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n, \mathbf x_i\in X,y_i\in Y \right \}\)</span>.
+Le classifieur naïf de Bayes est une méthode de classification supervisée qui repose sur une hypothèse
+simplificatrice forte : les descripteurs (coordonnées sur <span class="math notranslate nohighlight">\(X\)</span>) sont deux à deux indépendants conditionnellement à la classe à prédire dans <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>Soit <span class="math notranslate nohighlight">\(\mathbf x\)</span> un individu à classer. La règle bayésienne d’affectation optimale consiste à maximiser la probabilité a posteriori d’appartenance aux classes, i.e.</p>
+<p><span class="math notranslate nohighlight">\((\mathbf x\textrm{ est dans la classe }k\in Y) \Leftrightarrow (k = arg \displaystyle\max_l P(y=l |\mathbf )) \)</span></p>
+<p>La décision repose donc sur une estimation de la probabilité conditionnelle <span class="math notranslate nohighlight">\(P(Y|\mathbf x)\)</span>, qui peut s’écrire par la règle de Bayes</p>
+<p><span class="math notranslate nohighlight">\((\forall l\in Y)\quad P(y=l |\mathbf x) = \frac{P(\mathbf x |y=l)P(y=l)}{P(\mathbf x)}\)</span></p>
+<p>La maximisation ne dépendant pas de <span class="math notranslate nohighlight">\(\mathbf x\)</span>, la maximisation s’écrit alors</p>
+<p><span class="math notranslate nohighlight">\((\mathbf x\textrm{ est dans la classe }k\in Y) \Leftrightarrow (k = arg \displaystyle\max_l P(\mathbf x |y=l)P(y=l)) \)</span></p>
+<p>Le problème de l’apprentissage d’une règle de classification est donc résolu  si l’on possède
+une connaissance exacte pour chaque classe de la probabilité a priori
+<span class="math notranslate nohighlight">\(P(y=l)\)</span> et de la densité conditionnelle <span class="math notranslate nohighlight">\(P(x \mid y=l)\)</span>.  Cependant, on ne dispose en pratique que des données d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<div class="section" id="estimation-de-la-probabilite-a-priori-des-classes">
+<h2>Estimation de la probabilité a priori des classes<a class="headerlink" href="#estimation-de-la-probabilite-a-priori-des-classes" title="Lien permanent vers ce titre">#</a></h2>
+<p>Pour estimer les valeurs <span class="math notranslate nohighlight">\(P(y=l)\)</span>, les probabilités a priori des
+classes, on peut procéder de plusieurs manières.</p>
+<ol>
+<li><p>Soit on dispose de connaissances a priori sur les données,
+extérieures à l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>. Dans ce cas, on  doit les utiliser.
+Par exemple,  si on cherche à reconnaître les lettres manuscrites, on
+doit se fier aux statistiques de leur apparition dans
+les textes, même si cette proportion n’est pas respectée dans <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+<li><p>Sinon, en l’absence d’information particulière, on peut les supposer égales entre elles
+et donc prendre l’estimateur : <span class="math notranslate nohighlight">\( \widehat{P(y=l)} = \frac{1}{C}\)</span>, si <span class="math notranslate nohighlight">\(C\)</span> est le nombre de classes</p></li>
+<li><p>On peut aussi (ce qui est fréquemment fait  implicitement)
+supposer l’échantillon d’apprentissage représentatif et les
+estimer par les fréquences d’apparition de chaque classe dans cet
+ensemble : <span class="math notranslate nohighlight">\( \widehat{P(y=l)} = \frac{n_l}{n}\)</span>, où <span class="math notranslate nohighlight">\(n_l\)</span> est le nombre d’éléments de la classe <span class="math notranslate nohighlight">\(l\)</span> dans <span class="math notranslate nohighlight">\(Z\)</span></p></li>
+<li><p>Il existe aussi un estimateur intermédiaire (formule de Laplace) :</p>
+<p><span class="math notranslate nohighlight">\( \widehat{P(y=l)} =\frac{n_l+M/C}{n+M}\)</span>
+où <span class="math notranslate nohighlight">\(M\)</span> est un nombre arbitraire.  Cette formule est
+employée quand <span class="math notranslate nohighlight">\(n\)</span> est petit, donc quand les estimations <span class="math notranslate nohighlight">\(n_l/n\)</span> sont
+très imprécises.  <span class="math notranslate nohighlight">\(M\)</span> représente une augmentation virtuelle du nombre
+d’exemples, pour lesquels on suppose les classes équiprobables.</p>
+</li>
+</ol>
+<p>Le second cas s’applique par exemple à la reconnaissance des chiffres
+manuscrits sur les chèques ; en revanche, pour les codes postaux, la troisième
+méthode est préférable si la base de données a été bien constituée
+(la proportion de chiffres <span class="math notranslate nohighlight">\(0\)</span> y est supérieure
+à celle des autres).</p>
+<p>Si le troisième cas semble plus naturel, il peut aussi être trompeur : dans
+certains problèmes, les classes ne sont pas représentées de la même
+manière dans l’ensemble d’apprentissage et dans les exemples qu’il faudra
+classer.  Par exemple, un diagnostic médical peut s’apprendre à partir d’un
+ensemble d’apprentissage comportant un nombre équilibré d’exemples et de
+contre-exemples, alors que la maladie est rare. Il faudra alors corriger ce biais.</p>
+</div>
+<div class="section" id="estimation-des-densites-conditionnelles-a-priori">
+<h2>Estimation des densités conditionnelles a priori<a class="headerlink" href="#estimation-des-densites-conditionnelles-a-priori" title="Lien permanent vers ce titre">#</a></h2>
+<p>Il reste donc à estimer les densités <span class="math notranslate nohighlight">\(P({\mathbf x} \mid  
+y=l)\)</span>, appelées aussi vraisemblances.
+Dans un problème d’apprentissage de règle de classification, on dispose d’un
+échantillon d’exemples supervisés : le problème se ramène donc à estimer chaque <span class="math notranslate nohighlight">\(P({\mathbf x} \mid  
+y=l)\)</span> à partir des échantillons d’apprentissage supervisés par la classe <span class="math notranslate nohighlight">\(l\)</span>.</p>
+<p>Indépendamment pour chaque classe, on se trouve donc finalement à devoir
+estimer une densité de probabilité à partir d’un nombre fini
+d’observations.  C’est un problème tout à fait classique en
+statistiques.  Il faut introduire des hypothèses supplémentaires pour le
+résoudre (un biais, en termes d’apprentissage artificiel).  On a l’habitude
+de distinguer :</p>
+<ul class="simple">
+<li><p>Les méthodes <em>paramétriques</em>, où l’on suppose que les
+<span class="math notranslate nohighlight">\(P({\mathbf x} \mid  y=l)\)</span> possèdent une certaine forme
+analytique. En général, on fait l’hypothèse qu’elles sont des
+distributions gaussiennes.  Dans ce cas, le problème se ramène
+à estimer la moyenne et la covariance de chaque distribution ; la
+probabilité d’appartenance d’un point <span class="math notranslate nohighlight">\({\mathbf x}\)</span> à une classe
+se calcule alors directement à partir des coordonnées de
+<span class="math notranslate nohighlight">\({\mathbf x}\)</span>.</p></li>
+<li><p>Les méthodes <em>non paramétriques</em>, pour lesquelles on estime
+localement les densités  <span class="math notranslate nohighlight">\(P({\mathbf x} \mid  y=l)\)</span> au point
+<span class="math notranslate nohighlight">\({\mathbf x}\)</span> en observant l’ensemble d’apprentissage autour  de ce point. Ces méthodes sont implémentées par la technique des fenêtres de Parzen ou l’algorithme des k-plus proches voisins</p></li>
+<li><p>Les méthodes <em>semi-paramétriques</em>, pour lesquelles on ne connaît pas non plus la forme analytique des
+distributions de probabilités.  On suppose cependant que ces distributions appartiennent à des familles et que les « hyper-paramètres » qui les caractérisent à l’intérieur de cette famille peuvent être déterminés.</p></li>
+</ul>
+<p>Dans le cas du classifieur naïf de Bayes, on suppose que les descripteurs sont deux à deux indépendants conditionnellement aux valeurs de la variable  de classe, et ainsi</p>
+<p><span class="math notranslate nohighlight">\(P(\mathbf x |y=l)=\displaystyle\prod_{j=1}^d P\left (f_j=x^j| y=l\right )\)</span></p>
+<p>où <span class="math notranslate nohighlight">\(d\)</span> est le nombre de descripteurs (la dimension de <span class="math notranslate nohighlight">\(X\)</span>), <span class="math notranslate nohighlight">\(x^j\)</span> la <span class="math notranslate nohighlight">\(j^e\)</span> coordonnée de <span class="math notranslate nohighlight">\(\mathbf x\)</span> et <span class="math notranslate nohighlight">\(f_j\)</span> est le <span class="math notranslate nohighlight">\(jê\)</span> descripteur. Le nombre de paramètres à estimer est alors très réduit, et pour une variable quelconque pouvant prendre <span class="math notranslate nohighlight">\(Q\)</span> valeurs, on utilise</p>
+<p><span class="math notranslate nohighlight">\((\forall q)\quad P\left (f_j=q| y=l\right ) = \frac{n_{lq}+m}{n_l+mQ}\)</span></p>
+<p>Le classifieur de Bayes opère généralement sur le logarithme des probabilités (ceci d’autant plus que <span class="math notranslate nohighlight">\(d\)</span> est grand)  et la règle du classifieur naïf de Bayes est finalement :</p>
+<p><span class="math notranslate nohighlight">\((\mathbf x\textrm{ est dans la classe }k\in Y) \Leftrightarrow \left (k = arg \displaystyle\max_l \left [log(P(y=l) +\displaystyle\sum_{j=1}^d  log P\left (f_j=x^j| y=l\right )\right ]\right ) \)</span></p>
+<p>En reprenant la règle de Bayes</p>
+<p><span class="math notranslate nohighlight">\((\forall k\in Y)\quad P(y=l |\mathbf x) = \frac{P(\mathbf x |y=l)P(y=l)}{P(\mathbf x)}\)</span></p>
+<p>la quantité <span class="math notranslate nohighlight">\(P(y=l)\)</span> définit la probabilité a priori (par exemple de la classe <span class="math notranslate nohighlight">\(l\)</span>). Une fois les données d’apprentissage observées, cette probabilité devient <span class="math notranslate nohighlight">\(P(y=l\mid \mathbf x)\)</span>, la probabilité a posteriori (par exemple de la  classe <span class="math notranslate nohighlight">\(l\)</span>). La règle bayésienne d’apprentissage désigne donc  la règle de plus forte probabilité a posteriori, que l’on appelle également règle du maximum a posteriori (MAP).</p>
+</div>
+<div class="section" id="optimalite">
+<h2>Optimalité<a class="headerlink" href="#optimalite" title="Lien permanent vers ce titre">#</a></h2>
+<p>La règle de classification bayésienne est optimale en moyenne : parmi toutes les classifications possibles, elle est celle qui minimise la probabilité d’erreur, connaissant la probabilité a priori des classes. L’erreur obtenue par la règle bayésienne est appelée erreur bayésienne de classification, et les algorithmes de classification supervisés visent souvent à l’approcher.</p>
+</div>
+<div class="section" id="quand-utiliser-un-classifieur-naif-de-bayes">
+<h2>Quand utiliser un classifieur naïf de Bayes ?<a class="headerlink" href="#quand-utiliser-un-classifieur-naif-de-bayes" title="Lien permanent vers ce titre">#</a></h2>
+<p>Les classifieurs naïfs bayésiens ont bien entendu des limites, eu égard aux hypothèses de distribution des données qui sont faites. Cependant, ils présentent des avantages :</p>
+<ul class="simple">
+<li><p>ils sont rapides en apprentissage et prédiction</p></li>
+<li><p>ils permettent une interprétation probabiliste simple</p></li>
+<li><p>ils ont pas (ou peu) de paramètres, donc pas (ou peu) de réglages empiriques</p></li>
+</ul>
+<p>Une stratégie possible en classification consiste par exemple à examiner le comportement d’un classifieur naïf bayésien. Si les résultats sont satisfaisants, pas la peine de chercher un modèle complexe.</p>
+<p>Ces classifieurs donnent de bons résultats dans les cas suivants :</p>
+<ul class="simple">
+<li><p>lorsque l’hypothèse (gaussienne, multinomiale,…) correspond effectivement à la distribution des données (rare…)</p></li>
+<li><p>lorsque les données sont naturellement bien séparées</p></li>
+<li><p>lorsque les données sont plongées dans des espaces de très grande dimension</p></li>
+</ul>
+</div>
+<div class="section" id="exemple">
+<h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">#</a></h2>
+<p>On construit un classifieur naïf de Bayes qui va prédire le genre d’une personne à partir de son poids, de sa taille et de sa pointure de chaussure.</p>
+<p>On construit tout d’abord <span class="math notranslate nohighlight">\(Z\)</span> avec <span class="math notranslate nohighlight">\(n=8\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;femme&#39;</span><span class="p">,</span><span class="s1">&#39;femme&#39;</span><span class="p">,</span><span class="s1">&#39;femme&#39;</span><span class="p">,</span><span class="s1">&#39;femme&#39;</span><span class="p">,</span><span class="s1">&#39;homme&#39;</span><span class="p">,</span><span class="s1">&#39;homme&#39;</span><span class="p">,</span><span class="s1">&#39;homme&#39;</span><span class="p">,</span><span class="s1">&#39;homme&#39;</span><span class="p">]</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">172</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">186</span><span class="p">,</span> <span class="mi">177</span><span class="p">,</span> <span class="mi">181</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">83</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">45</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Le classifieur va permettre de prédire le genre d’une nouvelle personne <span class="math notranslate nohighlight">\(X\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">171</span><span class="p">]</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">75</span><span class="p">]</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">41</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On utilise le formalisme précédent en utilisant une hypothèse gaussienne pour la vraisemblance.</p>
+<p><span class="math notranslate nohighlight">\({\displaystyle {P(\textrm{X est un homme} \mid X)}={\frac {P({\text{homme}})\,p({\text{taille}}\mid{\text{homme}})\,p({\text{poids}}\mid{\text{homme}})\,p({\text{pointure}}\mid{\text{homme}})}{P(X)}}}\)</span></p>
+<p><span class="math notranslate nohighlight">\({\displaystyle {P(\textrm{X est une femme} \mid X)}={\frac {P({\text{femme}})\,p({\text{taille}}\mid{\text{femme}})\,p({\text{poids}}\mid{\text{femme}})\,p({\text{pointure}}\mid{\text{femme}})}{P(X)}}}\)</span></p>
+<p>On suppose que les valeurs des descripteurs d’une personne sont distribuées selon une loi normale et par exemple</p>
+<p><span class="math notranslate nohighlight">\(
+p(\text{poids}\mid\text{femme})=\frac{1}{\sqrt{2\pi.\text{variance des poids dans les données}}}\,e^{ -\frac{(\text{poids}-\text{poids moyen des femmes dans les données})^2}{2\text{variance des poids dans les données}} }
+\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_means</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Genre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">data_variance</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Genre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+
+<span class="n">taille_H_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">poids_H_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pointure_H_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">taille_H_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">poids_H_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pointure_H_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">taille_F_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">poids_F_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pointure_F_mean</span> <span class="o">=</span> <span class="n">data_means</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">taille_F_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">poids_F_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pointure_F_variance</span> <span class="o">=</span> <span class="n">data_variance</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="n">data_variance</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On calcule ensuite les vraisemblance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vraisemblance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean_y</span><span class="p">,</span> <span class="n">variance_y</span><span class="p">):</span>
+
+   <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">variance_y</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mean_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">variance_y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>et on applique le classifieur naïf de Bayes pour estimer la classe de <span class="math notranslate nohighlight">\(X\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_homme</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">][</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;homme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">n_femme</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">][</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;femme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="n">P_H</span><span class="o">=</span> <span class="n">n_homme</span><span class="o">/</span><span class="n">total</span>
+<span class="n">P_F</span> <span class="o">=</span> <span class="n">n_homme</span><span class="o">/</span><span class="n">total</span>
+
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">P_H</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">taille_H_mean</span><span class="p">,</span> <span class="n">taille_H_variance</span><span class="p">)</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">poids_H_mean</span><span class="p">,</span> <span class="n">poids_H_variance</span><span class="p">)</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">pointure_H_mean</span><span class="p">,</span> <span class="n">pointure_H_variance</span><span class="p">)</span>
+
+<span class="n">F</span> <span class="o">=</span> <span class="n">P_F</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;taille&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">taille_F_mean</span><span class="p">,</span> <span class="n">taille_F_variance</span><span class="p">)</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">poids_F_mean</span><span class="p">,</span> <span class="n">poids_F_variance</span><span class="p">)</span> <span class="o">*</span> \
+<span class="n">vraisemblance</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;pointure&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">pointure_F_mean</span><span class="p">,</span> <span class="n">pointure_F_variance</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">F</span><span class="o">&gt;</span><span class="n">H</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;la personne est une femme&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;la personne est un homme&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>la personne est une femme
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vbarra/anbook.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="modelesup.html" title="précédent page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">précédent</p>
+            <p class="prev-next-title">Modèle du processus d’apprentissage supervisé</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LDAQDA.html" title="suivant page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Analyses discriminantes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent BARRA<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

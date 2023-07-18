@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyses discriminantes &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="K plus proches voisins" href="knn.html" />
+    <link rel="prev" title="Classifieur naïf de Bayes" href="bayes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="fr">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="possible.html">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelesup.html">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bayes.html">
+   Classifieur naïf de Bayes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Analyses discriminantes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="knn.html">
+   K plus proches voisins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arbres_decision.html">
+   Arbres de décision
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="baggingboosting.html">
+   Bootstraping et bagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaboost.html">
+   Boosting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinaison.html">
+   Méthodes de combinaison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomforest.html">
+   Forêts aléatoires
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gradientboosting.html">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mds.html">
+   Positionnement multidimensionnel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="isomap.html">
+   ISOMAP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lle.html">
+   Local Linear Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manifold.html">
+   Unification
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/vbarra/anbook.git"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2FLDAQDA.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/LDAQDA.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/LDAQDA.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">
+   Analyse discriminante linéaire (LDA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">
+   Analyse discriminante de Fisher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-de-deux-classes">
+     Cas de deux classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-multiclasses">
+     Cas multiclasses
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">
+   Analyse discriminante quadratique (QDA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nombre-de-parametres">
+   Nombre de paramètres
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Analyses discriminantes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">
+   Analyse discriminante linéaire (LDA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">
+   Analyse discriminante de Fisher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-de-deux-classes">
+     Cas de deux classes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-multiclasses">
+     Cas multiclasses
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">
+   Analyse discriminante quadratique (QDA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nombre-de-parametres">
+   Nombre de paramètres
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="analyses-discriminantes">
+<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Lien permanent vers ce titre">#</a></h1>
+<p>Les analyses discriminante linéaire (LDA) et quadratiques (QDA) sont des approches paramétriques qui considèrent le logarithme du rapport :</p>
+<div class="math notranslate nohighlight">
+\[
+\log\left ( \frac{P(\omega=\omega_k | { X} =  {\mathbf x})}{P(\omega=\omega_l | { X} = {\mathbf x})} \right )
+\]</div>
+<p>pour tous les couples de classes <span class="math notranslate nohighlight">\((\omega_k, \omega_l),l,k\in[\![1,C]\!]\)</span> et retournent la classe pour laquelle ce logarithme est toujours positif.</p>
+<p>LDA et QDA sont des cas particuliers du classifieur de Bayes, appliqué lorsque toutes les densités de probabilité sont des gaussiennes multivariées.</p>
+<p>On note dans la suite pour chaque classe <span class="math notranslate nohighlight">\(1\leq i\leq C\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \frac{P({{\mathbf x} = { \mathbf x_0}}|\omega=\omega_i)\,P(\omega={\omega_i}) }{\displaystyle\sum_{j=1}^C P({\mathbf x} ={ \mathbf x_0}|\omega=\omega_j)\, P({\omega=\omega_j})} = \frac{f_i(\mathbf x_0) \pi_i}{\displaystyle\sum_{j=1}^C f_j(\mathbf x_0) \pi_j}
+\]</div>
+<p>avec donc <span class="math notranslate nohighlight">\(f_i(\mathbf x_0) =  P({{\mathbf x} = {\mathbf x_0}}|\omega=\omega_i)\)</span> et <span class="math notranslate nohighlight">\(\pi_i = P(\omega={\omega_i})\)</span></p>
+<div class="section" id="analyse-discriminante-lineaire-lda">
+<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Lien permanent vers ce titre">#</a></h2>
+<p>On s’intéresse pour l’exemple au cas <span class="math notranslate nohighlight">\(C=2\)</span>, et où les distributions de toutes les classes sont des gaussiennes multivariées. On pose donc</p>
+<div class="math notranslate nohighlight">
+\[f_i(x) \; = \; \frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_i|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_i)^{\top} { \Sigma}_i^{-1} ({\mathbf x} - \mu_i)}\]</div>
+<p>On cherche alors la frontière de décision du classifieur, c’est-à-dire les points <span class="math notranslate nohighlight">\(\mathbf x\)</span> tels que <span class="math notranslate nohighlight">\(g_0(\mathbf x) = g_1(\mathbf x)\)</span>, soit</p>
+<div class="math notranslate nohighlight">
+\[\frac{f_0(\mathbf x) \pi_0}{\displaystyle\sum_{j=1}^C f_j(\mathbf x) \pi_j} = \frac{f_1(\mathbf x) \pi_1}{\displaystyle\sum_{j=1}^C f_j(\mathbf x) \pi_j}\]</div>
+<p>d’où <span class="math notranslate nohighlight">\(f_0(\mathbf x)\pi_0 = f_1(\mathbf x)\pi_1\)</span></p>
+<p>ou encore</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_0|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_0)^{\top} { \Sigma}_0^{-1} ({\mathbf x} - \mu_0)} = \frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_1|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_1)^{\top} { \Sigma}_1^{-1} ({\mathbf x} - \mu_1)}\]</div>
+<p>Dans le cas où l’on suppose que les distributions ont les  mêmes matrices de covariance  <span class="math notranslate nohighlight">\({ \Sigma}_i = { \Sigma}\)</span>, le critère de décision se simplifie :</p>
+<div class="math notranslate nohighlight">
+\[\pi_1e^{-\frac{1}{2} ({\mathbf x} - \mu_1)^{\top} { \Sigma}^{-1} ({\mathbf x} - \mu_1)} = \pi_0e^{-\frac{1}{2} ({\mathbf x} - \mu_0)^{\top} { \Sigma}^{-1} ({\mathbf x} - \mu_0)}\]</div>
+<p>En passant au logarithme :</p>
+<div class="math notranslate nohighlight">
+\[log \pi_1 -\frac{1}{2} ({\mathbf x} - \mu_1)^{\top} { \Sigma}^{-1} ({\mathbf x} - \mu_1) = log \pi_0 -\frac{1}{2} ({\mathbf x} - \mu_0)^{\top} { \Sigma}^{-1} ({\mathbf x} - \mu_0)\]</div>
+<p>et donc</p>
+<div class="math notranslate nohighlight">
+\[log \left ( \frac{\pi_1}{\pi_0} \right ) + \frac{1}{2} \left [(\mu_0^T\Sigma^{-1}\mu_0)^T-(\mu_1^T\Sigma^{-1}\mu_1)^T \right ] + (\mu_1-\mu_0)^T\Sigma^{-1} x = 0\]</div>
+<p>Si <span class="math notranslate nohighlight">\(a^T = (\mu_1-\mu_0)^T\Sigma^{-1}\)</span> et <span class="math notranslate nohighlight">\(b = log \left ( \frac{\pi_1}{\pi_0} \right ) + \frac{1}{2} \left [(\mu_0^T\Sigma^{-1}\mu_0)^T-(\mu_1^T\Sigma^{-1}\mu_1)^T \right ]\)</span> alors la frontière de décision est linéaire et telle que</p>
+<div class="math notranslate nohighlight">
+\[a^Tx + b = 0\]</div>
+<p>Il reste à estimer les paramètres des gaussiennes. En pratique, on les estime à partir de la base d’apprentissage <span class="math notranslate nohighlight">\(E\)</span> :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{\pi_i} = \frac{n_i}{n}\)</span>, où <span class="math notranslate nohighlight">\(n_i\)</span> est le nombre d’individus de la classe <span class="math notranslate nohighlight">\(i\)</span> dans <span class="math notranslate nohighlight">\(E\)</span>, et <span class="math notranslate nohighlight">\(n= card(E)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\mu_i} = \frac{1}{n_i}\displaystyle\sum_{j,y_j=i}\mathbf x_j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma_i = \frac{1}{n_i-n}\displaystyle\sum_{j,y_j=i}\left (\mathbf x_j- \hat{\mu_i}\right )\left(\mathbf x_j- \hat{\mu_i}\right )^T\)</span> et <span class="math notranslate nohighlight">\(\Sigma=\frac{1}{n}\displaystyle\sum_{j=1}^C \Sigma_j\)</span></p></li>
+</ul>
+<p>Dans le cas où le nombre d’exemples d’apprentissage est faible en regard du nombre de descripteurs, l’estimateur de la matrice de covariance précédent donne de mauvais résultats. Une technique de shrinkage peut alors être utilisée pour obtenir les paramètres des lois.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Affichage </span>
+<span class="k">def</span> <span class="nf">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
+    <span class="n">ell</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span>
+                              <span class="mi">180</span> <span class="o">+</span> <span class="n">angle</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+                              <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ell</span><span class="o">.</span><span class="n">set_clip_box</span><span class="p">(</span><span class="n">splot</span><span class="o">.</span><span class="n">bbox</span><span class="p">)</span>
+    <span class="n">ell</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">splot</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ell</span><span class="p">)</span>
+    <span class="n">splot</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
+    <span class="n">splot</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
+    
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">splot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">tp</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y_pred</span><span class="p">)</span> 
+    <span class="n">tp0</span><span class="p">,</span> <span class="n">tp1</span> <span class="o">=</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tp</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">X0</span><span class="p">,</span> <span class="n">X1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">X0_tp</span><span class="p">,</span> <span class="n">X0_fp</span> <span class="o">=</span> <span class="n">X0</span><span class="p">[</span><span class="n">tp0</span><span class="p">],</span> <span class="n">X0</span><span class="p">[</span><span class="o">~</span><span class="n">tp0</span><span class="p">]</span>
+    <span class="n">X1_tp</span><span class="p">,</span> <span class="n">X1_fp</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">tp1</span><span class="p">],</span> <span class="n">X1</span><span class="p">[</span><span class="o">~</span><span class="n">tp1</span><span class="p">]</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0_tp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X0_tp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X0_fp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X0_fp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#990000&#39;</span><span class="p">)</span>  
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1_tp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X1_tp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X1_fp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X1_fp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#000099&#39;</span><span class="p">)</span>  
+
+    <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">nx</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;red_blue_classes&#39;</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+             <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">lda</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+             <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">splot</span>
+
+<span class="k">def</span> <span class="nf">plot_cov</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">splot</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">method</span><span class="o">==</span><span class="n">lda</span><span class="p">:</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
+
+<span class="n">nb_exemples</span> <span class="o">=</span> <span class="mi">20</span>  
+<span class="n">nb_test</span> <span class="o">=</span> <span class="mi">200</span>  
+<span class="n">n_averages</span> <span class="o">=</span> <span class="mi">50</span>  
+<span class="n">n_max</span> <span class="o">=</span> <span class="mi">75</span>  
+
+<span class="k">def</span> <span class="nf">blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="c1"># ajout de descripteurs non discriminants</span>
+    <span class="k">if</span> <span class="n">n_features</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="n">acc_lda</span><span class="p">,</span> <span class="n">acc_ldas</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">nb_descripteurs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_max</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n_features</span> <span class="ow">in</span> <span class="n">nb_descripteurs</span><span class="p">:</span>
+    <span class="n">score_lda</span><span class="p">,</span> <span class="n">score_ldas</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_averages</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">blobs</span><span class="p">(</span><span class="n">nb_exemples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+
+        <span class="n">lda</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lsqr&#39;</span><span class="p">,</span> <span class="n">shrinkage</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">ldas</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lsqr&#39;</span><span class="p">,</span> <span class="n">shrinkage</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">blobs</span><span class="p">(</span><span class="n">nb_test</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+        <span class="n">score_lda</span> <span class="o">+=</span> <span class="n">lda</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">score_ldas</span> <span class="o">+=</span> <span class="n">ldas</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">acc_lda</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_lda</span> <span class="o">/</span> <span class="n">n_averages</span><span class="p">)</span>
+    <span class="n">acc_ldas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_ldas</span> <span class="o">/</span> <span class="n">n_averages</span><span class="p">)</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nb_descripteurs</span><span class="p">)</span> <span class="o">/</span> <span class="n">nb_exemples</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">acc_lda</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LDA + shrinkage&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">acc_ldas</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LDA seul&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;nb_descripteurs / nb_exemples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Précision de la classification&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/LDAQDA_1_0.png" src="_images/LDAQDA_1_0.png" />
+</div>
+</div>
+<p>Voici un exemple de LDA sur deux classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+
+
+<span class="k">def</span> <span class="nf">plot_cov</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">splot</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">method</span><span class="o">==</span><span class="n">lda</span><span class="p">:</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Génération des données</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="p">(</span>
+    <span class="s1">&#39;red_blue_classes&#39;</span><span class="p">,</span>
+    <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)],</span>
+     <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)],</span>
+     <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">register_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+
+
+<span class="c1">#  Gaussiennes multivariées, covariances égales ou non</span>
+<span class="k">def</span> <span class="nf">dataset_cov</span><span class="p">(</span><span class="n">fixed</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fixed</span><span class="p">:</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.83</span><span class="p">,</span> <span class="mf">.23</span><span class="p">]])</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">),</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">.7</span><span class="p">]])</span> <span class="o">*</span> <span class="mf">2.</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">),</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">])]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+
+<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">LinearDiscriminantAnalysis</span>
+
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LinearDiscriminantAnalysis</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;svd&quot;</span><span class="p">,</span> <span class="n">store_covariance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">()</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances égales&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_cov</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">(</span><span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances différentes&quot;</span><span class="p">,</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">plot_cov</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/LDAQDA_3_0.png" src="_images/LDAQDA_3_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analyse-discriminante-de-fisher">
+<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Lien permanent vers ce titre">#</a></h2>
+<p>Il est possible d’aborder l’analyse discriminante linéaire sans a priori gaussien.</p>
+<p>L’idée de l’analyse discriminante de Fisher (FDA) est de rechercher des représentants des classes, et d’éloigner le plus possible des points les uns des autres, en projetant les données sur une direction de séparation maximale, tout en préservant la cohésion des classes.</p>
+<p>La FDA se formalise bien sous forme matricielle.</p>
+<div class="section" id="cas-de-deux-classes">
+<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Lien permanent vers ce titre">#</a></h3>
+<p>On suppose ici le cas de la classification binaire  : <span class="math notranslate nohighlight">\(y_i\in\{0,1\}\forall i\in[\![1,n]\!]\)</span>. Les classes ont pour centres de masse les points <span class="math notranslate nohighlight">\( {\mu}_j\)</span>, qui sont donc les représentants de ces classes.</p>
+<ul class="simple">
+<li><p>Maximiser la distance entre les représentants par projection sur une droite <span class="math notranslate nohighlight">\(Lin( \mathbf w)\)</span> revient donc à résoudre :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\displaystyle\max_{\mathbf w} \left [ {\mathbf w}^T{ \mu_0}- {\mathbf w}^T\mu_1\right ]^2 &amp;=&amp;\displaystyle\max_{\mathbf w} \left [ \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )^T \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )\right ]\\
+&amp;=&amp;\displaystyle\max_{\mathbf w} \left [\left (\mu_0-\mu_1\right )^T{\mathbf w}{\mathbf w}^T\left (\mu_0-\mu_1\right )\right ]\\
+&amp;=&amp;\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T \left (\mu_0-\mu_1\right )\left (\mu_0-\mu_1\right )^T{\mathbf w}\right ]\\
+&amp;=&amp;\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T { S_B}{\mathbf w}\right ]
+\end{split}\]</div>
+<p>où <span class="math notranslate nohighlight">\({ S_B}\)</span> est la matrice de covariance interclasse.</p>
+<ul class="simple">
+<li><p>Préserver la cohésion des classes revient à minimiser la variance intra classe. Après projection, cette dernière se définit pour la classe <span class="math notranslate nohighlight">\(j\in[\![1,1]\!]\)</span> par <span class="math notranslate nohighlight">\({\mathbf w}^T \Sigma_j {\mathbf w}\)</span>, où <span class="math notranslate nohighlight">\(\Sigma_j\)</span> est la matrice de covariance de la classe <span class="math notranslate nohighlight">\(j\)</span>. L’objectif se traduit donc par :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\displaystyle\min_{\mathbf w} {\mathbf w}^T \left ( \Sigma_0+\Sigma_1\right ) {\mathbf w}=\displaystyle\min_{\mathbf w} {\mathbf w}^T { S_W} {\mathbf w}
+\]</div>
+<p>où <span class="math notranslate nohighlight">\({ S_W}\)</span> est la matrice de covariance intraclasse.</p>
+<p>Ainsi, l’analyse discriminante de Fisher revient à résoudre le problème d’optimisation suivant :</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}\]</div>
+<p>ou de manière équivalente</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+&amp;&amp;\displaystyle\max_{\mathbf w} {\mathbf w}^T { S_B}{\mathbf w}\\
+&amp;s.c&amp;\;\; {\mathbf w}^T { S_W} {\mathbf w}=1
+\end{split}\]</div>
+<p>L’annulation du gradient du Lagrangien donne  <span class="math notranslate nohighlight">\(2{ S_B}{\mathbf w}-2\lambda { S_W}{\mathbf w}=0\)</span>, d’où <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right ) {\mathbf w}=0\)</span>. <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est donc vecteur propre de <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right )\)</span> associé à 0.</p>
+<p>Alors <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}{\mathbf w}=\lambda{\mathbf w}\)</span> et <span class="math notranslate nohighlight">\({\mathbf w}\)</span> vecteur propre de  <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span> associé au multiplicateur de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span>. Or <span class="math notranslate nohighlight">\(Rg({ S_W}^{-1}{ S_B})=1\)</span>, car <span class="math notranslate nohighlight">\( S_B\)</span> est de rang 1 (c’est la projection sur <span class="math notranslate nohighlight">\(Lin \left(\left (\mu_0-\mu_1\right )\right)\)</span> donc <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est unique.</p>
+</div>
+<div class="section" id="cas-multiclasses">
+<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien permanent vers ce titre">#</a></h3>
+<p>Pour un problème à <span class="math notranslate nohighlight">\(C\)</span> classes, l’analyse projette sur <span class="math notranslate nohighlight">\(C-1\)</span> directions de projection. La somme des variances interclasses est <span class="math notranslate nohighlight">\(Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )\)</span>, et la variance intraclasse totale est <span class="math notranslate nohighlight">\(Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )\)</span>, où <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est une matrice à <span class="math notranslate nohighlight">\(C-1\)</span> colonnes, les colonnes étant les vecteurs successifs sur lesquels sont projetées les données.</p>
+<p>Le problème d’optimisation s’écrit alors</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle\max_{\mathbf w}\frac{Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )}{Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )}\]</div>
+<p>et par les mêmes calculs, les solutions sont les vecteurs prores de <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span>, de rang <span class="math notranslate nohighlight">\(C-1\)</span>.</p>
+</div>
+</div>
+<div class="section" id="analyse-discriminante-quadratique-qda">
+<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Lien permanent vers ce titre">#</a></h2>
+<p>Si on relâche l’égalité des matrices de covariance, la frontière n’est plus linéaire, mais quadratique.</p>
+<p>La règle de décision est alors d’affecter <span class="math notranslate nohighlight">\(x\)</span> à la classe <span class="math notranslate nohighlight">\(i\)</span> qui maximise</p>
+<div class="math notranslate nohighlight">
+\[-\frac{1}{2}log |{ \Sigma}_i| -\frac{1}{2}  ({\mathbf x} - \mu_i)^{\top} { \Sigma}_i^{-1} ({\mathbf x} - \mu_i) + log \pi_i\]</div>
+<p>Deux cas se présentent alors :</p>
+<ul class="simple">
+<li><p>dans le premier cas, les classes sont supposées sphériques, <span class="math notranslate nohighlight">\(\Sigma_i=I,\forall i\)</span> : dans ce cas la règle de décision est
+<span class="math notranslate nohighlight">\(-\frac{1}{2}  \|{\mathbf x} - \mu_i\|^{2} + log \pi_i\)</span>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Si les distributions a priori <span class="math notranslate nohighlight">\(\pi_i\)</span> sont toutes égales, alors on affecte <span class="math notranslate nohighlight">\(\mathbf x\)</span> à la classe la plus proche, puisque la règle de décision revient à minimiser <span class="math notranslate nohighlight">\(\|{\mathbf x} - \mu_i\|^{2}\)</span>. L’analyse discriminante quadratique fait de la classification au plus proche voisin</p></li>
+<li><p>Si les distributions a priori <span class="math notranslate nohighlight">\(\pi_i\)</span> ne sont pas toutes égales, <span class="math notranslate nohighlight">\(\|{\mathbf x} - \mu_i\|^{2}\)</span> est ajusté en fonction des effectifs des classes</p></li>
+</ol>
+<ul class="simple">
+<li><p>dans tous les autres cas, en écrivant <span class="math notranslate nohighlight">\(\Sigma_i\)</span> à l’aide d’une décomposition en valeurs singulières, on a <span class="math notranslate nohighlight">\(\Sigma_i=USV^T\)</span>, avec <span class="math notranslate nohighlight">\(U=V\)</span> (<span class="math notranslate nohighlight">\(\Sigma_i\)</span> symétrique), <span class="math notranslate nohighlight">\(U\)</span> matrice orthogonale des vecteurs propres de <span class="math notranslate nohighlight">\(\Sigma_i\Sigma_i^T\)</span>.
+Donc</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+({\mathbf x} - \mu_i)^{\top}\Sigma_i^{-1}({\mathbf x} - \mu_i)&amp;=&amp;({\mathbf x} - \mu_i)^{\top} US^{-1}U^T ({\mathbf x} - \mu_i)\\
+&amp;=&amp;(U^T{\mathbf x} - U^T\mu_i)^{\top} S^{-1} (U^T{\mathbf x} - U^T\mu_i)
+\end{split}\]</div>
+<p>Or <span class="math notranslate nohighlight">\(S\)</span> diagonale à valeurs positives (<span class="math notranslate nohighlight">\(\Sigma_i\)</span> est semi définie positive) donc <span class="math notranslate nohighlight">\(S^{-1}=S^{-1/2}S^{-1/2}\)</span> et</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+({\mathbf x} - \mu_i)^{\top}\Sigma_i^{-1}({\mathbf x} - \mu_i)&amp;=&amp;(U^T{\mathbf x} - U^T\mu_i)^{\top} S^{-1/2}S^{-1/2} (U^T{\mathbf x} - U^T\mu_i)\\
+&amp;=&amp;(S^{-1/2}U^T{\mathbf x} - S^{-1/2}U^T\mu_i)^{\top} (S^{-1/2}U^T{\mathbf x} -S^{-1/2}U^T\mu_i)\\
+&amp;=&amp;\|S^{-1/2}U^T{\mathbf x} -S^{-1/2}U^T\mu_i\|^2
+\end{split}\]</div>
+<p>On note alors <span class="math notranslate nohighlight">\(A^T=S^{-1/2}U^T\)</span> de sorte que</p>
+<div class="math notranslate nohighlight">
+\[({\mathbf x} - \mu_i)^{\top}\Sigma_i^{-1}({\mathbf x} - \mu_i)=\|A^Tx-A^T\mu_i\|^2\]</div>
+<p>et on se ramène au cas sphérique par transformation linéaire <span class="math notranslate nohighlight">\(A^T\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+
+
+<span class="c1">#  Gaussiennes multivariées, covariances égales ou non</span>
+<span class="k">def</span> <span class="nf">dataset_cov</span><span class="p">(</span><span class="n">fixed</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fixed</span><span class="p">:</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.83</span><span class="p">,</span> <span class="mf">.23</span><span class="p">]])</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">),</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">.7</span><span class="p">]])</span> <span class="o">*</span> <span class="mf">2.</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">),</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">])]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
+
+<span class="n">qda</span> <span class="o">=</span> <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">(</span><span class="n">store_covariance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">()</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">qda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">qda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances égales&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_cov</span><span class="p">(</span><span class="n">qda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">(</span><span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">qda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">qda</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances différentes&quot;</span><span class="p">,</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">plot_cov</span><span class="p">(</span><span class="n">qda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-15.185617112135642,
+ 12.52711932600968,
+ -8.517468243660087,
+ 30.319472781271916)
+</pre></div>
+</div>
+<img alt="_images/LDAQDA_5_1.png" src="_images/LDAQDA_5_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nombre-de-parametres">
+<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Lien permanent vers ce titre">#</a></h2>
+<p>Pour prédire la classe de nouvelles données par LDA ou QDA,  il faut d’abord apprendre les paramètres sous-jacents à partir des <span class="math notranslate nohighlight">\(n\)</span> données d’apprentissage.</p>
+<ul class="simple">
+<li><p>pour LDA et QDA on doit apprendre les <span class="math notranslate nohighlight">\(\pi_i\)</span> les les vecteurs $\mu_i, i\in[![1,c]!]</p></li>
+<li><p>on doit apprendre les <span class="math notranslate nohighlight">\(\Sigma_i\)</span> pour QDA, et <span class="math notranslate nohighlight">\(\Sigma\)</span> pour LDA</p></li>
+</ul>
+<p>ce qui amène à <span class="math notranslate nohighlight">\(C-1+Cn+\frac{n(n+1)}{2}\)</span> paramètres pour LDA et <span class="math notranslate nohighlight">\(C-1+Cn+C\frac{n(n+1)}{2}\)</span> paramètres pour QDA.</p>
+<p>La <a class="reference internal" href="#nbparam-ref"><span class="std std-numref">Fig. 7</span></a> montre la comparaison du nombre de paramètres à apprendre en fonction de la taille de la base d’apprentissage. Ici <span class="math notranslate nohighlight">\(C\)</span>=5.</p>
+<div class="figure align-default" id="nbparam-ref">
+<img alt="_images/nbparam.png" src="_images/nbparam.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vbarra/anbook.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="bayes.html" title="précédent page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">précédent</p>
+            <p class="prev-next-title">Classifieur naïf de Bayes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="knn.html" title="suivant page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">K plus proches voisins</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent BARRA<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
