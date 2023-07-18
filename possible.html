@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemple introductif &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Modèle statistique de l’apprentissage" href="approchestat.html" />
+    <link rel="prev" title="Apprentissage automatique" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="fr">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelesup.html">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bayes.html">
+   Classifieur naïf de Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LDAQDA.html">
+   Analyses discriminantes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="knn.html">
+   K plus proches voisins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arbres_decision.html">
+   Arbres de décision
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="baggingboosting.html">
+   Bootstraping et bagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaboost.html">
+   Boosting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinaison.html">
+   Méthodes de combinaison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomforest.html">
+   Forêts aléatoires
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gradientboosting.html">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mds.html">
+   Positionnement multidimensionnel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="isomap.html">
+   ISOMAP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lle.html">
+   Local Linear Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manifold.html">
+   Unification
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/vbarra/anbook.git"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fpossible.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/possible.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exemple introductif
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tirage-dans-une-urne">
+     Tirage dans une urne
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inegalites-de-hoeffding">
+     Inégalités de Hoeffding
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relation-a-l-apprentissage-erreurs-d-entrainement-et-de-generalisation">
+     Relation à l’apprentissage - Erreurs d’entraînement et de généralisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recherche-d-un-bon-candidat">
+     Recherche d’un bon candidat
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorie-de-la-generalisation">
+   Théorie de la généralisation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dichotomies">
+     Dichotomies
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fonction-de-croissance">
+     Fonction de croissance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vc-dim">
+     VC-dim
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exemple introductif</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exemple introductif
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tirage-dans-une-urne">
+     Tirage dans une urne
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inegalites-de-hoeffding">
+     Inégalités de Hoeffding
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relation-a-l-apprentissage-erreurs-d-entrainement-et-de-generalisation">
+     Relation à l’apprentissage - Erreurs d’entraînement et de généralisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recherche-d-un-bon-candidat">
+     Recherche d’un bon candidat
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorie-de-la-generalisation">
+   Théorie de la généralisation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dichotomies">
+     Dichotomies
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fonction-de-croissance">
+     Fonction de croissance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vc-dim">
+     VC-dim
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p>Apprendre est il possible ? On s’intéresse ici à quelques aspects théoriques sur cette question.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="exemple-introductif">
+<h1>Exemple introductif<a class="headerlink" href="#exemple-introductif" title="Lien permanent vers ce titre">#</a></h1>
+<div class="section" id="tirage-dans-une-urne">
+<h2>Tirage dans une urne<a class="headerlink" href="#tirage-dans-une-urne" title="Lien permanent vers ce titre">#</a></h2>
+<p>Soit une urne remplie de boules noires et blanches. On note <span class="math notranslate nohighlight">\(\mu\)</span> la probabilité (inconnue) de tirer une boule noire. On tire un échantillon <span class="math notranslate nohighlight">\(Z\)</span> de <span class="math notranslate nohighlight">\(n\)</span> boules et on note <span class="math notranslate nohighlight">\(\nu\)</span> la proportion de boules noires dans <span class="math notranslate nohighlight">\(Z\)</span>. En « langage » apprentissage, <span class="math notranslate nohighlight">\(Z\)</span> sont les exemples d’apprentissage, l’urne est la population sur laquelle on souhaite faire une prédiction (classification ou régression).</p>
+<p>On se pose alors la question suivante : <span class="math notranslate nohighlight">\(\nu\)</span> dit-elle quelque chose sur <span class="math notranslate nohighlight">\(\mu\)</span> ? Deux réponses sont alors envisageables :</p>
+<ul class="simple">
+<li><p>la possible : non, <span class="math notranslate nohighlight">\(Z\)</span> peut être majoritairement composé de boules blanches, alors que l’urne est majoritairement remplie de boules noires.</p></li>
+<li><p>la probable : oui, <span class="math notranslate nohighlight">\(\mu\)</span> vue comme une fréquence doit être proche, sous certaines conditions, de <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="inegalites-de-hoeffding">
+<h2>Inégalités de Hoeffding<a class="headerlink" href="#inegalites-de-hoeffding" title="Lien permanent vers ce titre">#</a></h2>
+<p>Interéssons nous à l’aspect probable : si <span class="math notranslate nohighlight">\(n\)</span> est grand, <span class="math notranslate nohighlight">\(\nu\)</span> doit être proche de <span class="math notranslate nohighlight">\(\mu\)</span>, et plus précisément :</p>
+<div class="proof proposition admonition" id="proposition-0">
+<p class="admonition-title"><span class="caption-number">Proposition 1 </span> (Inégalités de Hoeffding)</p>
+<div class="proposition-content section" id="proof-content">
+<div class="math notranslate nohighlight">
+\[    (\forall \epsilon&gt;0)\ P(|\nu-\mu|&gt;\epsilon)\leq 2e^{-2\epsilon^2n}
+\textrm{ et } P(|\nu-\mu|\leq\epsilon)\geq 1-2e^{-2\epsilon^2n}\]</div>
+</div>
+</div><p>La borne ne dépend pas de <span class="math notranslate nohighlight">\(\mu\)</span> et il est donc possible de jouer sur <span class="math notranslate nohighlight">\(\epsilon\)</span> et <span class="math notranslate nohighlight">\(n\)</span> pour assurer une borne aussi petite que l’on veut. Par exemple si <span class="math notranslate nohighlight">\(n=10^3\)</span> :</p>
+<ul class="simple">
+<li><p>pour <span class="math notranslate nohighlight">\(\epsilon=5.10^{-2},\  \nu-5.10^{-2}\leq \mu\leq \nu+5.10^{-2}\)</span> avec probabilité <span class="math notranslate nohighlight">\(0.99\)</span>.</p></li>
+<li><p>pour <span class="math notranslate nohighlight">\(\epsilon=1.10^{-1},\  \nu-1.10^{-1}\leq \mu\leq \nu+1.10^{-1}\)</span> avec probabilité <span class="math notranslate nohighlight">\(1-4.10^{-7}\)</span>.</p></li>
+</ul>
+<p>En répétant le tirage indépendant de 1000 boules pour constituer <span class="math notranslate nohighlight">\(Z\)</span>, et en observant <span class="math notranslate nohighlight">\(\nu\)</span>, on peut donc affirmer par exemple que <span class="math notranslate nohighlight">\(\mu\in[\nu-5.10^{-2},\nu + 5.10^{-2}]\)</span> est vrai 99% du temps.</p>
+</div>
+<div class="section" id="relation-a-l-apprentissage-erreurs-d-entrainement-et-de-generalisation">
+<h2>Relation à l’apprentissage - Erreurs d’entraînement et de généralisation<a class="headerlink" href="#relation-a-l-apprentissage-erreurs-d-entrainement-et-de-generalisation" title="Lien permanent vers ce titre">#</a></h2>
+<p>En apprentissage, l’inconnue n’est pas un réel (<span class="math notranslate nohighlight">\(\mu\)</span>), mais une fonction <span class="math notranslate nohighlight">\(f:X\rightarrow Y\)</span>. Le candidat est lui aussi une fonction <span class="math notranslate nohighlight">\(h\)</span> appartenant à un ensemble <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> .Dans la <a class="reference internal" href="#fhe-ref"><span class="std std-numref">Fig. 1</span></a>, la figure de gauche présente un exemple de fonction <span class="math notranslate nohighlight">\(f\)</span> à atteindre, celle du milieu une hypothèse <span class="math notranslate nohighlight">\(h\)</span> (classification binaire). La fonction d’erreur (à droite) donne le lieu des points <span class="math notranslate nohighlight">\(\mathbf x\)</span> tels que <span class="math notranslate nohighlight">\(h(\mathbf x)=f(\mathbf x)\)</span> (bleu), <span class="math notranslate nohighlight">\(h(\mathbf x)\neq f(\mathbf x)\)</span> (rouge). L’erreur de <span class="math notranslate nohighlight">\(h\)</span> est donc <span class="math notranslate nohighlight">\(E(h)=P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))\)</span> (l’aire de la région rouge).</p>
+<div class="figure align-default" id="fhe-ref">
+<img alt="_images/fhe.png" src="_images/fhe.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Erreur mesurée sur les échantillons(jaune)</span><a class="headerlink" href="#fhe-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+<p>En pratique, l’espace <span class="math notranslate nohighlight">\(X\)</span> est échantillonné et l’erreur de <span class="math notranslate nohighlight">\(h\)</span> est mesurée sur les échantillons et est  dite erreur « out of sample » (ou erreur de généralisation) (<a class="reference internal" href="#errors-ref"><span class="std std-numref">Fig. 2</span></a>):</p>
+<div class="math notranslate nohighlight">
+\[E_g(h) = P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))\]</div>
+<div class="figure align-default" id="errors-ref">
+<img alt="_images/errorsample.png" src="_images/errorsample.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Erreur mesurée sur les échantillons(jaune)</span><a class="headerlink" href="#errors-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+<p>De plus, un problème d’apprentissage supervisé vient naturellement avec un ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\mathbf x_i\in X,y_i\in Y \right \}\)</span>, ce qui permet d’évaluer l’erreur d’apprentissage de <span class="math notranslate nohighlight">\(h\)</span> à partir de <span class="math notranslate nohighlight">\(Z\)</span>, dite erreur “in sample”  (ou erreur d’apprentissage) (<a class="reference internal" href="#errors-in-ref"><span class="std std-numref">Fig. 3</span></a>).</p>
+<div class="math notranslate nohighlight">
+\[E_t(h) = \frac{1}{n}\displaystyle\sum_{i=1}^n \mathbb{I}_{h(\mathbf x_i)\neq f(\mathbf x_i)}\]</div>
+<div class="figure align-default" id="errors-in-ref">
+<img alt="_images/targetfZ.png" src="_images/targetfZ.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Points d’apprentissage de <span class="math notranslate nohighlight">\(Z\)</span>, et leur projection sur la fonction d’erreur. Les points bien classés sont en bleu, les mal classés en rouge. L’erreur d’apprentissage  est la proportion de points rouge.</span><a class="headerlink" href="#errors-in-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+<p>En résumé :</p>
+<p align=center>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Urne</p></th>
+<th class="head"><p>Apprentissage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Boules noires</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf x\)</span> tels que <span class="math notranslate nohighlight">\(h(\mathbf x)\neq f(\mathbf x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Boules blanches</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf x\)</span> tels que <span class="math notranslate nohighlight">\(h(\mathbf x)= f(\mathbf x)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Tirage d’une boule</p></td>
+<td><p><span class="math notranslate nohighlight">\(P(\mathbf x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tirage de <span class="math notranslate nohighlight">\(n\)</span> boules</p></td>
+<td><p><span class="math notranslate nohighlight">\(Z\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu\)</span> : probabilité de tirer une boule noire</p></td>
+<td><p><span class="math notranslate nohighlight">\(E_g(h) = P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\nu\)</span> : proportion de boules noires dans <span class="math notranslate nohighlight">\(Z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_t(h) = \frac{1}{n}\sum_{i=1}^n \mathbb{I}_{(h(\mathbf x)\neq f(\mathbf x))}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</p>
+<p><span class="math notranslate nohighlight">\(E_t(h)\)</span> est aléatoire, mais connue, <span class="math notranslate nohighlight">\(E_g(h)\)</span> est fixe mais inconnue, et les inégalités d’Hoeffding quantifient à quel point <span class="math notranslate nohighlight">\(E_t(h) \approx E_g(h)\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccc}
+    (\forall \epsilon&gt;0)&amp;&amp; P(|E_t(h)-E_g(h)|&gt;\epsilon)\leq 2e^{-2\epsilon^2n}\\
+    &amp;&amp; P(|E_t(h)-E_g(h)|\leq\epsilon)\geq 1-2e^{-2\epsilon^2n}
+\end{array}
+\end{split}\]</div>
+<p>Si <span class="math notranslate nohighlight">\(E_t(h)\approx 0\)</span> alors <span class="math notranslate nohighlight">\(E_g(h)\approx 0\)</span> avec forte probabilité. On a appris quelque chose sur <span class="math notranslate nohighlight">\(f\)</span>, puisque <span class="math notranslate nohighlight">\(f\approx h\)</span> sur tout <span class="math notranslate nohighlight">\(X\)</span> et pas seulement sur <span class="math notranslate nohighlight">\(Z\)</span>. Si <span class="math notranslate nohighlight">\(E_t(h)&gt;&gt;0\)</span> on peut juste dire que <span class="math notranslate nohighlight">\(f\neq h\)</span>.</p>
+</div>
+<div class="section" id="recherche-d-un-bon-candidat">
+<h2>Recherche d’un bon candidat<a class="headerlink" href="#recherche-d-un-bon-candidat" title="Lien permanent vers ce titre">#</a></h2>
+<p>Ainsi, il est intéressant pour conclure quelque chose que <span class="math notranslate nohighlight">\(E_t\)</span> soit petite. En apprentissage, on recherche donc dans un espace de fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> une fonction <span class="math notranslate nohighlight">\(g\)</span> ayant une erreur d’apprentissage <span class="math notranslate nohighlight">\(E_t(g)\)</span> la plus petite possible.</p>
+<p>On note <span class="math notranslate nohighlight">\(|\mathcal{F}| = M\)</span>, et pour <span class="math notranslate nohighlight">\(h_j\in \mathcal{F}\)</span>, on définit l’évènement</p>
+<div class="math notranslate nohighlight">
+\[A_j = \{|E_t(h_j)-E_g(h_j)|&gt;\epsilon\}\]</div>
+<p>Par les inégalités de Hoeffding, on a <span class="math notranslate nohighlight">\(P(A_j)\leq 2e^{-2\epsilon^2n}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{ccc}
+    P(\exists h_j\in \mathcal{F}, |E_t(h_j)-E_g(h_j)|&gt;\epsilon) &amp;=&amp; P(A_1\cup A_2\cdots \cup A_M)\\
+    &amp;\leq &amp;\displaystyle\sum_{i=1}^M P(A_i)\\
+    &amp;\leq &amp;\displaystyle\sum_{i=1}^M 2e^{-2\epsilon^2n}\\
+    &amp;=&amp; 2Me^{-2\epsilon^2n}
+\end{array}
+\end{split}\]</div>
+<p>d’où  :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{array}{ccc}
+        P(\nexists h_j\in \mathcal{F}, |E_t(h_j)-E_g(h_j)|&gt;\epsilon) &amp;=&amp; P(\forall h_j\in \mathcal{F}, |E_t(h_j)-E_g(h_j)|\leq \epsilon)\\
+        &amp;\geq&amp; 1-2Me^{-2\epsilon^2n}
+    \end{array}
+\end{split}\]</div>
+<p>Avec probabilité <span class="math notranslate nohighlight">\(P = 1-2Me^{-2\epsilon^2n}\)</span>, <span class="math notranslate nohighlight">\(E_t\)</span> sera donc à <span class="math notranslate nohighlight">\(\epsilon\)</span> près de <span class="math notranslate nohighlight">\(E_g\)</span> et ceci pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span>. La convergence sera d’autant meilleure que <span class="math notranslate nohighlight">\(n\)</span> est grand.</p>
+<p>On peut alors s’intéresser à la taille de <span class="math notranslate nohighlight">\(Z\)</span> qui assure une “bonne” convergence. A <span class="math notranslate nohighlight">\(P\)</span> et <span class="math notranslate nohighlight">\(\epsilon\)</span> fixés, on voit alors que tant que</p>
+<div class="math notranslate nohighlight">
+\[n\geq \frac{1}{2\epsilon^2}log\frac{2M}{P}\]</div>
+<p>alors avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span>, <span class="math notranslate nohighlight">\(|E_t(h)-E_g(h)|\leq \epsilon\)</span> pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span>.</p>
+<p>De même on peut résoudre en <span class="math notranslate nohighlight">\(\epsilon\)</span> : à <span class="math notranslate nohighlight">\(n\)</span> et <span class="math notranslate nohighlight">\(P\)</span> fixé, on voit qu’avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span> on a pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[|E_t(h)-E_g(h)|\leq\sqrt{\frac{1}{2n}log\frac{2M}{P}}\]</div>
+<p>Supposons maintenant que <span class="math notranslate nohighlight">\(\forall h\in \mathcal{F},|E_t(h)-E_g(h)|&lt;\epsilon\)</span>, peut on en déduire quelque chose sur <span class="math notranslate nohighlight">\(E_g(g)\)</span> ?</p>
+<p>Puisque :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccl}
+(\forall \epsilon&gt;0)&amp;&amp; P(|E_t(h)-E_g(h)|&gt;\epsilon)\leq 2e^{-2\epsilon^2n}\\
+g&amp;=&amp;Arg \displaystyle\min_{h\in \mathcal{F}} E_t(h)
+\end{array}
+\end{split}\]</div>
+<p>alors en notant <span class="math notranslate nohighlight">\(h^* = Arg \displaystyle\min_{h\in \mathcal{F}} E_g(h)\)</span>, on a :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccl}
+    E_g(g)&amp;\leq&amp; E_t(g) +\epsilon\quad \textrm{[Inégalité de Hoeffding pour $g$]}\\
+    &amp;\leq&amp; E_t(h^*)+\epsilon\quad \textrm{[Propriété de $g$]}\\
+    &amp;\leq&amp;E_g(h^*)+2\epsilon \quad \textrm{[Inégalité de Hoeffding pour $h^*$]}
+\end{array}
+\end{split}\]</div>
+<p>et pour garantir cette dernière inégalité avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span>, il suffit comme nous l’avons vu que</p>
+<div class="math notranslate nohighlight">
+\[n\geq \frac{1}{2\epsilon^2}log\frac{2M}{P}\]</div>
+<p>Ainsi si <span class="math notranslate nohighlight">\(n&gt;&gt;log M\)</span> alors <span class="math notranslate nohighlight">\(E_g(g)\approx E_t(g)\)</span>, indépendamment de <span class="math notranslate nohighlight">\(X\)</span>, de la distribution <span class="math notranslate nohighlight">\(P(\mathbf x)\)</span>, de <span class="math notranslate nohighlight">\(f\)</span> ou de l’algorithme ayant généré <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>L’analyse précédente dit donc que <span class="math notranslate nohighlight">\(E_t(g)\approx 0\)</span>, que sous la condition sur <span class="math notranslate nohighlight">\(n\)</span> alors <span class="math notranslate nohighlight">\(E_g(g)\approx E_t(g)\)</span>, et que donc l’erreur en généralisation de <span class="math notranslate nohighlight">\(g\)</span> est faible.</p>
+<p>Puisque <span class="math notranslate nohighlight">\(E_g(g)\leq E_t(g) +\epsilon\)</span> et <span class="math notranslate nohighlight">\(\epsilon=\sqrt{\frac{1}{2n}log\frac{2M}{P}}\)</span>, on en déduit que si <span class="math notranslate nohighlight">\(M\)</span> est petit alors probablement <span class="math notranslate nohighlight">\(E_t(g)\approx E_g(g)\approx 0\)</span>, et que si <span class="math notranslate nohighlight">\(M\)</span> est grand alors <span class="math notranslate nohighlight">\(\epsilon\)</span> est possiblement grand et <span class="math notranslate nohighlight">\(E_g(g)\)</span> peut s’éloigner de <span class="math notranslate nohighlight">\(E_t(g)\)</span> (<a class="reference internal" href="#courbes-err-ref"><span class="std std-numref">Fig. 4</span></a>).</p>
+<div class="figure align-default" id="courbes-err-ref">
+<img alt="_images/bv.png" src="_images/bv.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Courbes des erreurs. La courbe rouge représente la complexité du modèle, la courbe bleue l’erreur d’apprentissage et la courbe verte l’erreur en généralisation. Passé <span class="math notranslate nohighlight">\(M^*\)</span>, le modèle a tendance à surapprendre <span class="math notranslate nohighlight">\(Z\)</span> et l’erreur en généralisation croît</span><a class="headerlink" href="#courbes-err-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+<p>Exemple : <span class="math notranslate nohighlight">\(\mathcal F\)</span> est l’ensemble des polynomes de degré <span class="math notranslate nohighlight">\(M\)</span>. <span class="math notranslate nohighlight">\(M\)</span> faible signifie par exemple approcher <span class="math notranslate nohighlight">\(f\)</span> par une hypothèse linéaire (sous-apprentissage), et <span class="math notranslate nohighlight">\(M\)</span> fort signifie approcher <span class="math notranslate nohighlight">\(f\)</span> par un polynôme
+de degré élevé (l’erreur d’entraînement sera très faible, en revanche en raison du sur apprentissage <span class="math notranslate nohighlight">\(g\)</span> n’aura aucune capacité de généralisation (<a class="reference internal" href="#apprendre-ref"><span class="std std-numref">Fig. 5</span></a>).</p>
+<div class="figure align-default" id="apprendre-ref">
+<img alt="_images/apprendre.png" src="_images/apprendre.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Sous et sur apprentissage dans le cas de modèles polynomiaux.</span><a class="headerlink" href="#apprendre-ref" title="Lien permanent vers cette image">#</a></p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="theorie-de-la-generalisation">
+<h1>Théorie de la généralisation<a class="headerlink" href="#theorie-de-la-generalisation" title="Lien permanent vers ce titre">#</a></h1>
+<p>La théorie de la généralisation va permettre d’étendre la borne</p>
+<div class="math notranslate nohighlight">
+\[|E_t(g)-E_g(g)|\leq\sqrt{\frac{1}{2n}log\frac{2M}{P}}\]</div>
+<p>au cas où <span class="math notranslate nohighlight">\(\mathcal F\)</span> est infini.</p>
+<p>Quantifier la taille de <span class="math notranslate nohighlight">\(\mathcal F\)</span> par son cardinal <span class="math notranslate nohighlight">\(M\)</span> n’est pas nécessairement pertinent, puisque cette information ne capture pas
+les possibles similarités entre <span class="math notranslate nohighlight">\(h\in \mathcal F\)</span>. <span class="math notranslate nohighlight">\(M\)</span> mesure donc la diversité maximum de  <span class="math notranslate nohighlight">\(\mathcal F\)</span> et il
+faut trouver une mesure de diversité qui soit pertinente pour le problème de l’apprentissage. On parle également de pouvoir d’expression de cet ensemble.</p>
+<div class="section" id="dichotomies">
+<h2>Dichotomies<a class="headerlink" href="#dichotomies" title="Lien permanent vers ce titre">#</a></h2>
+<p>Une première idée est de fixer <span class="math notranslate nohighlight">\(n\)</span> points <span class="math notranslate nohighlight">\(Z=\{\mathbf x_i\in X,i\in [\![1,n]\!]\}\)</span> et d’affirmer que <span class="math notranslate nohighlight">\(\mathcal F\)</span> a un bon pouvoir d’expression s’il peut calculer toutes les fonctions sur ces <span class="math notranslate nohighlight">\(n\)</span> points.</p>
+<p>La figure suivante présente un exemple. <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est un ensemble de droites, et <span class="math notranslate nohighlight">\(Z\)</span> contient 7 points (bleu). Du point de vue de <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>
+réalise juste une séparation binaire de ses points en deux sous-ensembles, les verts et  les rouges. La fonction correspondante réalsée est appelée une dichotomie. Pout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span>,
+la dichotomie calcule un <span class="math notranslate nohighlight">\(n\)</span>-uplet de valeurs <span class="math notranslate nohighlight">\(\pm 1\)</span> <span class="math notranslate nohighlight">\((h(\mathbf x_1)\cdots h(\mathbf x_n))\)</span>, <span class="math notranslate nohighlight">\(h(\mathbf x_i)\)</span> correspondant à la classe de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> vue par <span class="math notranslate nohighlight">\(h\)</span>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\mathcal{F}\)</span></p></th>
+<th class="head"><p>Séparation binaire</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="" src="_images/faisceau.png" /></p></td>
+<td><p><img alt="" src="_images/dicho.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fonction-de-croissance">
+<h2>Fonction de croissance<a class="headerlink" href="#fonction-de-croissance" title="Lien permanent vers ce titre">#</a></h2>
+<p>Si <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> a fort un pouvoir d’expression, il doit être capable de réaliser de nombreuses dichotomies de <span class="math notranslate nohighlight">\(Z\)</span>. Pour quantifier ce point, on introduit la fonction de croissance.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Fonction de croissance)</p>
+<div class="definition-content section" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(Z=\{\mathbf x_i\in X,i\in [\![1,n]\!]\}\)</span> un ensemble de <span class="math notranslate nohighlight">\(n\)</span> points de <span class="math notranslate nohighlight">\(X\)</span>.  On note</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{H}(Z) = \left \{ (h(\mathbf x_1)\cdots h(\mathbf x_n)),h\in \mathcal{F}\right \}\]</div>
+<p>l’ensemble des dichotomies induites par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> sur <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<p>La fonction de croissance de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> est le nombre maximum de dichotomies induites par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> sur tout ensemble de <span class="math notranslate nohighlight">\(n\)</span> points :</p>
+<div class="math notranslate nohighlight">
+\[\Delta_\mathcal{F}(n) = \displaystyle \max_{Z,|Z|=n} |\mathcal{H}(Z)|\]</div>
+</div>
+</div><p>Bien évidemment <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\leq 2^n\)</span>. Pour mesurer la diversité de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, on souhaiterait alors remplacer <span class="math notranslate nohighlight">\(M\)</span> par <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}\)</span>.</p>
+<p>Exemple : soit <span class="math notranslate nohighlight">\(a\in [-1,1]\)</span> et  <span class="math notranslate nohighlight">\(\mathcal{F} = \left \{h: \mathbb{R} \rightarrow [-1,1], h(x) = signe(x-a) \right \}\)</span>. Il y a alors <span class="math notranslate nohighlight">\(n+1\)</span> dichotomies d’un ensemble
+de <span class="math notranslate nohighlight">\(n\)</span> points, suivant la position de <span class="math notranslate nohighlight">\(a\)</span> dans l’intervalle [-1,1]. Ainsi <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n) = n+1\)</span>.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Pulvérisation)</p>
+<div class="definition-content section" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(Z=\{\mathbf x_i\in X,i\in [\![1,n]\!]\}\)</span> un ensemble de <span class="math notranslate nohighlight">\(n\)</span> points de <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions. On dit que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> pulvérise <span class="math notranslate nohighlight">\(Z\)</span>
+si <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)=2^n\)</span>.</p>
+</div>
+</div><p>Autrement dit, <span class="math notranslate nohighlight">\(Z\)</span> est pulvérisé par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> si toutes les dichotomies possibles sur <span class="math notranslate nohighlight">\(Z\)</span> peuvent être décrites par des fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Point d’arrêt)</p>
+<div class="definition-content section" id="proof-content">
+<p>Un point d’arrêt <span class="math notranslate nohighlight">\(k\in \mathbb N\)</span> est tel qu’aucun ensemble de <span class="math notranslate nohighlight">\(k\)</span> points de <span class="math notranslate nohighlight">\(X\)</span> ne puisse être pulvérisé par  <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+</div>
+</div><p>On a alors bien évidemment <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(k)&lt;2^k\)</span>. Les points d’arrêt sont généralement plus faciles à trouver que la fonction de croissance.</p>
+<p>On a alors les résultats suivants :</p>
+<div class="proof proposition admonition" id="proposition-4">
+<p class="admonition-title"><span class="caption-number">Proposition 2 </span></p>
+<div class="proposition-content section" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(n\in \mathbb N\)</span> et <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions :</p>
+<ul class="simple">
+<li><p>s’il n’existe aucun point d’arrêt <span class="math notranslate nohighlight">\(k\leq n\)</span> alors <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)=2^n\)</span></p></li>
+<li><p>s’il existe <span class="math notranslate nohighlight">\(k&lt;n\)</span> point darrêt, alors <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\)</span> est polynomial en <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+</div>
+</div><p>`</p>
+<div class="proof theorem admonition" id="theorem-5">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<div class="theorem-content section" id="proof-content">
+<p>Soit  <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions. S’il existe <span class="math notranslate nohighlight">\(k\in\mathbb{N}\)</span> tel que <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(k)&lt;2^k\)</span> alors :</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(\forall n\in \mathbb{N})\ \Delta_\mathcal{F}(n)\leq \displaystyle\sum_{i=0}^{k-1}\begin{pmatrix}n\\i\end{pmatrix}\end{split}\]</div>
+</div>
+</div><p>Ainsi, si <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> a un point d’arrêt, on est assuré d’avoir une bonne capacité de généralisation.</p>
+<p>(my-label)=VC</p>
+</div>
+<div class="section" id="vc-dim">
+<h2>VC-dim<a class="headerlink" href="#vc-dim" title="Lien permanent vers ce titre">#</a></h2>
+<p>La dimension de Vapnik-Chervonenkis (VC-dim) est un paramètre unique permettant de caractériser la fonction de croissance.</p>
+<div class="proof definition admonition" id="definition-6">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span> (VC-dim)</p>
+<div class="definition-content section" id="proof-content">
+<p>Soit <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions. La dimension de Vapnik-Chervonenkis de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, notée <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span>, est définie par :</p>
+<div class="math notranslate nohighlight">
+\[d_{vc}(\mathcal{F}) = arg \displaystyle \max_n \{n, \Delta_\mathcal{F}(n)=2^n\}\]</div>
+</div>
+</div><p>En d’autres termes, <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span> est la cardinalité du plus grand ensemble de points de <span class="math notranslate nohighlight">\(X\)</span> pulvérisé par <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>.</p>
+<p>Si pour tout <span class="math notranslate nohighlight">\(n, \Delta_\mathcal{F}(n)=2^n\)</span> alors <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})=\infty\)</span>.</p>
+<p>En utilisant le théorème précédent, on a alors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Delta_\mathcal{F}(n)\leq \displaystyle\sum_{i=0}^{k-1}\begin{pmatrix}n\\i\end{pmatrix}=\displaystyle\sum_{i=0}^{d_{vc}(\mathcal{F})}\begin{pmatrix}n\\i\end{pmatrix}\end{split}\]</div>
+<p>et par récurrence on peut montrer que <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\leq n^{d_{vc}(\mathcal{F})}+1\)</span>.</p>
+<p>En remplaçant <span class="math notranslate nohighlight">\(M\)</span> par <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\)</span> dans l’encadrement de <span class="math notranslate nohighlight">\(|E_t(g)-E_g(g)|\)</span>, pour <span class="math notranslate nohighlight">\(h=g\)</span>, on a alors</p>
+<p><span class="math notranslate nohighlight">\(|E_t(g)-E_g(g)|\leq\sqrt{\frac{1}{2n}log\frac{2\Delta_\mathcal{F}(n)}{P}}\)</span></p>
+<p>et :</p>
+<ul class="simple">
+<li><p>A moins que <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})=\infty\)</span>, <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\)</span> est bornée par un polynôme en <span class="math notranslate nohighlight">\(n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)\)</span> croît logarithmiquement avec <span class="math notranslate nohighlight">\(n\)</span>, quel que soit l’ordre du polynôme</p></li>
+<li><p>Le facteur <span class="math notranslate nohighlight">\(1/n\)</span> fait décroître la dépendance</p></li>
+<li><p>Ainsi, à <span class="math notranslate nohighlight">\(P\)</span> fixé, <span class="math notranslate nohighlight">\(E_g\)</span> sera arbitrairement proche de <span class="math notranslate nohighlight">\(E_t\)</span> pour <span class="math notranslate nohighlight">\(n\)</span> suffisamment grand</p></li>
+<li><p>Plus <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span> est faible, plus <span class="math notranslate nohighlight">\(E_g\)</span> se rapproche vite de <span class="math notranslate nohighlight">\(E_t\)</span>.</p></li>
+</ul>
+<p>D’autre part, puisque (inégalité de Hoeffding) <span class="math notranslate nohighlight">\((\forall \epsilon&gt;0)\ P(|E_t(g)-E_g(g)|&gt;\epsilon)\leq 2e^{-2\epsilon^2n}\)</span>, on a</p>
+<div class="math notranslate nohighlight">
+\[(\forall \epsilon&gt;0)\ P(|E_t(g)-E_g(g)|&gt;\epsilon)\leq 4\Delta_\mathcal{F}(2n)e^{-\epsilon^2N/8}\]</div>
+<p>et comme <span class="math notranslate nohighlight">\(E_g(g)\leq E_t(g)+\sqrt{\frac{1}{2n}log\frac{2M}{P}}\)</span> avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span></p>
+<div class="math notranslate nohighlight">
+\[E_g(g)\leq E_t(g) + \sqrt{\frac{8}{n}log\frac{4\Delta_\mathcal{F}(2n)}{P}}\]</div>
+<p>En résumé, si <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span> est fini, alors <span class="math notranslate nohighlight">\(g\)</span> aura une bonne capacité de généralisation, ceci indépendemment de l’algorithme d’apprentissage, de <span class="math notranslate nohighlight">\(P(X)\)</span> et de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vbarra/anbook.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="précédent page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">précédent</p>
+            <p class="prev-next-title">Apprentissage automatique</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="approchestat.html" title="suivant page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Modèle statistique de l’apprentissage</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent BARRA<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Boosting &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Positionnement multidimensionnel" href="mds.html" />
+    <link rel="prev" title="Forêts aléatoires" href="randomforest.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="fr">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="possible.html">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelesup.html">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bayes.html">
+   Classifieur naïf de Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LDAQDA.html">
+   Analyses discriminantes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="knn.html">
+   K plus proches voisins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arbres_decision.html">
+   Arbres de décision
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="baggingboosting.html">
+   Bootstraping et bagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaboost.html">
+   Boosting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinaison.html">
+   Méthodes de combinaison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomforest.html">
+   Forêts aléatoires
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mds.html">
+   Positionnement multidimensionnel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="isomap.html">
+   ISOMAP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lle.html">
+   Local Linear Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manifold.html">
+   Unification
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/vbarra/anbook.git"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Fgradientboosting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/gradientboosting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="_sources/gradientboosting.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#residus-et-gradient">
+   Résidus et gradient
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithme-de-gradient-boosting">
+   Algorithme de gradient boosting
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gradient Boosting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#residus-et-gradient">
+   Résidus et gradient
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithme-de-gradient-boosting">
+   Algorithme de gradient boosting
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="gradient-boosting">
+<h1>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Lien permanent vers ce titre">#</a></h1>
+<p>Nous avons souligné qu’AdaBoost pouvait être vu comme un algorithme d’optimisation de la fonction :</p>
+<div class="math notranslate nohighlight">
+\[J(f) = \displaystyle\sum_{i=1}^n exp\left (-y_i f(({\mathbf x}_i) \right )\]</div>
+<p>L’idée des méthodes de gradient boosting est de généraliser cette approche, en s’intéressant à d’autres fonctions de coût et à leurs gradients.</p>
+<div class="section" id="residus-et-gradient">
+<h2>Résidus et gradient<a class="headerlink" href="#residus-et-gradient" title="Lien permanent vers ce titre">#</a></h2>
+<p>On apprend sur <span class="math notranslate nohighlight">\(Z\)</span> une fonction (de régression, de classification) <span class="math notranslate nohighlight">\(h_1\)</span>, en utilisant un algorithme approprié. L’erreur commise par <span class="math notranslate nohighlight">\(h_1\)</span>, mesurée par la fonction de perte <span class="math notranslate nohighlight">\(\ell\)</span>, est :</p>
+<div class="math notranslate nohighlight">
+\[E_{h_1} = \displaystyle\sum_{i=1}^n \ell \left (y_i,h_1(\mathbf{x}_i)\right )\]</div>
+<p>La quantité <span class="math notranslate nohighlight">\(e_i=y_i-h_1(\mathbf{x}_i)\)</span> est appelée le résidu de <span class="math notranslate nohighlight">\(h_1\)</span> en <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>. S’il est possible de trouver une fonction <span class="math notranslate nohighlight">\(\hat{h}\)</span> telle que <span class="math notranslate nohighlight">\(\hat{h}(\mathbf{x}_i) = e_i\)</span>  pour tout <span class="math notranslate nohighlight">\(i\in[\![1, n]\!]\)</span>, alors la nouvelle fonction de régression <span class="math notranslate nohighlight">\(F=h_1+\hat{h}\)</span> aura une erreur nulle sur tous les points de <span class="math notranslate nohighlight">\(\mathcal{S}\)</span>.</p>
+<p>La recherche de <span class="math notranslate nohighlight">\(\hat{h}\)</span> étant difficile, on lui préfère la recherche d’une fonction <span class="math notranslate nohighlight">\(h_2\)</span> telle que, pour tout <span class="math notranslate nohighlight">\(i\in[\![1,n]\!]\)</span> <span class="math notranslate nohighlight">\(|h_2(\mathbf{x}_i) - e_i|&lt;\epsilon\)</span>, <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span> petit. Dans ce cas, <span class="math notranslate nohighlight">\(F=h_1+h_2\)</span> a une erreur <span class="math notranslate nohighlight">\(E_F\)</span> plus petite que <span class="math notranslate nohighlight">\(E_{h_1}\)</span>.</p>
+<p>Si par exemple la fonction de perte est définie par l’erreur quadratique :</p>
+<div class="math notranslate nohighlight">
+\[\ell\left (y,h_1(\mathbf{x})\right ) = \frac{1}{2}(y-h_1(\mathbf{x}))^2\]</div>
+<p>alors le résidu s’écrit :</p>
+<div class="math notranslate nohighlight">
+\[e=y-h_1(\mathbf{x}) = -\frac{\partial}{\partial h_1(\mathbf{x})}\ell\left (y,h_1(\mathbf{x})\right )\]</div>
+<p>et le résidu est alors l’opposé du gradient.</p>
+<p>Appliqués en <span class="math notranslate nohighlight">\(Z\)</span>, ces résidus définissent un nouvel ensemble <span class="math notranslate nohighlight">\(\tilde{Z} = \{\mathbf{x}_i,e_i\}_{1\leq i\leq n}\)</span> sur lequel donc <span class="math notranslate nohighlight">\(h_2\)</span> est appris.</p>
+</div>
+<div class="section" id="algorithme-de-gradient-boosting">
+<h2>Algorithme de gradient boosting<a class="headerlink" href="#algorithme-de-gradient-boosting" title="Lien permanent vers ce titre">#</a></h2>
+<p>L’idée précédente, qui consiste à écrire les résidus comme des gradients, peut être généralisée, et donne lieu à l’algorithme de gradient boosting présenté dans l”<a class="reference internal" href="#gradboosting-algorithm">Algorithm 11</a>.</p>
+<div class="proof algorithm admonition" id="gradboosting-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 11 </span></p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Entrée</strong> : <span class="math notranslate nohighlight">\({Z} = \{\mathbf{x}_i,y_i\}_{1\leq i\leq n}\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span></p>
+<p><strong>Sortie</strong> : <span class="math notranslate nohighlight">\(F\)</span></p>
+<ol class="simple">
+<li><p>Calculer une première hypothèse <span class="math notranslate nohighlight">\(h_1\)</span> sur <span class="math notranslate nohighlight">\({Z} \)</span></p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(t=2\)</span> à <span class="math notranslate nohighlight">\(T\)</span></p>
+<ol class="simple">
+<li><p>Calculer <span class="math notranslate nohighlight">\((\forall i\in[\![1\cdots n]\!])\ e_i = -\frac{\partial}{\partial h_{t-1}(\mathbf{x}_i)}\ell(y_i,h_{t-1}(\mathbf{x}_i))\)</span></p></li>
+<li><p>Construire <span class="math notranslate nohighlight">\(\tilde{Z} = \{\mathbf{x}_i,e_i\}_{1\leq i\leq n}\)</span></p></li>
+<li><p>Apprendre <span class="math notranslate nohighlight">\(g\)</span> sur <span class="math notranslate nohighlight">\(\tilde{Z}\)</span></p></li>
+<li><p>Calculer <span class="math notranslate nohighlight">\(\lambda_t = arg \displaystyle\min_{\lambda} \left (\displaystyle\sum_{i=1}^n \ell\left ( y_i,h_{t-1}(\mathbf{x}_i)+\lambda g(\mathbf{x}_i)\right ) \right )\)</span></p></li>
+<li><p>Définir <span class="math notranslate nohighlight">\(h_t = h_{t-1} + \lambda_t g\)</span></p></li>
+</ol>
+</li>
+<li><p><span class="math notranslate nohighlight">\(F = h_T\)</span></p></li>
+</ol>
+</div>
+</div><p>La méthode agit de la même manière qu’une descente de gradient en ajustant l’hypothèse <span class="math notranslate nohighlight">\(h_t\)</span> en fonction de l’opposé du gradient de la fonction de perte <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
+<p>Nous avons introduit la méthode avec la fonction de perte quadratique, mais toute fonction de coût et les gradients associés peuvent être utilisés.</p>
+<p>Parmi tous les algorithmes de gradient boosting, XGBoost (Extreme Gradient Boosting),  LightGBM, tous deux utilisant des arbres de régression comme hypothèses, ont démontré leur efficacité lors de nombreux défis. En 2018, CatBoost a permis d’adapter ce type d’approche à des données catégorielles.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vbarra/anbook.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="randomforest.html" title="précédent page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">précédent</p>
+            <p class="prev-next-title">Forêts aléatoires</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mds.html" title="suivant page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Positionnement multidimensionnel</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent BARRA<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,162 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/local/Cellar/python@3.9/3.9.17/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 559, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mtensorflow[39;00m [38;5;28;01mas[39;00m [38;5;21;01mtf[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/__init__.py:37[0m, in [0;36m<module>[0;34m[0m
+[1;32m     34[0m [38;5;28;01mimport[39;00m [38;5;21;01msys[39;00m [38;5;28;01mas[39;00m [38;5;21;01m_sys[39;00m
+[1;32m     35[0m [38;5;28;01mimport[39;00m [38;5;21;01mtyping[39;00m [38;5;28;01mas[39;00m [38;5;21;01m_typing[39;00m
+[0;32m---> 37[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtools[39;00m [38;5;28;01mimport[39;00m module_util [38;5;28;01mas[39;00m _module_util
+[1;32m     38[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlazy_loader[39;00m [38;5;28;01mimport[39;00m LazyLoader [38;5;28;01mas[39;00m _LazyLoader
+[1;32m     40[0m [38;5;66;03m# Make sure code inside the TensorFlow codebase can use tf2.enabled() at import.[39;00m
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/__init__.py:42[0m, in [0;36m<module>[0;34m[0m
+[1;32m     37[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01meager[39;00m [38;5;28;01mimport[39;00m context
+[1;32m     39[0m [38;5;66;03m# pylint: enable=wildcard-import[39;00m
+[1;32m     40[0m 
+[1;32m     41[0m [38;5;66;03m# Bring in subpackages.[39;00m
+[0;32m---> 42[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m [38;5;28;01mimport[39;00m data
+[1;32m     43[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m [38;5;28;01mimport[39;00m distribute
+[1;32m     44[0m [38;5;66;03m# from tensorflow.python import keras[39;00m
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/__init__.py:21[0m, in [0;36m<module>[0;34m[0m
+[1;32m     15[0m [38;5;124;03m"""`tf.data.Dataset` API for input pipelines.[39;00m
+[1;32m     16[0m 
+[1;32m     17[0m [38;5;124;03mSee [Importing Data](https://tensorflow.org/guide/data) for an overview.[39;00m
+[1;32m     18[0m [38;5;124;03m"""[39;00m
+[1;32m     20[0m [38;5;66;03m# pylint: disable=unused-import[39;00m
+[0;32m---> 21[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m [38;5;28;01mimport[39;00m experimental
+[1;32m     22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdataset_ops[39;00m [38;5;28;01mimport[39;00m AUTOTUNE
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdataset_ops[39;00m [38;5;28;01mimport[39;00m Dataset
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/experimental/__init__.py:97[0m, in [0;36m<module>[0;34m[0m
+[1;32m     15[0m [38;5;124;03m"""Experimental API for building input pipelines.[39;00m
+[1;32m     16[0m 
+[1;32m     17[0m [38;5;124;03mThis module contains experimental `Dataset` sources and transformations that can[39;00m
+[0;32m   (...)[0m
+[1;32m     93[0m [38;5;124;03m@@UNKNOWN_CARDINALITY[39;00m
+[1;32m     94[0m [38;5;124;03m"""[39;00m
+[1;32m     96[0m [38;5;66;03m# pylint: disable=unused-import[39;00m
+[0;32m---> 97[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m [38;5;28;01mimport[39;00m service
+[1;32m     98[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbatching[39;00m [38;5;28;01mimport[39;00m dense_to_ragged_batch
+[1;32m     99[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbatching[39;00m [38;5;28;01mimport[39;00m dense_to_sparse_batch
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/__init__.py:419[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;66;03m# Copyright 2020 The TensorFlow Authors. All Rights Reserved.[39;00m
+[1;32m      2[0m [38;5;66;03m#[39;00m
+[1;32m      3[0m [38;5;66;03m# Licensed under the Apache License, Version 2.0 (the "License");[39;00m
+[0;32m   (...)[0m
+[1;32m     13[0m [38;5;66;03m# limitations under the License.[39;00m
+[1;32m     14[0m [38;5;66;03m# ==============================================================================[39;00m
+[1;32m     15[0m [38;5;124;03m"""API for using the tf.data service.[39;00m
+[1;32m     16[0m 
+[1;32m     17[0m [38;5;124;03mThis module contains:[39;00m
+[0;32m   (...)[0m
+[1;32m    416[0m [38;5;124;03m  job of ParameterServerStrategy).[39;00m
+[1;32m    417[0m [38;5;124;03m"""[39;00m
+[0;32m--> 419[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata_service_ops[39;00m [38;5;28;01mimport[39;00m distribute
+[1;32m    420[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata_service_ops[39;00m [38;5;28;01mimport[39;00m from_dataset_id
+[1;32m    421[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata_service_ops[39;00m [38;5;28;01mimport[39;00m register_dataset
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/data_service_ops.py:22[0m, in [0;36m<module>[0;34m[0m
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mprotobuf[39;00m [38;5;28;01mimport[39;00m data_service_pb2
+[1;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m [38;5;28;01mimport[39;00m tf2
+[0;32m---> 22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m [38;5;28;01mimport[39;00m compression_ops
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mservice[39;00m [38;5;28;01mimport[39;00m _pywrap_server_lib
+[1;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexperimental[39;00m[38;5;21;01m.[39;00m[38;5;21;01mservice[39;00m [38;5;28;01mimport[39;00m _pywrap_utils
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/experimental/ops/compression_ops.py:16[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;66;03m# Copyright 2020 The TensorFlow Authors. All Rights Reserved.[39;00m
+[1;32m      2[0m [38;5;66;03m#[39;00m
+[1;32m      3[0m [38;5;66;03m# Licensed under the Apache License, Version 2.0 (the "License");[39;00m
+[0;32m   (...)[0m
+[1;32m     13[0m [38;5;66;03m# limitations under the License.[39;00m
+[1;32m     14[0m [38;5;66;03m# ==============================================================================[39;00m
+[1;32m     15[0m [38;5;124;03m"""Ops for compressing and uncompressing dataset elements."""[39;00m
+[0;32m---> 16[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m structure
+[1;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mops[39;00m [38;5;28;01mimport[39;00m gen_experimental_dataset_ops [38;5;28;01mas[39;00m ged_ops
+[1;32m     20[0m [38;5;28;01mdef[39;00m [38;5;21mcompress[39m(element):
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/util/structure.py:22[0m, in [0;36m<module>[0;34m[0m
+[1;32m     18[0m [38;5;28;01mimport[39;00m [38;5;21;01mitertools[39;00m
+[1;32m     20[0m [38;5;28;01mimport[39;00m [38;5;21;01mwrapt[39;00m
+[0;32m---> 22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m nest
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m composite_tensor
+[1;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m ops
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/data/util/nest.py:34[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;66;03m# Copyright 2017 The TensorFlow Authors. All Rights Reserved.[39;00m
+[1;32m      2[0m [38;5;66;03m#[39;00m
+[1;32m      3[0m [38;5;66;03m# Licensed under the Apache License, Version 2.0 (the "License");[39;00m
+[0;32m   (...)[0m
+[1;32m     13[0m [38;5;66;03m# limitations under the License.[39;00m
+[1;32m     14[0m [38;5;66;03m# ==============================================================================[39;00m
+[1;32m     16[0m [38;5;124;03m"""## Functions for working with arbitrarily nested sequences of elements.[39;00m
+[1;32m     17[0m 
+[1;32m     18[0m [38;5;124;03mNOTE(mrry): This fork of the `tensorflow.python.util.nest` module[39;00m
+[0;32m   (...)[0m
+[1;32m     31[0m [38;5;124;03m   arrays.[39;00m
+[1;32m     32[0m [38;5;124;03m"""[39;00m
+[0;32m---> 34[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m sparse_tensor [38;5;28;01mas[39;00m _sparse_tensor
+[1;32m     35[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m _pywrap_utils
+[1;32m     36[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m nest
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/framework/sparse_tensor.py:25[0m, in [0;36m<module>[0;34m[0m
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m [38;5;28;01mimport[39;00m tf2
+[1;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m composite_tensor
+[0;32m---> 25[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m constant_op
+[1;32m     26[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m dtypes
+[1;32m     27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m ops
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/framework/constant_op.py:25[0m, in [0;36m<module>[0;34m[0m
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m types_pb2
+[1;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01meager[39;00m [38;5;28;01mimport[39;00m context
+[0;32m---> 25[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01meager[39;00m [38;5;28;01mimport[39;00m execute
+[1;32m     26[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m dtypes
+[1;32m     27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m op_callbacks
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/eager/execute.py:21[0m, in [0;36m<module>[0;34m[0m
+[1;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m [38;5;28;01mimport[39;00m pywrap_tfe
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01meager[39;00m [38;5;28;01mimport[39;00m core
+[0;32m---> 21[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m dtypes
+[1;32m     22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m ops
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframework[39;00m [38;5;28;01mimport[39;00m tensor_shape
+
+File [0;32m/usr/local/lib/python3.9/site-packages/tensorflow/python/framework/dtypes.py:37[0m, in [0;36m<module>[0;34m[0m
+[1;32m     34[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mfunction[39;00m [38;5;28;01mimport[39;00m trace_type
+[1;32m     35[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtensorflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtools[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdocs[39;00m [38;5;28;01mimport[39;00m doc_controls
+[0;32m---> 37[0m _np_bfloat16 [38;5;241m=[39m [43m_pywrap_bfloat16[49m[38;5;241;43m.[39;49m[43mTF_bfloat16_type[49m[43m([49m[43m)[49m
+[1;32m     38[0m _np_float8_e4m3fn [38;5;241m=[39m _pywrap_float8[38;5;241m.[39mTF_float8_e4m3fn_type()
+[1;32m     39[0m _np_float8_e5m2 [38;5;241m=[39m _pywrap_float8[38;5;241m.[39mTF_float8_e5m2_type()
+
+[0;31mTypeError[0m: Unable to convert function return value to a Python type! The signature was
+	() -> handle
+TypeError: Unable to convert function return value to a Python type! The signature was
+	() -> handle
+
