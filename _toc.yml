@@ -34,11 +34,5 @@ parts:
         - file: mds
         - file: isomap
         - file: lle
-<<<<<<< HEAD
         - file: manifold
-<<<<<<< HEAD
-=======
-        - file: manifold
->>>>>>> 635759c (changes)
-=======
->>>>>>> main
+
