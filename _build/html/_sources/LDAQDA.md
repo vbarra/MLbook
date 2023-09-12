@@ -399,7 +399,7 @@ plt.axis('tight')
 
 Pour prédire la classe de nouvelles données par LDA ou QDA,  il faut d'abord apprendre les paramètres sous-jacents à partir des $n$ données d'apprentissage.
 
-- pour LDA et QDA on doit apprendre les $\pi_i$ les les vecteurs $\mu_i, i\in[\![1,c]\!]
+- pour LDA et QDA on doit apprendre les $\pi_i$ les les vecteurs $\mu_i, i\in[\![1,c]\!]$
 - on doit apprendre les $\Sigma_i$ pour QDA, et $\Sigma$ pour LDA
 
 ce qui amène à $C-1+Cn+\frac{n(n+1)}{2}$ paramètres pour LDA et $C-1+Cn+C\frac{n(n+1)}{2}$ paramètres pour QDA.
