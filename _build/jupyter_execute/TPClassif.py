@@ -46,10 +46,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 #     l'échantillon $i$.
 # - Recommencer $k$ fois en faisant varier l'échantillon $i$ de 1 à $k$.
 #   
-# L'erreur estimée finale est donnée par la moyenne des erreurs mesurées : 
-# 
-#     $${\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
-#     \sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)$$ 
+# L'erreur estimée finale est donnée par la moyenne des erreurs mesurées ${\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
+#     \sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)$ 
 # 
 # Par exemple, pour un classifieur MyClassifier, on peut écrire 
 # 
