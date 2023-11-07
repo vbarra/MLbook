@@ -579,10 +579,11 @@ title="Print to PDF"
 l’échantillon <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
 <li><p>Recommencer <span class="math notranslate nohighlight">\(k\)</span> fois en faisant varier l’échantillon <span class="math notranslate nohighlight">\(i\)</span> de 1 à <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 </ul>
-<p>L’erreur estimée finale est donnée par la moyenne des erreurs
-mesurées :
-$<span class="math notranslate nohighlight">\({\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
-    \sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)\)</span>$</p>
+<p>L’erreur estimée finale est donnée par la moyenne des erreurs mesurées :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$${\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
+\sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)$$ 
+</pre></div>
+</div>
 <p>Par exemple, pour un classifieur MyClassifier, on peut écrire</p>
 <p><code class="docutils literal notranslate"><span class="pre">modele</span> <span class="pre">=</span> <span class="pre">MyClassifier(param1)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">param_range</span> <span class="pre">=</span> <span class="pre">[0.0001,</span> <span class="pre">0.001,</span> <span class="pre">0.01,</span> <span class="pre">0.1,</span> <span class="pre">1.0,</span> <span class="pre">10.0,</span> <span class="pre">100.0,</span> <span class="pre">1000.0]</span></code></p>
