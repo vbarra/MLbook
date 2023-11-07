@@ -27,7 +27,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # ## Utilisation des algorithmes de classification
 # 
 # Classer ces donncés en utilisant les algorithmes suivants :
-# - Un [classifieur naf de Bayes](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes)
+# - Un [classifieur naïf de Bayes](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes)
 # - l'[analyse discriminante linéaire](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis)
 # - l'[analyse discriminante quadratique](https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html#sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis)
 # - l'algorithme des [k plus proches voisins](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)
