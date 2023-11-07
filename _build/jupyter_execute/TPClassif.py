@@ -33,9 +33,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # - l'algorithme des [k plus proches voisins](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier)
 # - les [arbres de décision](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
 # - les différentes versions de [SVM](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.svm) vues en cours (linéaire, soft margin, à noyau)
-# 
-# 
-# ## Optimisation ds hyperparamètres
+
+# ## Optimisation des hyperparamètres
 # Chaque algorithme dépend de paramètres (`n_neighbors` pour les k plus proches voisins, `max_depth` ou `min_samples_leaf` pour les arbres de décisions, ...) qu'il convient de régler au "mieux". Pour cela vous pourrez utiliser une technique de [validation croisée](https://scikit-learn.org/stable/modules/cross_validation.html) avec [grid search](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV) qui permet de parcourir l'espace discrétisé des paramètres pour trouver la "meilleure" combinaison.
 # 
 # La validation croisée à k plis (k fold) consiste à : 
@@ -67,7 +66,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # 
 # 
 # 
-# .
+# 
 
 # ## Analyse de performance
 # Pour les différents algorithmes utilisés, vous pouvez mesurer leur performance grace à l'ensemble de test `(X_test,y_test)` Il vous suffit pour cela de comparer les résultats fournis par vos algorithmes avec la vérité terrain.

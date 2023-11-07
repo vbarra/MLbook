@@ -468,8 +468,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimisation-ds-hyperparametres">
-   Optimisation ds hyperparamètres
+  <a class="reference internal nav-link" href="#optimisation-des-hyperparametres">
+   Optimisation des hyperparamètres
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -507,8 +507,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimisation-ds-hyperparametres">
-   Optimisation ds hyperparamètres
+  <a class="reference internal nav-link" href="#optimisation-des-hyperparametres">
+   Optimisation des hyperparamètres
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -567,8 +567,8 @@ title="Print to PDF"
 <li><p>les différentes versions de <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.svm">SVM</a> vues en cours (linéaire, soft margin, à noyau)</p></li>
 </ul>
 </div>
-<div class="section" id="optimisation-ds-hyperparametres">
-<h2>Optimisation ds hyperparamètres<a class="headerlink" href="#optimisation-ds-hyperparametres" title="Lien permanent vers ce titre">#</a></h2>
+<div class="section" id="optimisation-des-hyperparametres">
+<h2>Optimisation des hyperparamètres<a class="headerlink" href="#optimisation-des-hyperparametres" title="Lien permanent vers ce titre">#</a></h2>
 <p>Chaque algorithme dépend de paramètres (<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> pour les k plus proches voisins, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> ou <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> pour les arbres de décisions, …) qu’il convient de régler au « mieux ». Pour cela vous pourrez utiliser une technique de <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">validation croisée</a> avec <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">grid search</a> qui permet de parcourir l’espace discrétisé des paramètres pour trouver la « meilleure » combinaison.</p>
 <p>La validation croisée à k plis (k fold) consiste à :</p>
 <ul class="simple">
@@ -589,7 +589,6 @@ l’échantillon <span class="math notranslate nohighlight">\(i\)</span>.</p></l
 <p><code class="docutils literal notranslate"><span class="pre">gs</span> <span class="pre">=</span> <span class="pre">gs.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">modele</span> <span class="pre">=</span> <span class="pre">gs.best_estimator_</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">modele.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
-<p>.</p>
 </div>
 <div class="section" id="analyse-de-performance">
 <h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Lien permanent vers ce titre">#</a></h2>
