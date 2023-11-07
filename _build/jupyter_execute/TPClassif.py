@@ -36,7 +36,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # 
 # 
 # ## Optimisation ds hyperparamètres
-# Chaque algorithme dépend de paramètres (`n_neighbors` pour les k plus proches voisins, `max_depth`ou `min_samples_leaf` pour les arbres de décisions, ...) qu'il convient de régler au "mieux". Pour cela vous pourrez utiliser une technique de [validation croisée](https://scikit-learn.org/stable/modules/cross_validation.html) avec [grid search](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV) qui permet de parcourir l'espace discrétisé des paramètres pour trouver la "meilleure" combinaison.
+# Chaque algorithme dépend de paramètres (`n_neighbors` pour les k plus proches voisins, `max_depth` ou `min_samples_leaf` pour les arbres de décisions, ...) qu'il convient de régler au "mieux". Pour cela vous pourrez utiliser une technique de [validation croisée](https://scikit-learn.org/stable/modules/cross_validation.html) avec [grid search](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV) qui permet de parcourir l'espace discrétisé des paramètres pour trouver la "meilleure" combinaison.
 # 
 # La validation croisée à k plis (k fold) consiste à 
 # - Diviser les données d'apprentissage  en $k$ sous-échantillons de tailles égales.
