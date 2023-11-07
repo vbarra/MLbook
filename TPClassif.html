@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparaison de méthodes de classification supervisée &#8212; Apprentissage automatique</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Unification" href="manifold.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="fr">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Apprentissage automatique
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="possible.html">
+   Exemple introductif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="approchestat.html">
+   Modèle statistique de l’apprentissage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modelesup.html">
+   Modèle du processus d’apprentissage supervisé
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bayes.html">
+   Classifieur naïf de Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LDAQDA.html">
+   Analyses discriminantes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="knn.html">
+   K plus proches voisins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arbres_decision.html">
+   Arbres de décision
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Méthodes à noyau
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="svmGeom.html">
+   SVM linéaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="kernelTrick.html">
+   Astuce du noyau
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Méthodes d'ensemble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="baggingboosting.html">
+   Bootstraping et bagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaboost.html">
+   Boosting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinaison.html">
+   Méthodes de combinaison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="randomforest.html">
+   Forêts aléatoires
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gradientboosting.html">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Manifold learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mds.html">
+   Positionnement multidimensionnel
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="isomap.html">
+   ISOMAP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lle.html">
+   Local Linear Embedding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="manifold.html">
+   Unification
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  TP
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Comparaison de méthodes de classification supervisée
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/vbarra/anbook.git"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2FTPClassif.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/TPClassif.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jeu-de-donnees">
+   Jeu de données
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utilisation-des-algorithmes-de-classification">
+   Utilisation des algorithmes de classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimisation-ds-hyperparametres">
+   Optimisation ds hyperparamètres
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-de-performance">
+   Analyse de performance
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Comparaison de méthodes de classification supervisée</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jeu-de-donnees">
+   Jeu de données
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#utilisation-des-algorithmes-de-classification">
+   Utilisation des algorithmes de classification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimisation-ds-hyperparametres">
+   Optimisation ds hyperparamètres
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-de-performance">
+   Analyse de performance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="comparaison-de-methodes-de-classification-supervisee">
+<h1>Comparaison de méthodes de classification supervisée<a class="headerlink" href="#comparaison-de-methodes-de-classification-supervisee" title="Lien permanent vers ce titre">#</a></h1>
+<p>Les objectifs de ce TP sont :</p>
+<ul class="simple">
+<li><p>de prendre en main et d’utiliser les méthodes de classification supervisée vues en cours, à l’aide de la libririe <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a>.</p></li>
+<li><p>d’évaluer la performance des algorithmes et de les paramétrer au mieux.</p></li>
+</ul>
+<div class="section" id="jeu-de-donnees">
+<h2>Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Lien permanent vers ce titre">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Jeu de données en classification binaire&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/TPClassif_2_0.png" src="_images/TPClassif_2_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="utilisation-des-algorithmes-de-classification">
+<h2>Utilisation des algorithmes de classification<a class="headerlink" href="#utilisation-des-algorithmes-de-classification" title="Lien permanent vers ce titre">#</a></h2>
+<p>Classer ces donncés en utilisant les algorithmes suivants :</p>
+<ul class="simple">
+<li><p>Un <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes">classifieur naf de Bayes</a></p></li>
+<li><p>l”<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html#sklearn.discriminant_analysis.LinearDiscriminantAnalysis">analyse discriminante linéaire</a></p></li>
+<li><p>l”<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html#sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis">analyse discriminante quadratique</a></p></li>
+<li><p>l’algorithme des <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier">k plus proches voisins</a></p></li>
+<li><p>les <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier">arbres de décision</a></p></li>
+<li><p>les différentes versions de <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.svm">SVM</a> vues en cours (linéaire, soft margin, à noyau)</p></li>
+</ul>
+</div>
+<div class="section" id="optimisation-ds-hyperparametres">
+<h2>Optimisation ds hyperparamètres<a class="headerlink" href="#optimisation-ds-hyperparametres" title="Lien permanent vers ce titre">#</a></h2>
+<p>Chaque algorithme dépend de paramètres (<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> pour les k plus proches voisins, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>ou <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> pour les arbres de décisions, …) qu’il convient de régler au « mieux ». Pour cela vous pourrez utiliser une technique de <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">validation croisée</a> avec <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">grid search</a> qui permet de parcourir l’espace discrétisé des paramètres pour trouver la « meilleure » combinaison.</p>
+<p>La validation croisée à k plis (k fold) consiste à</p>
+<ul class="simple">
+<li><p>Diviser les données d’apprentissage  en <span class="math notranslate nohighlight">\(k\)</span> sous-échantillons de tailles égales.</p></li>
+<li><p>Retenir l’un de ces échantillons,  de numéro <span class="math notranslate nohighlight">\(i\)</span>, pour le test et apprendre sur les <span class="math notranslate nohighlight">\(k-1\)</span> autres.</p></li>
+<li><p>Mesurer le taux d’erreur empirique
+<span class="math notranslate nohighlight">\({\widehat{R}}_{\text{Réel}}^{i}(h)\)</span> sur
+l’échantillon <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>Recommencer <span class="math notranslate nohighlight">\(k\)</span> fois en faisant varier l’échantillon <span class="math notranslate nohighlight">\(i\)</span> de 1 à <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+</ul>
+<p>L’erreur estimée finale est donnée par la moyenne des erreurs
+mesurées :
+$<span class="math notranslate nohighlight">\({\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
+    \sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)\)</span>$</p>
+<p>Par exemple, pour un classifieur MyClassifier, on peut écrire</p>
+<p><code class="docutils literal notranslate"><span class="pre">modele</span> <span class="pre">=</span> <span class="pre">MyClassifier(param1)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">param_range</span> <span class="pre">=</span> <span class="pre">[0.0001,</span> <span class="pre">0.001,</span> <span class="pre">0.01,</span> <span class="pre">0.1,</span> <span class="pre">1.0,</span> <span class="pre">10.0,</span> <span class="pre">100.0,</span> <span class="pre">1000.0]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">param_grid</span> <span class="pre">=</span> <span class="pre">[{'param1':</span> <span class="pre">param_range}]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gs</span> <span class="pre">=</span> <span class="pre">GridSearchCV(estimator=modele,</span> <span class="pre">param_grid=param_grid,</span> <span class="pre">scoring='accuracy',</span> <span class="pre">cv=10,n_jobs=-1)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gs</span> <span class="pre">=</span> <span class="pre">gs.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">modele</span> <span class="pre">=</span> <span class="pre">gs.best_estimator_</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">modele.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
+<p>.</p>
+</div>
+<div class="section" id="analyse-de-performance">
+<h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Lien permanent vers ce titre">#</a></h2>
+<p>Pour les différents algorithmes utilisés, vous pouvez mesurer leur performance grace à l’ensemble de test <code class="docutils literal notranslate"><span class="pre">(X_test,y_test)</span></code> Il vous suffit pour cela de comparer les résultats fournis par vos algorithmes avec la vérité terrain.</p>
+<p>Vous pouvez utiliser plusieurs <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">indices quantitatifs</a> vous permettant de mesurer la performance de vos algorithmes.</p>
+<p>On peut par exemple partir de la matrice de confusion <span class="math notranslate nohighlight">\(M(i,j)\)</span> d’une algorithme classification, qui est
+une matrice <span class="math notranslate nohighlight">\(C \times C\)</span> dont l’élément générique donne le nombre d’exemples de l’ensemble de test
+de la classe <span class="math notranslate nohighlight">\(i\)</span> qui ont été classés dans la classe <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>Dans le cas d’une classification binaire, la matrice de confusion est donc de
+la forme :</p>
+<table border=4 cellspacing=4 cellpadding=4 width=80%>
+    <tr>
+        <td align=center>prédite/réelle</td>
+        <td align=center>+ (P)</td>
+        <td align=center>- (N)</td>
+    </tr>
+    <tr>
+        <td>+</td>
+        <td>Vrais positifs (VP)</td>
+        <td>Faux positifs (FP)</td>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td>Faux négatifs (FN)</td>
+        <td>Vrais négatifs (VN)</td>
+    </tr>
+</table>
+<p>A partir des VP,FP,VN,FN, on déduit plusieurs mesures :</p>
+<ul class="simple">
+<li><p>le taux de vrais positifs : <span class="math notranslate nohighlight">\(taux\_VP = \frac{VP}{P}\)</span>  (aussi appelé sensibilité)</p></li>
+<li><p>le taux de vrais négatifs : <span class="math notranslate nohighlight">\(taux\_VN = \frac{VN}{N}\)</span>  (aussi appelé spécificité)</p></li>
+<li><p>le <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve">rappel</a> (recall) : <span class="math notranslate nohighlight">\(R = \frac{VP}{P}\)</span></p></li>
+<li><p>la <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve">précision</a> : <span class="math notranslate nohighlight">\(P = \frac{VP}{VP + FP}\)</span></p></li>
+<li><p>la F_mesure, qui est une moyenne harmonique du rappel et de la précision (avec <span class="math notranslate nohighlight">\(\beta &gt; 0\)</span>) : $<span class="math notranslate nohighlight">\(F\_mesure = \frac{(1 + \beta^2) \cdot R \cdot P}{\beta^2 (R + P)}\)</span>$</p></li>
+<li><p>et en partiulier, la F1_mesure; pour <span class="math notranslate nohighlight">\(\beta=1\)</span> : $<span class="math notranslate nohighlight">\(F1\_mesure = \frac{2 \cdot R \cdot P}{R+P}\)</span>$</p></li>
+<li><p>la <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve">ROC-curve</a> : dans un contexte de prise de décision, il peut être utile de prendre en compte non seulement un taux d’erreur, mais aussi les taux de FP et de FN. Souvent, en effet, le coût de mauvaise classification n’est pas symétrique et l’on peut préférer avoir un taux d’erreur un peu moins bon si cela permet de réduire le type d’erreur le plus coûteux. La courbe  (Receiver Operating Characteristic) permet de régler ce compromis. Intéressons nous par exemple à un problème de classification à deux classes. Si la sortie du classifieur (fonction de décision) s’appuie sur une fonction  à valeur réelle définie sur l’espace des entrées , on peut calculer pour chaque classe la probabilité d’appartenir à cette classe en fonction de la valeur de sortie de la fonction . Pour chaque seuil de décision, on peut calculer la proportion de VP (fraction des exemples de la classe  étiquetés comme  à partir du seuil de décision) et de FP. On reporte alors la proportion de VP en fonction de celle des FP, et le graphique résultant est la courbe ROC. Idéalement, si la fonction  permet de séparer complètement les deux distributions de probabilité correspondant aux deux classes (apprentissage parfait), on peut obtenir 100 % de VP pour 100 % de FP pour un seuil donné passant entre les deux courbes. En revanche, si les deux distributions se superposent parfaitement (aucune discrimination), alors, pour chaque seuil de décision, il y a autant de VP que de FP. La courbe ROC est alors la droite correspondant à la fonction identité.</p></li>
+</ul>
+<p>Plus la courbe s’incurve vers le haut, plus le test est pertinent. La pertinence est mesurée par l’aire sous la courbe (AUC : Area Under the Curve).</p>
+<p>Lorsque l’on a trouvé un système de classification suffisamment bon,
+il reste à choisir le seuil pour un diagnostic classe <span class="math notranslate nohighlight">\(+\)</span> / classe <span class="math notranslate nohighlight">\(-\)</span>.  Ce
+choix doit fournir une proportion de VP élevée sans
+entraîner une proportion inacceptable de FP.  Chaque point de la
+courbe représente un seuil particulier, allant du plus sévère (limitant
+le nombre de FP au prix de nombreux exemples de la classe <code class="docutils literal notranslate"><span class="pre">+</span></code> non
+diagnostiqués (forte proportion de FN, et donc faible
+proportion de VP), aux plus laxistes (augmentant le nombre de VP au prix de nombreux FP). Le
+seuil optimal pour une application donnée dépend de facteurs tels que les
+coûts relatifs des FP et FN, comme de celui de la  prévalence de la classe <span class="math notranslate nohighlight">\(+\)</span>.</p>
+<p>On peut comparer plusieurs systèmes d’apprentissage à l’aide de leurs courbes ROC. Si, pour une tâche donnée, un système a une courbe uniformément supérieure à celle de l’autre système, alors on peut conclure qu’il a un meilleur pouvoir discriminant. En revanche, il peut arriver que les courbes ROC correspondant aux deux systèmes se chevauchent. Dans ce cas, chaque système est supérieur à l’autre pour un intervalle de valeurs du critère de décision et le choix doit s’opérer sur la base des coûts relatifs des FP et des FN.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "vbarra/anbook.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="manifold.html" title="précédent page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">précédent</p>
+            <p class="prev-next-title">Unification</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Vincent BARRA<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
