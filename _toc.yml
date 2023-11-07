@@ -35,4 +35,7 @@ parts:
         - file: isomap
         - file: lle
         - file: manifold
+  - caption: TP
+    chapters:
+        - file: TPClassif
 

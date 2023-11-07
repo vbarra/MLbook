@@ -37,7 +37,7 @@
 # 
 # $$\forall i\quad y_i (\mathbf  w^T\mathbf x_i + b) \ge 1$$
 # 
-# les hyperplans $mathbf w^T\mathbf x_i + b =\pm 1$ sont appelés les hyperplans supports.
+# les hyperplans $\mathbf w^T\mathbf x_i + b =\pm 1$ sont appelés les hyperplans supports.
 # 
 # 
 # 
