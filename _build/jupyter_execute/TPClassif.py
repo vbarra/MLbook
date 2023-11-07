@@ -38,7 +38,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # ## Optimisation ds hyperparamètres
 # Chaque algorithme dépend de paramètres (`n_neighbors` pour les k plus proches voisins, `max_depth` ou `min_samples_leaf` pour les arbres de décisions, ...) qu'il convient de régler au "mieux". Pour cela vous pourrez utiliser une technique de [validation croisée](https://scikit-learn.org/stable/modules/cross_validation.html) avec [grid search](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV) qui permet de parcourir l'espace discrétisé des paramètres pour trouver la "meilleure" combinaison.
 # 
-# La validation croisée à k plis (k fold) consiste à 
+# La validation croisée à k plis (k fold) consiste à : 
 # - Diviser les données d'apprentissage  en $k$ sous-échantillons de tailles égales.
 # - Retenir l'un de ces échantillons,  de numéro $i$, pour le test et apprendre sur les $k-1$ autres.
 # - Mesurer le taux d'erreur empirique
@@ -47,7 +47,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # - Recommencer $k$ fois en faisant varier l'échantillon $i$ de 1 à $k$.
 #   
 # L'erreur estimée finale est donnée par la moyenne des erreurs mesurées ${\widehat{R}}_{\text{Réel}}(h) \; = \; \frac{1}{k} \,
-#     \sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)$ 
+#     \displaystyle\sum_{i=1}^{k} {\widehat{R}}_{\text{Réel}}^{i}(h)$ 
 # 
 # Par exemple, pour un classifieur MyClassifier, on peut écrire 
 # 
@@ -110,12 +110,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # 
 # 
 # 
-# - la [ROC-curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve) : dans un contexte de prise de décision, il peut être utile de prendre en compte non seulement un taux d'erreur, mais aussi les taux de FP et de FN. Souvent, en effet, le coût de mauvaise classification n'est pas symétrique et l'on peut préférer avoir un taux d'erreur un peu moins bon si cela permet de réduire le type d'erreur le plus coûteux. La courbe  (Receiver Operating Characteristic) permet de régler ce compromis. Intéressons nous par exemple à un problème de classification à deux classes. Si la sortie du classifieur (fonction de décision) s'appuie sur une fonction  à valeur réelle définie sur l'espace des entrées , on peut calculer pour chaque classe la probabilité d'appartenir à cette classe en fonction de la valeur de sortie de la fonction . Pour chaque seuil de décision, on peut calculer la proportion de VP (fraction des exemples de la classe  étiquetés comme  à partir du seuil de décision) et de FP. On reporte alors la proportion de VP en fonction de celle des FP, et le graphique résultant est la courbe ROC. Idéalement, si la fonction  permet de séparer complètement les deux distributions de probabilité correspondant aux deux classes (apprentissage parfait), on peut obtenir 100 % de VP pour 100 % de FP pour un seuil donné passant entre les deux courbes. En revanche, si les deux distributions se superposent parfaitement (aucune discrimination), alors, pour chaque seuil de décision, il y a autant de VP que de FP. La courbe ROC est alors la droite correspondant à la fonction identité.
-# 
-# Plus la courbe s'incurve vers le haut, plus le test est pertinent. La pertinence est mesurée par l'aire sous la courbe (AUC : Area Under the Curve).
-# 
-# Lorsque l'on a trouvé un système de classification suffisamment bon,
-# il reste à choisir le seuil pour un diagnostic classe $+$ / classe $-$.  Ce
+# - la [ROC-curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve) : dans un contexte de prise de décision, il peut être utile de prendre en compte non seulement un taux d'erreur, mais aussi les taux de FP et de FN. Souvent, en effet, le coût de mauvaise classification n'est pas symétrique et l'on peut préférer avoir un taux d'erreur un peu moins bon si cela permet de réduire le type d'erreur le plus coûteux. La courbe  (Receiver Operating Characteristic) permet de régler ce compromis. Intéressons nous par exemple à un problème de classification à deux classes. Si la sortie du classifieur (fonction de décision) s'appuie sur une fonction  à valeur réelle définie sur l'espace des entrées , on peut calculer pour chaque classe la probabilité d'appartenir à cette classe en fonction de la valeur de sortie de la fonction . Pour chaque seuil de décision, on peut calculer la proportion de VP (fraction des exemples de la classe  étiquetés comme  à partir du seuil de décision) et de FP. On reporte alors la proportion de VP en fonction de celle des FP, et le graphique résultant est la courbe ROC. Idéalement, si la fonction  permet de séparer complètement les deux distributions de probabilité correspondant aux deux classes (apprentissage parfait), on peut obtenir 100 % de VP pour 100 % de FP pour un seuil donné passant entre les deux courbes. En revanche, si les deux distributions se superposent parfaitement (aucune discrimination), alors, pour chaque seuil de décision, il y a autant de VP que de FP. La courbe ROC est alors la droite correspondant à la fonction identité. Plus la courbe s'incurve vers le haut, plus le test est pertinent. La pertinence est mesurée par l'aire sous la courbe (AUC : Area Under the Curve). Lorsque l'on a trouvé un système de classification suffisamment bon,
+# il reste à choisir le seuil pour un diagnostic classe `+` / classe `-`.  Ce
 # choix doit fournir une proportion de VP élevée sans
 # entraîner une proportion inacceptable de FP.  Chaque point de la
 # courbe représente un seuil particulier, allant du plus sévère (limitant
@@ -123,7 +119,13 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # diagnostiqués (forte proportion de FN, et donc faible
 # proportion de VP), aux plus laxistes (augmentant le nombre de VP au prix de nombreux FP). Le
 # seuil optimal pour une application donnée dépend de facteurs tels que les
-# coûts relatifs des FP et FN, comme de celui de la  prévalence de la classe $+$. 
+# coûts relatifs des FP et FN, comme de celui de la  prévalence de la classe `+`. 
 # 
 # 
 # On peut comparer plusieurs systèmes d'apprentissage à l'aide de leurs courbes ROC. Si, pour une tâche donnée, un système a une courbe uniformément supérieure à celle de l'autre système, alors on peut conclure qu'il a un meilleur pouvoir discriminant. En revanche, il peut arriver que les courbes ROC correspondant aux deux systèmes se chevauchent. Dans ce cas, chaque système est supérieur à l'autre pour un intervalle de valeurs du critère de décision et le choix doit s'opérer sur la base des coûts relatifs des FP et des FN.
+
+# In[ ]:
+
+
+
+
