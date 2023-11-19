@@ -138,7 +138,7 @@
 # 
 # Il n'est souvent pas nécessaire de développer l'arbre jusqu'au bout, ceci entraînant des risques de sur-apprentissage. A l'inverse, le cas limite de l'arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de techniques d'élagage (pruning) d'arbres de décision.
 # 
-# Il existe une théorie élégante pour trouver l'rbre optimal, minimisant l'erreur de prédiction (en classification ou rgression) pénalisée par la complexité de l'arbre (mesurée par le nombre de feuilles).
+# Il existe une théorie élégante pour trouver l'rbre optimal, minimisant l'erreur de prédiction (en classification ou régression) pénalisée par la complexité de l'arbre (mesurée par le nombre de feuilles).
 # 
 # Soit donc $T$ un abre de complexité son nombre de feuilles $|T|$. On définit l'erreur d'ajustement de $T$ par 
 # 
