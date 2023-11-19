@@ -718,9 +718,9 @@ title="Print to PDF"
 <div class="section" id="empilement">
 <h3>Empilement<a class="headerlink" href="#empilement" title="Lien permanent vers ce titre">#</a></h3>
 <p>L’objectif de cette méthode est d’augmenter la capacité de généralisation du classifieur fort <span class="math notranslate nohighlight">\(h\)</span>. Des méta données sont crées à partir des prédictions des classifieurs sur les données de <span class="math notranslate nohighlight">\(Z\)</span> . Un nouvel algorithme d’apprentissage est alors utilisé sur ces méta données, pour prédire quelles combinaisons des classifieurs faibles donne de bons résultats.</p>
-<p>La méthode originale dite de stacking naïf  est présenté dans l”<a class="reference internal" href="#stacking-algorithm">Algorithm 8</a>.</p>
+<p>La méthode originale dite de stacking naïf  est présenté dans l”<a class="reference internal" href="#stacking-algorithm">Algorithm 9</a>.</p>
 <div class="proof algorithm admonition" id="stacking-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 8 </span></p>
+<p class="admonition-title"><span class="caption-number">Algorithm 9 </span></p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(M\)</span></p>
 <p><strong>Sortie</strong> : Un classifieur <span class="math notranslate nohighlight">\(h\)</span></p>
@@ -735,9 +735,9 @@ title="Print to PDF"
 </ol>
 <p>Apprendre <span class="math notranslate nohighlight">\(h\)</span> sur <span class="math notranslate nohighlight">\(Z^*\)</span></p>
 </div>
-</div><p>Le stacking naïf peut facilement faire du surapprentissage, si un ou plusieurs des classifieurs <span class="math notranslate nohighlight">\(h_i\)</span> sur-apprennent. Pour limiter cet effet, un algorithme basé sur la validation croisée (<a class="reference internal" href="#CV-algorithm">Algorithm 9</a>) est proposé.</p>
+</div><p>Le stacking naïf peut facilement faire du surapprentissage, si un ou plusieurs des classifieurs <span class="math notranslate nohighlight">\(h_i\)</span> sur-apprennent. Pour limiter cet effet, un algorithme basé sur la validation croisée (<a class="reference internal" href="#CV-algorithm">Algorithm 10</a>) est proposé.</p>
 <div class="proof algorithm admonition" id="CV-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 9 </span></p>
+<p class="admonition-title"><span class="caption-number">Algorithm 10 </span></p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(M\)</span></p>
 <p><strong>Sortie</strong> : Un classifieur <span class="math notranslate nohighlight">\(h\)</span></p>
