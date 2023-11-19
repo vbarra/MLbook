@@ -169,7 +169,7 @@ L'arbre optimal est alors construit en appliquant l'({prf:ref}`Breiman`)
 
 
 
-```{prf:algorithm} Arbre(noeud X)
+```{prf:algorithm} ArbreOptimal
 :label: Breiman
 **Entrée** : l'ensemble d'apprentissage $Z$
 
