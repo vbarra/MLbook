@@ -136,7 +136,7 @@
 # 
 # ## Elagage d'arbres
 # 
-# Il n'est souvent pas nécessaire de développer l'arbre jusqu'au bout, ceci entraînant des risques de sur-apprentissage. A l'inverse, le cas limite de l'arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de technique d'élagage (pruning) d'arbres de décision.
+# Il n'est souvent pas nécessaire de développer l'arbre jusqu'au bout, ceci entraînant des risques de sur-apprentissage. A l'inverse, le cas limite de l'arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de techniques d'élagage (pruning) d'arbres de décision.
 # 
 # Il existe une théorie élégante pour trouver l'rbre optimal, minimisant l'erreur de prédiction (en classification ou rgression) pénalisée par la complexité de l'arbre (mesurée par le nombre de feuilles).
 # 
@@ -172,8 +172,8 @@
 #   1. Calculer $T_{max}$
 #   2. Calculer la suite de Breiman $T_1\supset T_2\cdots T_K$ associée à la suite de paramètres $\gamma_1, \cdots \gamma_K$
 #   3. Pour $v=1$ à $V$ (erreur de validation V-fold)
-#     1. Pour chaque ensemble de $V-1$ folds, estimer la suite des arbres associés à $\gamma_1, \cdots \gamma_K$
-#     2. Estimer l'erreur sur le fold
+#       1. Pour chaque ensemble de $V-1$ folds, estimer la suite des arbres associés à $\gamma_1, \cdots \gamma_K$
+#       2. Estimer l'erreur sur le fold
 #   4. Pour chaque $\gamma_1, \cdots \gamma_K$ calculer la moyenne des erreurs.
 #   5. Déterminer la valeur optimale $\gamma_{opt}$ minimisant l'erreur moyenne.
 #   6. Retenir l'arbre correspondant à $\gamma_{opt}$ dans $T_1\supset T_2\cdots T_K$

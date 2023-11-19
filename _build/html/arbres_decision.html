@@ -729,7 +729,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div></div>
 <div class="section" id="elagage-d-arbres">
 <h2>Elagage d’arbres<a class="headerlink" href="#elagage-d-arbres" title="Lien permanent vers ce titre">#</a></h2>
-<p>Il n’est souvent pas nécessaire de développer l’arbre jusqu’au bout, ceci entraînant des risques de sur-apprentissage. A l’inverse, le cas limite de l’arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de technique d’élagage (pruning) d’arbres de décision.</p>
+<p>Il n’est souvent pas nécessaire de développer l’arbre jusqu’au bout, ceci entraînant des risques de sur-apprentissage. A l’inverse, le cas limite de l’arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de techniques d’élagage (pruning) d’arbres de décision.</p>
 <p>Il existe une théorie élégante pour trouver l’rbre optimal, minimisant l’erreur de prédiction (en classification ou rgression) pénalisée par la complexité de l’arbre (mesurée par le nombre de feuilles).</p>
 <p>Soit donc <span class="math notranslate nohighlight">\(T\)</span> un abre de complexité son nombre de feuilles <span class="math notranslate nohighlight">\(|T|\)</span>. On définit l’erreur d’ajustement de <span class="math notranslate nohighlight">\(T\)</span> par</p>
 <div class="math notranslate nohighlight">
@@ -754,9 +754,12 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 <ol class="simple">
 <li><p>Calculer <span class="math notranslate nohighlight">\(T_{max}\)</span></p></li>
 <li><p>Calculer la suite de Breiman <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span> associée à la suite de paramètres <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span></p></li>
-<li><p>Pour <span class="math notranslate nohighlight">\(v=1\)</span> à <span class="math notranslate nohighlight">\(V\)</span> (erreur de validation V-fold)
-1. Pour chaque ensemble de <span class="math notranslate nohighlight">\(V-1\)</span> folds, estimer la suite des arbres associés à <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span>
-2. Estimer l’erreur sur le fold</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(v=1\)</span> à <span class="math notranslate nohighlight">\(V\)</span> (erreur de validation V-fold)</p>
+<ol class="simple">
+<li><p>Pour chaque ensemble de <span class="math notranslate nohighlight">\(V-1\)</span> folds, estimer la suite des arbres associés à <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span></p></li>
+<li><p>Estimer l’erreur sur le fold</p></li>
+</ol>
+</li>
 <li><p>Pour chaque <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span> calculer la moyenne des erreurs.</p></li>
 <li><p>Déterminer la valeur optimale <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> minimisant l’erreur moyenne.</p></li>
 <li><p>Retenir l’arbre correspondant à <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> dans <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span></p></li>
