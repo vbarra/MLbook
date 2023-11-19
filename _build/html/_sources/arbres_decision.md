@@ -188,7 +188,75 @@ Si Tous les points de $X$ appartiennent à la même classe
   6. Retenir l'arbre correspondant à $\gamma_{opt}$ dans $T_1\supset T_2\cdots T_K$
 ```
 
+Pour calculer l'élagage optimal, `Scikit-learn`propose la fonction `cost_complexity_pruning_path`. 
 
+```{code-cell} ipython3
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+
+X, y = load_breast_cancer(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+arbre = DecisionTreeClassifier(random_state=0)
+path = arbre.cost_complexity_pruning_path(X_train, y_train)
+ccp_gammas, impuretes = path.ccp_alphas, path.impurities
+
+
+fig, ax = plt.subplots()
+# On retire la valeur maximum de gamma, c'est l'arbre à un seul noeud comportant tout Z
+ax.plot(ccp_gammas[:-1], impuretes[:-1], marker="o", drawstyle="steps-post")
+ax.set_xlabel("Gamma")
+ax.set_ylabel("Impureté des noeuds")
+plt.tight_layout()
+```
+
+
+On entraîne un arbre de décision avec les valeurs de $\gamma$.
+
+```{code-cell} ipython3
+arbres = []
+for ccp_gamma in ccp_gammas:
+    arbre = DecisionTreeClassifier(random_state=0, ccp_alpha=ccp_gamma)
+    arbre.fit(X_train, y_train)
+    arbres.append(arbre)
+print("Nombre de noeuds dans le dernier arbre (gamma={}) : {}".format(ccp_gammas[-1],arbres[-1].tree_.node_count)
+)
+```
+
+Le nombre de noeuds et la profondeur de l'arbre décroît effectivement bien lorsque $\gamma$ augmente.
+
+```{code-cell} ipython3
+arbres = arbres[:-1]
+ccp_gammas = ccp_gammas[:-1]
+
+node_counts = [arbre.tree_.node_count for arbre in arbres]
+depth = [arbre.tree_.max_depth for arbre in arbres]
+fig, ax = plt.subplots(2, 1)
+ax[0].plot(ccp_gammas, node_counts, marker="o", drawstyle="steps-post")
+ax[0].set_xlabel("gamma")
+ax[0].set_ylabel("Nombre de noeuds")
+ax[1].plot(ccp_gammas, depth, marker="o", drawstyle="steps-post")
+ax[1].set_xlabel("gamma")
+ax[1].set_ylabel("Profondeur de l'arbre")
+fig.tight_layout()
+```
+
+En calculant les précisions sur l'ensemle de test, on voit que l'arbre construit pour $\gamma=0.015$ amène au meilleur résultat.
+
+```{code-cell} ipython3
+train_scores = [arbre.score(X_train, y_train) for arbre in arbres]
+test_scores = [arbre.score(X_test, y_test) for arbre in arbres]
+
+fig, ax = plt.subplots()
+ax.set_xlabel("gamma")
+ax.set_ylabel("Précision")
+ax.plot(ccp_gammas, train_scores, marker="o", label="train", drawstyle="steps-post")
+ax.plot(ccp_gammas, test_scores, marker="o", label="test", drawstyle="steps-post")
+ax.legend()
+plt.show()
+```
 
 
 ## Implémentation
@@ -325,13 +393,13 @@ ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
 plt.tight_layout()
 
 
-def plot_decision_boundary(clf, X, y,axi,mymap=ListedColormap(['#FF0000', '#00FF00']), axes=[-1.5, 2.5, -1, 1.5], 
+def plot_decision_boundary(arbre, X, y,axi,mymap=ListedColormap(['#FF0000', '#00FF00']), axes=[-1.5, 2.5, -1, 1.5], 
                            alpha=0.5, contour=True):
     x1s = np.linspace(axes[0], axes[1], 200)
     x2s = np.linspace(axes[2], axes[3], 200)
     x1, x2 = np.meshgrid(x1s, x2s)
     X_new = np.c_[x1.ravel(), x2.ravel()]
-    y_pred = clf.predict(X_new).reshape(x1.shape)
+    y_pred = arbre.predict(X_new).reshape(x1.shape)
     axi.contourf(x1, x2, y_pred, alpha=1, cmap='Pastel2')
     if contour:
         axi.contour(x1, x2, y_pred, alpha=0.7)
