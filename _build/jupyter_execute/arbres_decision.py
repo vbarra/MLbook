@@ -60,14 +60,15 @@
 # 
 # On a (théorie de l'information) 
 # 
-# $$(y,a) = H(y) - H(y | a)$
+# $$(y,a) = H(y) - H(y | a)$$
+# 
 # avec l'entropie  de $y$ définie par 
 # 
-# $H(y) = -\displaystyle\sum_{u \in {\cal D}_y}P(y =u)log (P(y =u))$
+# $$H(y) = -\displaystyle\sum_{u \in {\cal D}_y}P(y =u)log (P(y =u))$$
 # 
 # et l'entropie de $y$ conditionnée par $a$ :
 # 
-# $H(y| a) = -\displaystyle\sum_{u,v \in {\cal D}_y \times {\cal D}_a} P(y =u,a=v)log (P(y =u | a=v))$
+# $$H(y| a) = -\displaystyle\sum_{u,v \in {\cal D}_y \times {\cal D}_a} P(y =u,a=v)log (P(y =u | a=v))$$
 # 
 # Ici, $a$ est un attribut binaire, donc ${\cal D}_a =\{VRAI, FAUX\}$ et $y$ représente la distribution des données sur les $C$ classes. Ainsi $H(y | a)$ et $I(y,a)$ peuvent  s'estimer par :
 # 
@@ -156,7 +157,7 @@
 # 
 # On construit donc une suite d'arbres  $T_{max}\supset T_1\supset T_2\cdots T_K$ appelée suite de Breiman.
 # 
-# L'arbre optimal est alors construit en appliquant l'({prf:ref}`Breiman`) 
+# L'arbre optimal est alors construit en appliquant l ({prf:ref}`Breiman`) 
 # 
 # 
 # 

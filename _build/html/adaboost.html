@@ -577,7 +577,7 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 </ul>
 <p>Le premier algorithme de boosting a été en 1990, dans lequel un classifieur fort est construit par combinaison de classifieurs faibles.</p>
 <div class="proof algorithm admonition" id="stacking-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 5 </span></p>
+<p class="admonition-title"><span class="caption-number">Algorithm 6 </span></p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span></p>
 <p><strong>Sortie</strong> : Un classifieur <span class="math notranslate nohighlight">\(h\)</span></p>
@@ -597,9 +597,9 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 <div class="section" id="algorithme">
 <h2>Algorithme<a class="headerlink" href="#algorithme" title="Lien permanent vers ce titre">#</a></h2>
 <p>Soit un problème de classification à deux classes. On dispose d’un ensemble d’apprentissage  <span class="math notranslate nohighlight">\(Z\)</span> et on cherche à évaluer la classe d’un point <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span>.  On dispose de <span class="math notranslate nohighlight">\(M\)</span> classifieurs faibles <span class="math notranslate nohighlight">\(h_i\)</span> donnant une classification faible de <span class="math notranslate nohighlight">\(\mathbf x\)</span>. On souhaite construire un classifieur <span class="math notranslate nohighlight">\(h\)</span>, à valeurs dans <span class="math notranslate nohighlight">\(\{-1, 1\}\)</span>, combinaison linéaire des <span class="math notranslate nohighlight">\(h_i\)</span>.</p>
-<p>Dans cet algorithme, le modèle de base retourne l’identité d’une classe, il est encore nommé AdaBoost discret (<a class="reference internal" href="#adaboost-algorithm">Algorithm 6</a>). Il est facile de l’adapter à des modèles retournant une valeur réelle comme une probabilité d’appartenance à une classe.</p>
+<p>Dans cet algorithme, le modèle de base retourne l’identité d’une classe, il est encore nommé AdaBoost discret (<a class="reference internal" href="#adaboost-algorithm">Algorithm 7</a>). Il est facile de l’adapter à des modèles retournant une valeur réelle comme une probabilité d’appartenance à une classe.</p>
 <div class="proof algorithm admonition" id="adaboost-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 6 </span></p>
+<p class="admonition-title"><span class="caption-number">Algorithm 7 </span></p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, \mathbf x<span class="math notranslate nohighlight">\(, \)</span>M$</p>
 <p><strong>Sortie</strong> : Un classifieur <span class="math notranslate nohighlight">\(h\)</span></p>
@@ -692,9 +692,9 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 <div class="section" id="interpretation-statistique">
 <h2>Interprétation statistique<a class="headerlink" href="#interpretation-statistique" title="Lien permanent vers ce titre">#</a></h2>
 <p>Il est possible d’interpréter Adaboost en termes statistiques, pour justifier en partie le bon comportement du boosting en classification. Pour ce faire, on définit les classifieurs faibles comme des fonctions paramétriques <span class="math notranslate nohighlight">\(h_{\theta_i}(\mathbf x) = h_i(\mathbf x,\theta)\)</span>, <span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>, et le résultat de la classification comme une combinaison linéaire de ces classifieurs faibles <span class="math notranslate nohighlight">\(h(\mathbf x)=\displaystyle\sum_{i=1}^n \alpha_i h_{\theta_i}(\mathbf x)\)</span>.</p>
-<p>Une approche pour déterminer les <span class="math notranslate nohighlight">\(\theta_i\)</span> et les <span class="math notranslate nohighlight">\(\alpha_i\)</span> est d’ajouter séquentiellement au problème d’apprentissage les classifieurs faibles, sans ajuster les paramètres et les coefficients de la solution courante (<a class="reference internal" href="#adaboost-stat-algorithm">Algorithm 7</a>).</p>
+<p>Une approche pour déterminer les <span class="math notranslate nohighlight">\(\theta_i\)</span> et les <span class="math notranslate nohighlight">\(\alpha_i\)</span> est d’ajouter séquentiellement au problème d’apprentissage les classifieurs faibles, sans ajuster les paramètres et les coefficients de la solution courante (<a class="reference internal" href="#adaboost-stat-algorithm">Algorithm 8</a>).</p>
 <div class="proof algorithm admonition" id="adaboost-stat-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 7 </span></p>
+<p class="admonition-title"><span class="caption-number">Algorithm 8 </span></p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, \mathbf x<span class="math notranslate nohighlight">\(, \)</span>M$</p>
 <p><strong>Sortie</strong> : Un classifieur <span class="math notranslate nohighlight">\(h\)</span></p>
