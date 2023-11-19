@@ -241,6 +241,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  TP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="TPClassif.html">
+   Comparaison de méthodes de classification supervisée
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -342,7 +354,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/vbarra/anbook.git"
+        <a href="https://github.com/vbarra/mlbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -359,7 +371,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2FkernelTrick.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/mlbook.git/issues/new?title=Issue%20on%20page%20%2FkernelTrick.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -721,13 +733,13 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
 </ul>
 <p>Deux choix classiques de noyau sont décrits ci-dessous.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="6e706bfb-85a3-4e20-b17f-c0ae2b7f5966" name="19cd4a4c-7155-46b4-82de-673f1302a5ee" type="radio">
-</input><label class="sd-tab-label" for="6e706bfb-85a3-4e20-b17f-c0ae2b7f5966">
+<input checked="checked" id="c2cf5e68-8fb3-4b45-9e52-773079f9fb5c" name="a6fcd0c5-0393-4d81-a772-830e4d59d6bf" type="radio">
+</input><label class="sd-tab-label" for="c2cf5e68-8fb3-4b45-9e52-773079f9fb5c">
 Noyau  polynomial</label><div class="sd-tab-content docutils">
 <p>Considérons <span class="math notranslate nohighlight">\(K(\mathbf x_i, \mathbf x_j) = \left (\mathbf x_i^T \mathbf x_j +\theta\right )^p\)</span> En développant on obtient  <span class="math notranslate nohighlight">\({d + p - 1 \choose p}\)</span> termes, chacun d’entre eux étant un polynôme de degré variable des vecteurs d’entrée. <span class="math notranslate nohighlight">\(K\)</span> peut donc être vu comme le produit scalaire de deux vecteurs <span class="math notranslate nohighlight">\(\mathbf z\)</span> de très grande taille, d’autant plus importante que <span class="math notranslate nohighlight">\(p\)</span> est grand (figures (<a class="reference internal" href="#polyd-ref"><span class="std std-numref">Fig. 17</span></a>) (<a class="reference internal" href="#polytheta-ref"><span class="std std-numref">Fig. 18</span></a>))</p>
 </div>
-<input id="3ae20dcd-a3a6-47af-9aa2-199d36b73f0d" name="19cd4a4c-7155-46b4-82de-673f1302a5ee" type="radio">
-</input><label class="sd-tab-label" for="3ae20dcd-a3a6-47af-9aa2-199d36b73f0d">
+<input id="faeb00b8-d105-43dc-8be3-799ff3a5fed7" name="a6fcd0c5-0393-4d81-a772-830e4d59d6bf" type="radio">
+</input><label class="sd-tab-label" for="faeb00b8-d105-43dc-8be3-799ff3a5fed7">
 Noyau  gaussien</label><div class="sd-tab-content docutils">
 <p>Un noyau très utilisé est le noyau gaussien :</p>
 <div class="math notranslate nohighlight">
@@ -795,7 +807,7 @@ exp( - \frac{ \parallel \mathbf x - \mathbf x_i \parallel ^2 }{2 \sigma^2})+ b ]
     {
         requestKernel: true,
         binderOptions: {
-            repo: "vbarra/anbook.git",
+            repo: "vbarra/mlbook.git",
             ref: "main",
         },
         codeMirrorConfig: {

@@ -241,6 +241,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  TP
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="TPClassif.html">
+   Comparaison de méthodes de classification supervisée
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -342,7 +354,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/vbarra/anbook.git"
+        <a href="https://github.com/vbarra/mlbook.git"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -359,7 +371,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/vbarra/anbook.git/issues/new?title=Issue%20on%20page%20%2Farbres_decision.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/vbarra/mlbook.git/issues/new?title=Issue%20on%20page%20%2Farbres_decision.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -483,22 +495,7 @@ title="Print to PDF"
      Choix de l’attribut
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-criteres-de-choix">
-     Autres critères de choix
-    </a>
-   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-non-binaire">
-   Cas non binaire
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple-l-algorithme-id3">
-   Exemple : l’algorithme ID3
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementation">
@@ -554,22 +551,7 @@ title="Print to PDF"
      Choix de l’attribut
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-criteres-de-choix">
-     Autres critères de choix
-    </a>
-   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-non-binaire">
-   Cas non binaire
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple-l-algorithme-id3">
-   Exemple : l’algorithme ID3
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementation">
@@ -645,63 +627,61 @@ title="Print to PDF"
 <li><p>atteint un maximum lorsque pour tout <span class="math notranslate nohighlight">\(u_i\in{\cal D}_y\)</span> il existe un unique <span class="math notranslate nohighlight">\(v_j\in{\cal D}_a\)</span> tel que  <span class="math notranslate nohighlight">\(P(y =u_i)=P(a=v_j)\)</span>.</p></li>
 </ul>
 <p>On a (théorie de l’information)</p>
-<p>$<span class="math notranslate nohighlight">\((y,a) = H(y) - H(y | a)\)</span>
-avec l’entropie  de <span class="math notranslate nohighlight">\(y\)</span> définie par</p>
-<p><span class="math notranslate nohighlight">\(H(y) = -\displaystyle\sum_{u \in {\cal D}_y}P(y =u)log (P(y =u))\)</span></p>
-<p>et l’entropie de <span class="math notranslate nohighlight">\(y\)</span> conditionnée par <span class="math notranslate nohighlight">\(a\)</span> :</p>
-<p><span class="math notranslate nohighlight">\(H(y| a) = -\displaystyle\sum_{u,v \in {\cal D}_y \times {\cal D}_a} P(y =u,a=v)log (P(y =u | a=v))\)</span></p>
-<p>Ici, <span class="math notranslate nohighlight">\(a\)</span> est un attribut binaire, donc <span class="math notranslate nohighlight">\({\cal D}_a =\{VRAI, FAUX\}\)</span> et <span class="math notranslate nohighlight">\(y\)</span> représente la distribution des données sur les <span class="math notranslate nohighlight">\(C\)</span> classes. Ainsi <span class="math notranslate nohighlight">\(H(y | a)\)</span> et <span class="math notranslate nohighlight">\(I(y,a)\)</span> peuvent  s’estimer par :</p>
-<p><span class="math notranslate nohighlight">\({\widehat I(\omega,{\boldsymbol a})} = - \sum_{j=1}^{C}
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}(y,a) = H(y) - H(y | a)$
+avec l'entropie  de $y$ définie par \\$H(y) = -\displaystyle\sum_{u \in {\cal D}_y}P(y =u)log (P(y =u))$\\et l'entropie de $y$ conditionnée par $a$ :\\$H(y| a) = -\displaystyle\sum_{u,v \in {\cal D}_y \times {\cal D}_a} P(y =u,a=v)log (P(y =u | a=v))$\\Ici, $a$ est un attribut binaire, donc ${\cal D}_a =\{VRAI, FAUX\}$ et $y$ représente la distribution des données sur les $C$ classes. Ainsi $H(y | a)$ et $I(y,a)$ peuvent  s'estimer par :\\${\widehat I(\omega,{\boldsymbol a})} = - \sum_{j=1}^{C}
 \frac{l_j}{n}\log\frac{l_j/n}{(l/n) \times (n_j/n)} +
 \frac{r_j}{n}\log\frac{r_j/n}{(r/n) \times (n_j/n)}\quad \textrm{et}\quad 
-{\widehat I(\omega)} = - \sum_{j=1}^{C} \frac{n_j}{n} \log \frac{n_j}{n}\)</span>
-En notant  <span class="math notranslate nohighlight">\(J(a=VRAI)= \displaystyle\sum_{j=1}^{C}
+{\widehat I(\omega)} = - \sum_{j=1}^{C} \frac{n_j}{n} \log \frac{n_j}{n}$
+En notant  $J(a=VRAI)= \displaystyle\sum_{j=1}^{C}
 \frac{l_j}{l}\log\frac{l_j}{l} \;\;\;\;\;\mbox{et}\;\;\;\;\;
-J(a=FAUX)= \displaystyle\sum_{j=1}^{C} \frac{r_j}{r}\log\frac{r_j}{r}\)</span></p>
-<p>on a</p>
-<p><span class="math notranslate nohighlight">\({\widehat H(y\mid a)} = \frac{l}{n} J(a=VRAI) + \frac{r}{n} J(a=FAUX)\)</span></p>
-<p>Pour construire un noeud dans l’arbre, une idée naturelle est donc de chercher parmi les <span class="math notranslate nohighlight">\(d\)</span> attributs celui qui possède la plus grande corrélation avec la répartition en classes, autrement dit celui qui a la meilleure information mutuelle avec la distribution des points d’apprentissage sur les classes. Autrement dit, il faut résoudre le problème</p>
-<p><span class="math notranslate nohighlight">\(i^{*} = \underset{i\in[\![1,d]\!] }{\mbox{ArgMin}} \ \ {\widehat H(y \mid a_i)}\)</span></p>
-</div>
-<div class="section" id="autres-criteres-de-choix">
-<h3>Autres critères de choix<a class="headerlink" href="#autres-criteres-de-choix" title="Lien permanent vers ce titre">#</a></h3>
-<p>D’autres critères de choix sont possibles, parmi lesquels :</p>
-<ul class="simple">
-<li><p>Métrique de Gini : <span class="math notranslate nohighlight">\(Gini(y \mid a) = \frac{l}{n} \displaystyle\sum_{j=1}^C  \frac{l_j}{n_j}(1-\frac{l_j}{n_j} + \frac{r}{n} \displaystyle\sum_{j=1}^C \frac{r_j}{n_j}(1-\frac{r_j}{n_j})\)</span></p></li>
-<li><p>critère du <span class="math notranslate nohighlight">\(\chi^2\)</span> : <span class="math notranslate nohighlight">\(\chi^2(c \mid a) = \displaystyle\sum_{j=1}^C (\frac{l_j-(l n_j / n)}{\sqrt{ln_j /n}})^2 +(\frac{r_j-(r n_j / n)}{\sqrt{r n_j /n}})^2\)</span></p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="cas-non-binaire">
-<h2>Cas non binaire<a class="headerlink" href="#cas-non-binaire" title="Lien permanent vers ce titre">#</a></h2>
-<p>Dans le cas où les attributs sont à valeurs discrètes, on est facilement ramené au cas binaire. Dans le cas d’un attribut à valeurs continues,  le nombre de données
-d’apprentissage étant fini, le nombre des valeurs que prend cet attribut sur les
+J(a=FAUX)= \displaystyle\sum_{j=1}^{C} \frac{r_j}{r}\log\frac{r_j}{r}$\\on a 
+ 
+${\widehat H(y\mid a)} = \frac{l}{n} J(a=VRAI) + \frac{r}{n} J(a=FAUX)$\\Pour construire un noeud dans l'arbre, une idée naturelle est donc de chercher parmi les $d$ attributs celui qui possède la plus grande corrélation avec la répartition en classes, autrement dit celui qui a la meilleure information mutuelle avec la distribution des points d'apprentissage sur les classes. Autrement dit, il faut résoudre le problème \\$i^{*} = \underset{i\in[\![1,d]\!] }{\mbox{ArgMin}} \ \ {\widehat H(y \mid a_i)}$\\### Autres critères de choix\\D'autres critères de choix sont possibles, parmi lesquels :\\-  Métrique de Gini : $Gini(y \mid a) = \frac{l}{n} \displaystyle\sum_{j=1}^C  \frac{l_j}{n_j}(1-\frac{l_j}{n_j} + \frac{r}{n} \displaystyle\sum_{j=1}^C \frac{r_j}{n_j}(1-\frac{r_j}{n_j})$
+-  critère du $\chi^2$ : $\chi^2(c \mid a) = \displaystyle\sum_{j=1}^C (\frac{l_j-(l n_j / n)}{\sqrt{ln_j /n}})^2 +(\frac{r_j-(r n_j / n)}{\sqrt{r n_j /n}})^2$\\## Cas non binaire
+Dans le cas où les attributs sont à valeurs discrètes, on est facilement ramené au cas binaire. Dans le cas d'un attribut à valeurs continues,  le nombre de données
+d'apprentissage étant fini, le nombre des valeurs que prend cet attribut sur les
 exemples est aussi fini.  Le choix se résume donc à comparer les valeurs
-à un seuil pour construire un noeud binaire : on trie les points d’apprentissage selon la valeur de cet attribut, puis on cherche le
-seuil <span class="math notranslate nohighlight">\(s(a)\)</span> qui minimise l’un des critères présentés.</p>
-</div>
-<div class="section" id="exemple-l-algorithme-id3">
-<h2>Exemple : l’algorithme ID3<a class="headerlink" href="#exemple-l-algorithme-id3" title="Lien permanent vers ce titre">#</a></h2>
-<p>Plusieurs algorithmes sont disponibles, ainsi que plusieurs mesures d’homogénéité. Nous décrivons ici l’algorithme Iterative Dichotomiser 3 (ID3). Pour illustrer la construction de l’arbre, on se place dans le cadre d’un problème de classification à <span class="math notranslate nohighlight">\(C\)</span> classes d’objets à <span class="math notranslate nohighlight">\(d\)</span> attributs, où  chaque attribut prend un nombre fini de valeurs. L”(<a class="reference internal" href="#id3-algorithm">Algorithm 3</a>) décrit le principe général de l’algorithme ID3, que nous détaillons dans la suite.</p>
-<div class="proof algorithm admonition" id="id3-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (ID3)</p>
+à un seuil pour construire un noeud binaire : on trie les points d'apprentissage selon la valeur de cet attribut, puis on cherche le
+seuil $s(a)$ qui minimise l'un des critères présentés. \\## Exemple : l'algorithme ID3
+Plusieurs algorithmes sont disponibles, ainsi que plusieurs mesures d'homogénéité. Nous décrivons ici l'algorithme Iterative Dichotomiser 3 (ID3). Pour illustrer la construction de l'arbre, on se place dans le cadre d'un problème de classification à $C$ classes d'objets à $d$ attributs, où  chaque attribut prend un nombre fini de valeurs. L'({prf:ref}`id3-algorithm`) décrit le principe général de l'algorithme ID3, que nous détaillons dans la suite.\\```{prf:algorithm} ID3
+:label: id3-algorithm
+**Entrée** : $Z=\left \{(\boldsymbol x_i,y_i),i\in[\![1,n]\!],y_i \in[\![1,C]\!] \right \}$\\**Sortie** : l'arbre de décision\\Fonction ID3($Z$)
+Si $\forall\ i\in [\![1,n]\!]\ y_i=\tilde{y}$=constante\\  1. Retourner un arbre à un noeud contenant $\tilde{y}$\\Sinon\\  1. Soit $k\in[\![1,d]\!]$ l'attribut de plus grand gain $G(Z,k)$.
+  2. $\{k_1\cdots k_m\}$ : valeurs possibles de l'attribut $k$.
+  3. $\{Z_1\cdots Z_m\}$ : sous-ensembles des objets de $Z$ possédant la valeur $k_1\cdots k_m$ pour l'attribut $k$.
+  4. Construire l'arbre de racine $k$ et de sous-arbres ID3($Z_i$),$i\in[\![1,m]\!]$, reliés à $k$ par un arc étiqueté par $k_i,\ i\in[\![1,m]\!]$.
+```\\## Elagage d'arbres\\Il n'est souvent pas nécessaire de développer l'arbre jusqu'au bout, ceci entraînant des risques de sur-apprentissage. A l'inverse, le cas limite de l'arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de technique d'élagage (pruning) d'arbres de décision.\\Il existe une théorie élégante pour trouver l'rbre optimal, minimisant l'erreur de prédiction (en classification ou rgression) pénalisée par la complexité de l'arbre (mesurée par le nombre de feuilles).\\Soit donc $T$ un abre de complexité son nombre de feuilles $|T|$. On définit l'erreur d'ajustement de $T$ par \\$$D(T) = \displaystyle\sum_{i=1}^{|T|}D_i\end{aligned}\end{align} \]</div>
+<p>où <span class="math notranslate nohighlight">\(D_i\)</span> estl” hétérogeneité de la feuille <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>L’erreur d’ajustement pénalisée par la complexité est donc</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{C}_\gamma(T)= D(T)+\gamma |T|\]</div>
+<p>Alors :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\gamma=0\)</span>: l’arbre maximal <span class="math notranslate nohighlight">\(T_{max}\)</span> minimise <span class="math notranslate nohighlight">\(\mathcal{C}_\gamma(T)\)</span></p></li>
+<li><p>lorsque <span class="math notranslate nohighlight">\(\gamma \nearrow\)</span> la division pour laquelle l’amélioration de <span class="math notranslate nohighlight">\(D\)</span> est inférieure à <span class="math notranslate nohighlight">\(\gamma\)</span> est annulée et on construit un nouvel arbre en fusionnant deux feuilles.</p></li>
+</ul>
+<p>On construit donc une suite d’arbres  <span class="math notranslate nohighlight">\(T_{max}\supset T_1\supset T_2\cdots T_K\)</span> appelée suite de Breiman.</p>
+<p>L’arbre optimal est alors construit en appliquant l”(<a class="reference internal" href="#Breiman">Algorithm 3</a>)</p>
+<div class="proof algorithm admonition" id="Breiman">
+<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (Arbre(noeud X))</p>
 <div class="algorithm-content section" id="proof-content">
-<p><strong>Entrée</strong> : <span class="math notranslate nohighlight">\(Z=\left \{(\boldsymbol x_i,y_i),i\in[\![1,n]\!],y_i \in[\![1,C]\!] \right \}\)</span></p>
-<p><strong>Sortie</strong> : l’arbre de décision</p>
-<p>Fonction ID3(<span class="math notranslate nohighlight">\(Z\)</span>)
-Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\tilde{y}\)</span>=constante</p>
+<p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span></p>
+<p><strong>Sortie</strong> : l’arbre de décision optimal</p>
+<p>Si Tous les points de <span class="math notranslate nohighlight">\(X\)</span> appartiennent à la même classe</p>
 <ol class="simple">
-<li><p>Retourner un arbre à un noeud contenant <span class="math notranslate nohighlight">\(\tilde{y}\)</span></p></li>
-</ol>
-<p>Sinon</p>
-<ol class="simple">
-<li><p>Soit <span class="math notranslate nohighlight">\(k\in[\![1,d]\!]\)</span> l’attribut de plus grand gain <span class="math notranslate nohighlight">\(G(Z,k)\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\{k_1\cdots k_m\}\)</span> : valeurs possibles de l’attribut <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\{Z_1\cdots Z_m\}\)</span> : sous-ensembles des objets de <span class="math notranslate nohighlight">\(Z\)</span> possédant la valeur <span class="math notranslate nohighlight">\(k_1\cdots k_m\)</span> pour l’attribut <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
-<li><p>Construire l’arbre de racine <span class="math notranslate nohighlight">\(k\)</span> et de sous-arbres ID3(<span class="math notranslate nohighlight">\(Z_i\)</span>),<span class="math notranslate nohighlight">\(i\in[\![1,m]\!]\)</span>, reliés à <span class="math notranslate nohighlight">\(k\)</span> par un arc étiqueté par <span class="math notranslate nohighlight">\(k_i,\ i\in[\![1,m]\!]\)</span>.</p></li>
+<li><p>Calculer <span class="math notranslate nohighlight">\(T_{max}\)</span></p></li>
+<li><p>Calculer la suite de Breiman <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span> associée à la suite de paramètres <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span></p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(v=1\)</span> à <span class="math notranslate nohighlight">\(V\)</span> (erreur de validation V-fold)
+1. Pour chaque ensemble de <span class="math notranslate nohighlight">\(V-1\)</span> folds, estimer la suite des arbres associés à <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span>
+2. Estimer l’erreur sur le fold</p></li>
+<li><p>Pour chaque <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span> calculer la moyenne des erreurs.</p></li>
+<li><p>Déterminer la valeur optimale <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> minimisant l’erreur moyenne.</p></li>
+<li><p>Retenir l’arbre correspondant à <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> dans <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span></p></li>
 </ol>
 </div>
 </div></div>
+</div>
 <div class="section" id="implementation">
 <h2>Implémentation<a class="headerlink" href="#implementation" title="Lien permanent vers ce titre">#</a></h2>
 <p>L’étape 1 nécessite le calcul d’un {gain}. Pour ce faire, on introduit la notion d”{entropie} d’un ensemble <span class="math notranslate nohighlight">\(Z\)</span>.  On note <span class="math notranslate nohighlight">\(C_k,\ k\in[\![1,C]\!]\)</span> l’ensemble des éléments de <span class="math notranslate nohighlight">\(Z\)</span> tels que <span class="math notranslate nohighlight">\(y=y_k\)</span>. La probabilité qu’un élément de <span class="math notranslate nohighlight">\(Z\)</span> soit dans <span class="math notranslate nohighlight">\(C_k\)</span> peut être approchée par <span class="math notranslate nohighlight">\(q_k=\frac{|C_k|}{|Z|}\)</span>, et l’entropie de <span class="math notranslate nohighlight">\(Z\)</span> est alors définie par :</p>
@@ -1013,7 +993,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
     {
         requestKernel: true,
         binderOptions: {
-            repo: "vbarra/anbook.git",
+            repo: "vbarra/mlbook.git",
             ref: "main",
         },
         codeMirrorConfig: {
