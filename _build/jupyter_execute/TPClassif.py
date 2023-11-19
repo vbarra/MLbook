@@ -100,10 +100,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
 # 
 # A partir des VP,FP,VN,FN, on déduit plusieurs mesures :
 # 
-# - le taux de vrais positifs : $taux\_VP = \frac{VP}{P}$  (aussi appelé sensibilité)
-# - le taux de vrais négatifs : $taux\_VN = \frac{VN}{N}$  (aussi appelé spécificité)
-# - le [rappel](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve) (recall) : $R = \frac{VP}{P}$
-# - la [précision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve) : $P = \frac{VP}{VP + FP}$
+# - le [rappel](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve) (recall) : $R = \frac{VP}{VP+FP}$ 
+# - la [précision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve) : $P = \frac{VP}{VP + FN}$
 # - la F\_mesure, qui est une moyenne harmonique du rappel et de la précision (avec $\beta > 0$) : $F\_mesure = \frac{(1 + \beta^2) \cdot R \cdot P}{\beta^2 (R + P)}$
 # - et en particulier, la F1\_mesure; pour $\beta=1$ : $F1\_mesure = \frac{2 \cdot R \cdot P}{R+P}$
 # 

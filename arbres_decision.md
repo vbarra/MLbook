@@ -142,6 +142,53 @@ Sinon
   4. Construire l'arbre de racine $k$ et de sous-arbres ID3($Z_i$),$i\in[\![1,m]\!]$, reliés à $k$ par un arc étiqueté par $k_i,\ i\in[\![1,m]\!]$.
 ```
 
+## Elagage d'arbres
+
+Il n'est souvent pas nécessaire de développer l'arbre jusqu'au bout, ceci entraînant des risques de sur-apprentissage. A l'inverse, le cas limite de l'arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de technique d'élagage (pruning) d'arbres de décision.
+
+Il existe une théorie élégante pour trouver l'rbre optimal, minimisant l'erreur de prédiction (en classification ou rgression) pénalisée par la complexité de l'arbre (mesurée par le nombre de feuilles).
+
+Soit donc $T$ un abre de complexité son nombre de feuilles $|T|$. On définit l'erreur d'ajustement de $T$ par 
+
+$$D(T) = \displaystyle\sum_{i=1}^{|T|}D_i$$
+
+où $D_i$ estl' hétérogeneité de la feuille $i$.
+
+L'erreur d'ajustement pénalisée par la complexité est donc 
+
+
+$$\mathcal{C}_\gamma(T)= D(T)+\gamma |T|$$
+
+Alors : 
+- $\gamma=0$: l'arbre maximal $T_{max}$ minimise $\mathcal{C}_\gamma(T)$
+- lorsque $\gamma \nearrow$ la division pour laquelle l'amélioration de $D$ est inférieure à $\gamma$ est annulée et on construit un nouvel arbre en fusionnant deux feuilles. 
+
+On construit donc une suite d'arbres  $T_{max}\supset T_1\supset T_2\cdots T_K$ appelée suite de Breiman.
+
+L'arbre optimal est alors construit en appliquant l'({prf:ref}`Breiman`) 
+
+
+
+```{prf:algorithm} Arbre(noeud X)
+:label: Breiman
+**Entrée** : l'ensemble d'apprentissage $Z$
+
+**Sortie** : l'arbre de décision optimal
+
+Si Tous les points de $X$ appartiennent à la même classe
+
+  1. Calculer $T_{max}$
+  2. Calculer la suite de Breiman $T_1\supset T_2\cdots T_K$ associée à la suite de paramètres $\gamma_1, \cdots \gamma_K$
+  3. Pour $v=1$ à $V$ (erreur de validation V-fold)
+    1. Pour chaque ensemble de $V-1$ folds, estimer la suite des arbres associés à $\gamma_1, \cdots \gamma_K$
+    2. Estimer l'erreur sur le fold
+  4. Pour chaque $\gamma_1, \cdots \gamma_K$ calculer la moyenne des erreurs.
+  5. Déterminer la valeur optimale $\gamma_{opt}$ minimisant l'erreur moyenne.
+  6. Retenir l'arbre correspondant à $\gamma_{opt}$ dans $T_1\supset T_2\cdots T_K$
+```
+
+
+
 
 ## Implémentation
 
