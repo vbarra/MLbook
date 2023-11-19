@@ -188,7 +188,7 @@ Si Tous les points de $X$ appartiennent à la même classe
   6. Retenir l'arbre correspondant à $\gamma_{opt}$ dans $T_1\supset T_2\cdots T_K$
 ```
 
-Pour calculer l'élagage optimal, `Scikit-learn`propose la fonction `cost_complexity_pruning_path`. 
+Pour calculer l'élagage optimal, `Scikit-learn` propose la fonction `cost_complexity_pruning_path`. 
 
 ```{code-cell} ipython3
 import matplotlib.pyplot as plt
@@ -205,7 +205,8 @@ ccp_gammas, impuretes = path.ccp_alphas, path.impurities
 
 
 fig, ax = plt.subplots()
-# On retire la valeur maximum de gamma, c'est l'arbre à un seul noeud comportant tout Z
+# On retire la valeur maximum de gamma, c'est l'arbre 
+# à un seul noeud comportant tout Z
 ax.plot(ccp_gammas[:-1], impuretes[:-1], marker="o", drawstyle="steps-post")
 ax.set_xlabel("Gamma")
 ax.set_ylabel("Impureté des noeuds")
@@ -233,13 +234,13 @@ ccp_gammas = ccp_gammas[:-1]
 
 node_counts = [arbre.tree_.node_count for arbre in arbres]
 depth = [arbre.tree_.max_depth for arbre in arbres]
-fig, ax = plt.subplots(2, 1)
-ax[0].plot(ccp_gammas, node_counts, marker="o", drawstyle="steps-post")
-ax[0].set_xlabel("gamma")
-ax[0].set_ylabel("Nombre de noeuds")
-ax[1].plot(ccp_gammas, depth, marker="o", drawstyle="steps-post")
-ax[1].set_xlabel("gamma")
-ax[1].set_ylabel("Profondeur de l'arbre")
+fig, axs = plt.subplots(2, 1)
+axs[0].plot(ccp_gammas, node_counts, marker="o", drawstyle="steps-post")
+axs[0].set_xlabel("gamma")
+axs[0].set_ylabel("Nombre de noeuds")
+axs[1].plot(ccp_gammas, depth, marker="o", drawstyle="steps-post")
+axs[1].set_xlabel("gamma")
+axs[1].set_ylabel("Profondeur de l'arbre")
 fig.tight_layout()
 ```
 
