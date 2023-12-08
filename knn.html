@@ -541,6 +541,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#fleau-de-la-dimension">
    Fléau de la dimension
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#premiere-experience">
+     Première expérience
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deuxieme-experience">
+     Deuxième expérience
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exemple">
@@ -632,6 +644,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#fleau-de-la-dimension">
    Fléau de la dimension
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#premiere-experience">
+     Première expérience
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deuxieme-experience">
+     Deuxième expérience
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exemple">
@@ -816,8 +840,11 @@ encore des hyperplans par morceaux.</p>
 <div class="section" id="fleau-de-la-dimension">
 <h2>Fléau de la dimension<a class="headerlink" href="#fleau-de-la-dimension" title="Lien permanent vers ce titre">#</a></h2>
 <p>Les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins font implicitement l’hypothèse que des points proches appartiennent à la même classe. Dans des espaces de grande dimension, des points tirés selon une distribution de probabilité tendent cependant à n’être que rarement proches.</p>
-<p>Une manière simple d’illustrer ce fait est de tirer uniformément des points dans le cube unité et de calculer la taille de l’espace occupé par les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins d’un point donné.</p>
-<p>Dans le cube <span class="math notranslate nohighlight">\([0,1]^d\subset\mathbb{R}^d\)</span>, on considère les <span class="math notranslate nohighlight">\(k=10\)</span> plus proches voisins d’un point <span class="math notranslate nohighlight">\(\mathbf x\)</span>.  Soit <span class="math notranslate nohighlight">\(l\)</span> la taille de l’arête du plus petit hypercube contenant les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. Alors <span class="math notranslate nohighlight">\(l^d\approx \frac{k}{n}\)</span> et par exemple la <a class="reference internal" href="#fleau-ref"><span class="std std-numref">Fig. 10</span></a> donne l’évolution de <span class="math notranslate nohighlight">\(l\)</span> en fonction de <span class="math notranslate nohighlight">\(d\)</span> pour <span class="math notranslate nohighlight">\(n=1000\)</span>.</p>
+<p>On propose ici deux manières simples d’illustrer ce fait.</p>
+<div class="section" id="premiere-experience">
+<h3>Première expérience<a class="headerlink" href="#premiere-experience" title="Lien permanent vers ce titre">#</a></h3>
+<p>On tire uniformément des points dans le cube unité <span class="math notranslate nohighlight">\([0,1]^d\subset\mathbb{R}^d\)</span> et on calcule la taille de l’espace occupé par les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins d’un point donné.</p>
+<p>Dans le cube unité, on considère les <span class="math notranslate nohighlight">\(k=10\)</span> plus proches voisins d’un point <span class="math notranslate nohighlight">\(\mathbf x\)</span>.  Soit <span class="math notranslate nohighlight">\(l\)</span> la taille de l’arête du plus petit hypercube contenant les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. Alors <span class="math notranslate nohighlight">\(l^d\approx \frac{k}{n}\)</span> et par exemple la <a class="reference internal" href="#fleau-ref"><span class="std std-numref">Fig. 10</span></a> donne l’évolution de <span class="math notranslate nohighlight">\(l\)</span> en fonction de <span class="math notranslate nohighlight">\(d\)</span> pour <span class="math notranslate nohighlight">\(n=1000\)</span>.</p>
 <div class="figure align-default" id="fleau-ref">
 <img alt="_images/ld10.png" src="_images/ld10.png" />
 <p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Evolution de la taille du voisinage d’un point en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref" title="Lien permanent vers cette image">#</a></p>
@@ -830,6 +857,15 @@ encore des hyperplans par morceaux.</p>
 <p>Quelle doit être la valeur de <span class="math notranslate nohighlight">\(n\)</span> qui permet à <span class="math notranslate nohighlight">\(l\)</span> d’être « petit » ? En fixant par exemple <span class="math notranslate nohighlight">\(l=0.1\)</span>, alors <span class="math notranslate nohighlight">\(n=k.l^{-d}=k.10^d\)</span> et la croissance de <span class="math notranslate nohighlight">\(n\)</span> est exponentielle. Pour <span class="math notranslate nohighlight">\(d&gt;100\)</span>, <span class="math notranslate nohighlight">\(n\)</span> doit par exemple être plus grand que le nombre de particules dans l’Univers…</p>
 </div>
 </div></div>
+<div class="section" id="deuxieme-experience">
+<h3>Deuxième expérience<a class="headerlink" href="#deuxieme-experience" title="Lien permanent vers ce titre">#</a></h3>
+<p>On tire uniformément des points dans le cube unité et on calcule la distance entre chaque paire de points dans <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>. La distribution de ces distances lorsque <span class="math notranslate nohighlight">\(d\)</span> augmente est donnée dans la <a class="reference internal" href="#fleau-ref2"><span class="std std-numref">Fig. 11</span></a>.</p>
+<div class="figure align-default" id="fleau-ref2">
+<img alt="_images/knndist.png" src="_images/knndist.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Distribution es distances entre paires de points uniformément tirés dans le cube unité, en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref2" title="Lien permanent vers cette image">#</a></p>
+</div>
+</div>
+</div>
 <div class="section" id="exemple">
 <h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">#</a></h2>
 <div class="cell docutils container">

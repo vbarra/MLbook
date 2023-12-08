@@ -200,9 +200,12 @@ Video("videos/knn5.mp4",embed =True,width=500)
 ## Fléau de la dimension
 Les $k$-plus proches voisins font implicitement l'hypothèse que des points proches appartiennent à la même classe. Dans des espaces de grande dimension, des points tirés selon une distribution de probabilité tendent cependant à n'être que rarement proches.
 
- Une manière simple d'illustrer ce fait est de tirer uniformément des points dans le cube unité et de calculer la taille de l'espace occupé par les $k$ plus proches voisins d'un point donné. 
+On propose ici deux manières simples d'illustrer ce fait.
 
-Dans le cube $[0,1]^d\subset\mathbb{R}^d$, on considère les $k=10$ plus proches voisins d'un point $\mathbf x$.  Soit $l$ la taille de l'arête du plus petit hypercube contenant les $k$ plus proches voisins. Alors $l^d\approx \frac{k}{n}$ et par exemple la {numref}`fleau-ref` donne l'évolution de $l$ en fonction de $d$ pour $n=1000$.
+### Première expérience
+On tire uniformément des points dans le cube unité $[0,1]^d\subset\mathbb{R}^d$ et on calcule la taille de l'espace occupé par les $k$ plus proches voisins d'un point donné. 
+
+Dans le cube unité, on considère les $k=10$ plus proches voisins d'un point $\mathbf x$.  Soit $l$ la taille de l'arête du plus petit hypercube contenant les $k$ plus proches voisins. Alors $l^d\approx \frac{k}{n}$ et par exemple la {numref}`fleau-ref` donne l'évolution de $l$ en fonction de $d$ pour $n=1000$.
 
 ```{figure} ./images/ld10.png
 :name: fleau-ref
@@ -217,6 +220,15 @@ On pourrait penser qu'augmenter la taille de $Z$ résout ce problème. Cependant
 :class: dropdown
 Quelle doit être la valeur de $n$ qui permet à $l$ d'être "petit" ? En fixant par exemple $l=0.1$, alors $n=k.l^{-d}=k.10^d$ et la croissance de $n$ est exponentielle. Pour $d>100$, $n$ doit par exemple être plus grand que le nombre de particules dans l'Univers...
 ``` 
+
+### Deuxième expérience
+On tire uniformément des points dans le cube unité et on calcule la distance entre chaque paire de points dans $\mathbb{R}^d$. La distribution de ces distances lorsque $d$ augmente est donnée dans la {numref}`fleau-ref2`.
+
+```{figure} ./images/knndist.png
+:name: fleau-ref2
+Distribution es distances entre paires de points uniformément tirés dans le cube unité, en fonction de $d$.
+```
+
 
 ## Exemple
 ```{code-cell} ipython3
