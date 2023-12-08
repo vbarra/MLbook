@@ -230,14 +230,14 @@ ccp_gammas = ccp_gammas[:-1]
 
 node_counts = [arbre.tree_.node_count for arbre in arbres]
 depth = [arbre.tree_.max_depth for arbre in arbres]
-fig, axs = plt.subplots(2, 1)
+figure, axs = plt.subplots(2, 1)
 axs[0].plot(ccp_gammas, node_counts, marker="o", drawstyle="steps-post")
 axs[0].set_xlabel("gamma")
 axs[0].set_ylabel("Nombre de noeuds")
 axs[1].plot(ccp_gammas, depth, marker="o", drawstyle="steps-post")
 axs[1].set_xlabel("gamma")
 axs[1].set_ylabel("Profondeur de l'arbre")
-fig.tight_layout()
+figure.tight_layout()
 
 
 # En calculant les précisions sur l'ensemle de test, on voit que l'arbre construit pour $\gamma=0.015$ amène au meilleur résultat.
