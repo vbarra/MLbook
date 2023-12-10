@@ -592,10 +592,10 @@ title="Print to PDF"
 \[\label{eq:f} 
 f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 \]</div>
-<p>permet, si elle sépare les données d’apprentissage, de les classifier correctement (<a class="reference internal" href="#hyp-ref"><span class="std std-numref">Fig. 12</span></a>).</p>
+<p>permet, si elle sépare les données d’apprentissage, de les classifier correctement (<a class="reference internal" href="#hyp-ref"><span class="std std-numref">Fig. 13</span></a>).</p>
 <div class="figure align-default" id="hyp-ref">
 <img alt="_images/hyperplan.png" src="_images/hyperplan.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Hyperplan séparateur et définition de <span class="math notranslate nohighlight">\(\mathbb w\)</span></span><a class="headerlink" href="#hyp-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Hyperplan séparateur et définition de <span class="math notranslate nohighlight">\(\mathbb w\)</span></span><a class="headerlink" href="#hyp-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>Un tel hyperplan, représenté par (<span class="math notranslate nohighlight">\(\mathbf w,b)\)</span> peut également être exprimé par <span class="math notranslate nohighlight">\((\lambda \mathbf w,\lambda b), \lambda\in\mathbb{R}\)</span>. Il est donc nécessaire de définir l’hyperplan canonique comme étant celui éloigné des données d’une distance au moins égale à 1. En fait, on impose qu’un exemple au moins de chaque classe soit à distance égale à 1. On considère alors le couple <span class="math notranslate nohighlight">\((\mathbf w,b)\)</span> tel que :</p>
 <div class="math notranslate nohighlight">
@@ -606,10 +606,10 @@ f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 <div class="math notranslate nohighlight">
 \[\forall i\quad y_i (\mathbf  w^T\mathbf x_i + b) \ge 1\]</div>
 <p>les hyperplans <span class="math notranslate nohighlight">\(\mathbf w^T\mathbf x_i + b =\pm 1\)</span> sont appelés les hyperplans supports.</p>
-<p>Une infinité d’hyperplans sépare deux nuages de points linéairement séparables (<a class="reference internal" href="#infhyp-ref"><span class="std std-numref">Fig. 13</span></a>)</p>
+<p>Une infinité d’hyperplans sépare deux nuages de points linéairement séparables (<a class="reference internal" href="#infhyp-ref"><span class="std std-numref">Fig. 14</span></a>)</p>
 <div class="figure align-default" id="infhyp-ref">
 <img alt="_images/hyperplanmarge.png" src="_images/hyperplanmarge.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Hyperplans séparateurs</span><a class="headerlink" href="#infhyp-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Hyperplans séparateurs</span><a class="headerlink" href="#infhyp-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>On cherche à avoir la marge la plus grande possible, et on suppose qu’au moins un point de donnée appartient aux hyperplans support. Il existe donc <span class="math notranslate nohighlight">\(\mathbf x_1,\mathbf x_2\)</span> tels que <span class="math notranslate nohighlight">\(\mathbf w^T\mathbf x_1 + b =1\)</span> et <span class="math notranslate nohighlight">\(\mathbf w^T\mathbf x_2 + b =-1\)</span>. On en déduit</p>
 <div class="math notranslate nohighlight">
@@ -617,10 +617,10 @@ f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 <p><span class="math notranslate nohighlight">\(\mathbf w\)</span> étant orthogonal aux hyperplans, la marge est la projection orthogonale de <span class="math notranslate nohighlight">\(\mathbf x_1-\mathbf x_2\)</span> sur <span class="math notranslate nohighlight">\(\mathbf w\)</span>. Cette projection est définie par la matrice <span class="math notranslate nohighlight">\(P=\frac{\mathbf w\mathbf w^T}{\mathbf w^T\mathbf w}\)</span> et donc le vecteur projection de <span class="math notranslate nohighlight">\(\mathbf x_1-\mathbf x_2\)</span> sur la droite engendrée par <span class="math notranslate nohighlight">\(\mathbf w\)</span> est</p>
 <div class="math notranslate nohighlight">
 \[\frac{\mathbf w^T(x_1-\mathbf x_2)}{\mathbf w^T\mathbf w}\mathbf w = \frac{2}{\|\mathbf w\|}\]</div>
-<p>L’équation précédente permet d’affirmer que maximiser la marge revient à minimiser <span class="math notranslate nohighlight">\(\|\mathbf w\|\)</span>, sous les contraintes de bonne classification (<a class="reference internal" href="#hyp2-ref"><span class="std std-numref">Fig. 14</span></a>).</p>
+<p>L’équation précédente permet d’affirmer que maximiser la marge revient à minimiser <span class="math notranslate nohighlight">\(\|\mathbf w\|\)</span>, sous les contraintes de bonne classification (<a class="reference internal" href="#hyp2-ref"><span class="std std-numref">Fig. 15</span></a>).</p>
 <div class="figure align-default" id="hyp2-ref">
 <img alt="_images/hyperplanmarge2.png" src="_images/hyperplanmarge2.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Maximisation de la marge</span><a class="headerlink" href="#hyp2-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Maximisation de la marge</span><a class="headerlink" href="#hyp2-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
 <div class="section" id="probleme-d-optimisation">
@@ -670,7 +670,7 @@ min \label{eq:qp1}  W(\boldsymbol\alpha) = {-\boldsymbol\alpha}^T \mathbf{1} + \
 <div class="math notranslate nohighlight">
 \[b = - \frac{1}{2} ( \mathbf w ^T \mathbf x^+ + \mathbf w ^T \mathbf x^- )
 \]</div>
-<p>L’hyperplan ainsi défini a besoin de très peu de vecteurs de support (méthode éparse) (<a class="reference internal" href="#svmlin-ref"><span class="std std-numref">Fig. 15</span></a>).</p>
+<p>L’hyperplan ainsi défini a besoin de très peu de vecteurs de support (méthode éparse) (<a class="reference internal" href="#svmlin-ref"><span class="std std-numref">Fig. 16</span></a>).</p>
 <div class="cell tag_margin tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -683,7 +683,7 @@ min \label{eq:qp1}  W(\boldsymbol\alpha) = {-\boldsymbol\alpha}^T \mathbf{1} + \
 </div>
 <div class="figure align-default" id="svmlin-ref">
 <img alt="_images/svmLin.png" src="_images/svmLin.png" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Les vecteurs de support sont entourés.</span><a class="headerlink" href="#svmlin-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Les vecteurs de support sont entourés.</span><a class="headerlink" href="#svmlin-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
 <div class="section" id="donnees-non-lineairement-separables">
@@ -705,11 +705,11 @@ Lorsque <span class="math notranslate nohighlight">\(C\rightarrow\infty\)</span>
 <p><span class="math notranslate nohighlight">\(C\)</span> représente alors un compromis entre la marge possible entre les exemples et le nombre d’erreurs admissibles.
 Nous illustrons dans la suite deux situations influencées par <span class="math notranslate nohighlight">\(C\)</span> :</p>
 <ul class="simple">
-<li><p>La <a class="reference internal" href="#soft1-ref"><span class="std std-numref">Fig. 16</span></a> présente une première illustration du rôle de <span class="math notranslate nohighlight">\(C\)</span> : dans le cas de données linéairement séparables, un <span class="math notranslate nohighlight">\(C\)</span> faible autorisera des  vecteurs à rentrer dans la marge (vert). Plus <span class="math notranslate nohighlight">\(C\)</span> devient grand, plus le nombre de vecteurs support diminue, pour ne laisser aucun vecteur à distance inférieure à la marge de l’hyperplan optimal</p></li>
+<li><p>La <a class="reference internal" href="#soft1-ref"><span class="std std-numref">Fig. 17</span></a> présente une première illustration du rôle de <span class="math notranslate nohighlight">\(C\)</span> : dans le cas de données linéairement séparables, un <span class="math notranslate nohighlight">\(C\)</span> faible autorisera des  vecteurs à rentrer dans la marge (vert). Plus <span class="math notranslate nohighlight">\(C\)</span> devient grand, plus le nombre de vecteurs support diminue, pour ne laisser aucun vecteur à distance inférieure à la marge de l’hyperplan optimal</p></li>
 </ul>
 <div class="figure align-default" id="soft1-ref">
 <img alt="_images/soft1.png" src="_images/soft1.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,25 +730,25 @@ Nous illustrons dans la suite deux situations influencées par <span class="math
 </div>
 </div>
 <ul class="simple">
-<li><p>La <a class="reference internal" href="#soft2-ref"><span class="std std-numref">Fig. 17</span></a> présente un ensemble de données non linéairement séparables. La valeur de <span class="math notranslate nohighlight">\(C\)</span> contrôle le nombre d’erreurs de classification dans le résultat final.</p></li>
+<li><p>La <a class="reference internal" href="#soft2-ref"><span class="std std-numref">Fig. 18</span></a> présente un ensemble de données non linéairement séparables. La valeur de <span class="math notranslate nohighlight">\(C\)</span> contrôle le nombre d’erreurs de classification dans le résultat final.</p></li>
 </ul>
 <div class="figure align-default" id="soft2-ref">
 <img alt="_images/soft2.png" src="_images/soft2.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
 <div class="section" id="cas-multiclasses">
 <h2>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien permanent vers ce titre">#</a></h2>
 <p>Deux stratégies sont possibles dans le cas multiclasse :</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a9028485-6eed-46a0-838d-e2764b825363" name="3fa7adf2-c08a-4a34-8340-e6bac8d290e2" type="radio">
-</input><label class="sd-tab-label" for="a9028485-6eed-46a0-838d-e2764b825363">
+<input checked="checked" id="e6dacbd5-43c5-4dad-9cf0-3d3584b6f2fd" name="218cc89e-6816-4113-bf36-2b90f31c0142" type="radio">
+</input><label class="sd-tab-label" for="e6dacbd5-43c5-4dad-9cf0-3d3584b6f2fd">
 Un contre tous</label><div class="sd-tab-content docutils">
 <p>Transformer le problème à <span class="math notranslate nohighlight">\(k\)</span> classes en <span class="math notranslate nohighlight">\(k\)</span> classifieurs binaires, la classe de l’exemple est donnée par le classifieur qui répond le mieux
 <img alt="" src="_images/ova1.png" /></p>
 </div>
-<input id="40b4d8c0-cf04-41b6-9dbe-0367f6c0b920" name="3fa7adf2-c08a-4a34-8340-e6bac8d290e2" type="radio">
-</input><label class="sd-tab-label" for="40b4d8c0-cf04-41b6-9dbe-0367f6c0b920">
+<input id="70016f16-b98d-4ba4-914a-a2f04e5a4439" name="218cc89e-6816-4113-bf36-2b90f31c0142" type="radio">
+</input><label class="sd-tab-label" for="70016f16-b98d-4ba4-914a-a2f04e5a4439">
 Un contre un</label><div class="sd-tab-content docutils">
 <p>Transformer le problème en <span class="math notranslate nohighlight">\(\frac{k(k-1)}{2}\)</span> classifieurs binaires, chaque classe étant comparée aux autres. La classe de l’exemple est donnée par le vote majoritaire ou par un graphe acyclique de décision
 <img alt="" src="_images/ova2.png" /></p>

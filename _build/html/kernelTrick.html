@@ -733,13 +733,13 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
 </ul>
 <p>Deux choix classiques de noyau sont décrits ci-dessous.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="e4c37cd2-059e-4772-a38f-afab09d77949" name="cd9eab13-4ba5-42cc-8e38-552779ec5247" type="radio">
-</input><label class="sd-tab-label" for="e4c37cd2-059e-4772-a38f-afab09d77949">
+<input checked="checked" id="d01fd845-7670-4c72-b161-bdd38b93c8cf" name="0039b1fe-4b0e-47d3-a794-d34517e491a5" type="radio">
+</input><label class="sd-tab-label" for="d01fd845-7670-4c72-b161-bdd38b93c8cf">
 Noyau  polynomial</label><div class="sd-tab-content docutils">
-<p>Considérons <span class="math notranslate nohighlight">\(K(\mathbf x_i, \mathbf x_j) = \left (\mathbf x_i^T \mathbf x_j +\theta\right )^p\)</span> En développant on obtient  <span class="math notranslate nohighlight">\({d + p - 1 \choose p}\)</span> termes, chacun d’entre eux étant un polynôme de degré variable des vecteurs d’entrée. <span class="math notranslate nohighlight">\(K\)</span> peut donc être vu comme le produit scalaire de deux vecteurs <span class="math notranslate nohighlight">\(\mathbf z\)</span> de très grande taille, d’autant plus importante que <span class="math notranslate nohighlight">\(p\)</span> est grand (figures (<a class="reference internal" href="#polyd-ref"><span class="std std-numref">Fig. 18</span></a>) (<a class="reference internal" href="#polytheta-ref"><span class="std std-numref">Fig. 19</span></a>))</p>
+<p>Considérons <span class="math notranslate nohighlight">\(K(\mathbf x_i, \mathbf x_j) = \left (\mathbf x_i^T \mathbf x_j +\theta\right )^p\)</span> En développant on obtient  <span class="math notranslate nohighlight">\({d + p - 1 \choose p}\)</span> termes, chacun d’entre eux étant un polynôme de degré variable des vecteurs d’entrée. <span class="math notranslate nohighlight">\(K\)</span> peut donc être vu comme le produit scalaire de deux vecteurs <span class="math notranslate nohighlight">\(\mathbf z\)</span> de très grande taille, d’autant plus importante que <span class="math notranslate nohighlight">\(p\)</span> est grand (figures (<a class="reference internal" href="#polyd-ref"><span class="std std-numref">Fig. 19</span></a>) (<a class="reference internal" href="#polytheta-ref"><span class="std std-numref">Fig. 20</span></a>))</p>
 </div>
-<input id="dc7f1490-74f0-4125-8cbd-5369bbbe7afe" name="cd9eab13-4ba5-42cc-8e38-552779ec5247" type="radio">
-</input><label class="sd-tab-label" for="dc7f1490-74f0-4125-8cbd-5369bbbe7afe">
+<input id="3c8b4dd7-ddf0-4109-8096-1e29adcab16b" name="0039b1fe-4b0e-47d3-a794-d34517e491a5" type="radio">
+</input><label class="sd-tab-label" for="3c8b4dd7-ddf0-4109-8096-1e29adcab16b">
 Noyau  gaussien</label><div class="sd-tab-content docutils">
 <p>Un noyau très utilisé est le noyau gaussien :</p>
 <div class="math notranslate nohighlight">
@@ -752,20 +752,20 @@ K(\mathbf x_i, \mathbf x_j)= exp( - \frac{ \parallel {\mathbf x_i - \mathbf x_j}
 f(\mathbf x) = \textrm{sign}[ \displaystyle\sum_{i=1}^n \alpha_i y_i
 exp( - \frac{ \parallel \mathbf x - \mathbf x_i \parallel ^2 }{2 \sigma^2})+ b ] 
 \]</div>
-<p>qui est une fonction de base radiale (RBF), dont les centres sont les vecteurs supports. Le SVM est alors implicitement utilisé pour trouver le nombre et la position des centres nécessaires au RBF pour une performance en généralisation maximale (figure (<a class="reference internal" href="#rbfsigma-ref"><span class="std std-numref">Fig. 20</span></a>))</p>
+<p>qui est une fonction de base radiale (RBF), dont les centres sont les vecteurs supports. Le SVM est alors implicitement utilisé pour trouver le nombre et la position des centres nécessaires au RBF pour une performance en généralisation maximale (figure (<a class="reference internal" href="#rbfsigma-ref"><span class="std std-numref">Fig. 21</span></a>))</p>
 </div>
 </div>
 <div class="figure align-default" id="polyd-ref">
 <img alt="_images/polyd.png" src="_images/polyd.png" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Influence du degré du polynôme pour le noyau polynomial</span><a class="headerlink" href="#polyd-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence du degré du polynôme pour le noyau polynomial</span><a class="headerlink" href="#polyd-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <div class="figure align-default" id="polytheta-ref">
 <img alt="_images/polytheta.png" src="_images/polytheta.png" />
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence de <span class="math notranslate nohighlight">\(\theta\)</span>  pour le noyau polynomial</span><a class="headerlink" href="#polytheta-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence de <span class="math notranslate nohighlight">\(\theta\)</span>  pour le noyau polynomial</span><a class="headerlink" href="#polytheta-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <div class="figure align-default" id="rbfsigma-ref">
 <img alt="_images/rbfsigma.png" src="_images/rbfsigma.png" />
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence de la largeur de bande pour le noyau gausssien</span><a class="headerlink" href="#rbfsigma-ref" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence de la largeur de bande pour le noyau gausssien</span><a class="headerlink" href="#rbfsigma-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
 <div class="section" id="noyaux-de-donnees-non-quantitatives">

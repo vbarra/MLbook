@@ -223,7 +223,34 @@ Video("videos/knn5.mp4",embed =True,width=500)
 # 
 # 
 # ## Arbres kd
-# La complexité de l'algorithme précédent est en $\mathcal{O}(d.n.k)$ où $n$ est le nombre de points d'apprentissage, $d$ la dimension de l'espace et $k$ le nombre de voisins cherchés. Les $k$-ppv deviennent donc gourmands en temps et en espace lorsque $n$ est grand et cependant on souhaite avoir $n$ grand pour avoir une bonne précision dans la prédiction. 
+# La complexité de l'algorithme précédent est en $\mathcal{O}(d.n.k)$ où $n$ est le nombre de points d'apprentissage, $d$ la dimension de l'espace et $k$ le nombre de voisins cherchés. Les $k$-ppv deviennent donc gourmands en temps et en espace lorsque $n$ est grand et cependant on souhaite avoir $n$ grand pour avoir une bonne précision dans la prédiction.
+# 
+# Les arbres kd sont une réponse à ce problème, en remarquant qu'en recherchant les points les plus proches d'un point donné, la plupart des points de données sont loin. Il n'est donc pas nécessaire de calculer les distances pour ces points lointains, ce qui peut se réaliser en partitionnant l'espace des données à l'aide d'un arbre binaire.
+# 
+# Le principe de partition ({numref}`kdtree`) est le suivant, pour un ensemble d'apprentissage $Z$ : 
+# 
+# 1. Couper selon une des dimensions $i\in[\![1,d]\!]$ par un hyperplan $\mathcal H$ qui sépare les données $Z$ en deux sous-ensembles $Z_1$ et $Z_2$ avec $|Z_1|\approx|Z_2|\approx |Z|/2$
+# 2. Soit $x$ un nouveau point de données dont on veut chercher son plus proche voisin
+# 3. Identifier le sous-ensemble auquel appartient $x$. Supposons $x\inZ_1$
+# 4. Trouver le plus proche voisin $y\inZ_1$ en $\mathcal O(n/2)$
+# 5. Calculer la distance $d(x,\mathcal H)$
+# 6. Si $d(x, \mathcal H) > d(x, y)$ alors tout les éléments de $Z_2$ peuvent être ignorés (par l'inégalité triangulaire)
+# 7. Sinon, il est possible que le plus proche voisin soit dans $Z_2$
+# 
+# Si l'étape 6 est atteinte, alors on divise la complexité d'un facteur 2. Dans l'autre cas, on se retrouve avec la complexité de l'algorithme des $k$ plus proches voisins. En moyenne, cependant, la complexité est meilleure.
+# 
+# La construction de l'arbre peut se faire en découpant le données en deux selon chacune des dimensions de l'espace des donnés. La sélection de la dimension à choisir peut par exemple se faire de manière heuristique, en choisissant celle qui capture la plus grande variation des données. La profondeur de l'arbre résultant est alors relativement faible, en $\mathcal O(log_2(n))$. Cette manière de couper l'espace, en alignant les hyperplans $\mathcal H$ sur les axes, n'autorise pas une bonne généralisation si $d$ est grand.
+# 
+# 
+# ```{figure} ./images/kdtreeim.png
+# :name: kdtree
+# Exemple de partition d'un ensemble de points pr arbre kd.
+# ```
+# 
+# 
+# 
+# 
+# 
 # 
 # 
 # 
