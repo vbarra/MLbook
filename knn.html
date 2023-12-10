@@ -879,6 +879,23 @@ encore des hyperplans par morceaux.</p>
 <div class="section" id="arbres-kd">
 <h2>Arbres kd<a class="headerlink" href="#arbres-kd" title="Lien permanent vers ce titre">#</a></h2>
 <p>La complexité de l’algorithme précédent est en <span class="math notranslate nohighlight">\(\mathcal{O}(d.n.k)\)</span> où <span class="math notranslate nohighlight">\(n\)</span> est le nombre de points d’apprentissage, <span class="math notranslate nohighlight">\(d\)</span> la dimension de l’espace et <span class="math notranslate nohighlight">\(k\)</span> le nombre de voisins cherchés. Les <span class="math notranslate nohighlight">\(k\)</span>-ppv deviennent donc gourmands en temps et en espace lorsque <span class="math notranslate nohighlight">\(n\)</span> est grand et cependant on souhaite avoir <span class="math notranslate nohighlight">\(n\)</span> grand pour avoir une bonne précision dans la prédiction.</p>
+<p>Les arbres kd sont une réponse à ce problème, en remarquant qu’en recherchant les points les plus proches d’un point donné, la plupart des points de données sont loin. Il n’est donc pas nécessaire de calculer les distances pour ces points lointains, ce qui peut se réaliser en partitionnant l’espace des données à l’aide d’un arbre binaire.</p>
+<p>Le principe de partition (<a class="reference internal" href="#kdtree"><span class="std std-numref">Fig. 12</span></a>) est le suivant, pour un ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span> :</p>
+<ol class="simple">
+<li><p>Couper selon une des dimensions <span class="math notranslate nohighlight">\(i\in[\![1,d]\!]\)</span> par un hyperplan <span class="math notranslate nohighlight">\(\mathcal H\)</span> qui sépare les données <span class="math notranslate nohighlight">\(Z\)</span> en deux sous-ensembles <span class="math notranslate nohighlight">\(Z_1\)</span> et <span class="math notranslate nohighlight">\(Z_2\)</span> avec <span class="math notranslate nohighlight">\(|Z_1|\approx|Z_2|\approx |Z|/2\)</span></p></li>
+<li><p>Soit <span class="math notranslate nohighlight">\(x\)</span> un nouveau point de données dont on veut chercher son plus proche voisin</p></li>
+<li><p>Identifier le sous-ensemble auquel appartient <span class="math notranslate nohighlight">\(x\)</span>. Supposons <span class="math notranslate nohighlight">\(x\inZ_1\)</span></p></li>
+<li><p>Trouver le plus proche voisin <span class="math notranslate nohighlight">\(y\inZ_1\)</span> en <span class="math notranslate nohighlight">\(\mathcal O(n/2)\)</span></p></li>
+<li><p>Calculer la distance <span class="math notranslate nohighlight">\(d(x,\mathcal H)\)</span></p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(d(x, \mathcal H) &gt; d(x, y)\)</span> alors tout les éléments de <span class="math notranslate nohighlight">\(Z_2\)</span> peuvent être ignorés (par l’inégalité triangulaire)</p></li>
+<li><p>Sinon, il est possible que le plus proche voisin soit dans <span class="math notranslate nohighlight">\(Z_2\)</span></p></li>
+</ol>
+<p>Si l’étape 6 est atteinte, alors on divise la complexité d’un facteur 2. Dans l’autre cas, on se retrouve avec la complexité de l’algorithme des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. En moyenne, cependant, la complexité est meilleure.</p>
+<p>La construction de l’arbre peut se faire en découpant le données en deux selon chacune des dimensions de l’espace des donnés. La sélection de la dimension à choisir peut par exemple se faire de manière heuristique, en choisissant celle qui capture la plus grande variation des données. La profondeur de l’arbre résultant est alors relativement faible, en <span class="math notranslate nohighlight">\(\mathcal O(log_2(n))\)</span>. Cette manière de couper l’espace, en alignant les hyperplans <span class="math notranslate nohighlight">\(\mathcal H\)</span> sur les axes, n’autorise pas une bonne généralisation si <span class="math notranslate nohighlight">\(d\)</span> est grand.</p>
+<div class="figure align-default" id="kdtree">
+<img alt="_images/kdtreeim.png" src="_images/kdtreeim.png" />
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Exemple de partition d’un ensemble de points pr arbre kd.</span><a class="headerlink" href="#kdtree" title="Lien permanent vers cette image">#</a></p>
+</div>
 </div>
 <div class="section" id="exemple">
 <h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">#</a></h2>
