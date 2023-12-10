@@ -244,7 +244,7 @@ Video("videos/knn5.mp4",embed =True,width=500)
 # 
 # ```{figure} ./images/kdtreeim.png
 # :name: kdtree
-# Exemple de partition d'un ensemble de points pr arbre kd.
+# Exemple de partition d'un ensemble de points par arbre kd.
 # ```
 # 
 # 
