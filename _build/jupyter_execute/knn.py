@@ -217,8 +217,14 @@ Video("videos/knn5.mp4",embed =True,width=500)
 # 
 # ```{figure} ./images/knndist.png
 # :name: fleau-ref2
-# Distribution es distances entre paires de points uniformément tirés dans le cube unité, en fonction de $d$.
+# Distribution des distances entre paires de points uniformément tirés dans le cube unité, en fonction de $d$.
 # ```
+# 
+# 
+# 
+# ## Arbres kd
+# La complexité de l'algorithme précédent est en $\mathcal{O}(d.n.k)$ où $n$ est le nombre de points d'apprentissage, $d$ la dimension de l'espace et $k$ le nombre de voisins cherchés. Les $k$-ppv deviennent donc gourmands en temps et en espace lorsque $n$ est grand et cependant on souhaite avoir $n$ grand pour avoir une bonne précision dans la prédiction. 
+# 
 # 
 # 
 # ## Exemple

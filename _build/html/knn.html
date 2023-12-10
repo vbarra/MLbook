@@ -555,6 +555,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arbres-kd">
+   Arbres kd
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exemple">
    Exemple
   </a>
@@ -656,6 +661,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arbres-kd">
+   Arbres kd
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exemple">
@@ -862,9 +872,13 @@ encore des hyperplans par morceaux.</p>
 <p>On tire uniformément des points dans le cube unité et on calcule la distance entre chaque paire de points dans <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>. La distribution de ces distances lorsque <span class="math notranslate nohighlight">\(d\)</span> augmente est donnée dans la <a class="reference internal" href="#fleau-ref2"><span class="std std-numref">Fig. 11</span></a>.</p>
 <div class="figure align-default" id="fleau-ref2">
 <img alt="_images/knndist.png" src="_images/knndist.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Distribution es distances entre paires de points uniformément tirés dans le cube unité, en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref2" title="Lien permanent vers cette image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Distribution des distances entre paires de points uniformément tirés dans le cube unité, en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref2" title="Lien permanent vers cette image">#</a></p>
 </div>
 </div>
+</div>
+<div class="section" id="arbres-kd">
+<h2>Arbres kd<a class="headerlink" href="#arbres-kd" title="Lien permanent vers ce titre">#</a></h2>
+<p>La complexité de l’algorithme précédent est en <span class="math notranslate nohighlight">\(\mathcal{O}(d.n.k)\)</span> où <span class="math notranslate nohighlight">\(n\)</span> est le nombre de points d’apprentissage, <span class="math notranslate nohighlight">\(d\)</span> la dimension de l’espace et <span class="math notranslate nohighlight">\(k\)</span> le nombre de voisins cherchés. Les <span class="math notranslate nohighlight">\(k\)</span>-ppv deviennent donc gourmands en temps et en espace lorsque <span class="math notranslate nohighlight">\(n\)</span> est grand et cependant on souhaite avoir <span class="math notranslate nohighlight">\(n\)</span> grand pour avoir une bonne précision dans la prédiction.</p>
 </div>
 <div class="section" id="exemple">
 <h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">#</a></h2>
