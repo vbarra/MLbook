@@ -884,8 +884,8 @@ encore des hyperplans par morceaux.</p>
 <ol class="simple">
 <li><p>Couper selon une des dimensions <span class="math notranslate nohighlight">\(i\in[\![1,d]\!]\)</span> par un hyperplan <span class="math notranslate nohighlight">\(\mathcal H\)</span> qui sépare les données <span class="math notranslate nohighlight">\(Z\)</span> en deux sous-ensembles <span class="math notranslate nohighlight">\(Z_1\)</span> et <span class="math notranslate nohighlight">\(Z_2\)</span> avec <span class="math notranslate nohighlight">\(|Z_1|\approx|Z_2|\approx |Z|/2\)</span></p></li>
 <li><p>Soit <span class="math notranslate nohighlight">\(x\)</span> un nouveau point de données dont on veut chercher son plus proche voisin</p></li>
-<li><p>Identifier le sous-ensemble auquel appartient <span class="math notranslate nohighlight">\(x\)</span>. Supposons <span class="math notranslate nohighlight">\(x\inZ_1\)</span></p></li>
-<li><p>Trouver le plus proche voisin <span class="math notranslate nohighlight">\(y\inZ_1\)</span> en <span class="math notranslate nohighlight">\(\mathcal O(n/2)\)</span></p></li>
+<li><p>Identifier le sous-ensemble auquel appartient <span class="math notranslate nohighlight">\(x\)</span>. Supposons <span class="math notranslate nohighlight">\(x\in Z_1\)</span></p></li>
+<li><p>Trouver le plus proche voisin <span class="math notranslate nohighlight">\(y\in Z_1\)</span> en <span class="math notranslate nohighlight">\(\mathcal O(n/2)\)</span></p></li>
 <li><p>Calculer la distance <span class="math notranslate nohighlight">\(d(x,\mathcal H)\)</span></p></li>
 <li><p>Si <span class="math notranslate nohighlight">\(d(x, \mathcal H) &gt; d(x, y)\)</span> alors tout les éléments de <span class="math notranslate nohighlight">\(Z_2\)</span> peuvent être ignorés (par l’inégalité triangulaire)</p></li>
 <li><p>Sinon, il est possible que le plus proche voisin soit dans <span class="math notranslate nohighlight">\(Z_2\)</span></p></li>

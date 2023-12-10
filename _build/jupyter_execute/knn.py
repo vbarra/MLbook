@@ -231,8 +231,8 @@ Video("videos/knn5.mp4",embed =True,width=500)
 # 
 # 1. Couper selon une des dimensions $i\in[\![1,d]\!]$ par un hyperplan $\mathcal H$ qui sépare les données $Z$ en deux sous-ensembles $Z_1$ et $Z_2$ avec $|Z_1|\approx|Z_2|\approx |Z|/2$
 # 2. Soit $x$ un nouveau point de données dont on veut chercher son plus proche voisin
-# 3. Identifier le sous-ensemble auquel appartient $x$. Supposons $x\inZ_1$
-# 4. Trouver le plus proche voisin $y\inZ_1$ en $\mathcal O(n/2)$
+# 3. Identifier le sous-ensemble auquel appartient $x$. Supposons $x\in Z_1$
+# 4. Trouver le plus proche voisin $y\in Z_1$ en $\mathcal O(n/2)$
 # 5. Calculer la distance $d(x,\mathcal H)$
 # 6. Si $d(x, \mathcal H) > d(x, y)$ alors tout les éléments de $Z_2$ peuvent être ignorés (par l'inégalité triangulaire)
 # 7. Sinon, il est possible que le plus proche voisin soit dans $Z_2$
