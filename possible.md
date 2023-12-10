@@ -115,14 +115,14 @@ $$
 Avec probabilité $P = 1-2Me^{-2\epsilon^2n}$, $E_t$ sera donc à $\epsilon$ près de $E_g$ et ceci pour tout $h\in \mathcal{F}$. La convergence sera d'autant meilleure que $n$ est grand.
 
 
-On peut alors s'intéresser à la taille de $Z$ qui assure une 'bonne' convergence. A $P$ et $\epsilon$ fixés, on voit alors que tant que 
+On peut alors s'intéresser à la taille de $Z$ qui assure une 'bonne' convergence. \`A $P$ et $\epsilon$ fixés, on voit alors que tant que 
 
 $$n\geq \frac{1}{2\epsilon^2}log\frac{2M}{P}$$ 
 
 alors avec probabilité $1-P$, $|E_t(h)-E_g(h)|\leq \epsilon$ pour tout $h\in \mathcal{F}$. 
 
 
-De même on peut résoudre en $\epsilon$ : à $n$ et $P$ fixé, on voit qu'avec probabilité $1-P$ on a pour tout $h\in \mathcal{F}$ :  
+De même on peut résoudre en $\epsilon$ : à $n$ et $P$ fixés, on voit qu'avec probabilité $1-P$ on a pour tout $h\in \mathcal{F}$ :  
 
 $$|E_t(h)-E_g(h)|\leq\sqrt{\frac{1}{2n}log\frac{2M}{P}}$$
 
@@ -169,7 +169,7 @@ Courbes des erreurs. La courbe rouge représente la complexité du modèle, la c
 
 
 Exemple : $\mathcal F$ est l'ensemble des polynomes de degré $M$. $M$ faible signifie par exemple approcher $f$ par une hypothèse linéaire (sous-apprentissage), et $M$ fort signifie approcher $f$ par un polynôme 
-de degré élevé (l'erreur d'entraînement sera très faible, en revanche en raison du sur apprentissage $g$ n'aura aucune capacité de généralisation ({numref}`apprendre-ref`).
+de degré élevé (l'erreur d'entraînement sera très faible, en revanche en raison du sur apprentissage, $g$ n'aura aucune capacité de généralisation ({numref}`apprendre-ref`)).
 
 ```{figure} ./images/apprendre.png
 :name: apprendre-ref
@@ -186,7 +186,7 @@ au cas où $\mathcal F$ est infini.
 
 Quantifier la taille de $\mathcal F$ par son cardinal $M$ n'est pas nécessairement pertinent, puisque cette information ne capture pas 
 les possibles similarités entre $h\in \mathcal F$. $M$ mesure donc la diversité maximum de  $\mathcal F$ et il 
-faut trouver une mesure de diversité qui soit pertinente pour le problème de l'apprentissage. On parle également de pouvoir d'expression de cet ensemble.
+faut trouver une mesure de diversité qui soit pertinente pour le problème de l'apprentissage. On parle également de *pouvoir d'expression* de cet ensemble.
 
 ## Dichotomies
 Une première idée est de fixer $n$ points $Z=\{\mathbf x_i\in X,i\in [\![1,n]\!]\}$ et d'affirmer que $\mathcal F$ a un bon pouvoir d'expression s'il peut calculer toutes les fonctions sur ces $n$ points. 
@@ -256,12 +256,11 @@ $$(\forall n\in \mathbb{N})\ \Delta_\mathcal{F}(n)\leq \displaystyle\sum_{i=0}^{
 
 Ainsi, si $\mathcal{F}$ a un point d'arrêt, on est assuré d'avoir une bonne capacité de généralisation.
 
-(my-label)=VC
 ## VC-dim
 
 La dimension de Vapnik-Chervonenkis (VC-dim) est un paramètre unique permettant de caractériser la fonction de croissance.
 ````{prf:definition} VC-dim
-Soit $\mathcal{F}$ un ensemble de fonctions. La dimension de Vapnik-Chervonenkis de $\mathcal{F}$, notée $d_{vc}(\mathcal{F})$, est définie par :
+Soit $\mathcal{F}$ un ensemble de fonctions. La dimension de Vapnik-Chervonenkis de $\mathcal{F}$ notée $d_{vc}(\mathcal{F})$, est définie par :
     
 $$d_{vc}(\mathcal{F}) = arg \displaystyle \max_n \{n, \Delta_\mathcal{F}(n)=2^n\}$$
 `````

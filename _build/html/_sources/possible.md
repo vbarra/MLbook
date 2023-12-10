@@ -43,7 +43,7 @@ $$E_g(h) = P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))$$
 Erreur mesurée sur les échantillons(jaune)
 ```
 
-De plus, un problème d'apprentissage supervisé vient naturellement avec un ensemble d'apprentissage $Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\mathbf x_i\in X,y_i\in Y \right \}$, ce qui permet d'évaluer l'erreur d'apprentissage de $h$ à partir de $Z$, dite erreur 'in sample'  (ou erreur d'apprentissage) ({numref}`errors-in-ref`). 
+De plus, un problème d'apprentissage supervisé vient naturellement avec un ensemble d'apprentissage $Z=\left \{(\mathbf x_i,y_i),i\in[\![1,n]\!],\mathbf x_i\in X,y_i\in Y \right \}$, ce qui permet d'évaluer l'erreur d'apprentissage de $h$ à partir de $Z$, dite erreur 'in sample'  (ou erreur d'apprentissage) ({numref}`errors-in-ref`). 
 
 $$E_t(h) = \frac{1}{n}\displaystyle\sum_{i=1}^n \mathbb{I}_{h(\mathbf x_i)\neq f(\mathbf x_i)}$$
 
@@ -67,7 +67,7 @@ En résumé :
 | Tirage d'une boule | $P(\mathbf x)$ | 
 | Tirage de $n$ boules | $Z$ |
 |   $\mu$ : probabilité de tirer une boule noire  | $E_g(h) = P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))$ |
-|   $\nu$ : proportion de boules noires dans $Z$ | $E_t(h) = \frac{1}{n}\sum_{i=1}^n \mathbb{I}_{(h(\mathbf x)\neq f(\mathbf x))}$ |
+|   $\nu$ : proportion de boules noires dans $Z$ | $E_t(h) = \frac{1}{n}\displaystyle\sum_{i=1}^n \mathbb{I}_{(h(\mathbf x)\neq f(\mathbf x))}$ |
 
 
 

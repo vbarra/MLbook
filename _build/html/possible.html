@@ -599,7 +599,7 @@ title="Print to PDF"
 <img alt="_images/errorsample.png" src="_images/errorsample.png" />
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Erreur mesurée sur les échantillons(jaune)</span><a class="headerlink" href="#errors-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
-<p>De plus, un problème d’apprentissage supervisé vient naturellement avec un ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\mathbf x_i\in X,y_i\in Y \right \}\)</span>, ce qui permet d’évaluer l’erreur d’apprentissage de <span class="math notranslate nohighlight">\(h\)</span> à partir de <span class="math notranslate nohighlight">\(Z\)</span>, dite erreur “in sample”  (ou erreur d’apprentissage) (<a class="reference internal" href="#errors-in-ref"><span class="std std-numref">Fig. 3</span></a>).</p>
+<p>De plus, un problème d’apprentissage supervisé vient naturellement avec un ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),i\in[\![1,n]\!],\mathbf x_i\in X,y_i\in Y \right \}\)</span>, ce qui permet d’évaluer l’erreur d’apprentissage de <span class="math notranslate nohighlight">\(h\)</span> à partir de <span class="math notranslate nohighlight">\(Z\)</span>, dite erreur “in sample”  (ou erreur d’apprentissage) (<a class="reference internal" href="#errors-in-ref"><span class="std std-numref">Fig. 3</span></a>).</p>
 <div class="math notranslate nohighlight">
 \[E_t(h) = \frac{1}{n}\displaystyle\sum_{i=1}^n \mathbb{I}_{h(\mathbf x_i)\neq f(\mathbf x_i)}\]</div>
 <div class="figure align-default" id="errors-in-ref">
@@ -631,7 +631,7 @@ title="Print to PDF"
 <td><p><span class="math notranslate nohighlight">\(E_g(h) = P_\mathbf x(h(\mathbf x)\neq f(\mathbf x))\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\nu\)</span> : proportion de boules noires dans <span class="math notranslate nohighlight">\(Z\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(E_t(h) = \frac{1}{n}\sum_{i=1}^n \mathbb{I}_{(h(\mathbf x)\neq f(\mathbf x))}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E_t(h) = \frac{1}{n}\displaystyle\sum_{i=1}^n \mathbb{I}_{(h(\mathbf x)\neq f(\mathbf x))}\)</span></p></td>
 </tr>
 </tbody>
 </table>
