@@ -253,7 +253,7 @@ La construction de l'arbre peut se faire en découpant le données en deux selon
 
 ```{figure} ./images/kdtreeim.png
 :name: kdtree
-Exemple de partition d'un ensemble de points pr arbre kd.
+Exemple de partition d'un ensemble de points par arbre kd.
 ```
 
 
