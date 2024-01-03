@@ -670,11 +670,11 @@ title="Print to PDF"
     \end{array}
 \end{split}\]</div>
 <p>Avec probabilité <span class="math notranslate nohighlight">\(P = 1-2Me^{-2\epsilon^2n}\)</span>, <span class="math notranslate nohighlight">\(E_t\)</span> sera donc à <span class="math notranslate nohighlight">\(\epsilon\)</span> près de <span class="math notranslate nohighlight">\(E_g\)</span> et ceci pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span>. La convergence sera d’autant meilleure que <span class="math notranslate nohighlight">\(n\)</span> est grand.</p>
-<p>On peut alors s’intéresser à la taille de <span class="math notranslate nohighlight">\(Z\)</span> qui assure une “bonne” convergence. A <span class="math notranslate nohighlight">\(P\)</span> et <span class="math notranslate nohighlight">\(\epsilon\)</span> fixés, on voit alors que tant que</p>
+<p>On peut alors s’intéresser à la taille de <span class="math notranslate nohighlight">\(Z\)</span> qui assure une “bonne” convergence. `A <span class="math notranslate nohighlight">\(P\)</span> et <span class="math notranslate nohighlight">\(\epsilon\)</span> fixés, on voit alors que tant que</p>
 <div class="math notranslate nohighlight">
 \[n\geq \frac{1}{2\epsilon^2}log\frac{2M}{P}\]</div>
 <p>alors avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span>, <span class="math notranslate nohighlight">\(|E_t(h)-E_g(h)|\leq \epsilon\)</span> pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span>.</p>
-<p>De même on peut résoudre en <span class="math notranslate nohighlight">\(\epsilon\)</span> : à <span class="math notranslate nohighlight">\(n\)</span> et <span class="math notranslate nohighlight">\(P\)</span> fixé, on voit qu’avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span> on a pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span> :</p>
+<p>De même on peut résoudre en <span class="math notranslate nohighlight">\(\epsilon\)</span> : à <span class="math notranslate nohighlight">\(n\)</span> et <span class="math notranslate nohighlight">\(P\)</span> fixés, on voit qu’avec probabilité <span class="math notranslate nohighlight">\(1-P\)</span> on a pour tout <span class="math notranslate nohighlight">\(h\in \mathcal{F}\)</span> :</p>
 <div class="math notranslate nohighlight">
 \[|E_t(h)-E_g(h)|\leq\sqrt{\frac{1}{2n}log\frac{2M}{P}}\]</div>
 <p>Supposons maintenant que <span class="math notranslate nohighlight">\(\forall h\in \mathcal{F},|E_t(h)-E_g(h)|&lt;\epsilon\)</span>, peut on en déduire quelque chose sur <span class="math notranslate nohighlight">\(E_g(g)\)</span> ?</p>
@@ -706,7 +706,7 @@ g&amp;=&amp;Arg \displaystyle\min_{h\in \mathcal{F}} E_t(h)
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Courbes des erreurs. La courbe rouge représente la complexité du modèle, la courbe bleue l’erreur d’apprentissage et la courbe verte l’erreur en généralisation. Passé <span class="math notranslate nohighlight">\(M^*\)</span>, le modèle a tendance à surapprendre <span class="math notranslate nohighlight">\(Z\)</span> et l’erreur en généralisation croît</span><a class="headerlink" href="#courbes-err-ref" title="Lien permanent vers cette image">#</a></p>
 </div>
 <p>Exemple : <span class="math notranslate nohighlight">\(\mathcal F\)</span> est l’ensemble des polynomes de degré <span class="math notranslate nohighlight">\(M\)</span>. <span class="math notranslate nohighlight">\(M\)</span> faible signifie par exemple approcher <span class="math notranslate nohighlight">\(f\)</span> par une hypothèse linéaire (sous-apprentissage), et <span class="math notranslate nohighlight">\(M\)</span> fort signifie approcher <span class="math notranslate nohighlight">\(f\)</span> par un polynôme
-de degré élevé (l’erreur d’entraînement sera très faible, en revanche en raison du sur apprentissage <span class="math notranslate nohighlight">\(g\)</span> n’aura aucune capacité de généralisation (<a class="reference internal" href="#apprendre-ref"><span class="std std-numref">Fig. 5</span></a>).</p>
+de degré élevé (l’erreur d’entraînement sera très faible, en revanche en raison du sur apprentissage, <span class="math notranslate nohighlight">\(g\)</span> n’aura aucune capacité de généralisation (<a class="reference internal" href="#apprendre-ref"><span class="std std-numref">Fig. 5</span></a>)).</p>
 <div class="figure align-default" id="apprendre-ref">
 <img alt="_images/apprendre.png" src="_images/apprendre.png" />
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Sous et sur apprentissage dans le cas de modèles polynomiaux.</span><a class="headerlink" href="#apprendre-ref" title="Lien permanent vers cette image">#</a></p>
@@ -721,7 +721,7 @@ de degré élevé (l’erreur d’entraînement sera très faible, en revanche e
 <p>au cas où <span class="math notranslate nohighlight">\(\mathcal F\)</span> est infini.</p>
 <p>Quantifier la taille de <span class="math notranslate nohighlight">\(\mathcal F\)</span> par son cardinal <span class="math notranslate nohighlight">\(M\)</span> n’est pas nécessairement pertinent, puisque cette information ne capture pas
 les possibles similarités entre <span class="math notranslate nohighlight">\(h\in \mathcal F\)</span>. <span class="math notranslate nohighlight">\(M\)</span> mesure donc la diversité maximum de  <span class="math notranslate nohighlight">\(\mathcal F\)</span> et il
-faut trouver une mesure de diversité qui soit pertinente pour le problème de l’apprentissage. On parle également de pouvoir d’expression de cet ensemble.</p>
+faut trouver une mesure de diversité qui soit pertinente pour le problème de l’apprentissage. On parle également de <em>pouvoir d’expression</em> de cet ensemble.</p>
 <div class="section" id="dichotomies">
 <h2>Dichotomies<a class="headerlink" href="#dichotomies" title="Lien permanent vers ce titre">#</a></h2>
 <p>Une première idée est de fixer <span class="math notranslate nohighlight">\(n\)</span> points <span class="math notranslate nohighlight">\(Z=\{\mathbf x_i\in X,i\in [\![1,n]\!]\}\)</span> et d’affirmer que <span class="math notranslate nohighlight">\(\mathcal F\)</span> a un bon pouvoir d’expression s’il peut calculer toutes les fonctions sur ces <span class="math notranslate nohighlight">\(n\)</span> points.</p>
@@ -790,7 +790,6 @@ si <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)=2^n\)</spa
 \[\begin{split}(\forall n\in \mathbb{N})\ \Delta_\mathcal{F}(n)\leq \displaystyle\sum_{i=0}^{k-1}\begin{pmatrix}n\\i\end{pmatrix}\end{split}\]</div>
 </div>
 </div><p>Ainsi, si <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> a un point d’arrêt, on est assuré d’avoir une bonne capacité de généralisation.</p>
-<p>(my-label)=VC</p>
 </div>
 <div class="section" id="vc-dim">
 <h2>VC-dim<a class="headerlink" href="#vc-dim" title="Lien permanent vers ce titre">#</a></h2>
@@ -798,7 +797,7 @@ si <span class="math notranslate nohighlight">\(\Delta_\mathcal{F}(n)=2^n\)</spa
 <div class="proof definition admonition" id="definition-6">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span> (VC-dim)</p>
 <div class="definition-content section" id="proof-content">
-<p>Soit <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions. La dimension de Vapnik-Chervonenkis de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, notée <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span>, est définie par :</p>
+<p>Soit <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> un ensemble de fonctions. La dimension de Vapnik-Chervonenkis de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> notée <span class="math notranslate nohighlight">\(d_{vc}(\mathcal{F})\)</span>, est définie par :</p>
 <div class="math notranslate nohighlight">
 \[d_{vc}(\mathcal{F}) = arg \displaystyle \max_n \{n, \Delta_\mathcal{F}(n)=2^n\}\]</div>
 </div>
