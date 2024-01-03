@@ -105,17 +105,9 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Apprentissage automatique
-                </a>
-            </li>
-        </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
@@ -260,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
              <!-- To handle the deprecated key -->
             
             <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
             </div>
             
         </div>
@@ -303,35 +295,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -345,114 +308,6 @@ title="Fullscreen mode"
   </span>
 
 </button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/vbarra/mlbook.git"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/vbarra/mlbook.git/issues/new?title=Issue%20on%20page%20%2FkernelTrick.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/kernelTrick.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="_sources/kernelTrick.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
 <label for="__page-toc"
   class="headerbtn headerbtn-page-toc"
   
@@ -733,13 +588,13 @@ K(x,z)&amp;=&amp;(x^Tz)^2\\
 </ul>
 <p>Deux choix classiques de noyau sont décrits ci-dessous.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="d01fd845-7670-4c72-b161-bdd38b93c8cf" name="0039b1fe-4b0e-47d3-a794-d34517e491a5" type="radio">
-</input><label class="sd-tab-label" for="d01fd845-7670-4c72-b161-bdd38b93c8cf">
+<input checked="checked" id="d1b54f73-25a3-4dfc-9da7-32edb3c37dc2" name="a78a6302-2262-4d76-b221-6a59248693a5" type="radio">
+</input><label class="sd-tab-label" for="d1b54f73-25a3-4dfc-9da7-32edb3c37dc2">
 Noyau  polynomial</label><div class="sd-tab-content docutils">
 <p>Considérons <span class="math notranslate nohighlight">\(K(\mathbf x_i, \mathbf x_j) = \left (\mathbf x_i^T \mathbf x_j +\theta\right )^p\)</span> En développant on obtient  <span class="math notranslate nohighlight">\({d + p - 1 \choose p}\)</span> termes, chacun d’entre eux étant un polynôme de degré variable des vecteurs d’entrée. <span class="math notranslate nohighlight">\(K\)</span> peut donc être vu comme le produit scalaire de deux vecteurs <span class="math notranslate nohighlight">\(\mathbf z\)</span> de très grande taille, d’autant plus importante que <span class="math notranslate nohighlight">\(p\)</span> est grand (figures (<a class="reference internal" href="#polyd-ref"><span class="std std-numref">Fig. 19</span></a>) (<a class="reference internal" href="#polytheta-ref"><span class="std std-numref">Fig. 20</span></a>))</p>
 </div>
-<input id="3c8b4dd7-ddf0-4109-8096-1e29adcab16b" name="0039b1fe-4b0e-47d3-a794-d34517e491a5" type="radio">
-</input><label class="sd-tab-label" for="3c8b4dd7-ddf0-4109-8096-1e29adcab16b">
+<input id="532de05e-84eb-4b01-8467-0084a470cbb2" name="a78a6302-2262-4d76-b221-6a59248693a5" type="radio">
+</input><label class="sd-tab-label" for="532de05e-84eb-4b01-8467-0084a470cbb2">
 Noyau  gaussien</label><div class="sd-tab-content docutils">
 <p>Un noyau très utilisé est le noyau gaussien :</p>
 <div class="math notranslate nohighlight">
@@ -807,8 +662,8 @@ exp( - \frac{ \parallel \mathbf x - \mathbf x_i \parallel ^2 }{2 \sigma^2})+ b ]
     {
         requestKernel: true,
         binderOptions: {
-            repo: "vbarra/mlbook.git",
-            ref: "main",
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
         },
         codeMirrorConfig: {
             theme: "abcdef",
