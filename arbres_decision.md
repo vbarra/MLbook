@@ -263,7 +263,7 @@ plt.show()
 ## Implémentation
 
 
-L'étape 1 nécessite le calcul d'un {gain}. Pour ce faire, on introduit la notion d'{entropie} d'un ensemble $Z$.  On note $C_k,\ k\in[\![1,C]\!]$ l'ensemble des éléments de $Z$ tels que $y=y_k$. La probabilité qu'un élément de $Z$ soit dans $C_k$ peut être approchée par $q_k=\frac{|C_k|}{|Z|}$, et l'entropie de $Z$ est alors définie par :
+L'étape 1 nécessite le calcul d'un gain. Pour ce faire, on introduit la notion d'{entropie} d'un ensemble $Z$.  On note $C_k,\ k\in[\![1,C]\!]$ l'ensemble des éléments de $Z$ tels que $y=y_k$. La probabilité qu'un élément de $Z$ soit dans $C_k$ peut être approchée par $q_k=\frac{|C_k|}{|Z|}$, et l'entropie de $Z$ est alors définie par :
 
 $H(Z) = -\displaystyle\sum_{k=1}^C q_k log_2\ q_k$
 
