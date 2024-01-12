@@ -1,0 +1,106 @@
+Traceback (most recent call last):
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/homebrew/Cellar/python@3.9/3.9.18_1/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from scipy import linalg
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+from matplotlib import colors
+
+
+
+def plot_cov(method, splot):
+    if method==lda:
+        Ellipse(splot, method.means_[0], method.covariance_, 'red')
+        Ellipse(splot, method.means_[1], method.covariance_, 'blue')
+    else:
+        Ellipse(splot, method.means_[0], method.covariance_[0], 'red')
+        Ellipse(splot, method.means_[1], method.covariance_[1], 'blue')
+
+# Génération des données
+
+cmap = colors.LinearSegmentedColormap(
+    'red_blue_classes',
+    {'red': [(0, 1, 1), (1, 0.7, 0.7)],
+     'green': [(0, 0.7, 0.7), (1, 0.7, 0.7)],
+     'blue': [(0, 0.7, 0.7), (1, 1, 1)]})
+plt.cm.register_cmap(cmap=cmap)
+
+
+#  Gaussiennes multivariées, covariances égales ou non
+def dataset_cov(fixed = True):
+    n, dim = 150, 2
+    np.random.seed(0)
+    if fixed:
+        C = np.array([[0., -0.23], [0.83, .23]])
+        X = np.r_[np.dot(np.random.randn(n, dim), C),
+              np.dot(np.random.randn(n, dim), C) + np.array([1, 1])]
+    else:
+        C = np.array([[0., -1.], [2.5, .7]]) * 2.
+        X = np.r_[np.dot(np.random.randn(n, dim), C),
+              np.dot(np.random.randn(n, dim), C.T) + np.array([1, 15])]
+    y = np.hstack((np.zeros(n), np.ones(n)))
+    return X, y
+
+
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+lda = LinearDiscriminantAnalysis(solver="svd", store_covariance=True)
+plt.figure(figsize=(12, 4))
+
+(X,y)=dataset_cov()
+y_pred = lda.fit(X,y).predict(X)
+splot = plot_data(lda, X,y, y_pred, "Covariances égales",1)
+plot_cov(lda, splot)
+plt.axis('tight')
+
+(X,y)=dataset_cov(fixed=False)
+y_pred = lda.fit(X,y).predict(X)
+splot = plot_data(lda,X,y, y_pred, "Covariances différentes",2 )
+plot_cov(lda, splot)
+plt.axis('tight')
+plt.tight_layout()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[2], line 51[0m
+[1;32m     49[0m y_pred [38;5;241m=[39m lda[38;5;241m.[39mfit(X,y)[38;5;241m.[39mpredict(X)
+[1;32m     50[0m splot [38;5;241m=[39m plot_data(lda, X,y, y_pred, [38;5;124m"[39m[38;5;124mCovariances égales[39m[38;5;124m"[39m,[38;5;241m1[39m)
+[0;32m---> 51[0m [43mplot_cov[49m[43m([49m[43mlda[49m[43m,[49m[43m [49m[43msplot[49m[43m)[49m
+[1;32m     52[0m plt[38;5;241m.[39maxis([38;5;124m'[39m[38;5;124mtight[39m[38;5;124m'[39m)
+[1;32m     54[0m (X,y)[38;5;241m=[39mdataset_cov(fixed[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+
+Cell [0;32mIn[2], line 11[0m, in [0;36mplot_cov[0;34m(method, splot)[0m
+[1;32m      9[0m [38;5;28;01mdef[39;00m [38;5;21mplot_cov[39m(method, splot):
+[1;32m     10[0m     [38;5;28;01mif[39;00m method[38;5;241m==[39mlda:
+[0;32m---> 11[0m         [43mEllipse[49m[43m([49m[43msplot[49m[43m,[49m[43m [49m[43mmethod[49m[38;5;241;43m.[39;49m[43mmeans_[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m,[49m[43m [49m[43mmethod[49m[38;5;241;43m.[39;49m[43mcovariance_[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mred[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m     12[0m         Ellipse(splot, method[38;5;241m.[39mmeans_[[38;5;241m1[39m], method[38;5;241m.[39mcovariance_, [38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m)
+[1;32m     13[0m     [38;5;28;01melse[39;00m:
+
+Cell [0;32mIn[1], line 16[0m, in [0;36mEllipse[0;34m(splot, mean, cov, color)[0m
+[1;32m     14[0m angle [38;5;241m=[39m np[38;5;241m.[39marctan(u[[38;5;241m1[39m] [38;5;241m/[39m u[[38;5;241m0[39m])
+[1;32m     15[0m angle [38;5;241m=[39m [38;5;241m180[39m [38;5;241m*[39m angle [38;5;241m/[39m np[38;5;241m.[39mpi  
+[0;32m---> 16[0m ell [38;5;241m=[39m [43mmpl[49m[38;5;241;43m.[39;49m[43mpatches[49m[38;5;241;43m.[39;49m[43mEllipse[49m[43m([49m[43mmean[49m[43m,[49m[43m [49m[38;5;241;43m2[39;49m[43m [49m[38;5;241;43m*[39;49m[43m [49m[43mv[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m [49m[38;5;241;43m0.5[39;49m[43m,[49m[43m [49m[38;5;241;43m2[39;49m[43m [49m[38;5;241;43m*[39;49m[43m [49m[43mv[49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m [49m[38;5;241;43m0.5[39;49m[43m,[49m
+[1;32m     17[0m [43m                          [49m[38;5;241;43m180[39;49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43mangle[49m[43m,[49m[43m [49m[43mfacecolor[49m[38;5;241;43m=[39;49m[43mcolor[49m[43m,[49m[43m [49m[43medgecolor[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43myellow[39;49m[38;5;124;43m'[39;49m[43m,[49m
+[1;32m     18[0m [43m                          [49m[43mlinewidth[49m[38;5;241;43m=[39;49m[38;5;241;43m2[39;49m[43m,[49m[43m [49m[43mzorder[49m[38;5;241;43m=[39;49m[38;5;241;43m2[39;49m[43m)[49m
+[1;32m     19[0m ell[38;5;241m.[39mset_clip_box(splot[38;5;241m.[39mbbox)
+[1;32m     20[0m ell[38;5;241m.[39mset_alpha([38;5;241m0.5[39m)
+
+[0;31mTypeError[0m: __init__() takes 4 positional arguments but 5 were given
+

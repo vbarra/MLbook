@@ -1,49 +1,62 @@
 
+
 <!DOCTYPE html>
 
-<html lang="fr">
+
+<html lang="fr" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>K plus proches voisins &#8212; Apprentissage automatique</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>K plus proches voisins &#8212; Apprentissage automatique</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,502 +66,301 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'knn';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Arbres de décision" href="arbres_decision.html" />
     <link rel="prev" title="Analyses discriminantes" href="LDAQDA.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Apprentissage automatique - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Apprentissage automatique - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="possible.html">
-   Exemple introductif
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="approchestat.html">
-   Modèle statistique de l’apprentissage
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modelesup.html">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="possible.html">Exemple introductif</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="approchestat.html">Modèle statistique de l’apprentissage</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="modelesup.html">Modèle du processus d’apprentissage supervisé</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Classification
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classification</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
-   Classifieur naïf de Bayes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LDAQDA.html">
-   Analyses discriminantes
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   K plus proches voisins
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arbres_decision.html">
-   Arbres de décision
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">Classifieur naïf de Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAQDA.html">Analyses discriminantes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">K plus proches voisins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arbres_decision.html">Arbres de décision</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes à noyau
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="svmGeom.html">
-   SVM linéaire
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kernelTrick.html">
-   Astuce du noyau
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes d'ensemble
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="baggingboosting.html">
-   Bootstraping et bagging
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="adaboost.html">
-   Boosting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="combinaison.html">
-   Méthodes de combinaison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="randomforest.html">
-   Forêts aléatoires
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gradientboosting.html">
-   Gradient Boosting
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Manifold learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="mds.html">
-   Positionnement multidimensionnel
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="isomap.html">
-   ISOMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lle.html">
-   Local Linear Embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="manifold.html">
-   Unification
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="isomap.html">ISOMAP</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lle.html">Local Linear Embedding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="manifold.html">Unification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  TP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="TPClassif.html">
-   Comparaison de méthodes de classification supervisée
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="TPClassif.html">Comparaison de méthodes de classification supervisée</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
 
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principe">
-   Principe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validite-bayesienne">
-   Validité bayésienne
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence">
-   Convergence
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#demonstration-de-la-convergence">
-     Démonstration de la convergence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#majoration-de-l-erreur">
-     Majoration de l’erreur
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-proprietes-de-convergence">
-     Autres propriétés de convergence
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#considerations-pratiques">
-   Considérations pratiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quelle-valeur-pour-k">
-     Quelle valeur pour
-     <span class="math notranslate nohighlight">
-      \(k\)
-     </span>
-     ?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quelle-decision-prendre-en-cas-d-egalite">
-     Quelle décision prendre en cas d’égalité ?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv">
-   Surfaces séparatrices de la règle de décision
-   <span class="math notranslate nohighlight">
-    \(k\)
-   </span>
-   -ppv
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fleau-de-la-dimension">
-   Fléau de la dimension
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#premiere-experience">
-     Première expérience
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deuxieme-experience">
-     Deuxième expérience
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arbres-kd">
-   Arbres kd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple">
-   Exemple
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>K plus proches voisins</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principe">
-   Principe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validite-bayesienne">
-   Validité bayésienne
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence">
-   Convergence
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#demonstration-de-la-convergence">
-     Démonstration de la convergence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#majoration-de-l-erreur">
-     Majoration de l’erreur
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-proprietes-de-convergence">
-     Autres propriétés de convergence
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#considerations-pratiques">
-   Considérations pratiques
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quelle-valeur-pour-k">
-     Quelle valeur pour
-     <span class="math notranslate nohighlight">
-      \(k\)
-     </span>
-     ?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quelle-decision-prendre-en-cas-d-egalite">
-     Quelle décision prendre en cas d’égalité ?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv">
-   Surfaces séparatrices de la règle de décision
-   <span class="math notranslate nohighlight">
-    \(k\)
-   </span>
-   -ppv
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fleau-de-la-dimension">
-   Fléau de la dimension
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#premiere-experience">
-     Première expérience
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deuxieme-experience">
-     Deuxième expérience
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arbres-kd">
-   Arbres kd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple">
-   Exemple
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>K plus proches voisins</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">Principe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validite-bayesienne">Validité bayésienne</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-de-la-convergence">Démonstration de la convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#majoration-de-l-erreur">Majoration de l’erreur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-proprietes-de-convergence">Autres propriétés de convergence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations-pratiques">Considérations pratiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-valeur-pour-k">Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-decision-prendre-en-cas-d-egalite">Quelle décision prendre en cas d’égalité ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv">Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fleau-de-la-dimension">Fléau de la dimension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premiere-experience">Première expérience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deuxieme-experience">Deuxième expérience</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbres-kd">Arbres kd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple">Exemple</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="k-plus-proches-voisins">
-<h1>K plus proches voisins<a class="headerlink" href="#k-plus-proches-voisins" title="Lien permanent vers ce titre">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="k-plus-proches-voisins">
+<h1>K plus proches voisins<a class="headerlink" href="#k-plus-proches-voisins" title="Lien permanent vers cette rubrique">#</a></h1>
 <p>Soit un ensemble d’exemples  <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),1\leq i\leq n,\ \mathbf x_i\in X,y_i\in [\![1,C]\!] \right \}\)</span>, les <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> étant des échantillons d’une certaine distribution <span class="math notranslate nohighlight">\(P\)</span>.  On s’intéressera dans la suite, pour illustration, au cas dans le cas où <span class="math notranslate nohighlight">\(X=\mathbb{R}^d\)</span>.</p>
 <p>Etant donnée une métrique <span class="math notranslate nohighlight">\(\delta\)</span> sur <span class="math notranslate nohighlight">\(X\)</span>, la méthode des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins (k-PPV ou K-NN) détermine pour <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> les <span class="math notranslate nohighlight">\(k\)</span> points <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_k\)</span> de <span class="math notranslate nohighlight">\(Z\)</span> les plus proches de <span class="math notranslate nohighlight">\(\mathbf x\)</span> au sens de <span class="math notranslate nohighlight">\(\delta\)</span>. La règle de décision consiste à affecter <span class="math notranslate nohighlight">\(\mathbf x\)</span> à la classe majoritairement représentée dans les appartenances des <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>.</p>
 <p>Notons tout d’abord que dans le cas où <span class="math notranslate nohighlight">\(k = 1\)</span>, on a la règle de  classification du plus proche voisin.  Elle assigne à <span class="math notranslate nohighlight">\(\mathbf x\)</span> simplement  la même étiquette que le point d’apprentissage le plus proche.  Dans ce cas, les frontières de décision dans l’espace <span class="math notranslate nohighlight">\(X\)</span> prennent la forme  d’un pavage convexe.  Cette règle extrêmement simple possède un comportement asymptotique excellent vis-à-vis du risque minimal de Bayes.</p>
-<div class="section" id="principe">
-<h2>Principe<a class="headerlink" href="#principe" title="Lien permanent vers ce titre">#</a></h2>
+<section id="principe">
+<h2>Principe<a class="headerlink" href="#principe" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>La règle de décision par <span class="math notranslate nohighlight">\(k\)</span>-ppv est facile à illustrer (<a class="reference internal" href="#kppv-ref"><span class="std std-numref">Fig. 8</span></a>).</p>
-<div class="figure align-default" id="kppv-ref">
+<figure class="align-default" id="kppv-ref">
 <img alt="_images/kppv.png" src="_images/kppv.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv (bleu) dans un ensemble d’exemples appartenant à deux classes.</span><a class="headerlink" href="#kppv-ref" title="Lien permanent vers cette image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv (bleu) dans un ensemble d’exemples appartenant à deux classes.</span><a class="headerlink" href="#kppv-ref" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
 <p>Les points à classer sont <span class="math notranslate nohighlight">\(\bullet_1\)</span> et <span class="math notranslate nohighlight">\(\bullet_2\)</span> . Les données d’apprentissage appartiennent à l’une des deux classes <span class="math notranslate nohighlight">\(\Box\)</span> ou  <span class="math notranslate nohighlight">\(\Diamond\)</span>.  On cherche, au sens de la métrique   choisie pour
 le problème (ici, euclidienne), les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins des points <span class="math notranslate nohighlight">\(\bullet\)</span>.</p>
 <ul class="simple">
@@ -563,29 +375,31 @@ problème à trois classes :</p>
 <li><p>pour <span class="math notranslate nohighlight">\(k=1\)</span>, les points <span class="math notranslate nohighlight">\(\bullet\)</span> sont classés comme <span class="math notranslate nohighlight">\(\Box\)</span></p></li>
 <li><p>pour <span class="math notranslate nohighlight">\(k=3\)</span>, la règle de décision produit une ambiguïté pour <span class="math notranslate nohighlight">\(\bullet_1\)</span>  : on ne peut pas se décider entre les trois classes.</p></li>
 </ul>
-<div class="figure align-default" id="kppv2-ref">
+<figure class="align-default" id="kppv2-ref">
 <img alt="_images/kppv2.png" src="_images/kppv2.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv  (bleu) dans un ensemble d’exemples appartenant à trois classes.</span><a class="headerlink" href="#kppv2-ref" title="Lien permanent vers cette image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Décision par 1-ppv (rouge) et 3-ppv  (bleu) dans un ensemble d’exemples appartenant à trois classes.</span><a class="headerlink" href="#kppv2-ref" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
 <p>La méthode des <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins est proposée dans l”<a class="reference internal" href="#kppv-algorithm">Algorithm 1</a>.</p>
 <div class="proof algorithm admonition" id="kppv-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Algorithme des k plus proches voisins.)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <p><strong>Entrée</strong> : <span class="math notranslate nohighlight">\(\mathbf x,k\)</span>, une métrique <span class="math notranslate nohighlight">\(\delta\)</span></p>
 <p><strong>Sortie</strong> : La classe de <span class="math notranslate nohighlight">\(\mathbf x\)</span></p>
 <p>Pour tout <span class="math notranslate nohighlight">\((\mathbf x_i ,y_i)\in Z\)</span></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Calculer la distance <span class="math notranslate nohighlight">\(\delta(\mathbf x,\mathbf x_i)\)</span></p></li>
 </ol>
 <p>Dans les <span class="math notranslate nohighlight">\(k\)</span> points les plus proches de <span class="math notranslate nohighlight">\(\mathbf x\)</span></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>compter le nombre d’occurrences de chaque classe</p></li>
 <li><p>Attribuer à <span class="math notranslate nohighlight">\(\mathbf x\)</span> la classe qui apparaît le plus souvent</p></li>
 </ol>
-</div>
-</div></div>
-<div class="section" id="validite-bayesienne">
-<h2>Validité bayésienne<a class="headerlink" href="#validite-bayesienne" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+</div></section>
+<section id="validite-bayesienne">
+<h2>Validité bayésienne<a class="headerlink" href="#validite-bayesienne" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>La validité de cette simple règle est conforme aux règles de l’estimation bayésienne, sous l’hypothèse que les probabilités a priori des classes sont bien estimées par leur proportion  d’échantillons d’apprentissage.</p>
 <p>La règle des <span class="math notranslate nohighlight">\(k\)</span>-ppv fait implicitement une estimation comparative de toutes les densités de probabilités des classes apparaissant dans le voisinage
 de <span class="math notranslate nohighlight">\(\mathbf x\)</span> et choisit simplement la plus probable : elle approxime donc la décision bayésienne.</p>
@@ -608,13 +422,13 @@ classe est donc celle qui maximise la valeur <span class="math notranslate nohig
 <p>Ceci ne vaut que si <span class="math notranslate nohighlight">\(n_i/n\)</span> est un estimateur de
 <span class="math notranslate nohighlight">\(P(\omega_i)\)</span>.  Il faut donc n’appliquer la règle des <span class="math notranslate nohighlight">\(k\)</span>-ppv qu’après
 s’être assuré de la validité de cette hypothèse.</p>
-</div>
-<div class="section" id="convergence">
-<h2>Convergence<a class="headerlink" href="#convergence" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="convergence">
+<h2>Convergence<a class="headerlink" href="#convergence" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>Il est assez facile de démontrer que la probabilité d’erreur <span class="math notranslate nohighlight">\(R_{k-ppv}\)</span>
 de la règle des <span class="math notranslate nohighlight">\(k\)</span>-ppv converge vers le risque bayésien <span class="math notranslate nohighlight">\(R_B\)</span>  quand <span class="math notranslate nohighlight">\(n\)</span> croît vers l’infini et ceci  pour tout <span class="math notranslate nohighlight">\(k\)</span>. On démontre dans la suite cette propriété  pour <span class="math notranslate nohighlight">\(k=1\)</span>.</p>
-<div class="section" id="demonstration-de-la-convergence">
-<h3>Démonstration de la convergence<a class="headerlink" href="#demonstration-de-la-convergence" title="Lien permanent vers ce titre">#</a></h3>
+<section id="demonstration-de-la-convergence">
+<h3>Démonstration de la convergence<a class="headerlink" href="#demonstration-de-la-convergence" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>On note  <span class="math notranslate nohighlight">\(S=\{{\mathbf x}_1, {\mathbf x}_2,..., {\mathbf x}_m\}\)</span> les vecteurs de <span class="math notranslate nohighlight">\(X\)</span> dans l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(\mathbf x\)</span>
 le point dont on cherche la classe par la règle du 1-ppv et <span class="math notranslate nohighlight">\(\mathbf x_0\)</span> le point de <span class="math notranslate nohighlight">\(X\)</span> le plus proche de <span class="math notranslate nohighlight">\(\mathbf x\)</span>.</p>
 <p>Notons <span class="math notranslate nohighlight">\(B(\mathbf x, \rho)\)</span> la sphère de rayon <span class="math notranslate nohighlight">\(\rho\)</span> centrée en <span class="math notranslate nohighlight">\(\mathbf x\)</span>.
@@ -624,9 +438,9 @@ La probabilité qu’un point de <span class="math notranslate nohighlight">\({S
 <p>La probabilité qu’aucun point de l’ensemble d’apprentissage <span class="math notranslate nohighlight">\({ S}\)</span> ne se trouve
 dans <span class="math notranslate nohighlight">\(B( \mathbf x, \rho)\)</span> est égale à <span class="math notranslate nohighlight">\((1-P(\rho))^n\)</span> qui tend vers zéro quand <span class="math notranslate nohighlight">\(n\)</span> augmente.
 Par conséquent, <span class="math notranslate nohighlight">\( \mathbf x_0\)</span> tend en probabilité vers <span class="math notranslate nohighlight">\( \mathbf x\)</span>, ce qui assure la convergence désirée.</p>
-</div>
-<div class="section" id="majoration-de-l-erreur">
-<h3>Majoration de l’erreur<a class="headerlink" href="#majoration-de-l-erreur" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="majoration-de-l-erreur">
+<h3>Majoration de l’erreur<a class="headerlink" href="#majoration-de-l-erreur" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>L’erreur moyenne réalisée par la règle du 1-ppv peut se calculer en remarquant qu’en attribuant à <span class="math notranslate nohighlight">\( \mathbf x\)</span> la classe de <span class="math notranslate nohighlight">\( \mathbf x_0\)</span>, on
 commet l’erreur :</p>
 <div class="math notranslate nohighlight">
@@ -647,9 +461,9 @@ donnerait la décision bayésienne et <span class="math notranslate nohighlight"
 <p>D’où la formule dans le cas de deux classes :</p>
 <div class="math notranslate nohighlight">
 \[ \lim_{n \rightarrow \infty}err_{ppv} \leq 2 err_B\]</div>
-</div>
-<div class="section" id="autres-proprietes-de-convergence">
-<h3>Autres propriétés de convergence<a class="headerlink" href="#autres-proprietes-de-convergence" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="autres-proprietes-de-convergence">
+<h3>Autres propriétés de convergence<a class="headerlink" href="#autres-proprietes-de-convergence" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>On a de plus les propriétés suivantes, dans le cas de deux classes,
 toujours à la limite sur <span class="math notranslate nohighlight">\(n\)</span>  (en pratique, pour <span class="math notranslate nohighlight">\(n\)</span> « assez grand ») :</p>
 <div class="math notranslate nohighlight">
@@ -661,28 +475,28 @@ toujours à la limite sur <span class="math notranslate nohighlight">\(n\)</span
 \[R_{1-ppv} \leq R_B \left(2 - \frac{C}{C-1} R_B \right)\]</div>
 <p>Ces formules valident donc l’intuition que l’augmentation de <span class="math notranslate nohighlight">\(k\)</span> améliore l’estimation réalisée ; en même temps, elles prouvent que la
 règle simple du plus proche voisin (<span class="math notranslate nohighlight">\(1\)</span>-ppv) est asymptotiquement efficace.</p>
-</div>
-</div>
-<div class="section" id="considerations-pratiques">
-<h2>Considérations pratiques<a class="headerlink" href="#considerations-pratiques" title="Lien permanent vers ce titre">#</a></h2>
-<div class="section" id="quelle-valeur-pour-k">
-<h3>Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?<a class="headerlink" href="#quelle-valeur-pour-k" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+</section>
+<section id="considerations-pratiques">
+<h2>Considérations pratiques<a class="headerlink" href="#considerations-pratiques" title="Lien permanent vers cette rubrique">#</a></h2>
+<section id="quelle-valeur-pour-k">
+<h3>Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?<a class="headerlink" href="#quelle-valeur-pour-k" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>Il faut trouver un compromis  dans l’intervalle  <span class="math notranslate nohighlight">\([\![ 1,n ]\!]\)</span> entre une valeur faible de <span class="math notranslate nohighlight">\(k\)</span>, qui
 semble moins favorable selon les formules précédentes, et une valeur trop grande (prendre <span class="math notranslate nohighlight">\(k = n\)</span> mène  au
 résultat suivant : un point sera toujours classé comme appartenant à la classe la plus nombreuse dans l’ensemble d’apprentissage). Diverses
 considérations théoriques et expérimentales mènent à choisir <span class="math notranslate nohighlight">\(k\)</span> autour de <span class="math notranslate nohighlight">\(\sqrt {n/C}\)</span> où  <span class="math notranslate nohighlight">\(n/C\)</span> est le
 nombre moyen de points d’apprentissage par classe.  La dimension de <span class="math notranslate nohighlight">\(X\)</span> n’apparaît pas dans cette  heuristique.</p>
-</div>
-<div class="section" id="quelle-decision-prendre-en-cas-d-egalite">
-<h3>Quelle décision prendre en cas d’égalité ?<a class="headerlink" href="#quelle-decision-prendre-en-cas-d-egalite" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="quelle-decision-prendre-en-cas-d-egalite">
+<h3>Quelle décision prendre en cas d’égalité ?<a class="headerlink" href="#quelle-decision-prendre-en-cas-d-egalite" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>On peut augmenter <span class="math notranslate nohighlight">\(k\)</span> de <span class="math notranslate nohighlight">\(1\)</span> pour trancher, mais  l’ambiguïté peut subsister si le nombre de classes est supérieur à 2. On peut également tirer au hasard la classe à attribuer au point ambigu , l’analyse de cette heuristique démontrant qu’elle donne de bons résultats.</p>
 <p>Plusieurs variantes de la règle du <span class="math notranslate nohighlight">\(k\)</span>-ppv ont été par ailleurs proposées pour aborder ce problème. Par exemple, au lieu de compter simplement les points de chaque classe parmi les <span class="math notranslate nohighlight">\(k\)</span> (ce que l’on peut traduire par  les faire voter avec une
 voix chacun), on peut pondérer ces votes par la distance au point <span class="math notranslate nohighlight">\(\mathbf x\)</span>, qui est de toute façon calculée.  On est  dans ce cas
 dans des méthodes intermédiaires entre les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins et les fenêtres de Parzen .</p>
-</div>
-</div>
-<div class="section" id="surfaces-separatrices-de-la-regle-de-decision-k-ppv">
-<h2>Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv<a class="headerlink" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+</section>
+<section id="surfaces-separatrices-de-la-regle-de-decision-k-ppv">
+<h2>Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv<a class="headerlink" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>La   zone de Voronoï d’un exemple <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> est  le lieu des points de <span class="math notranslate nohighlight">\(X\)</span> qui sont plus proches de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> que de tout autre exemple.
 Elle est l’intersection de <span class="math notranslate nohighlight">\(n-1\)</span> demi-espaces, définis par les hyperplans médiateurs entre <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et tous les autres exemples de <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <p>La zone de Voronoï d’un exemple est donc un volume convexe (pour <span class="math notranslate nohighlight">\(d=2\)</span>, c’est un polygone convexe)  et la frontière entre deux zones de Voronoï est un « polygone » en dimension <span class="math notranslate nohighlight">\(d-1\)</span>.</p>
@@ -701,42 +515,46 @@ encore des hyperplans par morceaux.</p>
  Your browser does not support the video tag.
  </video></div></div>
 </div>
-</div>
-<div class="section" id="fleau-de-la-dimension">
-<h2>Fléau de la dimension<a class="headerlink" href="#fleau-de-la-dimension" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="fleau-de-la-dimension">
+<h2>Fléau de la dimension<a class="headerlink" href="#fleau-de-la-dimension" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>Les <span class="math notranslate nohighlight">\(k\)</span>-plus proches voisins font implicitement l’hypothèse que des points proches appartiennent à la même classe. Dans des espaces de grande dimension, des points tirés selon une distribution de probabilité tendent cependant à n’être que rarement proches.</p>
 <p>On propose ici deux manières simples d’illustrer ce fait.</p>
-<div class="section" id="premiere-experience">
-<h3>Première expérience<a class="headerlink" href="#premiere-experience" title="Lien permanent vers ce titre">#</a></h3>
+<section id="premiere-experience">
+<h3>Première expérience<a class="headerlink" href="#premiere-experience" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>On tire uniformément des points dans le cube unité <span class="math notranslate nohighlight">\([0,1]^d\subset\mathbb{R}^d\)</span> et on calcule la taille de l’espace occupé par les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins d’un point donné.</p>
 <p>Dans le cube unité, on considère les <span class="math notranslate nohighlight">\(k=10\)</span> plus proches voisins d’un point <span class="math notranslate nohighlight">\(\mathbf x\)</span>.  Soit <span class="math notranslate nohighlight">\(l\)</span> la taille de l’arête du plus petit hypercube contenant les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. Alors <span class="math notranslate nohighlight">\(l^d\approx \frac{k}{n}\)</span> et par exemple la <a class="reference internal" href="#fleau-ref"><span class="std std-numref">Fig. 10</span></a> donne l’évolution de <span class="math notranslate nohighlight">\(l\)</span> en fonction de <span class="math notranslate nohighlight">\(d\)</span> pour <span class="math notranslate nohighlight">\(n=1000\)</span>.</p>
-<div class="figure align-default" id="fleau-ref">
+<figure class="align-default" id="fleau-ref">
 <img alt="_images/ld10.png" src="_images/ld10.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Evolution de la taille du voisinage d’un point en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref" title="Lien permanent vers cette image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Evolution de la taille du voisinage d’un point en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
 <p>Ainsi, lorsque <span class="math notranslate nohighlight">\(d\)</span> croît, il est rapidement nécessaire de chercher pratiquement dans tout <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> pour trouver les <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins.</p>
 <p>On pourrait penser qu’augmenter la taille de <span class="math notranslate nohighlight">\(Z\)</span> résout ce problème. Cependant il n’en est rien.</p>
 <div class="proof remark dropdown admonition" id="remark-1">
 <p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
-<div class="remark-content section" id="proof-content">
+<section class="remark-content" id="proof-content">
 <p>Quelle doit être la valeur de <span class="math notranslate nohighlight">\(n\)</span> qui permet à <span class="math notranslate nohighlight">\(l\)</span> d’être « petit » ? En fixant par exemple <span class="math notranslate nohighlight">\(l=0.1\)</span>, alors <span class="math notranslate nohighlight">\(n=k.l^{-d}=k.10^d\)</span> et la croissance de <span class="math notranslate nohighlight">\(n\)</span> est exponentielle. Pour <span class="math notranslate nohighlight">\(d&gt;100\)</span>, <span class="math notranslate nohighlight">\(n\)</span> doit par exemple être plus grand que le nombre de particules dans l’Univers…</p>
-</div>
-</div></div>
-<div class="section" id="deuxieme-experience">
-<h3>Deuxième expérience<a class="headerlink" href="#deuxieme-experience" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+</div></section>
+<section id="deuxieme-experience">
+<h3>Deuxième expérience<a class="headerlink" href="#deuxieme-experience" title="Lien permanent vers cette rubrique">#</a></h3>
 <p>On tire uniformément des points dans le cube unité et on calcule la distance entre chaque paire de points dans <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>. La distribution de ces distances lorsque <span class="math notranslate nohighlight">\(d\)</span> augmente est donnée dans la <a class="reference internal" href="#fleau-ref2"><span class="std std-numref">Fig. 11</span></a>.</p>
-<div class="figure align-default" id="fleau-ref2">
+<figure class="align-default" id="fleau-ref2">
 <img alt="_images/knndist.png" src="_images/knndist.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Distribution des distances entre paires de points uniformément tirés dans le cube unité, en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref2" title="Lien permanent vers cette image">#</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="arbres-kd">
-<h2>Arbres kd<a class="headerlink" href="#arbres-kd" title="Lien permanent vers ce titre">#</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Distribution des distances entre paires de points uniformément tirés dans le cube unité, en fonction de <span class="math notranslate nohighlight">\(d\)</span>.</span><a class="headerlink" href="#fleau-ref2" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="arbres-kd">
+<h2>Arbres kd<a class="headerlink" href="#arbres-kd" title="Lien permanent vers cette rubrique">#</a></h2>
 <p>La complexité de l’algorithme précédent est en <span class="math notranslate nohighlight">\(\mathcal{O}(d.n.k)\)</span> où <span class="math notranslate nohighlight">\(n\)</span> est le nombre de points d’apprentissage, <span class="math notranslate nohighlight">\(d\)</span> la dimension de l’espace et <span class="math notranslate nohighlight">\(k\)</span> le nombre de voisins cherchés. Les <span class="math notranslate nohighlight">\(k\)</span>-ppv deviennent donc gourmands en temps et en espace lorsque <span class="math notranslate nohighlight">\(n\)</span> est grand et cependant on souhaite avoir <span class="math notranslate nohighlight">\(n\)</span> grand pour avoir une bonne précision dans la prédiction.</p>
 <p>Les arbres kd sont une réponse à ce problème, en remarquant qu’en recherchant les points les plus proches d’un point donné, la plupart des points de données sont loin. Il n’est donc pas nécessaire de calculer les distances pour ces points lointains, ce qui peut se réaliser en partitionnant l’espace des données à l’aide d’un arbre binaire.</p>
 <p>Le principe de partition (<a class="reference internal" href="#kdtree"><span class="std std-numref">Fig. 12</span></a>) est le suivant, pour un ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span> :</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Couper selon une des dimensions <span class="math notranslate nohighlight">\(i\in[\![1,d]\!]\)</span> par un hyperplan <span class="math notranslate nohighlight">\(\mathcal H\)</span> qui sépare les données <span class="math notranslate nohighlight">\(Z\)</span> en deux sous-ensembles <span class="math notranslate nohighlight">\(Z_1\)</span> et <span class="math notranslate nohighlight">\(Z_2\)</span> avec <span class="math notranslate nohighlight">\(|Z_1|\approx|Z_2|\approx |Z|/2\)</span></p></li>
 <li><p>Soit <span class="math notranslate nohighlight">\(x\)</span> un nouveau point de données dont on veut chercher son plus proche voisin</p></li>
 <li><p>Identifier le sous-ensemble auquel appartient <span class="math notranslate nohighlight">\(x\)</span>. Supposons <span class="math notranslate nohighlight">\(x\in Z_1\)</span></p></li>
@@ -747,13 +565,15 @@ encore des hyperplans par morceaux.</p>
 </ol>
 <p>Si l’étape 6 est atteinte, alors on divise la complexité d’un facteur 2. Dans l’autre cas, on se retrouve avec la complexité de l’algorithme des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins. En moyenne, cependant, la complexité est meilleure.</p>
 <p>La construction de l’arbre peut se faire en découpant le données en deux selon chacune des dimensions de l’espace des donnés. La sélection de la dimension à choisir peut par exemple se faire de manière heuristique, en choisissant celle qui capture la plus grande variation des données. La profondeur de l’arbre résultant est alors relativement faible, en <span class="math notranslate nohighlight">\(\mathcal O(log_2(n))\)</span>. Cette manière de couper l’espace, en alignant les hyperplans <span class="math notranslate nohighlight">\(\mathcal H\)</span> sur les axes, n’autorise pas une bonne généralisation si <span class="math notranslate nohighlight">\(d\)</span> est grand.</p>
-<div class="figure align-default" id="kdtree">
+<figure class="align-default" id="kdtree">
 <img alt="_images/kdtreeim.png" src="_images/kdtreeim.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Exemple de partition d’un ensemble de points par arbre kd.</span><a class="headerlink" href="#kdtree" title="Lien permanent vers cette image">#</a></p>
-</div>
-</div>
-<div class="section" id="exemple">
-<h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers ce titre">#</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Exemple de partition d’un ensemble de points par arbre kd.</span><a class="headerlink" href="#kdtree" title="Lien permanent vers cette image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="exemple">
+<h2>Exemple<a class="headerlink" href="#exemple" title="Lien permanent vers cette rubrique">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -803,11 +623,11 @@ encore des hyperplans par morceaux.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Base de test. Précision : 100.00%&#39;)
 </pre></div>
 </div>
-<img alt="_images/knn_3_1.png" src="_images/knn_3_1.png" />
+<img alt="_images/4af183a563859a02be5e3ac7ded6d019ffe8cd4fb59d9b61e99761d03cdb9089.png" src="_images/4af183a563859a02be5e3ac7ded6d019ffe8cd4fb59d9b61e99761d03cdb9089.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -821,7 +641,7 @@ encore des hyperplans par morceaux.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -829,50 +649,122 @@ encore des hyperplans par morceaux.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="LDAQDA.html" title="précédent page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">Analyses discriminantes</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LDAQDA.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Analyses discriminantes</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="arbres_decision.html" title="suivant page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="arbres_decision.html"
+       title="page suivante">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Arbres de décision</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principe">Principe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validite-bayesienne">Validité bayésienne</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">Convergence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-de-la-convergence">Démonstration de la convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#majoration-de-l-erreur">Majoration de l’erreur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-proprietes-de-convergence">Autres propriétés de convergence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations-pratiques">Considérations pratiques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-valeur-pour-k">Quelle valeur pour <span class="math notranslate nohighlight">\(k\)</span>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-decision-prendre-en-cas-d-egalite">Quelle décision prendre en cas d’égalité ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#surfaces-separatrices-de-la-regle-de-decision-k-ppv">Surfaces séparatrices de la règle de décision <span class="math notranslate nohighlight">\(k\)</span>-ppv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fleau-de-la-dimension">Fléau de la dimension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premiere-experience">Première expérience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deuxieme-experience">Deuxième expérience</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbres-kd">Arbres kd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple">Exemple</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Vincent BARRA<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+Par Vincent BARRA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
