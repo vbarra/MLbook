@@ -1,404 +1,359 @@
 
 <!DOCTYPE html>
 
-<html lang="fr">
+
+<html lang="fr" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Modèle du processus d’apprentissage supervisé &#8212; Apprentissage automatique</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modelesup';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Classifieur naïf de Bayes" href="bayes.html" />
     <link rel="prev" title="Modèle statistique de l’apprentissage" href="approchestat.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Apprentissage automatique - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Apprentissage automatique - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="possible.html">
-   Exemple introductif
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="approchestat.html">
-   Modèle statistique de l’apprentissage
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="possible.html">Exemple introductif</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="approchestat.html">Modèle statistique de l’apprentissage</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modèle du processus d’apprentissage supervisé</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Classification
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classification</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
-   Classifieur naïf de Bayes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LDAQDA.html">
-   Analyses discriminantes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="knn.html">
-   K plus proches voisins
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arbres_decision.html">
-   Arbres de décision
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">Classifieur naïf de Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAQDA.html">Analyses discriminantes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">K plus proches voisins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arbres_decision.html">Arbres de décision</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes à noyau
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="svmGeom.html">
-   SVM linéaire
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kernelTrick.html">
-   Astuce du noyau
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes d'ensemble
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="baggingboosting.html">
-   Bootstraping et bagging
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="adaboost.html">
-   Boosting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="combinaison.html">
-   Méthodes de combinaison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="randomforest.html">
-   Forêts aléatoires
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gradientboosting.html">
-   Gradient Boosting
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Manifold learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="mds.html">
-   Positionnement multidimensionnel
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="isomap.html">
-   ISOMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lle.html">
-   Local Linear Embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="manifold.html">
-   Unification
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="isomap.html">ISOMAP</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lle.html">Local Linear Embedding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="manifold.html">Unification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  TP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="TPClassif.html">
-   Comparaison de méthodes de classification supervisée
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="TPClassif.html">Comparaison de méthodes de classification supervisée</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
 
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minimisation-du-risque-empirique">
-   Minimisation du risque empirique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minimisation-du-risque-structurel">
-   Minimisation du risque structurel
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Modèle du processus d’apprentissage supervisé</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minimisation-du-risque-empirique">
-   Minimisation du risque empirique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#minimisation-du-risque-structurel">
-   Minimisation du risque structurel
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modèle du processus d’apprentissage supervisé</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modèle du processus d’apprentissage supervisé</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minimisation-du-risque-empirique">Minimisation du risque empirique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minimisation-du-risque-structurel">Minimisation du risque structurel</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="modele-du-processus-d-apprentissage-supervise">
-<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Lien permanent vers ce titre">#</a></h1>
-<p>Un modèle classique de description du processus d’apprentissage supervisé est composé de trois composantes <span id="id1">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>:</p>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modele-du-processus-d-apprentissage-supervise">
+<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Link to this heading">#</a></h1>
+<p>Un modèle classique de description du processus d’apprentissage supervisé est composé de trois composantes <span id="id1">[<a class="reference internal" href="svmGeom.html#id50" title="Vladimir Vapnik. Principles of risk minimization for learning theory. In NIPS, 831–838. Morgan Kaufmann, 1991.">Vap91</a>]</span>:</p>
 <ul class="simple">
 <li><p>Un environnement, qui fournit des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> avec une probabilité fixe mais inconnue <span class="math notranslate nohighlight">\(P_X\)</span> ;</p></li>
 <li><p>Un superviseur qui fournit pour chaque vecteur <span class="math notranslate nohighlight">\(\mathbf x\)</span> reçu de l’environnement une réponse désirée <span class="math notranslate nohighlight">\(y\in Y\)</span>, selon une probabilité <span class="math notranslate nohighlight">\(P(\mathbf x\mid y)\)</span> fixe mais inconnue. La réponse <span class="math notranslate nohighlight">\(y\)</span> et <span class="math notranslate nohighlight">\(\mathbf x\)</span> sont liés par une relation <span class="math notranslate nohighlight">\(y=f(\mathbf x,\epsilon)\)</span>, <span class="math notranslate nohighlight">\(\epsilon\)</span> étant un bruit permettant au superviseur d’être « bruité » ;</p></li>
 <li><p>Un algorithme d’apprentissage qui implémente une classe de fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, définies par un paramètre vectoriel <span class="math notranslate nohighlight">\(\boldsymbol{\boldsymbol{\theta}}\)</span>, reliant l’espace des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\)</span> à l’espace des réponses <span class="math notranslate nohighlight">\(Y\)</span> : <span class="math notranslate nohighlight">\(\mathcal{F} = \{F(\mathbf x,\boldsymbol{\boldsymbol{\theta}}),\boldsymbol{\theta}\in\boldsymbol{\Theta}\}\)</span></p></li>
 </ul>
 <p>Le problème de l’apprentissage supervisé consiste alors à choisir dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> une fonction qui approche la réponse <span class="math notranslate nohighlight">\(y\)</span> pour tout <span class="math notranslate nohighlight">\(\mathbf x\)</span> d’une manière optimale, au sens statistique du terme. La recherche de cet optimum est basée sur un ensemble de <span class="math notranslate nohighlight">\(n\)</span> exemples i.i.d., dit ensemble  d’apprentissage <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),i\in[\![1,n]\!],\mathbf x_i\in X,y_i\in Y\right \}\)</span>. Chaque exemple <span class="math notranslate nohighlight">\((\mathbf x_i,y_i)\)</span> est tiré par l’algorithme d’apprentissage depuis <span class="math notranslate nohighlight">\(Z\)</span> avec une probabilité jointe fixe mais inconnue <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
-<p>Trouver un « bon » candidat dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> qui approche <span class="math notranslate nohighlight">\(f\)</span> repose sur le fait que <span class="math notranslate nohighlight">\(Z\)</span> contient « suffisamment » d’information pour permettre d’une part d’apprendre correctement <span class="math notranslate nohighlight">\(Z\)</span> (facile), mais aussi d’être capable de généraliser de manière cohérente sur <span class="math notranslate nohighlight">\(X\times Y\)</span>. La quantification de cette information a été apportée par les travaux de Vapnik et Chervonenkis <span id="id2">[<a class="reference internal" href="svmGeom.html#id51">VC71</a>]</span>.</p>
+<p>Trouver un « bon » candidat dans <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> qui approche <span class="math notranslate nohighlight">\(f\)</span> repose sur le fait que <span class="math notranslate nohighlight">\(Z\)</span> contient « suffisamment » d’information pour permettre d’une part d’apprendre correctement <span class="math notranslate nohighlight">\(Z\)</span> (facile), mais aussi d’être capable de généraliser de manière cohérente sur <span class="math notranslate nohighlight">\(X\times Y\)</span>. La quantification de cette information a été apportée par les travaux de Vapnik et Chervonenkis <span id="id2">[<a class="reference internal" href="svmGeom.html#id51" title="V. N. Vapnik and A. Ya. Chervonenkis. On the uniform convergence of relative frequencies of events to their probabilities. Theory of Probability and its Applications, 16(2):264–280, 1971.">VC71</a>]</span>.</p>
 <p>Soit <span class="math notranslate nohighlight">\(L\left (y,F(\mathbf x,\boldsymbol{\theta})\right )\)</span> une fonction de perte, qui mesure l’écart entre la réponse <span class="math notranslate nohighlight">\(y\)</span> fournie par le superviseur et la réponse calculée par l’algorithme d’apprentissage. L’espérance de <span class="math notranslate nohighlight">\(L\)</span> définit le risque fonctionnel</p>
 <div class="math notranslate nohighlight">
 \[R(\boldsymbol{\theta}) = \int L\left (y,F(\mathbf x,\boldsymbol{\theta})\right )dP_{X,Y}\]</div>
@@ -409,7 +364,7 @@ title="Fullscreen mode"
 <p>qui ne nécessite pas la connaissance de <span class="math notranslate nohighlight">\(P_{X,Y}\)</span>.</p>
 <div class="proof remark dropdown admonition" id="remark-0">
 <p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
-<div class="remark-content section" id="proof-content">
+<section class="remark-content" id="proof-content">
 <p>Une fonction de perte est une fonction <span class="math notranslate nohighlight">\( L : Y\times Y\rightarrow \mathbb R^+\)</span></p>
 <p><strong>Quelques exemples en régression</strong></p>
 <p>Pour des problèmes de régression, les fonctions de perte classiques sont :</p>
@@ -455,10 +410,10 @@ de l’argument.</p>
 <div class="math notranslate nohighlight">
 \[H(p,q) = -\displaystyle\sum_{i=1}^{n} y_i log f(\mathbf x_i)\]</div>
 <p>et <span class="math notranslate nohighlight">\(V(f(\mathbf x),y) = -y_i log f(\mathbf x_i)\)</span></p>
-</div>
-</div></div>
-<div class="tex2jax_ignore mathjax_ignore section" id="minimisation-du-risque-empirique">
-<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Lien permanent vers ce titre">#</a></h1>
+</section>
+</div></section>
+<section class="tex2jax_ignore mathjax_ignore" id="minimisation-du-risque-empirique">
+<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Link to this heading">#</a></h1>
 <p>Soit <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\theta}}\)</span> (respectivement <span class="math notranslate nohighlight">\(F(\mathbf x,\hat{\boldsymbol{\theta}})\)</span>) le vecteur (resp. la fonction) optimal(e) pour le problème de minimisation du risque empirique. Pour une valeur <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^*\in\boldsymbol{\theta}\)</span>, le risque <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta}^*)\)</span> est l’espérance d’une certaine variable aléatoire définie par <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*} = L(y,F(\mathbf x,\boldsymbol{\theta}^*))\)</span>. Le risque empirique <span class="math notranslate nohighlight">\(R_{emp}(\boldsymbol{\theta}^*)\)</span>, quant à lui, est la moyenne arithmétique de <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*}\)</span>. D’après la loi des grands nombres, si <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, la moyenne de <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*}\)</span> tend vers son espérance, et donc vers <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta}^*)\)</span>, ce qui justifie d’utiliser le risque empirique en lieu et place de <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span>.</p>
 <p>Il n’y a cependant aucune raison a priori pour que <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\theta}}\)</span> minimise également <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span>.</p>
 <p>Nous allons montrer que si <span class="math notranslate nohighlight">\(R_{emp}(\boldsymbol{\theta})\)</span> approche uniformément <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span> avec une précision <span class="math notranslate nohighlight">\(\epsilon\)</span>, alors le minimum du risque empirique s’écarte du minimum de <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span> d’au plus <span class="math notranslate nohighlight">\(2\epsilon\)</span>.</p>
@@ -478,16 +433,16 @@ de l’argument.</p>
 <div class="math notranslate nohighlight">
 \[\mid R(\boldsymbol{\hat\theta})-R(\boldsymbol{\theta}_0)\mid&lt;2\epsilon\]</div>
 <p>La minimisation du risque empirique consiste donc à :</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Calculer le risque empirique sur <span class="math notranslate nohighlight">\(Z\)</span> et la valeur <span class="math notranslate nohighlight">\(\boldsymbol{\hat\theta}\)</span> de son paramètre réalisant le minimum de ce risque</p></li>
 <li><p>Affirmer que <span class="math notranslate nohighlight">\(R(\boldsymbol{\hat\theta})\)</span> converge en probabilité vers le risque minimum sur tout <span class="math notranslate nohighlight">\(X\times Y\)</span>, lorsque la taille de l’ensemble d’apprentissage tend vers l’infini, et ce en supposant que <span class="math notranslate nohighlight">\(R_{emp}(\boldsymbol{\theta}\)</span>) converge uniformément vers <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span></p></li>
 </ol>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="minimisation-du-risque-structurel">
-<h1>Minimisation du risque structurel<a class="headerlink" href="#minimisation-du-risque-structurel" title="Lien permanent vers ce titre">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="minimisation-du-risque-structurel">
+<h1>Minimisation du risque structurel<a class="headerlink" href="#minimisation-du-risque-structurel" title="Link to this heading">#</a></h1>
 <p>L’erreur d’entraînement <span class="math notranslate nohighlight">\(E_t(\boldsymbol{\theta})\)</span> d’un algorithme d’apprentissage est reliée à la fréquence des erreurs obtenues par cet algorithme sur <span class="math notranslate nohighlight">\(Z\)</span>. On demande à un tel algorithme non seulement d’avoir une faible erreur d’entraînement, mais aussi d’être capable de donner des valeurs justes sur des données non vues lors de la phase d’entraînement. On parle de bonne capacité de généralisation.</p>
 <p>L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(\boldsymbol{\theta})\)</span> mesure les erreurs effectuées par l’algorithme sur des exemples qu’il n’a jamais vu, appelés exemples test. On suppose que des exemples sont issus de la même population que les données d’entraînement.</p>
-<p>Soit <span class="math notranslate nohighlight">\(h\)</span> la dimension de  Vapnik-Chervonenkis  d’une famille de classifieurs <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. On peut montrer <span id="id3">[<a class="reference internal" href="svmGeom.html#id50">Vap91</a>]</span>  qu’avec probabilité <span class="math notranslate nohighlight">\(1-\alpha\)</span>, pour un nombre d’exemples <span class="math notranslate nohighlight">\(n&gt;h\)</span> que pour toutes les fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>,</p>
+<p>Soit <span class="math notranslate nohighlight">\(h\)</span> la dimension de  Vapnik-Chervonenkis  d’une famille de classifieurs <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. On peut montrer <span id="id3">[<a class="reference internal" href="svmGeom.html#id50" title="Vladimir Vapnik. Principles of risk minimization for learning theory. In NIPS, 831–838. Morgan Kaufmann, 1991.">Vap91</a>]</span>  qu’avec probabilité <span class="math notranslate nohighlight">\(1-\alpha\)</span>, pour un nombre d’exemples <span class="math notranslate nohighlight">\(n&gt;h\)</span> que pour toutes les fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[E_g(\boldsymbol{\theta}) = E_t(\boldsymbol{\theta}) + \epsilon_1\left (n,h,\alpha,E_t(\boldsymbol{\theta})\right )\]</div>
 <p>avec</p>
@@ -497,10 +452,12 @@ de l’argument.</p>
 <div class="math notranslate nohighlight">
 \[\epsilon_0(n,h,\alpha) = \sqrt{\frac{h}{n}\left ( log\left ( \frac{2n}{h}\right ) +1 \right ) -\frac{1}{n}log\alpha}\]</div>
 <p>est l’intervalle de confiance. Pour <span class="math notranslate nohighlight">\(n\)</span> fixé, <span class="math notranslate nohighlight">\(E_t(\boldsymbol{\theta})\)</span> décroît lorsque <span class="math notranslate nohighlight">\(h\)</span> augmente, alors que l’intervalle de confiance croît. Ainsi, le risque garanti et l’erreur en généralisation passent par un minimum. Avant cet optimum, le problème d’apprentissage est surdéterminé (<span class="math notranslate nohighlight">\(h\)</span> est trop petit par rapport au niveau d’information contenu dans <span class="math notranslate nohighlight">\(Z\)</span>). Au-delà, il est sous-déterminé (l’algorithme est trop « complexe ») (<a class="reference internal" href="#vcdim-ref"><span class="std std-numref">Fig. 6</span></a>).</p>
-<div class="figure align-default" id="vcdim-ref">
+<figure class="align-default" id="vcdim-ref">
 <img alt="_images/vcdim.png" src="_images/vcdim.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Lien permanent vers cette image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Un des objectifs dans la résolution d’un problème d’apprentissage supervisé est donc d’atteindre la meilleure capacité de généralisation (minimiser <span class="math notranslate nohighlight">\(E_g(\boldsymbol{\theta})\)</span>). La minimisation du risque structurel propose une méthode inductive permettant d’atteindre cet objectif, en faisant de <span class="math notranslate nohighlight">\(h\)</span> une variable de contrôle.</p>
 <p>Soit pour <span class="math notranslate nohighlight">\(k\in[\![1,n]\!]\)</span> <span class="math notranslate nohighlight">\(\mathcal{F}_k=\{F(\mathbf x,\boldsymbol{\theta}),\boldsymbol{\theta}\in\boldsymbol{\theta}_k\}\)</span> un ensemble emboité de classes de fonctions tel que <span class="math notranslate nohighlight">\(\mathcal{F}_1\subset\mathcal{F}_2\ldots \mathcal{F}_n\)</span>. Les dimensions de Vapnik-Chervonenkis correspondantes vérifient <span class="math notranslate nohighlight">\(h_1\leq h_2\ldots \leq h_n\)</span>. La minimisation du risque structurel consiste à :</p>
 <ul class="simple">
@@ -508,19 +465,23 @@ de l’argument.</p>
 <li><p>Idenfifier la classe <span class="math notranslate nohighlight">\(\mathcal{F}^*\)</span> dont le risque garanti est le plus faible. Une des fonctions dans <span class="math notranslate nohighlight">\(\mathcal{F}^*\)</span> fournit le meilleur compromis entre <span class="math notranslate nohighlight">\(E_t(\boldsymbol{\theta})\)</span> (qualité d’approximation de <span class="math notranslate nohighlight">\(Z\)</span>) et intervalle de confiance (complexité de la fonction d’approximation).</p></li>
 </ul>
 <p>En pratique, la variation de <span class="math notranslate nohighlight">\(h\)</span>, et donc la création des ensembles emboîtés, peut être réalisée dans des réseaux de neurones à nombre de neurones cachés croissant.</p>
-<p id="id4"><dl class="citation">
-<dt class="label" id="id64"><span class="brackets">Cov65</span></dt>
-<dd><p>Thomas M. Cover. Geometrical and statistical properties of systems of linear inequalities with applications in pattern recognition. <em>Electronic Computers, IEEE Transactions on</em>, EC-14(3):326–334, 1965. URL: <a class="reference external" href="http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf">http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf</a>.</p>
-</dd>
-<dt class="label" id="id54"><span class="brackets"><a class="fn-backref" href="#id2">VC71</a></span></dt>
-<dd><p>V. N. Vapnik and A. Ya. Chervonenkis. On the uniform convergence of relative frequencies of events to their probabilities. <em>Theory of Probability and its Applications</em>, 16(2):264–280, 1971.</p>
-</dd>
-<dt class="label" id="id53"><span class="brackets">Vap91</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
-<dd><p>Vladimir Vapnik. Principles of risk minimization for learning theory. In <em>NIPS</em>, 831–838. Morgan Kaufmann, 1991.</p>
-</dd>
-</dl>
-</p>
+<div class="docutils container" id="id4">
+<div class="citation" id="id64" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cov65<span class="fn-bracket">]</span></span>
+<p>Thomas M. Cover. Geometrical and statistical properties of systems of linear inequalities with applications in pattern recognition. <em>Electronic Computers, IEEE Transactions on</em>, EC-14(3):326–334, 1965. URL: <a class="reference external" href="http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf">http://hebb.mit.edu/courses/9.641/2002/readings/Cover65.pdf</a>.</p>
 </div>
+<div class="citation" id="id54" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">VC71</a><span class="fn-bracket">]</span></span>
+<p>V. N. Vapnik and A. Ya. Chervonenkis. On the uniform convergence of relative frequencies of events to their probabilities. <em>Theory of Probability and its Applications</em>, 16(2):264–280, 1971.</p>
+</div>
+<div class="citation" id="id53" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Vap91<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Vladimir Vapnik. Principles of risk minimization for learning theory. In <em>NIPS</em>, 831–838. Morgan Kaufmann, 1991.</p>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -534,7 +495,7 @@ de l’argument.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -542,50 +503,105 @@ de l’argument.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="approchestat.html" title="précédent page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">Modèle statistique de l’apprentissage</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="approchestat.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Modèle statistique de l’apprentissage</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="bayes.html" title="suivant page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="bayes.html"
+       title="page suivante">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">Classifieur naïf de Bayes</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modèle du processus d’apprentissage supervisé</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minimisation-du-risque-empirique">Minimisation du risque empirique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#minimisation-du-risque-structurel">Minimisation du risque structurel</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Vincent BARRA<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+Par Vincent BARRA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

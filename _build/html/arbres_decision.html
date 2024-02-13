@@ -1,508 +1,388 @@
 
 <!DOCTYPE html>
 
-<html lang="fr">
+
+<html lang="fr" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Arbres de décision &#8212; Apprentissage automatique</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'arbres_decision';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="SVM linéaire" href="svmGeom.html" />
     <link rel="prev" title="K plus proches voisins" href="knn.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Apprentissage automatique - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Apprentissage automatique - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="possible.html">
-   Exemple introductif
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="approchestat.html">
-   Modèle statistique de l’apprentissage
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modelesup.html">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="possible.html">Exemple introductif</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="approchestat.html">Modèle statistique de l’apprentissage</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="modelesup.html">Modèle du processus d’apprentissage supervisé</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Classification
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classification</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
-   Classifieur naïf de Bayes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LDAQDA.html">
-   Analyses discriminantes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="knn.html">
-   K plus proches voisins
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Arbres de décision
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">Classifieur naïf de Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAQDA.html">Analyses discriminantes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">K plus proches voisins</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Arbres de décision</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes à noyau
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="svmGeom.html">
-   SVM linéaire
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kernelTrick.html">
-   Astuce du noyau
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes d'ensemble
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="baggingboosting.html">
-   Bootstraping et bagging
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="adaboost.html">
-   Boosting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="combinaison.html">
-   Méthodes de combinaison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="randomforest.html">
-   Forêts aléatoires
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gradientboosting.html">
-   Gradient Boosting
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Manifold learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="mds.html">
-   Positionnement multidimensionnel
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="isomap.html">
-   ISOMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lle.html">
-   Local Linear Embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="manifold.html">
-   Unification
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="isomap.html">ISOMAP</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lle.html">Local Linear Embedding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="manifold.html">Unification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  TP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="TPClassif.html">
-   Comparaison de méthodes de classification supervisée
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="TPClassif.html">Comparaison de méthodes de classification supervisée</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
 
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-binaire">
-   Cas binaire
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-d-un-arbre">
-     Construction d’un arbre
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intepretation-probabiliste">
-     Inteprétation probabiliste
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choix-de-l-attribut">
-     Choix de l’attribut
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-criteres-de-choix">
-     Autres critères de choix
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-non-binaire">
-   Cas non binaire
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple-l-algorithme-id3">
-   Exemple : l’algorithme ID3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#elagage-d-arbres">
-   Elagage d’arbres
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementation">
-   Implémentation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arbres-de-regression">
-   Arbres de régression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Implémentation
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Arbres de décision</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-binaire">
-   Cas binaire
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construction-d-un-arbre">
-     Construction d’un arbre
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intepretation-probabiliste">
-     Inteprétation probabiliste
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choix-de-l-attribut">
-     Choix de l’attribut
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#autres-criteres-de-choix">
-     Autres critères de choix
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cas-non-binaire">
-   Cas non binaire
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exemple-l-algorithme-id3">
-   Exemple : l’algorithme ID3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#elagage-d-arbres">
-   Elagage d’arbres
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementation">
-   Implémentation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arbres-de-regression">
-   Arbres de régression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Implémentation
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Arbres de décision</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-binaire">Cas binaire</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-d-un-arbre">Construction d’un arbre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intepretation-probabiliste">Inteprétation probabiliste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choix-de-l-attribut">Choix de l’attribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-criteres-de-choix">Autres critères de choix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-non-binaire">Cas non binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-l-algorithme-id3">Exemple : l’algorithme ID3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elagage-d-arbres">Elagage d’arbres</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implémentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbres-de-regression">Arbres de régression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Implémentation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="arbres-de-decision">
-<h1>Arbres de décision<a class="headerlink" href="#arbres-de-decision" title="Lien permanent vers ce titre">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="arbres-de-decision">
+<h1>Arbres de décision<a class="headerlink" href="#arbres-de-decision" title="Link to this heading">#</a></h1>
 <p>Les arbres de décision réalisent la classification d’un objet par une suite de tests sur les attributs qui le décrivent.  Ces tests sont organisés de telle sorte que la réponse à l’un d’eux indique le prochain test auquel on doit soumettre cet objet, structurant les tests en arbre. La classification s’effectue donc en partant de la racine pour poursuivre récursivement le processus jusqu’à ce qu’on rencontre une feuille.</p>
-<div class="section" id="cas-binaire">
-<h2>Cas binaire<a class="headerlink" href="#cas-binaire" title="Lien permanent vers ce titre">#</a></h2>
+<section id="cas-binaire">
+<h2>Cas binaire<a class="headerlink" href="#cas-binaire" title="Link to this heading">#</a></h2>
 <p>On dispose d’un ensemble d’apprentissage
 <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_j, y_j),1\leq j\leq n, \mathbf x_i\in X,y_i\in {\cal C} \right \}\)</span>, avec <span class="math notranslate nohighlight">\(\vert X\vert = d\)</span>.</p>
-<div class="section" id="construction-d-un-arbre">
-<h3>Construction d’un arbre<a class="headerlink" href="#construction-d-un-arbre" title="Lien permanent vers ce titre">#</a></h3>
+<section id="construction-d-un-arbre">
+<h3>Construction d’un arbre<a class="headerlink" href="#construction-d-un-arbre" title="Link to this heading">#</a></h3>
 <p>On cherche d’abord, en appliquant le principe de minimisation du risque empirique, à construire un arbre de classification (<a class="reference internal" href="#tree-algorithm">Algorithm 2</a>) dont l’erreur apparente est nulle.  On suppose pour l’instant que les attributs (les composantes de <span class="math notranslate nohighlight">\(\mathbf x\)</span>) sont à valeur binaire.</p>
 <div class="proof algorithm admonition" id="tree-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Arbre(noeud X))</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span></p>
 <p><strong>Sortie</strong> : l’arbre de décision</p>
 <p>Si Tous les points de <span class="math notranslate nohighlight">\(X\)</span> appartiennent à la même classe</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Créer une feuille portant le nom de cette classe</p></li>
 </ol>
 <p>Sinon</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Choisir le meilleur attribut pour créer un noeud</p></li>
 <li><p>Le test associé à ce noeud sépare <span class="math notranslate nohighlight">\(X\)</span> en  <span class="math notranslate nohighlight">\(X_g\)</span> et <span class="math notranslate nohighlight">\(X_d\)</span></p></li>
 <li><p>Arbre(<span class="math notranslate nohighlight">\(X_g\)</span>)</p></li>
 <li><p>Arbre(<span class="math notranslate nohighlight">\(X_d\)</span>)</p></li>
 </ol>
-</div>
-</div></div>
-<div class="section" id="intepretation-probabiliste">
-<h3>Inteprétation probabiliste<a class="headerlink" href="#intepretation-probabiliste" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+</div></section>
+<section id="intepretation-probabiliste">
+<h3>Inteprétation probabiliste<a class="headerlink" href="#intepretation-probabiliste" title="Link to this heading">#</a></h3>
 <p>Pour pouvoir choisir le meilleur attribut, on se place dans un cadre probabiliste : lors de la récursion, on arrive sur un noeud auquel sont attachés <span class="math notranslate nohighlight">\(n\)</span> points de <span class="math notranslate nohighlight">\(Z\)</span>, répartis en <span class="math notranslate nohighlight">\(C\)</span> classes <span class="math notranslate nohighlight">\(y_j\)</span> comportant chacune <span class="math notranslate nohighlight">\(n_j\)</span> points.</p>
 <p>Un attribut binaire <span class="math notranslate nohighlight">\(a\)</span> partage chaque sous-ensemble <span class="math notranslate nohighlight">\(n_j\)</span> en deux parties, comportant respectivement <span class="math notranslate nohighlight">\(l_j\)</span> (<span class="math notranslate nohighlight">\(a\)</span>=VRAI) et <span class="math notranslate nohighlight">\(r_j\)</span> (<span class="math notranslate nohighlight">\(a\)</span>=FAUX) points.</p>
 <p>Si <span class="math notranslate nohighlight">\(l=\displaystyle\sum_{j=1}^{C}l_j \;\;\;\mbox{et} \;\;\; r=\displaystyle\sum_{j=1}^{C}r_j\)</span>, on peut considérer que les <span class="math notranslate nohighlight">\(n\)</span> points d’apprentissage sont des tirages aléatoires selon deux distributions discrètes possibles : celle des <span class="math notranslate nohighlight">\(C\)</span> valeurs que prend la valeur <span class="math notranslate nohighlight">\(y_j\)</span> de la classe et celle des deux valeurs de <span class="math notranslate nohighlight">\(a\)</span>. Alors :</p>
@@ -511,9 +391,9 @@ title="Fullscreen mode"
 <li><p><span class="math notranslate nohighlight">\(l/n\)</span> et <span class="math notranslate nohighlight">\(r/n\)</span> sont des estimations de  <span class="math notranslate nohighlight">\(P(a=VRAI)\)</span> et <span class="math notranslate nohighlight">\(P(a=FAUX)\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(n_j/n\)</span> est une estimation de <span class="math notranslate nohighlight">\(P(y=y_j)\)</span>.</p></li>
 </ul>
-</div>
-<div class="section" id="choix-de-l-attribut">
-<h3>Choix de l’attribut<a class="headerlink" href="#choix-de-l-attribut" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="choix-de-l-attribut">
+<h3>Choix de l’attribut<a class="headerlink" href="#choix-de-l-attribut" title="Link to this heading">#</a></h3>
 <p>L’information mutuelle permet de mesurer l’homogénéité entre deux distributions : Si <span class="math notranslate nohighlight">\({\cal D}_y\)</span> (respectivement <span class="math notranslate nohighlight">\({\cal D}_{a}\)</span>) est l’ensemble des valeurs que peut prendre <span class="math notranslate nohighlight">\(y\)</span> (resp. <span class="math notranslate nohighlight">\(a\)</span>), alors</p>
 <p><span class="math notranslate nohighlight">\(I(y,a) = \sum_{u,v \in {\cal D}_y \times {\cal D}_a} P(y =u,a=v)log\frac{P(y =u,a=v)}{P(y =u)P(a=v)}\)</span></p>
 <p>L’information mutuelle <span class="math notranslate nohighlight">\(I(y,a)\)</span> :</p>
@@ -542,48 +422,48 @@ J(a=FAUX)= \displaystyle\sum_{j=1}^{C} \frac{r_j}{r}\log\frac{r_j}{r}\)</span></
 <p><span class="math notranslate nohighlight">\({\widehat H(y\mid a)} = \frac{l}{n} J(a=VRAI) + \frac{r}{n} J(a=FAUX)\)</span></p>
 <p>Pour construire un noeud dans l’arbre, une idée naturelle est donc de chercher parmi les <span class="math notranslate nohighlight">\(d\)</span> attributs celui qui possède la plus grande corrélation avec la répartition en classes, autrement dit celui qui a la meilleure information mutuelle avec la distribution des points d’apprentissage sur les classes. Autrement dit, il faut résoudre le problème</p>
 <p><span class="math notranslate nohighlight">\(i^{*} = \underset{i\in[\![1,d]\!] }{\mbox{ArgMin}} \ \ {\widehat H(y \mid a_i)}\)</span></p>
-</div>
-<div class="section" id="autres-criteres-de-choix">
-<h3>Autres critères de choix<a class="headerlink" href="#autres-criteres-de-choix" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="autres-criteres-de-choix">
+<h3>Autres critères de choix<a class="headerlink" href="#autres-criteres-de-choix" title="Link to this heading">#</a></h3>
 <p>D’autres critères de choix sont possibles, parmi lesquels :</p>
 <ul class="simple">
 <li><p>Métrique de Gini : <span class="math notranslate nohighlight">\(Gini(y \mid a) = \frac{l}{n} \displaystyle\sum_{j=1}^C  \frac{l_j}{n_j}(1-\frac{l_j}{n_j} + \frac{r}{n} \displaystyle\sum_{j=1}^C \frac{r_j}{n_j}(1-\frac{r_j}{n_j})\)</span></p></li>
 <li><p>critère du <span class="math notranslate nohighlight">\(\chi^2\)</span> : <span class="math notranslate nohighlight">\(\chi^2(c \mid a) = \displaystyle\sum_{j=1}^C (\frac{l_j-(l n_j / n)}{\sqrt{ln_j /n}})^2 +(\frac{r_j-(r n_j / n)}{\sqrt{r n_j /n}})^2\)</span></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="cas-non-binaire">
-<h2>Cas non binaire<a class="headerlink" href="#cas-non-binaire" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+</section>
+<section id="cas-non-binaire">
+<h2>Cas non binaire<a class="headerlink" href="#cas-non-binaire" title="Link to this heading">#</a></h2>
 <p>Dans le cas où les attributs sont à valeurs discrètes, on est facilement ramené au cas binaire. Dans le cas d’un attribut à valeurs continues,  le nombre de données
 d’apprentissage étant fini, le nombre des valeurs que prend cet attribut sur les
 exemples est aussi fini.  Le choix se résume donc à comparer les valeurs
 à un seuil pour construire un noeud binaire : on trie les points d’apprentissage selon la valeur de cet attribut, puis on cherche le
 seuil <span class="math notranslate nohighlight">\(s(a)\)</span> qui minimise l’un des critères présentés.</p>
-</div>
-<div class="section" id="exemple-l-algorithme-id3">
-<h2>Exemple : l’algorithme ID3<a class="headerlink" href="#exemple-l-algorithme-id3" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="exemple-l-algorithme-id3">
+<h2>Exemple : l’algorithme ID3<a class="headerlink" href="#exemple-l-algorithme-id3" title="Link to this heading">#</a></h2>
 <p>Plusieurs algorithmes sont disponibles, ainsi que plusieurs mesures d’homogénéité. Nous décrivons ici l’algorithme Iterative Dichotomiser 3 (ID3). Pour illustrer la construction de l’arbre, on se place dans le cadre d’un problème de classification à <span class="math notranslate nohighlight">\(C\)</span> classes d’objets à <span class="math notranslate nohighlight">\(d\)</span> attributs, où  chaque attribut prend un nombre fini de valeurs. L”(<a class="reference internal" href="#id3-algorithm">Algorithm 3</a>) décrit le principe général de l’algorithme ID3, que nous détaillons dans la suite.</p>
 <div class="proof algorithm admonition" id="id3-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (ID3)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <p><strong>Entrée</strong> : <span class="math notranslate nohighlight">\(Z=\left \{(\boldsymbol x_i,y_i),i\in[\![1,n]\!],y_i \in[\![1,C]\!] \right \}\)</span></p>
 <p><strong>Sortie</strong> : l’arbre de décision</p>
 <p>Fonction ID3(<span class="math notranslate nohighlight">\(Z\)</span>)
 Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\tilde{y}\)</span>=constante</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Retourner un arbre à un noeud contenant <span class="math notranslate nohighlight">\(\tilde{y}\)</span></p></li>
 </ol>
 <p>Sinon</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Soit <span class="math notranslate nohighlight">\(k\in[\![1,d]\!]\)</span> l’attribut de plus grand gain <span class="math notranslate nohighlight">\(G(Z,k)\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\{k_1\cdots k_m\}\)</span> : valeurs possibles de l’attribut <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\{Z_1\cdots Z_m\}\)</span> : sous-ensembles des objets de <span class="math notranslate nohighlight">\(Z\)</span> possédant la valeur <span class="math notranslate nohighlight">\(k_1\cdots k_m\)</span> pour l’attribut <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 <li><p>Construire l’arbre de racine <span class="math notranslate nohighlight">\(k\)</span> et de sous-arbres ID3(<span class="math notranslate nohighlight">\(Z_i\)</span>),<span class="math notranslate nohighlight">\(i\in[\![1,m]\!]\)</span>, reliés à <span class="math notranslate nohighlight">\(k\)</span> par un arc étiqueté par <span class="math notranslate nohighlight">\(k_i,\ i\in[\![1,m]\!]\)</span>.</p></li>
 </ol>
-</div>
-</div></div>
-<div class="section" id="elagage-d-arbres">
-<h2>Elagage d’arbres<a class="headerlink" href="#elagage-d-arbres" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+</div></section>
+<section id="elagage-d-arbres">
+<h2>Elagage d’arbres<a class="headerlink" href="#elagage-d-arbres" title="Link to this heading">#</a></h2>
 <p>Il n’est souvent pas nécessaire de développer l’arbre jusqu’au bout, ceci entraînant des risques de sur-apprentissage. A l’inverse, le cas limite de l’arbre constant introduit un sous-apprentissage évident. On est donc amené à se doter de techniques d’élagage (pruning) d’arbres de décision.</p>
 <p>Il existe une théorie élégante pour trouver l’rbre optimal, minimisant l’erreur de prédiction (en classification ou régression) pénalisée par la complexité de l’arbre (mesurée par le nombre de feuilles).</p>
 <p>Soit donc <span class="math notranslate nohighlight">\(T\)</span> un abre de complexité son nombre de feuilles <span class="math notranslate nohighlight">\(|T|\)</span>. On définit l’erreur d’ajustement de <span class="math notranslate nohighlight">\(T\)</span> par</p>
@@ -602,15 +482,15 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 <p>L’arbre optimal est alors construit en appliquant l (<a class="reference internal" href="#Breiman">Algorithm 4</a>)</p>
 <div class="proof algorithm admonition" id="Breiman">
 <p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (ArbreOptimal)</p>
-<div class="algorithm-content section" id="proof-content">
+<section class="algorithm-content" id="proof-content">
 <p><strong>Entrée</strong> : l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span></p>
 <p><strong>Sortie</strong> : l’arbre de décision optimal</p>
 <p>Si Tous les points de <span class="math notranslate nohighlight">\(X\)</span> appartiennent à la même classe</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Calculer <span class="math notranslate nohighlight">\(T_{max}\)</span></p></li>
 <li><p>Calculer la suite de Breiman <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span> associée à la suite de paramètres <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span></p></li>
 <li><p>Pour <span class="math notranslate nohighlight">\(v=1\)</span> à <span class="math notranslate nohighlight">\(V\)</span> (erreur de validation V-fold)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Pour chaque ensemble de <span class="math notranslate nohighlight">\(V-1\)</span> folds, estimer la suite des arbres associés à <span class="math notranslate nohighlight">\(\gamma_1, \cdots \gamma_K\)</span></p></li>
 <li><p>Estimer l’erreur sur le fold</p></li>
 </ol>
@@ -619,7 +499,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 <li><p>Déterminer la valeur optimale <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> minimisant l’erreur moyenne.</p></li>
 <li><p>Retenir l’arbre correspondant à <span class="math notranslate nohighlight">\(\gamma_{opt}\)</span> dans <span class="math notranslate nohighlight">\(T_1\supset T_2\cdots T_K\)</span></p></li>
 </ol>
-</div>
+</section>
 </div><p>Pour calculer l’élagage optimal, <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code> propose la fonction <code class="docutils literal notranslate"><span class="pre">cost_complexity_pruning_path</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -647,7 +527,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/arbres_decision_1_0.png" src="_images/arbres_decision_1_0.png" />
+<img alt="_images/ecc23dcc7c1a080912e9cd9d408f572e38d4285068e32e59e886094d432bb958.png" src="_images/ecc23dcc7c1a080912e9cd9d408f572e38d4285068e32e59e886094d432bb958.png" />
 </div>
 </div>
 <p>On entraîne un arbre de décision avec les valeurs de <span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
@@ -689,7 +569,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/arbres_decision_5_0.png" src="_images/arbres_decision_5_0.png" />
+<img alt="_images/3281d951a155ff891036ef8a3cb1a7923ccba95ed130b708d7631445822231e4.png" src="_images/3281d951a155ff891036ef8a3cb1a7923ccba95ed130b708d7631445822231e4.png" />
 </div>
 </div>
 <p>En calculant les précisions sur l’ensemle de test, on voit que l’arbre construit pour <span class="math notranslate nohighlight">\(\gamma=0.015\)</span> amène au meilleur résultat.</p>
@@ -709,12 +589,12 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/arbres_decision_7_0.png" src="_images/arbres_decision_7_0.png" />
+<img alt="_images/281b7abedc0272a481f6d0c749ac599c4306f495158ab3d9e063ab7a640119d0.png" src="_images/281b7abedc0272a481f6d0c749ac599c4306f495158ab3d9e063ab7a640119d0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="implementation">
-<h2>Implémentation<a class="headerlink" href="#implementation" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="implementation">
+<h2>Implémentation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
 <p>L’étape 1 nécessite le calcul d’un gain. Pour ce faire, on introduit la notion d”{entropie} d’un ensemble <span class="math notranslate nohighlight">\(Z\)</span>.  On note <span class="math notranslate nohighlight">\(C_k,\ k\in[\![1,C]\!]\)</span> l’ensemble des éléments de <span class="math notranslate nohighlight">\(Z\)</span> tels que <span class="math notranslate nohighlight">\(y=y_k\)</span>. La probabilité qu’un élément de <span class="math notranslate nohighlight">\(Z\)</span> soit dans <span class="math notranslate nohighlight">\(C_k\)</span> peut être approchée par <span class="math notranslate nohighlight">\(q_k=\frac{|C_k|}{|Z|}\)</span>, et l’entropie de <span class="math notranslate nohighlight">\(Z\)</span> est alors définie par :</p>
 <p><span class="math notranslate nohighlight">\(H(Z) = -\displaystyle\sum_{k=1}^C q_k log_2\ q_k\)</span></p>
 <p><span class="math notranslate nohighlight">\(H(Z)\)</span> mesure l’écart de la distribution de la variable cible par rapport à la distribution uniforme :</p>
@@ -723,14 +603,14 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 <li><p><span class="math notranslate nohighlight">\(H(Z)\)</span> est maximum si toutes les probabilités <span class="math notranslate nohighlight">\(q_k\)</span> sont égales.</p></li>
 </ul>
 <p>Le calcul du gain s’opère alors de la manière suivante pour un attribut <span class="math notranslate nohighlight">\(k\)</span> :</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>on partitionne <span class="math notranslate nohighlight">\(Z\)</span> sur les valeurs de l’attribut <span class="math notranslate nohighlight">\(k\)</span> en <span class="math notranslate nohighlight">\(m\)</span> sous groupes <span class="math notranslate nohighlight">\(\{Z_1\cdots Z_m\}\)</span>, chaque <span class="math notranslate nohighlight">\(Z_i\)</span> étant constitué des éléments de <span class="math notranslate nohighlight">\(Z\)</span> dont l’attribut <span class="math notranslate nohighlight">\(k\)</span> vaut <span class="math notranslate nohighlight">\(k_i\)</span>,</p></li>
 <li><p>on estime la probabilité <span class="math notranslate nohighlight">\(p_i\)</span> qu’un élément de <span class="math notranslate nohighlight">\(Z\)</span> appartienne à <span class="math notranslate nohighlight">\(Z_i\)</span> par <span class="math notranslate nohighlight">\(p_i=\frac{|Z_i|}{|Z|}\)</span>,</p></li>
 <li><p>on calcule le gain d’information sur l’attribut <span class="math notranslate nohighlight">\(k\)</span> par <span class="math notranslate nohighlight">\(G(Z,k) = H(Z)-\displaystyle\sum_{i=1}^m p_i H(Z_i)\)</span>.</p></li>
 </ol>
 <p>Pour illustrer l’application de l’algorithme ID3, on reprend un exemple fourni par son créateur  (John Quilan).
 On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait (soleil, couvert, pluie), la température (chaud, bon frais), le taux d’humidité (normal, haut) et le vent (oui, non).  On se donne 14 individus décrits par ces 4 paramètres, la variable de décision <span class="math notranslate nohighlight">\(y\)</span> associée étant « Va jouer au golf » (0 pour non, 1 pour oui) :</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
 <th class="head"><p>C</p></th>
@@ -844,7 +724,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 <p>On initialise l’arbre avec un noeud racine contenant <span class="math notranslate nohighlight">\(Z=\{(\boldsymbol x_i,y_i),i\in[\![1,14]\!]\}\)</span>.  On illustre alors la première étape de l’algorithme.</p>
 <p>On a <span class="math notranslate nohighlight">\(q_0=5/14\)</span> et <span class="math notranslate nohighlight">\(q_1=9/14\)</span>,  et <span class="math notranslate nohighlight">\(H(Z) = 0.41+0.53 = 0.94\)</span>.</p>
 <p>Pour chaque caractéristique, on calcule ensuite le gain :</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>C</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(y=1\)</span></p></th>
@@ -879,11 +759,11 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 <p>Le noeud associé à la branche « couvert » ne contient que des individus tels que <span class="math notranslate nohighlight">\(y=1\)</span>.  Il se transforme donc en feuille avec une valeur de décision à 1. Pour les deux autres noeuds, on applique récursivement l’algorithme pour aboutir à l’arbre de droite de la figure.</p>
 <p><img alt="" src="_images/id3.png" /></p>
 <p>Ainsi, par exemple, s’il pleut mais qu’il n’y a pas de vent, alors on va jouer au golf.</p>
-</div>
-<div class="section" id="arbres-de-regression">
-<h2>Arbres de régression<a class="headerlink" href="#arbres-de-regression" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="arbres-de-regression">
+<h2>Arbres de régression<a class="headerlink" href="#arbres-de-regression" title="Link to this heading">#</a></h2>
 <p>Les arbres de décision peuvent être également utilisés pour des tâches de régression. Des régressions linéaires locales sont apprises sur les données d’entraînement pour approcher la distribution des points dans <span class="math notranslate nohighlight">\(X\)</span>. Si la profondeur de l’arbre est trop importante, l’arbre apprend des niveaux de détails trop fins et sur apprend. Le nombre minimum d’exemples pour être une feuille de l’arbre quant à lui permet dans un certain sens de contrôler la régularisation du régresseur.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Profondeur 4</p></th>
 <th class="head"><p>Profondeur 10</p></th>
@@ -909,7 +789,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
  </video></div></div>
 </div>
 <p>Ici, 500 points échantillonnés selon <span class="math notranslate nohighlight">\(y=4\left ( x-\frac{1}{2}\right)^2+\mathcal{N}(0,1)\)</span></p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>4 exemples</p></th>
 <th class="head"><p>20 exemples</p></th>
@@ -935,9 +815,9 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
  </video></div></div>
 </div>
 <p>En régression, mais aussi en classification, les arbres de décision amènent assez naturellement au problème de sur-apprentissage : il est facile d’aller trop profondément dans l’arbre, et de faire correspondre le classifieur à une donnée particulière plutôt qu’à la distribution des données de <span class="math notranslate nohighlight">\(Z\)</span>.</p>
-</div>
-<div class="section" id="id1">
-<h2>Implémentation<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="id1">
+<h2>Implémentation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1012,13 +892,13 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/arbres_decision_13_0.png" src="_images/arbres_decision_13_0.png" />
-<img alt="_images/arbres_decision_13_1.png" src="_images/arbres_decision_13_1.png" />
-<img alt="_images/arbres_decision_13_2.png" src="_images/arbres_decision_13_2.png" />
+<img alt="_images/42d20e3d0346587e6f058636392fe077a7fcfd7009201f315e1e4603248e0297.png" src="_images/42d20e3d0346587e6f058636392fe077a7fcfd7009201f315e1e4603248e0297.png" />
+<img alt="_images/9bbaac8e70b1acd506a307fd252087d6cb42bac99dec5648732177eb5c65f26f.png" src="_images/9bbaac8e70b1acd506a307fd252087d6cb42bac99dec5648732177eb5c65f26f.png" />
+<img alt="_images/08cc3ff5e2fdc9825356ca8621585f01b3754e14e23abe4ae0e6b26682788402.png" src="_images/08cc3ff5e2fdc9825356ca8621585f01b3754e14e23abe4ae0e6b26682788402.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1032,7 +912,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1040,50 +920,114 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="knn.html" title="précédent page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">K plus proches voisins</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="knn.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">K plus proches voisins</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="svmGeom.html" title="suivant page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="svmGeom.html"
+       title="page suivante">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">SVM linéaire</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-binaire">Cas binaire</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-d-un-arbre">Construction d’un arbre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intepretation-probabiliste">Inteprétation probabiliste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choix-de-l-attribut">Choix de l’attribut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autres-criteres-de-choix">Autres critères de choix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-non-binaire">Cas non binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-l-algorithme-id3">Exemple : l’algorithme ID3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elagage-d-arbres">Elagage d’arbres</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implémentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbres-de-regression">Arbres de régression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Implémentation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Vincent BARRA<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+Par Vincent BARRA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

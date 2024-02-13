@@ -1,430 +1,355 @@
 
 <!DOCTYPE html>
 
-<html lang="fr">
+
+<html lang="fr" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Analyses discriminantes &#8212; Apprentissage automatique</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'LDAQDA';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="K plus proches voisins" href="knn.html" />
     <link rel="prev" title="Classifieur naïf de Bayes" href="bayes.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Apprentissage automatique - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Apprentissage automatique - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="possible.html">
-   Exemple introductif
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="approchestat.html">
-   Modèle statistique de l’apprentissage
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modelesup.html">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="possible.html">Exemple introductif</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="approchestat.html">Modèle statistique de l’apprentissage</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="modelesup.html">Modèle du processus d’apprentissage supervisé</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Classification
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classification</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
-   Classifieur naïf de Bayes
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Analyses discriminantes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="knn.html">
-   K plus proches voisins
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arbres_decision.html">
-   Arbres de décision
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">Classifieur naïf de Bayes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyses discriminantes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">K plus proches voisins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arbres_decision.html">Arbres de décision</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes à noyau
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="svmGeom.html">
-   SVM linéaire
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kernelTrick.html">
-   Astuce du noyau
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes d'ensemble
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="baggingboosting.html">
-   Bootstraping et bagging
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="adaboost.html">
-   Boosting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="combinaison.html">
-   Méthodes de combinaison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="randomforest.html">
-   Forêts aléatoires
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gradientboosting.html">
-   Gradient Boosting
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Manifold learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="mds.html">
-   Positionnement multidimensionnel
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="isomap.html">
-   ISOMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lle.html">
-   Local Linear Embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="manifold.html">
-   Unification
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="isomap.html">ISOMAP</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lle.html">Local Linear Embedding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="manifold.html">Unification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  TP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="TPClassif.html">
-   Comparaison de méthodes de classification supervisée
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="TPClassif.html">Comparaison de méthodes de classification supervisée</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
 
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">
-   Analyse discriminante linéaire (LDA)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">
-   Analyse discriminante de Fisher
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cas-de-deux-classes">
-     Cas de deux classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cas-multiclasses">
-     Cas multiclasses
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">
-   Analyse discriminante quadratique (QDA)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nombre-de-parametres">
-   Nombre de paramètres
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analyses discriminantes</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">
-   Analyse discriminante linéaire (LDA)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">
-   Analyse discriminante de Fisher
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cas-de-deux-classes">
-     Cas de deux classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cas-multiclasses">
-     Cas multiclasses
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">
-   Analyse discriminante quadratique (QDA)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nombre-de-parametres">
-   Nombre de paramètres
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyses discriminantes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">Analyse discriminante linéaire (LDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">Analyse discriminante de Fisher</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-de-deux-classes">Cas de deux classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-multiclasses">Cas multiclasses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">Analyse discriminante quadratique (QDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nombre-de-parametres">Nombre de paramètres</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="analyses-discriminantes">
-<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Lien permanent vers ce titre">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analyses-discriminantes">
+<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Link to this heading">#</a></h1>
 <p>Les analyses discriminante linéaire (LDA) et quadratiques (QDA) sont des approches paramétriques qui considèrent le logarithme du rapport :</p>
 <div class="math notranslate nohighlight">
 \[
@@ -438,8 +363,8 @@ title="Fullscreen mode"
 g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \frac{P({{\mathbf x} = { \mathbf x_0}}|\omega=\omega_i)\,P(\omega={\omega_i}) }{\displaystyle\sum_{j=1}^C P({\mathbf x} ={ \mathbf x_0}|\omega=\omega_j)\, P({\omega=\omega_j})} = \frac{f_i(\mathbf x_0) \pi_i}{\displaystyle\sum_{j=1}^C f_j(\mathbf x_0) \pi_j}
 \]</div>
 <p>avec donc <span class="math notranslate nohighlight">\(f_i(\mathbf x_0) =  P({{\mathbf x} = {\mathbf x_0}}|\omega=\omega_i)\)</span> et <span class="math notranslate nohighlight">\(\pi_i = P(\omega={\omega_i})\)</span></p>
-<div class="section" id="analyse-discriminante-lineaire-lda">
-<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Lien permanent vers ce titre">#</a></h2>
+<section id="analyse-discriminante-lineaire-lda">
+<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Link to this heading">#</a></h2>
 <p>On s’intéresse pour l’exemple au cas <span class="math notranslate nohighlight">\(C=2\)</span>, et où les distributions de toutes les classes sont des gaussiennes multivariées. On pose donc</p>
 <div class="math notranslate nohighlight">
 \[f_i(x) \; = \; \frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_i|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_i)^{\top} { \Sigma}_i^{-1} ({\mathbf x} - \mu_i)}\]</div>
@@ -590,7 +515,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/LDAQDA_1_0.png" src="_images/LDAQDA_1_0.png" />
+<img alt="_images/763f0ea19bd6db4b87a31263169ab753dd8d32235f235fe4f76f1668fe2658e0.png" src="_images/763f0ea19bd6db4b87a31263169ab753dd8d32235f235fe4f76f1668fe2658e0.png" />
 </div>
 </div>
 <p>Voici un exemple de LDA sur deux classes.</p>
@@ -659,17 +584,45 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/LDAQDA_3_0.png" src="_images/LDAQDA_3_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">51</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances égales&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="n">plot_cov</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">(</span><span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">Cell In[2], line 11,</span> in <span class="ni">plot_cov</span><span class="nt">(method, splot)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">plot_cov</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">splot</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">if</span> <span class="n">method</span><span class="o">==</span><span class="n">lda</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>         <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">Cell In[1], line 16,</span> in <span class="ni">Ellipse</span><span class="nt">(splot, mean, cov, color)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">ell</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                           <span class="mi">180</span> <span class="o">+</span> <span class="n">angle</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>                           <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ell</span><span class="o">.</span><span class="n">set_clip_box</span><span class="p">(</span><span class="n">splot</span><span class="o">.</span><span class="n">bbox</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">ell</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: __init__() takes 4 positional arguments but 5 were given
+</pre></div>
+</div>
+<img alt="_images/097bda30545d41af1eb0a33862ef5e2599b2608ff5bdf741c6f23e8de4704056.png" src="_images/097bda30545d41af1eb0a33862ef5e2599b2608ff5bdf741c6f23e8de4704056.png" />
 </div>
 </div>
-</div>
-<div class="section" id="analyse-discriminante-de-fisher">
-<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="analyse-discriminante-de-fisher">
+<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Link to this heading">#</a></h2>
 <p>Il est possible d’aborder l’analyse discriminante linéaire sans a priori gaussien.</p>
 <p>L’idée de l’analyse discriminante de Fisher (FDA) est de rechercher des représentants des classes, et d’éloigner le plus possible des points les uns des autres, en projetant les données sur une direction de séparation maximale, tout en préservant la cohésion des classes.</p>
 <p>La FDA se formalise bien sous forme matricielle.</p>
-<div class="section" id="cas-de-deux-classes">
-<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Lien permanent vers ce titre">#</a></h3>
+<section id="cas-de-deux-classes">
+<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Link to this heading">#</a></h3>
 <p>On suppose ici le cas de la classification binaire  : <span class="math notranslate nohighlight">\(y_i\in\{0,1\}\forall i\in[\![1,n]\!]\)</span>. Les classes ont pour centres de masse les points <span class="math notranslate nohighlight">\( {\mu}_j\)</span>, qui sont donc les représentants de ces classes.</p>
 <ul class="simple">
 <li><p>Maximiser la distance entre les représentants par projection sur une droite <span class="math notranslate nohighlight">\(Lin( \mathbf w)\)</span> revient donc à résoudre :</p></li>
@@ -701,18 +654,18 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 \end{split}\]</div>
 <p>L’annulation du gradient du Lagrangien donne  <span class="math notranslate nohighlight">\(2{ S_B}{\mathbf w}-2\lambda { S_W}{\mathbf w}=0\)</span>, d’où <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right ) {\mathbf w}=0\)</span>. <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est donc vecteur propre de <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right )\)</span> associé à 0.</p>
 <p>Alors <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}{\mathbf w}=\lambda{\mathbf w}\)</span> et <span class="math notranslate nohighlight">\({\mathbf w}\)</span> vecteur propre de  <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span> associé au multiplicateur de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span>. Or <span class="math notranslate nohighlight">\(Rg({ S_W}^{-1}{ S_B})=1\)</span>, car <span class="math notranslate nohighlight">\( S_B\)</span> est de rang 1 (c’est la projection sur <span class="math notranslate nohighlight">\(Lin \left(\left (\mu_0-\mu_1\right )\right)\)</span> donc <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est unique.</p>
-</div>
-<div class="section" id="cas-multiclasses">
-<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien permanent vers ce titre">#</a></h3>
+</section>
+<section id="cas-multiclasses">
+<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Link to this heading">#</a></h3>
 <p>Pour un problème à <span class="math notranslate nohighlight">\(C\)</span> classes, l’analyse projette sur <span class="math notranslate nohighlight">\(C-1\)</span> directions de projection. La somme des variances interclasses est <span class="math notranslate nohighlight">\(Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )\)</span>, et la variance intraclasse totale est <span class="math notranslate nohighlight">\(Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )\)</span>, où <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est une matrice à <span class="math notranslate nohighlight">\(C-1\)</span> colonnes, les colonnes étant les vecteurs successifs sur lesquels sont projetées les données.</p>
 <p>Le problème d’optimisation s’écrit alors</p>
 <div class="math notranslate nohighlight">
 \[\displaystyle\max_{\mathbf w}\frac{Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )}{Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )}\]</div>
 <p>et par les mêmes calculs, les solutions sont les vecteurs prores de <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span>, de rang <span class="math notranslate nohighlight">\(C-1\)</span>.</p>
-</div>
-</div>
-<div class="section" id="analyse-discriminante-quadratique-qda">
-<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+</section>
+<section id="analyse-discriminante-quadratique-qda">
+<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Link to this heading">#</a></h2>
 <p>Si on relâche l’égalité des matrices de covariance, la frontière n’est plus linéaire, mais quadratique.</p>
 <p>La règle de décision est alors d’affecter <span class="math notranslate nohighlight">\(x\)</span> à la classe <span class="math notranslate nohighlight">\(i\)</span> qui maximise</p>
 <div class="math notranslate nohighlight">
@@ -722,7 +675,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <li><p>dans le premier cas, les classes sont supposées sphériques, <span class="math notranslate nohighlight">\(\Sigma_i=I,\forall i\)</span> : dans ce cas la règle de décision est
 <span class="math notranslate nohighlight">\(-\frac{1}{2}  \|{\mathbf x} - \mu_i\|^{2} + log \pi_i\)</span>.</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Si les distributions a priori <span class="math notranslate nohighlight">\(\pi_i\)</span> sont toutes égales, alors on affecte <span class="math notranslate nohighlight">\(\mathbf x\)</span> à la classe la plus proche, puisque la règle de décision revient à minimiser <span class="math notranslate nohighlight">\(\|{\mathbf x} - \mu_i\|^{2}\)</span>. L’analyse discriminante quadratique fait de la classification au plus proche voisin</p></li>
 <li><p>Si les distributions a priori <span class="math notranslate nohighlight">\(\pi_i\)</span> ne sont pas toutes égales, <span class="math notranslate nohighlight">\(\|{\mathbf x} - \mu_i\|^{2}\)</span> est ajusté en fonction des effectifs des classes</p></li>
 </ol>
@@ -789,19 +742,10 @@ Donc</p></li>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-15.185617112135642,
- 12.52711932600968,
- -8.517468243660087,
- 30.319472781271916)
-</pre></div>
 </div>
-<img alt="_images/LDAQDA_5_1.png" src="_images/LDAQDA_5_1.png" />
-</div>
-</div>
-</div>
-<div class="section" id="nombre-de-parametres">
-<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="nombre-de-parametres">
+<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Link to this heading">#</a></h2>
 <p>Pour prédire la classe de nouvelles données par LDA ou QDA,  il faut d’abord apprendre les paramètres sous-jacents à partir des <span class="math notranslate nohighlight">\(n\)</span> données d’apprentissage.</p>
 <ul class="simple">
 <li><p>pour LDA et QDA on doit apprendre les <span class="math notranslate nohighlight">\(\pi_i\)</span> les les vecteurs <span class="math notranslate nohighlight">\(\mu_i, i\in[\![1,c]\!]\)</span></p></li>
@@ -809,12 +753,14 @@ Donc</p></li>
 </ul>
 <p>ce qui amène à <span class="math notranslate nohighlight">\(C-1+Cn+\frac{n(n+1)}{2}\)</span> paramètres pour LDA et <span class="math notranslate nohighlight">\(C-1+Cn+C\frac{n(n+1)}{2}\)</span> paramètres pour QDA.</p>
 <p>La <a class="reference internal" href="#nbparam-ref"><span class="std std-numref">Fig. 7</span></a> montre la comparaison du nombre de paramètres à apprendre en fonction de la taille de la base d’apprentissage. Ici <span class="math notranslate nohighlight">\(C\)</span>=5.</p>
-<div class="figure align-default" id="nbparam-ref">
+<figure class="align-default" id="nbparam-ref">
 <img alt="_images/nbparam.png" src="_images/nbparam.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Lien permanent vers cette image">#</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -828,7 +774,7 @@ Donc</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -836,50 +782,109 @@ Donc</p></li>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bayes.html" title="précédent page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">Classifieur naïf de Bayes</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bayes.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Classifieur naïf de Bayes</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="knn.html" title="suivant page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="knn.html"
+       title="page suivante">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">K plus proches voisins</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-lineaire-lda">Analyse discriminante linéaire (LDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-de-fisher">Analyse discriminante de Fisher</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-de-deux-classes">Cas de deux classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-multiclasses">Cas multiclasses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-discriminante-quadratique-qda">Analyse discriminante quadratique (QDA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nombre-de-parametres">Nombre de paramètres</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Vincent BARRA<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+Par Vincent BARRA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

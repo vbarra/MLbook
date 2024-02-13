@@ -1,446 +1,372 @@
 
 <!DOCTYPE html>
 
-<html lang="fr">
+
+<html lang="fr" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Positionnement multidimensionnel &#8212; Apprentissage automatique</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mds';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="ISOMAP" href="isomap.html" />
     <link rel="prev" title="Gradient Boosting" href="gradientboosting.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="fr">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Apprentissage automatique</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Apprentissage automatique - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Apprentissage automatique - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="possible.html">
-   Exemple introductif
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="approchestat.html">
-   Modèle statistique de l’apprentissage
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modelesup.html">
-   Modèle du processus d’apprentissage supervisé
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="possible.html">Exemple introductif</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="approchestat.html">Modèle statistique de l’apprentissage</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="modelesup.html">Modèle du processus d’apprentissage supervisé</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Classification
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classification</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bayes.html">
-   Classifieur naïf de Bayes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LDAQDA.html">
-   Analyses discriminantes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="knn.html">
-   K plus proches voisins
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arbres_decision.html">
-   Arbres de décision
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="bayes.html">Classifieur naïf de Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LDAQDA.html">Analyses discriminantes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">K plus proches voisins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arbres_decision.html">Arbres de décision</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes à noyau
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="svmGeom.html">
-   SVM linéaire
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="kernelTrick.html">
-   Astuce du noyau
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Méthodes d'ensemble
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="baggingboosting.html">
-   Bootstraping et bagging
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="adaboost.html">
-   Boosting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="combinaison.html">
-   Méthodes de combinaison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="randomforest.html">
-   Forêts aléatoires
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gradientboosting.html">
-   Gradient Boosting
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Manifold learning
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Positionnement multidimensionnel
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="isomap.html">
-   ISOMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lle.html">
-   Local Linear Embedding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="manifold.html">
-   Unification
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Positionnement multidimensionnel</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="isomap.html">ISOMAP</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lle.html">Local Linear Embedding</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="manifold.html">Unification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  TP
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TP</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="TPClassif.html">
-   Comparaison de méthodes de classification supervisée
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="TPClassif.html">Comparaison de méthodes de classification supervisée</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
 
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Positionnement multidimensionnel
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#position-du-probleme">
-     Position du problème
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#notations">
-     Notations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-classique">
-   MDS classique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-metrique">
-   MDS métrique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-non-metrique">
-   MDS non métrique
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Positionnement multidimensionnel</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Positionnement multidimensionnel
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#position-du-probleme">
-     Position du problème
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#notations">
-     Notations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-classique">
-   MDS classique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-metrique">
-   MDS métrique
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mds-non-metrique">
-   MDS non métrique
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Positionnement multidimensionnel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Positionnement multidimensionnel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-du-probleme">Position du problème</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-classique">MDS classique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-metrique">MDS métrique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-non-metrique">MDS non métrique</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p>On suppose que des points <span class="math notranslate nohighlight">\(\mathbf y_i\)</span> sont tirés aléatoirement sur une variété <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> de dimension <span class="math notranslate nohighlight">\(t\)</span>, munie d’une métrique <span class="math notranslate nohighlight">\(d_\mathcal{M}\)</span>. Ces points sont envoyés par un plongement <span class="math notranslate nohighlight">\(\psi\)</span>, dans un espace  <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> de dimension <span class="math notranslate nohighlight">\(d, t&lt;&lt;d\)</span>,, muni de la métrique euclidienne,  résultant en les points d’observation <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>. L’objectif des méthodes de réduction de dimension est de proposer des algorithmes permettant de retrouver <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> , et d’expliciter <span class="math notranslate nohighlight">\(\psi\)</span> et les  <span class="math notranslate nohighlight">\(\mathbf y_i\)</span>, étant donnés soit les individus <span class="math notranslate nohighlight">\(\mathbf x_i\in \mathcal{X}\)</span>, soit des informations de distances entre chaque paire de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>.</p>
 <p>Dit autrement, nous supposons que les variables mesurées sur les individus ne sont pas indépendantes, et qu’il est possible de représenter les <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> sur un espace de dimension réduit, variété de dimension <span class="math notranslate nohighlight">\(t\)</span>. On parle souvent de réduction de dimension, ou  pour certaines méthodes de manifold learning.</p>
-<div class="tex2jax_ignore mathjax_ignore section" id="positionnement-multidimensionnel">
-<h1>Positionnement multidimensionnel<a class="headerlink" href="#positionnement-multidimensionnel" title="Lien permanent vers ce titre">#</a></h1>
-<div class="section" id="position-du-probleme">
-<h2>Position du problème<a class="headerlink" href="#position-du-probleme" title="Lien permanent vers ce titre">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="positionnement-multidimensionnel">
+<h1>Positionnement multidimensionnel<a class="headerlink" href="#positionnement-multidimensionnel" title="Link to this heading">#</a></h1>
+<section id="position-du-probleme">
+<h2>Position du problème<a class="headerlink" href="#position-du-probleme" title="Link to this heading">#</a></h2>
 <p>Le Positionnement multidimensionnel, ou multidimensional scaling (MDS) est un ensemble de méthodes dont l’objectif est d’identifier la variété linéaire <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> à partir de données de proximité (ou de dissimilarité) observées sur les individus <span class="math notranslate nohighlight">\(\mathbf x_i,1\leq i\leq n\)</span>.</p>
 <p><img alt="" src="_images/mds.jpg" /></p>
 <p>Ces proximités ne doivent pas nécessairement être des distances, mais peuvent être des associations (valeur absolue d’un coefficient de corrélation par exemple), ou toute autre mesure quantitative ou qualitative  permettant de discriminer deux individus entre eux.  La seule contrainte est une contrainte de monotonie sur cette mesure de proximité.</p>
-</div>
-<div class="section" id="notations">
-<h2>Notations<a class="headerlink" href="#notations" title="Lien permanent vers ce titre">#</a></h2>
+</section>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h2>
 <p>On note <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> la dissimilarité entre <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et <span class="math notranslate nohighlight">\(\mathbf x_j\)</span>. Une matrice de proximité  <span class="math notranslate nohighlight">\(\Delta\)</span> est une matrice symétrique, dont la partie triangulaire supérieure (ou inférieure) est formée des <span class="math notranslate nohighlight">\(\delta_{ij}, i\leq j\)</span> (resp. <span class="math notranslate nohighlight">\(i\geq j\)</span>), avec la convention <span class="math notranslate nohighlight">\(\delta_{ii}=0, i\in[\![1,n]\!]\)</span>.</p>
 <p>On supposera de plus que l’inégalité triangulaire est satisfaite sur les éléments de <span class="math notranslate nohighlight">\(\Delta\)</span> (i.e <span class="math notranslate nohighlight">\(\delta_{ij}\leq \delta_{ik}+\delta_{kj}\)</span>) pour associer une métrique à <span class="math notranslate nohighlight">\(\Delta\)</span>. Dans certaines applications, la contrainte de symétrie peut être relâchée.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="mds-classique">
-<h1>MDS classique<a class="headerlink" href="#mds-classique" title="Lien permanent vers ce titre">#</a></h1>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mds-classique">
+<h1>MDS classique<a class="headerlink" href="#mds-classique" title="Link to this heading">#</a></h1>
 <p>On suppose que <span class="math notranslate nohighlight">\(\mathbf x_i\in\mathbb{R}^d\)</span> et que <span class="math notranslate nohighlight">\(\Delta\)</span> est définie par la métrique euclidienne.</p>
 <div class="math notranslate nohighlight">
 \[(\forall i,j\in[\![1,n]\!])\quad \delta_{ij} = \|\mathbf x_i-\mathbf x_j\|\]</div>
@@ -486,9 +412,9 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 <p>Si <span class="math notranslate nohighlight">\(B\)</span> n’est pas semi définie positive, on peut soir ignorer les valeurs propres négatives, soit décaler les valeurs de la matrice de dissimilarité et recommencer la calcul.</p>
 <div class="proof remark dropdown admonition" id="remark-0">
 <p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
-<div class="remark-content section" id="proof-content">
+<section class="remark-content" id="proof-content">
 <p>La solution obtenue n’est pas unique : Si <span class="math notranslate nohighlight">\(\mathbf P\)</span> est une transformation orthogonale, alors <span class="math notranslate nohighlight">\(\|\mathbf P(\mathbf y_i-\mathbf y_j)\|^2 = \|\mathbf y_i-\mathbf y_j\|^2\)</span>. Ainsi par exemple, la solution est définie à rotation près.</p>
-</div>
+</section>
 </div><p>De même que pour l’ACP, la détermination de <span class="math notranslate nohighlight">\(t\)</span> reste empirique. Une méthode populaire consiste à tracer un graphe des valeurs propres de <span class="math notranslate nohighlight">\(B\)</span>, ordonnées (de la plus grande à la plus petite), et regarder à quel ordre ces valeurs se « stabilisent ».</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,8 +452,8 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mds_1_0.png" src="_images/mds_1_0.png" />
-<img alt="_images/mds_1_1.png" src="_images/mds_1_1.png" />
+<img alt="_images/a27489e677b8fe281c4fe6c25f2edd16ff2e5517138fea21db50eb43078b982a.png" src="_images/a27489e677b8fe281c4fe6c25f2edd16ff2e5517138fea21db50eb43078b982a.png" />
+<img alt="_images/66e68001aaa48aa0f67a06f4b1d52b5d67bb450118eb2b39f1b80b6282607af7.png" src="_images/66e68001aaa48aa0f67a06f4b1d52b5d67bb450118eb2b39f1b80b6282607af7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -543,9 +469,9 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
  Your browser does not support the video tag.
  </video></div></div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="mds-metrique">
-<h1>MDS métrique<a class="headerlink" href="#mds-metrique" title="Lien permanent vers ce titre">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mds-metrique">
+<h1>MDS métrique<a class="headerlink" href="#mds-metrique" title="Link to this heading">#</a></h1>
 <p>Il est possible de généraliser le positionnement multidimensionnel classique en cherchant <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_n\)</span> tels que <span class="math notranslate nohighlight">\(f(\delta_{ij}) \approx\hat{\delta}_{ij} = \|\mathbf x_i-\mathbf x_j\|\)</span> où
 <span class="math notranslate nohighlight">\(f\)</span> est généralement monotome paramétrique, du type <span class="math notranslate nohighlight">\(f(u)=\alpha+\beta u\)</span>.</p>
 <p><span class="math notranslate nohighlight">\( \approx\)</span> peut être défini de plusieurs manières :</p>
@@ -561,9 +487,9 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 <div class="math notranslate nohighlight">
 \[\mathcal{L}(\hat{\delta}_{ij}) =\frac{1}{\displaystyle\sum_{l&lt;k} \delta_{lk}}\displaystyle\sum_{i&lt;j} \frac{\left ( \hat{\delta}_{ij} -\delta_{ij}\right )^2}{\delta_{ij}}\]</div>
 <p>Dans ce cas, les petites valeurs de <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> sont préservées.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="mds-non-metrique">
-<h1>MDS non métrique<a class="headerlink" href="#mds-non-metrique" title="Lien permanent vers ce titre">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mds-non-metrique">
+<h1>MDS non métrique<a class="headerlink" href="#mds-non-metrique" title="Link to this heading">#</a></h1>
 <p>Dans certaines applications, on ne connaît que l’ordre relatif des dissimilarités, et pas l’écart entre deux dissimilarités successives. Le positionnement multidimensionnel non métrique décrit des méthodes qui donnent davantage d’importance à l’ordre des proximités plutôt que la conservation des distances.</p>
 <p>On cherche <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_n\)</span> tels que <span class="math notranslate nohighlight">\(f(\delta_{ij}) \approx\hat{\delta}_{ij} = \|\mathbf x_i-\mathbf x_j\|\)</span> où <span class="math notranslate nohighlight">\(f\)</span> est généralement définie implicitement.</p>
 <p><span class="math notranslate nohighlight">\(f\)</span> définit des disparités <span class="math notranslate nohighlight">\(f(\delta_{ij}) = \delta_{ij}^*\)</span> si elle préserve l’ordre des dissimarités, i.e.</p>
@@ -572,7 +498,7 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 <p>Le positionnement multidimensionnel de Kruskall cherche alors à minimiser</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{L}(\hat{\delta}_{ij}) = \left (\frac{\displaystyle\sum_{i&lt;j}\left ( \hat{\delta}_{ij} -\delta_{ij}^*\right )^2}{\displaystyle\sum_{i&lt;j} \hat{\delta}_{ij}^2} \right )^\frac{1}{2}\]</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -586,7 +512,7 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -594,50 +520,110 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="gradientboosting.html" title="précédent page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">précédent</p>
-            <p class="prev-next-title">Gradient Boosting</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gradientboosting.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Gradient Boosting</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="isomap.html" title="suivant page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="isomap.html"
+       title="page suivante">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
         <p class="prev-next-title">ISOMAP</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Positionnement multidimensionnel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-du-probleme">Position du problème</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notations">Notations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-classique">MDS classique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-metrique">MDS métrique</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-non-metrique">MDS non métrique</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Vincent BARRA<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+Par Vincent BARRA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
