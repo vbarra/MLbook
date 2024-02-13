@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'TPClassif';</script>
@@ -161,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -330,14 +344,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="comparaison-de-methodes-de-classification-supervisee">
-<h1>Comparaison de méthodes de classification supervisée<a class="headerlink" href="#comparaison-de-methodes-de-classification-supervisee" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Comparaison de méthodes de classification supervisée<a class="headerlink" href="#comparaison-de-methodes-de-classification-supervisee" title="Link to this heading">#</a></h1>
 <p>Les objectifs de ce TP sont :</p>
 <ul class="simple">
 <li><p>de prendre en main et d’utiliser les méthodes de classification supervisée vues en cours, à l’aide de la libririe <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a>.</p></li>
 <li><p>d’évaluer la performance des algorithmes et de les paramétrer au mieux.</p></li>
 </ul>
 <section id="jeu-de-donnees">
-<h2>Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
@@ -354,12 +368,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/84696dee0f5cee6ab28cdf20c9600382df13e20dc13ecd16a62f4986af3bd098.png" src="_images/84696dee0f5cee6ab28cdf20c9600382df13e20dc13ecd16a62f4986af3bd098.png" />
+<img alt="_images/9d76fdea90383eef746d9e569d1c882836adb7bc5c182bcdd9455460f52741ee.png" src="_images/9d76fdea90383eef746d9e569d1c882836adb7bc5c182bcdd9455460f52741ee.png" />
 </div>
 </div>
 </section>
 <section id="utilisation-des-algorithmes-de-classification">
-<h2>Utilisation des algorithmes de classification<a class="headerlink" href="#utilisation-des-algorithmes-de-classification" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Utilisation des algorithmes de classification<a class="headerlink" href="#utilisation-des-algorithmes-de-classification" title="Link to this heading">#</a></h2>
 <p>Classer ces donncés en utilisant les algorithmes suivants :</p>
 <ul class="simple">
 <li><p>Un <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes">classifieur naïf de Bayes</a></p></li>
@@ -371,7 +385,7 @@ document.write(`
 </ul>
 </section>
 <section id="optimisation-des-hyperparametres">
-<h2>Optimisation des hyperparamètres<a class="headerlink" href="#optimisation-des-hyperparametres" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Optimisation des hyperparamètres<a class="headerlink" href="#optimisation-des-hyperparametres" title="Link to this heading">#</a></h2>
 <p>Chaque algorithme dépend de paramètres (<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> pour les k plus proches voisins, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> ou <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> pour les arbres de décisions, …) qu’il convient de régler au « mieux ». Pour cela vous pourrez utiliser une technique de <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">validation croisée</a> avec <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">grid search</a> qui permet de parcourir l’espace discrétisé des paramètres pour trouver la « meilleure » combinaison.</p>
 <p>La validation croisée à k plis (k fold) consiste à :</p>
 <ul class="simple">
@@ -394,7 +408,7 @@ l’échantillon <span class="math notranslate nohighlight">\(i\)</span>.</p></l
 <p><code class="docutils literal notranslate"><span class="pre">modele.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
 </section>
 <section id="analyse-de-performance">
-<h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Link to this heading">#</a></h2>
 <p>Pour les différents algorithmes utilisés, vous pouvez mesurer leur performance grace à l’ensemble de test <code class="docutils literal notranslate"><span class="pre">(X_test,y_test)</span></code> Il vous suffit pour cela de comparer les résultats fournis par vos algorithmes avec la vérité terrain.</p>
 <p>Vous pouvez utiliser plusieurs <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">indices quantitatifs</a> vous permettant de mesurer la performance de vos algorithmes.</p>
 <p>On peut par exemple partir de la matrice de confusion <span class="math notranslate nohighlight">\(M(i,j)\)</span> d’une algorithme classification, qui est
@@ -522,7 +536,7 @@ Par Vincent BARRA
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

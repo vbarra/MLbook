@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'svmGeom';</script>
@@ -162,7 +165,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -338,9 +352,9 @@ document.write(`
                   
   <p>Soit <span class="math notranslate nohighlight">\(Z = \{ \mathbf x_i , y_i\}, \; i\in[\![1,n]\!] ,\;\mathbf x_i \in {R}^d, y_i \in \{-1,1\}\}\)</span> un ensemble d’apprentissage pour un problème de classification binaire.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="svm-lineaire">
-<h1>SVM linéaire<a class="headerlink" href="#svm-lineaire" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>SVM linéaire<a class="headerlink" href="#svm-lineaire" title="Link to this heading">#</a></h1>
 <section id="hyperplan-separateur">
-<h2>Hyperplan séparateur<a class="headerlink" href="#hyperplan-separateur" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Hyperplan séparateur<a class="headerlink" href="#hyperplan-separateur" title="Link to this heading">#</a></h2>
 <p>Une approche traditionnelle pour introduire les SVM est de partir du concept d’hyperplan séparateur des exemples positifs et négatifs de l’ensemble d’apprentissage. On définit alors la marge comme la distance du plus proche exemple à cet hyperplan, et on espère intuitivement que plus grande sera cette marge, meilleure sera la capacité de généralisation de ce séparateur linéaire.</p>
 <p>Un hyperplan de <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> est défini par</p>
 <div class="math notranslate nohighlight">
@@ -354,7 +368,7 @@ f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 <figure class="align-default" id="hyp-ref">
 <img alt="_images/hyperplan.png" src="_images/hyperplan.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Hyperplan séparateur et définition de <span class="math notranslate nohighlight">\(\mathbb w\)</span></span><a class="headerlink" href="#hyp-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Hyperplan séparateur et définition de <span class="math notranslate nohighlight">\(\mathbb w\)</span></span><a class="headerlink" href="#hyp-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Un tel hyperplan, représenté par (<span class="math notranslate nohighlight">\(\mathbf w,b)\)</span> peut également être exprimé par <span class="math notranslate nohighlight">\((\lambda \mathbf w,\lambda b), \lambda\in\mathbb{R}\)</span>. Il est donc nécessaire de définir l’hyperplan canonique comme étant celui éloigné des données d’une distance au moins égale à 1. En fait, on impose qu’un exemple au moins de chaque classe soit à distance égale à 1. On considère alors le couple <span class="math notranslate nohighlight">\((\mathbf w,b)\)</span> tel que :</p>
@@ -370,7 +384,7 @@ f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 <figure class="align-default" id="infhyp-ref">
 <img alt="_images/hyperplanmarge.png" src="_images/hyperplanmarge.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Hyperplans séparateurs</span><a class="headerlink" href="#infhyp-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Hyperplans séparateurs</span><a class="headerlink" href="#infhyp-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>On cherche à avoir la marge la plus grande possible, et on suppose qu’au moins un point de donnée appartient aux hyperplans support. Il existe donc <span class="math notranslate nohighlight">\(\mathbf x_1,\mathbf x_2\)</span> tels que <span class="math notranslate nohighlight">\(\mathbf w^T\mathbf x_1 + b =1\)</span> et <span class="math notranslate nohighlight">\(\mathbf w^T\mathbf x_2 + b =-1\)</span>. On en déduit</p>
@@ -383,12 +397,12 @@ f({\mathbf x}) = \textrm{sign}( {\mathbf w^T\mathbf x} + b )
 <figure class="align-default" id="hyp2-ref">
 <img alt="_images/hyperplanmarge2.png" src="_images/hyperplanmarge2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Maximisation de la marge</span><a class="headerlink" href="#hyp2-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Maximisation de la marge</span><a class="headerlink" href="#hyp2-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="probleme-d-optimisation">
-<h2>Problème d’optimisation<a class="headerlink" href="#probleme-d-optimisation" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Problème d’optimisation<a class="headerlink" href="#probleme-d-optimisation" title="Link to this heading">#</a></h2>
 <p>Le problème s’écrit alors comme un problème de minimisation sous contraintes :</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\min_{\mathbf w\in\mathbb{R}^d} \|\mathbf w \|^2\\
@@ -448,12 +462,12 @@ min \label{eq:qp1}  W(\boldsymbol\alpha) = {-\boldsymbol\alpha}^T \mathbf{1} + \
 <figure class="align-default" id="svmlin-ref">
 <img alt="_images/svmLin.png" src="_images/svmLin.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Les vecteurs de support sont entourés.</span><a class="headerlink" href="#svmlin-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Les vecteurs de support sont entourés.</span><a class="headerlink" href="#svmlin-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="donnees-non-lineairement-separables">
-<h2>Données non linéairement séparables<a class="headerlink" href="#donnees-non-lineairement-separables" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Données non linéairement séparables<a class="headerlink" href="#donnees-non-lineairement-separables" title="Link to this heading">#</a></h2>
 <p>Il reste à préciser le rôle de la contrainte <span class="math notranslate nohighlight">\({0} \le {\boldsymbol \alpha} \le C\mathbf{1}\)</span>.
 Lorsque <span class="math notranslate nohighlight">\(C\rightarrow\infty\)</span>, l’hyperplan optimal est celui qui sépare totalement les données d’apprentissage (si tant est qu’il existe). Pour des valeurs de <span class="math notranslate nohighlight">\(C\)</span> « raisonnables », des erreurs de classification peuvent être acceptées par le classifieur (soft margin). Pour cela on introduit des variables d’écart <span class="math notranslate nohighlight">\(\xi_i\)</span> :</p>
 <div class="math notranslate nohighlight">
@@ -476,7 +490,7 @@ Nous illustrons dans la suite deux situations influencées par <span class="math
 <figure class="align-default" id="soft1-ref">
 <img alt="_images/soft1.png" src="_images/soft1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Données linéairement séparables</span><a class="headerlink" href="#soft1-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -503,12 +517,12 @@ Nous illustrons dans la suite deux situations influencées par <span class="math
 <figure class="align-default" id="soft2-ref">
 <img alt="_images/soft2.png" src="_images/soft2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Données non linéairement séparables</span><a class="headerlink" href="#soft2-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="cas-multiclasses">
-<h2>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Link to this heading">#</a></h2>
 <p>Deux stratégies sont possibles dans le cas multiclasse :</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -527,15 +541,15 @@ Un contre un</label><div class="sd-tab-content docutils">
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="svm-non-lineaire">
-<h1>SVM non linéaire<a class="headerlink" href="#svm-non-lineaire" title="Lien permanent vers cette rubrique">#</a></h1>
-<p>Pour utiliser les SVM dans un contexte non linéaire, on profite de l”<a class="reference internal" href="kernelTrick.html"><span class="doc std std-doc">astuce du noyau</span></a> puisque le modèle s’écrit avec un produit scalaire canonique.</p>
+<h1>SVM non linéaire<a class="headerlink" href="#svm-non-lineaire" title="Link to this heading">#</a></h1>
+<p>Pour utiliser les SVM dans un contexte non linéaire, on profite de l”<a class="reference internal" href="kernelTrick.html"><span class="std std-doc">astuce du noyau</span></a> puisque le modèle s’écrit avec un produit scalaire canonique.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title">Exemple de regression</p>
 <p><img alt="" src="_images/ridgeregression.png" /></p>
 </aside>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="utilisation-en-regression">
-<h1>Utilisation en régression<a class="headerlink" href="#utilisation-en-regression" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Utilisation en régression<a class="headerlink" href="#utilisation-en-regression" title="Link to this heading">#</a></h1>
 <p>Il est également possible, en changeant les fonctions de perte,  d’utiliser les SVM  en régression non paramétrique (SVR : Support Vector Regression)
 , i.e. approcher une fonction de <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> dans <span class="math notranslate nohighlight">\(\mathbb{R}^p\)</span> par les mêmes mécanismes d’optimisation.</p>
 <p>Pour illustrer les SVR, on génère des données aléatoires 2D à tendance linéaire et on utilise LinearSVR pour effectuer une régression linéaire.</p>
@@ -736,7 +750,7 @@ Par Vincent BARRA
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

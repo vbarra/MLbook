@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'combinaison';</script>
@@ -162,7 +165,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -339,30 +353,30 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="methodes-de-combinaison">
-<h1>Méthodes de combinaison<a class="headerlink" href="#methodes-de-combinaison" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Méthodes de combinaison<a class="headerlink" href="#methodes-de-combinaison" title="Link to this heading">#</a></h1>
 <p>La combinaison de classifieurs indépendants peut se réaliser suivant deux principes : soit par pondération, soit par méta-apprentissage. La première classe de méthodes trouve son intérêt lorsque les classifieurs réalisent la même tâche avec approximativement le même succès. La seconde est plus particulièrement adaptée lorsque certains classifieurs classifient systématiquement bien (ou mal) certains exemples.</p>
 <section id="methodes-de-ponderation">
-<h2>Méthodes de pondération<a class="headerlink" href="#methodes-de-ponderation" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Méthodes de pondération<a class="headerlink" href="#methodes-de-ponderation" title="Link to this heading">#</a></h2>
 <p>Il existe de très nombreuses méthodes de pondération. Nous présentons dans la suite certaines d’entre elles, à partir desquelles d’autres peuvent facilement être dérivées.</p>
 <section id="vote-par-majorite">
-<h3>Vote par majorité<a class="headerlink" href="#vote-par-majorite" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Vote par majorité<a class="headerlink" href="#vote-par-majorite" title="Link to this heading">#</a></h3>
 <p>Un point <span class="math notranslate nohighlight">\(\mathbf x\)</span> est affecté à la classe qui a reçu le plus grand nombre de votes de la part des <span class="math notranslate nohighlight">\(M\)</span> classifieurs.</p>
 </section>
 <section id="ponderation-par-performance">
-<h3>Pondération par performance<a class="headerlink" href="#ponderation-par-performance" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Pondération par performance<a class="headerlink" href="#ponderation-par-performance" title="Link to this heading">#</a></h3>
 <p>Le poids de chaque classifieur est proportionnl à sa précision sur un ensemble de validation :</p>
 <div class="math notranslate nohighlight">
 \[\alpha_i = \frac{1-A_i}{\displaystyle\sum_{j=1}^M(1-A_j)}\]</div>
 <p>où <span class="math notranslate nohighlight">\(A_i\)</span> est un indice de performance de <span class="math notranslate nohighlight">\(h_i\)</span> calculé sur l’ensemble de validation.</p>
 </section>
 <section id="sommation-de-distributions">
-<h3>Sommation de distributions<a class="headerlink" href="#sommation-de-distributions" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Sommation de distributions<a class="headerlink" href="#sommation-de-distributions" title="Link to this heading">#</a></h3>
 <p>L’idée de cette méthode de pondération est de sommer les vecteurs de probabilités conditionnelles obtenues par chaque classifieur. Un point <span class="math notranslate nohighlight">\(\mathbf x\)</span> est affecté à la classe de score le plus élevé dans le vecteur somme :</p>
 <div class="math notranslate nohighlight">
 \[classe(\mathbf x) = arg \max_{v\in domaine(y)}\displaystyle\sum_{i=1}^M \hat{P}_{h_i}(y=v|X)\]</div>
 </section>
 <section id="combinaison-bayesienne">
-<h3>Combinaison bayésienne<a class="headerlink" href="#combinaison-bayesienne" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Combinaison bayésienne<a class="headerlink" href="#combinaison-bayesienne" title="Link to this heading">#</a></h3>
 <p>Le poids de chaque classifieur est la probabilité a posteriori du classifieur, étant donné <span class="math notranslate nohighlight">\(Z\)</span> :</p>
 <div class="math notranslate nohighlight">
 \[classe(\mathbf x) = arg \max_{v\in domaine(y)}\displaystyle\sum_{i=1}^M P(h_i|Z).\hat{P}_{h_i}(y=v|X)\]</div>
@@ -460,9 +474,9 @@ document.write(`
 </section>
 </section>
 <section id="methodes-par-meta-apprentissage">
-<h2>Méthodes par méta apprentissage<a class="headerlink" href="#methodes-par-meta-apprentissage" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Méthodes par méta apprentissage<a class="headerlink" href="#methodes-par-meta-apprentissage" title="Link to this heading">#</a></h2>
 <section id="empilement">
-<h3>Empilement<a class="headerlink" href="#empilement" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Empilement<a class="headerlink" href="#empilement" title="Link to this heading">#</a></h3>
 <p>L’objectif de cette méthode est d’augmenter la capacité de généralisation du classifieur fort <span class="math notranslate nohighlight">\(h\)</span>. Des méta données sont crées à partir des prédictions des classifieurs sur les données de <span class="math notranslate nohighlight">\(Z\)</span> . Un nouvel algorithme d’apprentissage est alors utilisé sur ces méta données, pour prédire quelles combinaisons des classifieurs faibles donne de bons résultats.</p>
 <p>La méthode originale dite de stacking naïf  est présenté dans l”<a class="reference internal" href="#stacking-algorithm">Algorithm 9</a>.</p>
 <div class="proof algorithm admonition" id="stacking-algorithm">
@@ -498,7 +512,7 @@ document.write(`
 </section>
 </div></section>
 <section id="apprentissage-par-grading">
-<h3>Apprentissage par grading<a class="headerlink" href="#apprentissage-par-grading" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Apprentissage par grading<a class="headerlink" href="#apprentissage-par-grading" title="Link to this heading">#</a></h3>
 <p>Cette méthode transforme les classifications produites par les <span class="math notranslate nohighlight">\(M\)</span> classifieurs en <span class="math notranslate nohighlight">\(M\)</span> ensembles d’entrainement , en utilisant les exemples <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>  <span class="math notranslate nohighlight">\(M\)</span> fois, avec un nouveau label binaire pour chaque occurrence, indiquant si le k-ième classifieur a correctement ou non classé <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>. Pour chaque classifieur, un méta-classifieur est entrainé, qui prédit quand le classifieur tend à mal classer un exemple donné. Le classifieur fort <span class="math notranslate nohighlight">\(h\)</span> est construit à partir des classifieurs faibles reconnus comme fiables par les méta classifieurs.</p>
 <p>Cette méthode s’apparente à une généralisation de la sélection par validation croisée.</p>
 </section>
@@ -604,7 +618,7 @@ Par Vincent BARRA
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'LDAQDA';</script>
@@ -162,7 +165,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -335,7 +349,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analyses-discriminantes">
-<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Link to this heading">#</a></h1>
 <p>Les analyses discriminante linéaire (LDA) et quadratiques (QDA) sont des approches paramétriques qui considèrent le logarithme du rapport :</p>
 <div class="math notranslate nohighlight">
 \[
@@ -350,7 +364,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 \]</div>
 <p>avec donc <span class="math notranslate nohighlight">\(f_i(\mathbf x_0) =  P({{\mathbf x} = {\mathbf x_0}}|\omega=\omega_i)\)</span> et <span class="math notranslate nohighlight">\(\pi_i = P(\omega={\omega_i})\)</span></p>
 <section id="analyse-discriminante-lineaire-lda">
-<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Link to this heading">#</a></h2>
 <p>On s’intéresse pour l’exemple au cas <span class="math notranslate nohighlight">\(C=2\)</span>, et où les distributions de toutes les classes sont des gaussiennes multivariées. On pose donc</p>
 <div class="math notranslate nohighlight">
 \[f_i(x) \; = \; \frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_i|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_i)^{\top} { \Sigma}_i^{-1} ({\mathbf x} - \mu_i)}\]</div>
@@ -501,7 +515,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/59abc7bde53faa214b3a88fbef049cc9e953a5068f4e109be5d5d4d91e9ef22c.png" src="_images/59abc7bde53faa214b3a88fbef049cc9e953a5068f4e109be5d5d4d91e9ef22c.png" />
+<img alt="_images/763f0ea19bd6db4b87a31263169ab753dd8d32235f235fe4f76f1668fe2658e0.png" src="_images/763f0ea19bd6db4b87a31263169ab753dd8d32235f235fe4f76f1668fe2658e0.png" />
 </div>
 </div>
 <p>Voici un exemple de LDA sur deux classes.</p>
@@ -603,12 +617,12 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </section>
 <section id="analyse-discriminante-de-fisher">
-<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Link to this heading">#</a></h2>
 <p>Il est possible d’aborder l’analyse discriminante linéaire sans a priori gaussien.</p>
 <p>L’idée de l’analyse discriminante de Fisher (FDA) est de rechercher des représentants des classes, et d’éloigner le plus possible des points les uns des autres, en projetant les données sur une direction de séparation maximale, tout en préservant la cohésion des classes.</p>
 <p>La FDA se formalise bien sous forme matricielle.</p>
 <section id="cas-de-deux-classes">
-<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Link to this heading">#</a></h3>
 <p>On suppose ici le cas de la classification binaire  : <span class="math notranslate nohighlight">\(y_i\in\{0,1\}\forall i\in[\![1,n]\!]\)</span>. Les classes ont pour centres de masse les points <span class="math notranslate nohighlight">\( {\mu}_j\)</span>, qui sont donc les représentants de ces classes.</p>
 <ul class="simple">
 <li><p>Maximiser la distance entre les représentants par projection sur une droite <span class="math notranslate nohighlight">\(Lin( \mathbf w)\)</span> revient donc à résoudre :</p></li>
@@ -642,7 +656,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <p>Alors <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}{\mathbf w}=\lambda{\mathbf w}\)</span> et <span class="math notranslate nohighlight">\({\mathbf w}\)</span> vecteur propre de  <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span> associé au multiplicateur de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span>. Or <span class="math notranslate nohighlight">\(Rg({ S_W}^{-1}{ S_B})=1\)</span>, car <span class="math notranslate nohighlight">\( S_B\)</span> est de rang 1 (c’est la projection sur <span class="math notranslate nohighlight">\(Lin \left(\left (\mu_0-\mu_1\right )\right)\)</span> donc <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est unique.</p>
 </section>
 <section id="cas-multiclasses">
-<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien permanent vers cette rubrique">#</a></h3>
+<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Link to this heading">#</a></h3>
 <p>Pour un problème à <span class="math notranslate nohighlight">\(C\)</span> classes, l’analyse projette sur <span class="math notranslate nohighlight">\(C-1\)</span> directions de projection. La somme des variances interclasses est <span class="math notranslate nohighlight">\(Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )\)</span>, et la variance intraclasse totale est <span class="math notranslate nohighlight">\(Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )\)</span>, où <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est une matrice à <span class="math notranslate nohighlight">\(C-1\)</span> colonnes, les colonnes étant les vecteurs successifs sur lesquels sont projetées les données.</p>
 <p>Le problème d’optimisation s’écrit alors</p>
 <div class="math notranslate nohighlight">
@@ -651,7 +665,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </section>
 </section>
 <section id="analyse-discriminante-quadratique-qda">
-<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Link to this heading">#</a></h2>
 <p>Si on relâche l’égalité des matrices de covariance, la frontière n’est plus linéaire, mais quadratique.</p>
 <p>La règle de décision est alors d’affecter <span class="math notranslate nohighlight">\(x\)</span> à la classe <span class="math notranslate nohighlight">\(i\)</span> qui maximise</p>
 <div class="math notranslate nohighlight">
@@ -731,7 +745,7 @@ Donc</p></li>
 </div>
 </section>
 <section id="nombre-de-parametres">
-<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Link to this heading">#</a></h2>
 <p>Pour prédire la classe de nouvelles données par LDA ou QDA,  il faut d’abord apprendre les paramètres sous-jacents à partir des <span class="math notranslate nohighlight">\(n\)</span> données d’apprentissage.</p>
 <ul class="simple">
 <li><p>pour LDA et QDA on doit apprendre les <span class="math notranslate nohighlight">\(\pi_i\)</span> les les vecteurs <span class="math notranslate nohighlight">\(\mu_i, i\in[\![1,c]\!]\)</span></p></li>
@@ -742,7 +756,7 @@ Donc</p></li>
 <figure class="align-default" id="nbparam-ref">
 <img alt="_images/nbparam.png" src="_images/nbparam.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Lien permanent vers cette image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -843,7 +857,7 @@ Par Vincent BARRA
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

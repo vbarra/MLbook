@@ -1,9 +1,8 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="fr" data-content_root="" >
+<html lang="fr" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -29,41 +28,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
   <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/translations.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=d99ca74e"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'approchestat';</script>
@@ -162,7 +165,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
@@ -335,7 +349,7 @@ document.write(`
                   
   <p>On trouvera ci-dessous une courte présentation de l’approche statistique de l’apprentissage automatique, où l’on introduit notamment les notions importantes de biais et de variance d’un modèle.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="modele-statistique-de-l-apprentissage">
-<h1>Modèle statistique de l’apprentissage<a class="headerlink" href="#modele-statistique-de-l-apprentissage" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Modèle statistique de l’apprentissage<a class="headerlink" href="#modele-statistique-de-l-apprentissage" title="Link to this heading">#</a></h1>
 <p>Soient un phénomène aléatoire décrit par un vecteur aléatoire <span class="math notranslate nohighlight">\(X\)</span> dont les composantes sont supposées indépendantes, et une variable aléatoire <span class="math notranslate nohighlight">\(Y\)</span> (on suppose pour simplifier l’exposé que <span class="math notranslate nohighlight">\(Y\)</span> est une variable, mais le discours s’applique sans perte de généralité s’il s’agit d’un vecteur aléatoire).</p>
 <p>On suppose disposer de <span class="math notranslate nohighlight">\(n\)</span> réalisations de <span class="math notranslate nohighlight">\(X\)</span>, notées <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et un ensemble correspondant de réalisations de <span class="math notranslate nohighlight">\(Y\)</span>, le tout constituant l’ensemble d’apprentissage  <span class="math notranslate nohighlight">\(Z=\left \{(\mathbf x_i,y_i),i\in[\![1,n]\!]\right \}\)</span>.</p>
 <p>Le plus souvent, la relation entre <span class="math notranslate nohighlight">\(X\)</span> et <span class="math notranslate nohighlight">\(Y\)</span> est inconnue, et on la modélise par un modèle régressif</p>
@@ -367,9 +381,9 @@ document.write(`
 \[L_{av}\left (f(\mathbf x),F(\mathbf x,\boldsymbol{\theta}) \right ) = \mathbb{E}_Z \left (f(\mathbf x)-F(\mathbf x,Z)\right )^2\]</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="dilemne-biais-variance">
-<h1>Dilemne biais/variance<a class="headerlink" href="#dilemne-biais-variance" title="Lien permanent vers cette rubrique">#</a></h1>
+<h1>Dilemne biais/variance<a class="headerlink" href="#dilemne-biais-variance" title="Link to this heading">#</a></h1>
 <section id="biais-et-variance">
-<h2>Biais et Variance<a class="headerlink" href="#biais-et-variance" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Biais et Variance<a class="headerlink" href="#biais-et-variance" title="Link to this heading">#</a></h2>
 <p>Puisque <span class="math notranslate nohighlight">\(f(\mathbf x)=\mathbb{E}(Y\mid X=\mathbf x)\)</span>, l’erreur quadratique entre <span class="math notranslate nohighlight">\(f(\mathbf x)\)</span> et <span class="math notranslate nohighlight">\(F(\mathbf x,Z)\)</span> peut s’écrire</p>
 <div class="math notranslate nohighlight">
 \[L_{av}\left (f(\mathbf x),F(\mathbf x,\boldsymbol{\boldsymbol{\theta}}) \right ) = \mathbb{E}_Z \left (\mathbb{E}(Y\mid X=\mathbf x)-F(\mathbf x,Z)\right )^2\]</div>
@@ -388,7 +402,7 @@ document.write(`
 <p>Pour de bonnes performances de la fonction d’approximation <span class="math notranslate nohighlight">\(F(\mathbf x,\boldsymbol{\theta})\)</span>, <span class="math notranslate nohighlight">\(B(\boldsymbol{\theta})\)</span> et <span class="math notranslate nohighlight">\(V(\boldsymbol{\theta})\)</span> doivent simultanément être petits. Cependant, sur des processus d’apprentissage sur un ensemble <span class="math notranslate nohighlight">\(Z\)</span> de taille <span class="math notranslate nohighlight">\(n\)</span> fixée, le prix à payer pour un biais faible est une grande variance. Ce compromis s’appelle le dilemne biais-variance.</p>
 </section>
 <section id="illustrations">
-<h2>Illustrations<a class="headerlink" href="#illustrations" title="Lien permanent vers cette rubrique">#</a></h2>
+<h2>Illustrations<a class="headerlink" href="#illustrations" title="Link to this heading">#</a></h2>
 <p>De l’analyse précédente, on en déduit que plus complexe sera l’espace des fonctions <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, meilleure sera la chance d’approcher <span class="math notranslate nohighlight">\(f\)</span>, et que plus petit cet espace sera, meilleure sera la chance que l’algorithme généralise bien.</p>
 <p>Supposons  <span class="math notranslate nohighlight">\(f(x) = sin(x),x\in[-\pi,\pi]\)</span> et que l’ensemble d’apprentissage <span class="math notranslate nohighlight">\(Z\)</span> soit constitué de deux points tirés au hasard sur cette courbe. Supposons de plus que <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> soit composé des fonctions constantes et des polynomes de degré 1.</p>
 <p>On apprend sur <span class="math notranslate nohighlight">\(N\)</span> ensembles d’apprentissage <span class="math notranslate nohighlight">\(Z_i\)</span> <span class="math notranslate nohighlight">\(N\)</span> modèles constants et <span class="math notranslate nohighlight">\(N\)</span> modèles linéaires <span class="math notranslate nohighlight">\(F^{Z_i}(x,w)\)</span>, pour reprendre les notations précédentes</p>
@@ -517,7 +531,7 @@ Par Vincent BARRA
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
