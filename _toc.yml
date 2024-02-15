@@ -26,6 +26,7 @@ parts:
       - file: kernelTrick
   - caption: Méthodes d'ensemble
     chapters:
+        - file: docEnsemble
         - file: baggingboosting
         - file: adaboost
         - file: combinaison
@@ -33,6 +34,7 @@ parts:
         - file: gradientboosting
   - caption: Manifold learning
     chapters:
+        - file: docManifold
         - file: mds
         - file: isomap
         - file: lle

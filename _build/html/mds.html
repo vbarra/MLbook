@@ -6,7 +6,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Positionnement multidimensionnel &#8212; Apprentissage automatique</title>
   
@@ -18,15 +18,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
@@ -83,14 +83,13 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Passer au contenu principal</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
-    Back to top
+    Haut de page
   </button>
 
   
@@ -127,11 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -198,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes à noyau</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docKernels.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="svmGeom.html">SVM linéaire</a></li>
 
 
@@ -348,7 +351,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p>On suppose que des points <span class="math notranslate nohighlight">\(\mathbf y_i\)</span> sont tirés aléatoirement sur une variété <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> de dimension <span class="math notranslate nohighlight">\(t\)</span>, munie d’une métrique <span class="math notranslate nohighlight">\(d_\mathcal{M}\)</span>. Ces points sont envoyés par un plongement <span class="math notranslate nohighlight">\(\psi\)</span>, dans un espace  <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> de dimension <span class="math notranslate nohighlight">\(d, t&lt;&lt;d\)</span>,, muni de la métrique euclidienne,  résultant en les points d’observation <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>. L’objectif des méthodes de réduction de dimension est de proposer des algorithmes permettant de retrouver <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> , et d’expliciter <span class="math notranslate nohighlight">\(\psi\)</span> et les  <span class="math notranslate nohighlight">\(\mathbf y_i\)</span>, étant donnés soit les individus <span class="math notranslate nohighlight">\(\mathbf x_i\in \mathcal{X}\)</span>, soit des informations de distances entre chaque paire de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>.</p>
 <p>Dit autrement, nous supposons que les variables mesurées sur les individus ne sont pas indépendantes, et qu’il est possible de représenter les <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> sur un espace de dimension réduit, variété de dimension <span class="math notranslate nohighlight">\(t\)</span>. On parle souvent de réduction de dimension, ou  pour certaines méthodes de manifold learning.</p>
@@ -453,8 +456,8 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96c7da381fd448120374711d1e3d5a4847c45d9a0dcecd32bc15e9cfdfb3255b.png" src="_images/96c7da381fd448120374711d1e3d5a4847c45d9a0dcecd32bc15e9cfdfb3255b.png" />
-<img alt="_images/a1e08145d2f6a589248eac43fda780e16ac7d03251f9e448a110c974bf1af10e.png" src="_images/a1e08145d2f6a589248eac43fda780e16ac7d03251f9e448a110c974bf1af10e.png" />
+<img alt="_images/188bea72f934d4d52a164f4f32334c9a2791521e0c30b3dd391044b5458606c2.png" src="_images/188bea72f934d4d52a164f4f32334c9a2791521e0c30b3dd391044b5458606c2.png" />
+<img alt="_images/1417ec69b10a55bdfdfa39f69298b2fa0c82e61c469ec6d381859833597dae39.png" src="_images/1417ec69b10a55bdfdfa39f69298b2fa0c82e61c469ec6d381859833597dae39.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -558,6 +561,7 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contenu
@@ -621,8 +625,8 @@ Par Vincent BARRA
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
