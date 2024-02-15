@@ -21,6 +21,7 @@ parts:
       - file: arbres_decision     
   - caption: Méthodes à noyau
     chapters:
+      - file: docKernels
       - file: svmGeom
       - file: kernelTrick
   - caption: Méthodes d'ensemble
