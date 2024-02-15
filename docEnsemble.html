@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Gradient Boosting &#8212; Apprentissage automatique</title>
+    <title>Ressources &#8212; Apprentissage automatique</title>
   
   
   
@@ -67,13 +67,11 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'gradientboosting';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docEnsemble';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Ressources" href="docManifold.html" />
-    <link rel="prev" title="Forêts aléatoires" href="randomforest.html" />
+    <link rel="next" title="Bootstraping et bagging" href="baggingboosting.html" />
+    <link rel="prev" title="Astuce du noyau" href="kernelTrick.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -207,13 +205,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="kernelTrick.html">Astuce du noyau</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Méthodes d'ensemble</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="baggingboosting.html">Bootstraping et bagging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adaboost.html">Boosting</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="combinaison.html">Méthodes de combinaison</a></li>
 <li class="toctree-l1"><a class="reference internal" href="randomforest.html">Forêts aléatoires</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gradientboosting.html">Gradient Boosting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
@@ -310,9 +308,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -323,20 +319,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Gradient Boosting</h1>
+    <h1>Ressources</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contenu </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residus-et-gradient">Résidus et gradient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithme-de-gradient-boosting">Algorithme de gradient boosting</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -346,54 +333,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gradient-boosting">
-<h1>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Link to this heading">#</a></h1>
-<p>Nous avons souligné qu’AdaBoost pouvait être vu comme un algorithme d’optimisation de la fonction :</p>
-<div class="math notranslate nohighlight">
-\[J(f) = \displaystyle\sum_{i=1}^n exp\left (-y_i f(({\mathbf x}_i) \right )\]</div>
-<p>L’idée des méthodes de gradient boosting est de généraliser cette approche, en s’intéressant à d’autres fonctions de coût et à leurs gradients.</p>
-<section id="residus-et-gradient">
-<h2>Résidus et gradient<a class="headerlink" href="#residus-et-gradient" title="Link to this heading">#</a></h2>
-<p>On apprend sur <span class="math notranslate nohighlight">\(Z\)</span> une fonction (de régression, de classification) <span class="math notranslate nohighlight">\(h_1\)</span>, en utilisant un algorithme approprié. L’erreur commise par <span class="math notranslate nohighlight">\(h_1\)</span>, mesurée par la fonction de perte <span class="math notranslate nohighlight">\(\ell\)</span>, est :</p>
-<div class="math notranslate nohighlight">
-\[E_{h_1} = \displaystyle\sum_{i=1}^n \ell \left (y_i,h_1(\mathbf{x}_i)\right )\]</div>
-<p>La quantité <span class="math notranslate nohighlight">\(e_i=y_i-h_1(\mathbf{x}_i)\)</span> est appelée le résidu de <span class="math notranslate nohighlight">\(h_1\)</span> en <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>. S’il est possible de trouver une fonction <span class="math notranslate nohighlight">\(\hat{h}\)</span> telle que <span class="math notranslate nohighlight">\(\hat{h}(\mathbf{x}_i) = e_i\)</span>  pour tout <span class="math notranslate nohighlight">\(i\in[\![1, n]\!]\)</span>, alors la nouvelle fonction de régression <span class="math notranslate nohighlight">\(F=h_1+\hat{h}\)</span> aura une erreur nulle sur tous les points de <span class="math notranslate nohighlight">\(\mathcal{S}\)</span>.</p>
-<p>La recherche de <span class="math notranslate nohighlight">\(\hat{h}\)</span> étant difficile, on lui préfère la recherche d’une fonction <span class="math notranslate nohighlight">\(h_2\)</span> telle que, pour tout <span class="math notranslate nohighlight">\(i\in[\![1,n]\!]\)</span> <span class="math notranslate nohighlight">\(|h_2(\mathbf{x}_i) - e_i|&lt;\epsilon\)</span>, <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span> petit. Dans ce cas, <span class="math notranslate nohighlight">\(F=h_1+h_2\)</span> a une erreur <span class="math notranslate nohighlight">\(E_F\)</span> plus petite que <span class="math notranslate nohighlight">\(E_{h_1}\)</span>.</p>
-<p>Si par exemple la fonction de perte est définie par l’erreur quadratique :</p>
-<div class="math notranslate nohighlight">
-\[\ell\left (y,h_1(\mathbf{x})\right ) = \frac{1}{2}(y-h_1(\mathbf{x}))^2\]</div>
-<p>alors le résidu s’écrit :</p>
-<div class="math notranslate nohighlight">
-\[e=y-h_1(\mathbf{x}) = -\frac{\partial}{\partial h_1(\mathbf{x})}\ell\left (y,h_1(\mathbf{x})\right )\]</div>
-<p>et le résidu est alors l’opposé du gradient.</p>
-<p>Appliqués en <span class="math notranslate nohighlight">\(Z\)</span>, ces résidus définissent un nouvel ensemble <span class="math notranslate nohighlight">\(\tilde{Z} = \{\mathbf{x}_i,e_i\}_{1\leq i\leq n}\)</span> sur lequel donc <span class="math notranslate nohighlight">\(h_2\)</span> est appris.</p>
-</section>
-<section id="algorithme-de-gradient-boosting">
-<h2>Algorithme de gradient boosting<a class="headerlink" href="#algorithme-de-gradient-boosting" title="Link to this heading">#</a></h2>
-<p>L’idée précédente, qui consiste à écrire les résidus comme des gradients, peut être généralisée, et donne lieu à l’algorithme de gradient boosting présenté dans l”<a class="reference internal" href="#gradboosting-algorithm">Algorithm 12</a>.</p>
-<div class="proof algorithm admonition" id="gradboosting-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 12 </span></p>
-<section class="algorithm-content" id="proof-content">
-<p><strong>Entrée</strong> : <span class="math notranslate nohighlight">\({Z} = \{\mathbf{x}_i,y_i\}_{1\leq i\leq n}\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span></p>
-<p><strong>Sortie</strong> : <span class="math notranslate nohighlight">\(F\)</span></p>
-<ol class="arabic simple">
-<li><p>Calculer une première hypothèse <span class="math notranslate nohighlight">\(h_1\)</span> sur <span class="math notranslate nohighlight">\({Z} \)</span></p></li>
-<li><p>Pour <span class="math notranslate nohighlight">\(t=2\)</span> à <span class="math notranslate nohighlight">\(T\)</span></p>
-<ol class="arabic simple">
-<li><p>Calculer <span class="math notranslate nohighlight">\((\forall i\in[\![1\cdots n]\!])\ e_i = -\frac{\partial}{\partial h_{t-1}(\mathbf{x}_i)}\ell(y_i,h_{t-1}(\mathbf{x}_i))\)</span></p></li>
-<li><p>Construire <span class="math notranslate nohighlight">\(\tilde{Z} = \{\mathbf{x}_i,e_i\}_{1\leq i\leq n}\)</span></p></li>
-<li><p>Apprendre <span class="math notranslate nohighlight">\(g\)</span> sur <span class="math notranslate nohighlight">\(\tilde{Z}\)</span></p></li>
-<li><p>Calculer <span class="math notranslate nohighlight">\(\lambda_t = arg \displaystyle\min_{\lambda} \left (\displaystyle\sum_{i=1}^n \ell\left ( y_i,h_{t-1}(\mathbf{x}_i)+\lambda g(\mathbf{x}_i)\right ) \right )\)</span></p></li>
-<li><p>Définir <span class="math notranslate nohighlight">\(h_t = h_{t-1} + \lambda_t g\)</span></p></li>
-</ol>
-</li>
-<li><p><span class="math notranslate nohighlight">\(F = h_T\)</span></p></li>
-</ol>
-</section>
-</div><p>La méthode agit de la même manière qu’une descente de gradient en ajustant l’hypothèse <span class="math notranslate nohighlight">\(h_t\)</span> en fonction de l’opposé du gradient de la fonction de perte <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
-<p>Nous avons introduit la méthode avec la fonction de perte quadratique, mais toute fonction de coût et les gradients associés peuvent être utilisés.</p>
-<p>Parmi tous les algorithmes de gradient boosting, XGBoost (Extreme Gradient Boosting),  LightGBM, tous deux utilisant des arbres de régression comme hypothèses, ont démontré leur efficacité lors de nombreux défis. En 2018, CatBoost a permis d’adapter ce type d’approche à des données catégorielles.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="ressources">
+<h1>Ressources<a class="headerlink" href="#ressources" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="_downloads/9f5c5ab6522b13befcfa4d29dcea1f23/ensemble.pdf"><span class="xref download myst">Diapositives</span></a> du cours</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -427,20 +371,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="randomforest.html"
+       href="kernelTrick.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">Forêts aléatoires</p>
+        <p class="prev-next-title">Astuce du noyau</p>
       </div>
     </a>
     <a class="right-next"
-       href="docManifold.html"
+       href="baggingboosting.html"
        title="page suivante">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title">Ressources</p>
+        <p class="prev-next-title">Bootstraping et bagging</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -451,21 +395,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenu
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residus-et-gradient">Résidus et gradient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithme-de-gradient-boosting">Algorithme de gradient boosting</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
