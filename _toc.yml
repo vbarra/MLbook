@@ -9,6 +9,7 @@ options:
 parts:
   - caption: Introduction
     chapters:
+      - file: docIntro
       - file: possible
       - file: approchestat
       - file: modelesup
