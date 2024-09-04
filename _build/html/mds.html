@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,28 +52,20 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'mds';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="ISOMAP" href="isomap.html" />
-    <link rel="prev" title="Ressources" href="docManifold.html" />
+    <link rel="prev" title="Gradient Boosting" href="gradientboosting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Positionnement multidimensionnel</a></li>
 
 
@@ -359,21 +350,21 @@ document.write(`
   <p>On suppose que des points <span class="math notranslate nohighlight">\(\mathbf y_i\)</span> sont tirés aléatoirement sur une variété <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> de dimension <span class="math notranslate nohighlight">\(t\)</span>, munie d’une métrique <span class="math notranslate nohighlight">\(d_\mathcal{M}\)</span>. Ces points sont envoyés par un plongement <span class="math notranslate nohighlight">\(\psi\)</span>, dans un espace  <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> de dimension <span class="math notranslate nohighlight">\(d, t&lt;&lt;d\)</span>,, muni de la métrique euclidienne,  résultant en les points d’observation <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>. L’objectif des méthodes de réduction de dimension est de proposer des algorithmes permettant de retrouver <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> , et d’expliciter <span class="math notranslate nohighlight">\(\psi\)</span> et les  <span class="math notranslate nohighlight">\(\mathbf y_i\)</span>, étant donnés soit les individus <span class="math notranslate nohighlight">\(\mathbf x_i\in \mathcal{X}\)</span>, soit des informations de distances entre chaque paire de <span class="math notranslate nohighlight">\(\mathbf x_i\)</span>.</p>
 <p>Dit autrement, nous supposons que les variables mesurées sur les individus ne sont pas indépendantes, et qu’il est possible de représenter les <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> sur un espace de dimension réduit, variété de dimension <span class="math notranslate nohighlight">\(t\)</span>. On parle souvent de réduction de dimension, ou  pour certaines méthodes de manifold learning.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="positionnement-multidimensionnel">
-<h1>Positionnement multidimensionnel<a class="headerlink" href="#positionnement-multidimensionnel" title="Link to this heading">#</a></h1>
+<h1>Positionnement multidimensionnel<a class="headerlink" href="#positionnement-multidimensionnel" title="Lien vers cette rubrique">#</a></h1>
 <section id="position-du-probleme">
-<h2>Position du problème<a class="headerlink" href="#position-du-probleme" title="Link to this heading">#</a></h2>
+<h2>Position du problème<a class="headerlink" href="#position-du-probleme" title="Lien vers cette rubrique">#</a></h2>
 <p>Le Positionnement multidimensionnel, ou multidimensional scaling (MDS) est un ensemble de méthodes dont l’objectif est d’identifier la variété linéaire <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> à partir de données de proximité (ou de dissimilarité) observées sur les individus <span class="math notranslate nohighlight">\(\mathbf x_i,1\leq i\leq n\)</span>.</p>
 <p><img alt="" src="_images/mds.jpg" /></p>
 <p>Ces proximités ne doivent pas nécessairement être des distances, mais peuvent être des associations (valeur absolue d’un coefficient de corrélation par exemple), ou toute autre mesure quantitative ou qualitative  permettant de discriminer deux individus entre eux.  La seule contrainte est une contrainte de monotonie sur cette mesure de proximité.</p>
 </section>
 <section id="notations">
-<h2>Notations<a class="headerlink" href="#notations" title="Link to this heading">#</a></h2>
+<h2>Notations<a class="headerlink" href="#notations" title="Lien vers cette rubrique">#</a></h2>
 <p>On note <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> la dissimilarité entre <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> et <span class="math notranslate nohighlight">\(\mathbf x_j\)</span>. Une matrice de proximité  <span class="math notranslate nohighlight">\(\Delta\)</span> est une matrice symétrique, dont la partie triangulaire supérieure (ou inférieure) est formée des <span class="math notranslate nohighlight">\(\delta_{ij}, i\leq j\)</span> (resp. <span class="math notranslate nohighlight">\(i\geq j\)</span>), avec la convention <span class="math notranslate nohighlight">\(\delta_{ii}=0, i\in[\![1,n]\!]\)</span>.</p>
 <p>On supposera de plus que l’inégalité triangulaire est satisfaite sur les éléments de <span class="math notranslate nohighlight">\(\Delta\)</span> (i.e <span class="math notranslate nohighlight">\(\delta_{ij}\leq \delta_{ik}+\delta_{kj}\)</span>) pour associer une métrique à <span class="math notranslate nohighlight">\(\Delta\)</span>. Dans certaines applications, la contrainte de symétrie peut être relâchée.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mds-classique">
-<h1>MDS classique<a class="headerlink" href="#mds-classique" title="Link to this heading">#</a></h1>
+<h1>MDS classique<a class="headerlink" href="#mds-classique" title="Lien vers cette rubrique">#</a></h1>
 <p>On suppose que <span class="math notranslate nohighlight">\(\mathbf x_i\in\mathbb{R}^d\)</span> et que <span class="math notranslate nohighlight">\(\Delta\)</span> est définie par la métrique euclidienne.</p>
 <div class="math notranslate nohighlight">
 \[(\forall i,j\in[\![1,n]\!])\quad \delta_{ij} = \|\mathbf x_i-\mathbf x_j\|\]</div>
@@ -459,8 +450,8 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c72b7bfc70e5a636a07ba5e46e3c180d2304e04b50c74b272ac17f353b29c111.png" src="_images/c72b7bfc70e5a636a07ba5e46e3c180d2304e04b50c74b272ac17f353b29c111.png" />
-<img alt="_images/5e9ae639864bd5374c3c602d0fd2ab027b2ee27a9a0b94a9eefd39596e21f658.png" src="_images/5e9ae639864bd5374c3c602d0fd2ab027b2ee27a9a0b94a9eefd39596e21f658.png" />
+<img alt="_images/d45532c93eb4c8aa333bcd4cd796c3ef71fe35cc815549ca009d3e8b02678259.png" src="_images/d45532c93eb4c8aa333bcd4cd796c3ef71fe35cc815549ca009d3e8b02678259.png" />
+<img alt="_images/140bf798bb430435c9963bd423982cefecb1187600dc5a18f288a473aa758cae.png" src="_images/140bf798bb430435c9963bd423982cefecb1187600dc5a18f288a473aa758cae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -478,7 +469,7 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mds-metrique">
-<h1>MDS métrique<a class="headerlink" href="#mds-metrique" title="Link to this heading">#</a></h1>
+<h1>MDS métrique<a class="headerlink" href="#mds-metrique" title="Lien vers cette rubrique">#</a></h1>
 <p>Il est possible de généraliser le positionnement multidimensionnel classique en cherchant <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_n\)</span> tels que <span class="math notranslate nohighlight">\(f(\delta_{ij}) \approx\hat{\delta}_{ij} = \|\mathbf x_i-\mathbf x_j\|\)</span> où
 <span class="math notranslate nohighlight">\(f\)</span> est généralement monotome paramétrique, du type <span class="math notranslate nohighlight">\(f(u)=\alpha+\beta u\)</span>.</p>
 <p><span class="math notranslate nohighlight">\( \approx\)</span> peut être défini de plusieurs manières :</p>
@@ -496,7 +487,7 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
 <p>Dans ce cas, les petites valeurs de <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> sont préservées.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="mds-non-metrique">
-<h1>MDS non métrique<a class="headerlink" href="#mds-non-metrique" title="Link to this heading">#</a></h1>
+<h1>MDS non métrique<a class="headerlink" href="#mds-non-metrique" title="Lien vers cette rubrique">#</a></h1>
 <p>Dans certaines applications, on ne connaît que l’ordre relatif des dissimilarités, et pas l’écart entre deux dissimilarités successives. Le positionnement multidimensionnel non métrique décrit des méthodes qui donnent davantage d’importance à l’ordre des proximités plutôt que la conservation des distances.</p>
 <p>On cherche <span class="math notranslate nohighlight">\(\mathbf x_1\cdots \mathbf x_n\)</span> tels que <span class="math notranslate nohighlight">\(f(\delta_{ij}) \approx\hat{\delta}_{ij} = \|\mathbf x_i-\mathbf x_j\|\)</span> où <span class="math notranslate nohighlight">\(f\)</span> est généralement définie implicitement.</p>
 <p><span class="math notranslate nohighlight">\(f\)</span> définit des disparités <span class="math notranslate nohighlight">\(f(\delta_{ij}) = \delta_{ij}^*\)</span> si elle préserve l’ordre des dissimarités, i.e.</p>
@@ -538,12 +529,12 @@ b_{ij} &amp;=&amp; \mathbf x_i^T\mathbf x_j = -\frac{1}{2}\left (\delta_{ij}^2-\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="docManifold.html"
+       href="gradientboosting.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">Ressources</p>
+        <p class="prev-next-title">Gradient Boosting</p>
       </div>
     </a>
     <a class="right-next"

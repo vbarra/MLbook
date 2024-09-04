@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modelesup';</script>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -352,7 +343,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modele-du-processus-d-apprentissage-supervise">
-<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Link to this heading">#</a></h1>
+<h1>Modèle du processus d’apprentissage supervisé<a class="headerlink" href="#modele-du-processus-d-apprentissage-supervise" title="Lien vers cette rubrique">#</a></h1>
 <p>Un modèle classique de description du processus d’apprentissage supervisé est composé de trois composantes <span id="id1">[<a class="reference internal" href="svmGeom.html#id50" title="Vladimir Vapnik. Principles of risk minimization for learning theory. In NIPS, 831–838. Morgan Kaufmann, 1991.">Vap91</a>]</span>:</p>
 <ul class="simple">
 <li><p>Un environnement, qui fournit des vecteurs <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span> avec une probabilité fixe mais inconnue <span class="math notranslate nohighlight">\(P_X\)</span> ;</p></li>
@@ -420,7 +411,7 @@ de l’argument.</p>
 </section>
 </div></section>
 <section class="tex2jax_ignore mathjax_ignore" id="minimisation-du-risque-empirique">
-<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Link to this heading">#</a></h1>
+<h1>Minimisation du risque empirique<a class="headerlink" href="#minimisation-du-risque-empirique" title="Lien vers cette rubrique">#</a></h1>
 <p>Soit <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\theta}}\)</span> (respectivement <span class="math notranslate nohighlight">\(F(\mathbf x,\hat{\boldsymbol{\theta}})\)</span>) le vecteur (resp. la fonction) optimal(e) pour le problème de minimisation du risque empirique. Pour une valeur <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^*\in\boldsymbol{\theta}\)</span>, le risque <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta}^*)\)</span> est l’espérance d’une certaine variable aléatoire définie par <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*} = L(y,F(\mathbf x,\boldsymbol{\theta}^*))\)</span>. Le risque empirique <span class="math notranslate nohighlight">\(R_{emp}(\boldsymbol{\theta}^*)\)</span>, quant à lui, est la moyenne arithmétique de <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*}\)</span>. D’après la loi des grands nombres, si <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, la moyenne de <span class="math notranslate nohighlight">\(M_{\boldsymbol{\theta}^*}\)</span> tend vers son espérance, et donc vers <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta}^*)\)</span>, ce qui justifie d’utiliser le risque empirique en lieu et place de <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span>.</p>
 <p>Il n’y a cependant aucune raison a priori pour que <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\theta}}\)</span> minimise également <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span>.</p>
 <p>Nous allons montrer que si <span class="math notranslate nohighlight">\(R_{emp}(\boldsymbol{\theta})\)</span> approche uniformément <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span> avec une précision <span class="math notranslate nohighlight">\(\epsilon\)</span>, alors le minimum du risque empirique s’écarte du minimum de <span class="math notranslate nohighlight">\(R(\boldsymbol{\theta})\)</span> d’au plus <span class="math notranslate nohighlight">\(2\epsilon\)</span>.</p>
@@ -446,7 +437,7 @@ de l’argument.</p>
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="minimisation-du-risque-structurel">
-<h1>Minimisation du risque structurel<a class="headerlink" href="#minimisation-du-risque-structurel" title="Link to this heading">#</a></h1>
+<h1>Minimisation du risque structurel<a class="headerlink" href="#minimisation-du-risque-structurel" title="Lien vers cette rubrique">#</a></h1>
 <p>L’erreur d’entraînement <span class="math notranslate nohighlight">\(E_t(\boldsymbol{\theta})\)</span> d’un algorithme d’apprentissage est reliée à la fréquence des erreurs obtenues par cet algorithme sur <span class="math notranslate nohighlight">\(Z\)</span>. On demande à un tel algorithme non seulement d’avoir une faible erreur d’entraînement, mais aussi d’être capable de donner des valeurs justes sur des données non vues lors de la phase d’entraînement. On parle de bonne capacité de généralisation.</p>
 <p>L’erreur en généralisation <span class="math notranslate nohighlight">\(E_g(\boldsymbol{\theta})\)</span> mesure les erreurs effectuées par l’algorithme sur des exemples qu’il n’a jamais vu, appelés exemples test. On suppose que des exemples sont issus de la même population que les données d’entraînement.</p>
 <p>Soit <span class="math notranslate nohighlight">\(h\)</span> la dimension de  Vapnik-Chervonenkis  d’une famille de classifieurs <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>. On peut montrer <span id="id3">[<a class="reference internal" href="svmGeom.html#id50" title="Vladimir Vapnik. Principles of risk minimization for learning theory. In NIPS, 831–838. Morgan Kaufmann, 1991.">Vap91</a>]</span>  qu’avec probabilité <span class="math notranslate nohighlight">\(1-\alpha\)</span>, pour un nombre d’exemples <span class="math notranslate nohighlight">\(n&gt;h\)</span> que pour toutes les fonctions de <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>,</p>
@@ -462,7 +453,7 @@ de l’argument.</p>
 <figure class="align-default" id="vcdim-ref">
 <img alt="_images/vcdim.png" src="_images/vcdim.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Relation entre les erreurs et <span class="math notranslate nohighlight">\(h\)</span>. L’erreur d’estimation donne une mesure de la performance perdue par la fonction d’approximation en utilisant un ensemble d’apprentissage de taille <span class="math notranslate nohighlight">\(n\)</span>. L’erreur d’approximation donne une mesure de performance en fonction de la complexité du modèle</span><a class="headerlink" href="#vcdim-ref" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 <p>Un des objectifs dans la résolution d’un problème d’apprentissage supervisé est donc d’atteindre la meilleure capacité de généralisation (minimiser <span class="math notranslate nohighlight">\(E_g(\boldsymbol{\theta})\)</span>). La minimisation du risque structurel propose une méthode inductive permettant d’atteindre cet objectif, en faisant de <span class="math notranslate nohighlight">\(h\)</span> une variable de contrôle.</p>

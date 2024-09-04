@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'adaboost';</script>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -356,7 +347,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="boosting">
-<h1>Boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h1>
+<h1>Boosting<a class="headerlink" href="#boosting" title="Lien vers cette rubrique">#</a></h1>
 <p>Les méthodes d’ensemble sont des algorithmes d’apprentissage fondés sur l’idée qu’une combinaison de classifieurs simples (dits faibles), si elle est bien faite, doit donner de meilleurs résultats que chacun des classifieurs pris séparément. Le principe général suivant est adopté : il s’agit de construire une famille de modèles qui sont ensuite agrégés (moyenne pondérée des estimations,vote,…). Suivant la famille de modèles considérés (modèles dépendant les uns des autres, modèles indépendants), on aboutit à des stratégies différentes (boosting dans le premier cas, bagging, forêts aléatoires dans le second cas)</p>
 <p>Dans ces méthodes, les notions de classifieurs faible est fort est fondamentale.
 Considérons un problème de classification binaire, à valeurs dans <span class="math notranslate nohighlight">\(\{-1,1\}\)</span>. Soit un ensemble d’exemples</p>
@@ -389,10 +380,10 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 </section>
 </div></section>
 <section class="tex2jax_ignore mathjax_ignore" id="adaboost">
-<h1>AdaBoost<a class="headerlink" href="#adaboost" title="Link to this heading">#</a></h1>
+<h1>AdaBoost<a class="headerlink" href="#adaboost" title="Lien vers cette rubrique">#</a></h1>
 <p>AdaBoost (Adaptive Boosting) propose d’utiliser des versions pondérées du même ensemble d’apprentissage, plutôt que des sous-ensembles produits aléatoirement.</p>
 <section id="algorithme">
-<h2>Algorithme<a class="headerlink" href="#algorithme" title="Link to this heading">#</a></h2>
+<h2>Algorithme<a class="headerlink" href="#algorithme" title="Lien vers cette rubrique">#</a></h2>
 <p>Soit un problème de classification à deux classes. On dispose d’un ensemble d’apprentissage  <span class="math notranslate nohighlight">\(Z\)</span> et on cherche à évaluer la classe d’un point <span class="math notranslate nohighlight">\(\mathbf x\in X\)</span>.  On dispose de <span class="math notranslate nohighlight">\(M\)</span> classifieurs faibles <span class="math notranslate nohighlight">\(h_i\)</span> donnant une classification faible de <span class="math notranslate nohighlight">\(\mathbf x\)</span>. On souhaite construire un classifieur <span class="math notranslate nohighlight">\(h\)</span>, à valeurs dans <span class="math notranslate nohighlight">\(\{-1, 1\}\)</span>, combinaison linéaire des <span class="math notranslate nohighlight">\(h_i\)</span>.</p>
 <p>Dans cet algorithme, le modèle de base retourne l’identité d’une classe, il est encore nommé AdaBoost discret (<a class="reference internal" href="#adaboost-algorithm">Algorithm 7</a>). Il est facile de l’adapter à des modèles retournant une valeur réelle comme une probabilité d’appartenance à une classe.</p>
 <div class="proof algorithm admonition" id="adaboost-algorithm">
@@ -482,20 +473,20 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
   warnings.warn(
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/site-packages/sklearn/ensemble/_weight_boosting.py:519: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
   warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/805836746b063fe5c2a23e5592411634bf1bc5a121cb999760cae224f5a57d19.png" src="_images/805836746b063fe5c2a23e5592411634bf1bc5a121cb999760cae224f5a57d19.png" />
+<img alt="_images/d2aeb2c45f8dca9d8db318bab9113fa084dbf84e9f1b166ff726d7655e038eac.png" src="_images/d2aeb2c45f8dca9d8db318bab9113fa084dbf84e9f1b166ff726d7655e038eac.png" />
 </div>
 </div>
 </section>
 <section id="interpretation-statistique">
-<h2>Interprétation statistique<a class="headerlink" href="#interpretation-statistique" title="Link to this heading">#</a></h2>
+<h2>Interprétation statistique<a class="headerlink" href="#interpretation-statistique" title="Lien vers cette rubrique">#</a></h2>
 <p>Il est possible d’interpréter Adaboost en termes statistiques, pour justifier en partie le bon comportement du boosting en classification. Pour ce faire, on définit les classifieurs faibles comme des fonctions paramétriques <span class="math notranslate nohighlight">\(h_{\theta_i}(\mathbf x) = h_i(\mathbf x,\theta)\)</span>, <span class="math notranslate nohighlight">\(\theta\in\Theta\)</span>, et le résultat de la classification comme une combinaison linéaire de ces classifieurs faibles <span class="math notranslate nohighlight">\(h(\mathbf x)=\displaystyle\sum_{i=1}^n \alpha_i h_{\theta_i}(\mathbf x)\)</span>.</p>
 <p>Une approche pour déterminer les <span class="math notranslate nohighlight">\(\theta_i\)</span> et les <span class="math notranslate nohighlight">\(\alpha_i\)</span> est d’ajouter séquentiellement au problème d’apprentissage les classifieurs faibles, sans ajuster les paramètres et les coefficients de la solution courante (<a class="reference internal" href="#adaboost-stat-algorithm">Algorithm 8</a>).</p>
 <div class="proof algorithm admonition" id="adaboost-stat-algorithm">
@@ -542,7 +533,7 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 <p>En résumé, AdaBoost peut être interprété comme un algorithme minimisant la fonction de perte exponentielle par ajout itératif de classifieurs faibles.</p>
 </section>
 <section id="interpretation-comme-probleme-de-maximisation-d-une-marge">
-<h2>Interprétation comme problème de maximisation d’une marge<a class="headerlink" href="#interpretation-comme-probleme-de-maximisation-d-une-marge" title="Link to this heading">#</a></h2>
+<h2>Interprétation comme problème de maximisation d’une marge<a class="headerlink" href="#interpretation-comme-probleme-de-maximisation-d-une-marge" title="Lien vers cette rubrique">#</a></h2>
 <p>Il est également possible de relier AdaBoost à un problème de séparation à vaste marge.</p>
 <p>Le principe est de construire un espace de coordonnées de dimension égale au nombre de classifieurs faibles, <span class="math notranslate nohighlight">\(M\)</span>, et pour <span class="math notranslate nohighlight">\(\mathbf u\in \mathbb{R}^M\)</span> de considérer les coordonnées <span class="math notranslate nohighlight">\(u_i\)</span> comme les sorties des classifieurs faibles <span class="math notranslate nohighlight">\(h_i\)</span>. On montre alors qu’AdaBoost est un algorithme itératif qui résout le problème d’optimisation suivant</p>
 <div class="math notranslate nohighlight">

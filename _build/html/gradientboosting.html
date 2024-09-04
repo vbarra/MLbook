@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,27 +52,19 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'gradientboosting';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
-    <link rel="next" title="Ressources" href="docManifold.html" />
+    <link rel="next" title="Positionnement multidimensionnel" href="mds.html" />
     <link rel="prev" title="Forêts aléatoires" href="randomforest.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -350,13 +341,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gradient-boosting">
-<h1>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Link to this heading">#</a></h1>
+<h1>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Lien vers cette rubrique">#</a></h1>
 <p>Nous avons souligné qu’AdaBoost pouvait être vu comme un algorithme d’optimisation de la fonction :</p>
 <div class="math notranslate nohighlight">
 \[J(f) = \displaystyle\sum_{i=1}^n exp\left (-y_i f(({\mathbf x}_i) \right )\]</div>
 <p>L’idée des méthodes de gradient boosting est de généraliser cette approche, en s’intéressant à d’autres fonctions de coût et à leurs gradients.</p>
 <section id="residus-et-gradient">
-<h2>Résidus et gradient<a class="headerlink" href="#residus-et-gradient" title="Link to this heading">#</a></h2>
+<h2>Résidus et gradient<a class="headerlink" href="#residus-et-gradient" title="Lien vers cette rubrique">#</a></h2>
 <p>On apprend sur <span class="math notranslate nohighlight">\(Z\)</span> une fonction (de régression, de classification) <span class="math notranslate nohighlight">\(h_1\)</span>, en utilisant un algorithme approprié. L’erreur commise par <span class="math notranslate nohighlight">\(h_1\)</span>, mesurée par la fonction de perte <span class="math notranslate nohighlight">\(\ell\)</span>, est :</p>
 <div class="math notranslate nohighlight">
 \[E_{h_1} = \displaystyle\sum_{i=1}^n \ell \left (y_i,h_1(\mathbf{x}_i)\right )\]</div>
@@ -372,7 +363,7 @@ document.write(`
 <p>Appliqués en <span class="math notranslate nohighlight">\(Z\)</span>, ces résidus définissent un nouvel ensemble <span class="math notranslate nohighlight">\(\tilde{Z} = \{\mathbf{x}_i,e_i\}_{1\leq i\leq n}\)</span> sur lequel donc <span class="math notranslate nohighlight">\(h_2\)</span> est appris.</p>
 </section>
 <section id="algorithme-de-gradient-boosting">
-<h2>Algorithme de gradient boosting<a class="headerlink" href="#algorithme-de-gradient-boosting" title="Link to this heading">#</a></h2>
+<h2>Algorithme de gradient boosting<a class="headerlink" href="#algorithme-de-gradient-boosting" title="Lien vers cette rubrique">#</a></h2>
 <p>L’idée précédente, qui consiste à écrire les résidus comme des gradients, peut être généralisée, et donne lieu à l’algorithme de gradient boosting présenté dans l”<a class="reference internal" href="#gradboosting-algorithm">Algorithm 12</a>.</p>
 <div class="proof algorithm admonition" id="gradboosting-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 12 </span></p>
@@ -439,11 +430,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="docManifold.html"
+       href="mds.html"
        title="page suivante">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title">Ressources</p>
+        <p class="prev-next-title">Positionnement multidimensionnel</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

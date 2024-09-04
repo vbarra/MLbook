@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'TPClassif';</script>
@@ -218,7 +210,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -351,14 +342,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="comparaison-de-methodes-de-classification-supervisee">
-<h1>Comparaison de méthodes de classification supervisée<a class="headerlink" href="#comparaison-de-methodes-de-classification-supervisee" title="Link to this heading">#</a></h1>
+<h1>Comparaison de méthodes de classification supervisée<a class="headerlink" href="#comparaison-de-methodes-de-classification-supervisee" title="Lien vers cette rubrique">#</a></h1>
 <p>Les objectifs de ce TP sont :</p>
 <ul class="simple">
 <li><p>de prendre en main et d’utiliser les méthodes de classification supervisée vues en cours, à l’aide de la libririe <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a>.</p></li>
 <li><p>d’évaluer la performance des algorithmes et de les paramétrer au mieux.</p></li>
 </ul>
 <section id="jeu-de-donnees">
-<h2>Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Link to this heading">#</a></h2>
+<h2>Jeu de données<a class="headerlink" href="#jeu-de-donnees" title="Lien vers cette rubrique">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
@@ -375,12 +366,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6481dc03e8a945f4d2c8ec704ca2d6d09365648e558a4cc387c6c0408409e80.png" src="_images/b6481dc03e8a945f4d2c8ec704ca2d6d09365648e558a4cc387c6c0408409e80.png" />
+<img alt="_images/824e243723f15dee251e9d83f8820f4e86f32942f62a398f7b62b7501dd28a02.png" src="_images/824e243723f15dee251e9d83f8820f4e86f32942f62a398f7b62b7501dd28a02.png" />
 </div>
 </div>
 </section>
 <section id="utilisation-des-algorithmes-de-classification">
-<h2>Utilisation des algorithmes de classification<a class="headerlink" href="#utilisation-des-algorithmes-de-classification" title="Link to this heading">#</a></h2>
+<h2>Utilisation des algorithmes de classification<a class="headerlink" href="#utilisation-des-algorithmes-de-classification" title="Lien vers cette rubrique">#</a></h2>
 <p>Classer ces donncés en utilisant les algorithmes suivants :</p>
 <ul class="simple">
 <li><p>Un <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes">classifieur naïf de Bayes</a></p></li>
@@ -392,7 +383,7 @@ document.write(`
 </ul>
 </section>
 <section id="optimisation-des-hyperparametres">
-<h2>Optimisation des hyperparamètres<a class="headerlink" href="#optimisation-des-hyperparametres" title="Link to this heading">#</a></h2>
+<h2>Optimisation des hyperparamètres<a class="headerlink" href="#optimisation-des-hyperparametres" title="Lien vers cette rubrique">#</a></h2>
 <p>Chaque algorithme dépend de paramètres (<code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> pour les k plus proches voisins, <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> ou <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> pour les arbres de décisions, …) qu’il convient de régler au « mieux ». Pour cela vous pourrez utiliser une technique de <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">validation croisée</a> avec <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV">grid search</a> qui permet de parcourir l’espace discrétisé des paramètres pour trouver la « meilleure » combinaison.</p>
 <p>La validation croisée à k plis (k fold) consiste à :</p>
 <ul class="simple">
@@ -415,7 +406,7 @@ l’échantillon <span class="math notranslate nohighlight">\(i\)</span>.</p></l
 <p><code class="docutils literal notranslate"><span class="pre">modele.fit(X_train,</span> <span class="pre">y_train)</span></code></p>
 </section>
 <section id="analyse-de-performance">
-<h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Link to this heading">#</a></h2>
+<h2>Analyse de performance<a class="headerlink" href="#analyse-de-performance" title="Lien vers cette rubrique">#</a></h2>
 <p>Pour les différents algorithmes utilisés, vous pouvez mesurer leur performance grace à l’ensemble de test <code class="docutils literal notranslate"><span class="pre">(X_test,y_test)</span></code> Il vous suffit pour cela de comparer les résultats fournis par vos algorithmes avec la vérité terrain.</p>
 <p>Vous pouvez utiliser plusieurs <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">indices quantitatifs</a> vous permettant de mesurer la performance de vos algorithmes.</p>
 <p>On peut par exemple partir de la matrice de confusion <span class="math notranslate nohighlight">\(M(i,j)\)</span> d’une algorithme classification, qui est

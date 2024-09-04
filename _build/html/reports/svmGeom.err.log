@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.3/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from sklearn.svm import LinearSVC
+X,y=...
+svm_clf=LinearSVC(random_state=0,tol=1e-05)
+svm_clf.fit(X, y);
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[1], line 2[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01msvm[39;00m [38;5;28;01mimport[39;00m LinearSVC
+[0;32m----> 2[0m X,y[38;5;241m=[39m[38;5;241m.[39m[38;5;241m.[39m[38;5;241m.[39m
+[1;32m      3[0m svm_clf[38;5;241m=[39mLinearSVC(random_state[38;5;241m=[39m[38;5;241m0[39m,tol[38;5;241m=[39m[38;5;241m1e-05[39m)
+[1;32m      4[0m svm_clf[38;5;241m.[39mfit(X, y);
+
+[0;31mTypeError[0m: cannot unpack non-iterable ellipsis object
+

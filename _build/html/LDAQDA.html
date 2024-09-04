@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'LDAQDA';</script>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -356,7 +347,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analyses-discriminantes">
-<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Link to this heading">#</a></h1>
+<h1>Analyses discriminantes<a class="headerlink" href="#analyses-discriminantes" title="Lien vers cette rubrique">#</a></h1>
 <p>Les analyses discriminante linéaire (LDA) et quadratiques (QDA) sont des approches paramétriques qui considèrent le logarithme du rapport :</p>
 <div class="math notranslate nohighlight">
 \[
@@ -371,7 +362,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 \]</div>
 <p>avec donc <span class="math notranslate nohighlight">\(f_i(\mathbf x_0) =  P({{\mathbf x} = {\mathbf x_0}}|\omega=\omega_i)\)</span> et <span class="math notranslate nohighlight">\(\pi_i = P(\omega={\omega_i})\)</span></p>
 <section id="analyse-discriminante-lineaire-lda">
-<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Link to this heading">#</a></h2>
+<h2>Analyse discriminante linéaire (LDA)<a class="headerlink" href="#analyse-discriminante-lineaire-lda" title="Lien vers cette rubrique">#</a></h2>
 <p>On s’intéresse pour l’exemple au cas <span class="math notranslate nohighlight">\(C=2\)</span>, et où les distributions de toutes les classes sont des gaussiennes multivariées. On pose donc</p>
 <div class="math notranslate nohighlight">
 \[f_i(x) \; = \; \frac{1}{(2 \pi)^{d/2} \, |{ \Sigma}_i|^{1/2}} \, e^{-\frac{1}{2} ({\mathbf x} - \mu_i)^{\top} { \Sigma}_i^{-1} ({\mathbf x} - \mu_i)}\]</div>
@@ -522,7 +513,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02caad88ba77f84420179351249a7763b605bd17a301b1da02b476638277729e.png" src="_images/02caad88ba77f84420179351249a7763b605bd17a301b1da02b476638277729e.png" />
+<img alt="_images/868b0077c931a323c1ffd977e7b52cf7fe5df2f45e3e52ae715725d81212864e.png" src="_images/868b0077c931a323c1ffd977e7b52cf7fe5df2f45e3e52ae715725d81212864e.png" />
 </div>
 </div>
 <p>Voici un exemple de LDA sur deux classes.</p>
@@ -619,17 +610,17 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <span class="ne">TypeError</span>: Ellipse.__init__() takes 4 positional arguments but 5 were given
 </pre></div>
 </div>
-<img alt="_images/097bda30545d41af1eb0a33862ef5e2599b2608ff5bdf741c6f23e8de4704056.png" src="_images/097bda30545d41af1eb0a33862ef5e2599b2608ff5bdf741c6f23e8de4704056.png" />
+<img alt="_images/c42ba90b9896a9fe3080870f684c81cea4ecf333b8a08d36dfe46475ee99e135.png" src="_images/c42ba90b9896a9fe3080870f684c81cea4ecf333b8a08d36dfe46475ee99e135.png" />
 </div>
 </div>
 </section>
 <section id="analyse-discriminante-de-fisher">
-<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Link to this heading">#</a></h2>
+<h2>Analyse discriminante de Fisher<a class="headerlink" href="#analyse-discriminante-de-fisher" title="Lien vers cette rubrique">#</a></h2>
 <p>Il est possible d’aborder l’analyse discriminante linéaire sans a priori gaussien.</p>
 <p>L’idée de l’analyse discriminante de Fisher (FDA) est de rechercher des représentants des classes, et d’éloigner le plus possible des points les uns des autres, en projetant les données sur une direction de séparation maximale, tout en préservant la cohésion des classes.</p>
 <p>La FDA se formalise bien sous forme matricielle.</p>
 <section id="cas-de-deux-classes">
-<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Link to this heading">#</a></h3>
+<h3>Cas de deux classes<a class="headerlink" href="#cas-de-deux-classes" title="Lien vers cette rubrique">#</a></h3>
 <p>On suppose ici le cas de la classification binaire  : <span class="math notranslate nohighlight">\(y_i\in\{0,1\}\forall i\in[\![1,n]\!]\)</span>. Les classes ont pour centres de masse les points <span class="math notranslate nohighlight">\( {\mu}_j\)</span>, qui sont donc les représentants de ces classes.</p>
 <ul class="simple">
 <li><p>Maximiser la distance entre les représentants par projection sur une droite <span class="math notranslate nohighlight">\(Lin( \mathbf w)\)</span> revient donc à résoudre :</p></li>
@@ -663,7 +654,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <p>Alors <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}{\mathbf w}=\lambda{\mathbf w}\)</span> et <span class="math notranslate nohighlight">\({\mathbf w}\)</span> vecteur propre de  <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span> associé au multiplicateur de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span>. Or <span class="math notranslate nohighlight">\(Rg({ S_W}^{-1}{ S_B})=1\)</span>, car <span class="math notranslate nohighlight">\( S_B\)</span> est de rang 1 (c’est la projection sur <span class="math notranslate nohighlight">\(Lin \left(\left (\mu_0-\mu_1\right )\right)\)</span> donc <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est unique.</p>
 </section>
 <section id="cas-multiclasses">
-<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Link to this heading">#</a></h3>
+<h3>Cas multiclasses<a class="headerlink" href="#cas-multiclasses" title="Lien vers cette rubrique">#</a></h3>
 <p>Pour un problème à <span class="math notranslate nohighlight">\(C\)</span> classes, l’analyse projette sur <span class="math notranslate nohighlight">\(C-1\)</span> directions de projection. La somme des variances interclasses est <span class="math notranslate nohighlight">\(Tr\left({\mathbf w}^T{ S_B}{\mathbf w}\right )\)</span>, et la variance intraclasse totale est <span class="math notranslate nohighlight">\(Tr\left ({\mathbf w}^T{ S_W}{\mathbf w}\right )\)</span>, où <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est une matrice à <span class="math notranslate nohighlight">\(C-1\)</span> colonnes, les colonnes étant les vecteurs successifs sur lesquels sont projetées les données.</p>
 <p>Le problème d’optimisation s’écrit alors</p>
 <div class="math notranslate nohighlight">
@@ -672,7 +663,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </section>
 </section>
 <section id="analyse-discriminante-quadratique-qda">
-<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Link to this heading">#</a></h2>
+<h2>Analyse discriminante quadratique (QDA)<a class="headerlink" href="#analyse-discriminante-quadratique-qda" title="Lien vers cette rubrique">#</a></h2>
 <p>Si on relâche l’égalité des matrices de covariance, la frontière n’est plus linéaire, mais quadratique.</p>
 <p>La règle de décision est alors d’affecter <span class="math notranslate nohighlight">\(x\)</span> à la classe <span class="math notranslate nohighlight">\(i\)</span> qui maximise</p>
 <div class="math notranslate nohighlight">
@@ -752,7 +743,7 @@ Donc</p></li>
 </div>
 </section>
 <section id="nombre-de-parametres">
-<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Link to this heading">#</a></h2>
+<h2>Nombre de paramètres<a class="headerlink" href="#nombre-de-parametres" title="Lien vers cette rubrique">#</a></h2>
 <p>Pour prédire la classe de nouvelles données par LDA ou QDA,  il faut d’abord apprendre les paramètres sous-jacents à partir des <span class="math notranslate nohighlight">\(n\)</span> données d’apprentissage.</p>
 <ul class="simple">
 <li><p>pour LDA et QDA on doit apprendre les <span class="math notranslate nohighlight">\(\pi_i\)</span> les les vecteurs <span class="math notranslate nohighlight">\(\mu_i, i\in[\![1,c]\!]\)</span></p></li>
@@ -763,7 +754,7 @@ Donc</p></li>
 <figure class="align-default" id="nbparam-ref">
 <img alt="_images/nbparam.png" src="_images/nbparam.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Nombre de paramètres à apprendre pour LDA et QDA.</span><a class="headerlink" href="#nbparam-ref" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 </section>

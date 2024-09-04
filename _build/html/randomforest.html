@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'randomforest';</script>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -359,18 +350,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="forets-aleatoires">
-<h1>Forêts aléatoires<a class="headerlink" href="#forets-aleatoires" title="Link to this heading">#</a></h1>
+<h1>Forêts aléatoires<a class="headerlink" href="#forets-aleatoires" title="Lien vers cette rubrique">#</a></h1>
 <section id="principe">
-<h2>Principe<a class="headerlink" href="#principe" title="Link to this heading">#</a></h2>
+<h2>Principe<a class="headerlink" href="#principe" title="Lien vers cette rubrique">#</a></h2>
 <p>Le bagging semble performant quand il est appliqué à des fonctions d’estimation de faible biais mais de forte variance. C’est le cas en particulier des arbres de décision ou de régression.</p>
 <p>La méthode des forêts aléatoires modifie l’algorithme du bagging en ajoutant un critère de décorrélation entre les arbres.  Elle utilise des arbres de décision comme classifieurs partiellement indépendants. L’algorithme entraîne chaque arbre de décision sur un échantillonnage de <span class="math notranslate nohighlight">\(Z\)</span> obtenu par bootstrapping  selon un algorithme d’apprentissage sur les arbres (CART sans élagage par exemple),  en limitant sa croissance par validation croisée.</p>
 <p>La justification de cette approche est la suivante. Lorsque que l’on calcule la moyenne de <span class="math notranslate nohighlight">\(n\)</span> variables aléatoires, chacune de variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, la variance globale est de : <span class="math notranslate nohighlight">\(\frac{1}{n}\sigma^2\)</span>. Si les variables sont seulement identiquement distribuées mais non nécessairement indépendantes, et de corrélation par paires <span class="math notranslate nohighlight">\(\rho\)</span>, alors la variance globale est : <span class="math notranslate nohighlight">\(\rho\, \sigma^2 + \frac{1 - \rho}{n} \sigma^2\)</span>, dans laquelle le second terme tend vers 0 quand <span class="math notranslate nohighlight">\(n\)</span> augmente.</p>
 <p>L’idée de la méthode des forêts aléatoires est ainsi de réduire la corrélation <span class="math notranslate nohighlight">\(\rho\)</span> sans augmenter trop la variance. La technique utilisée consiste à sélectionner aléatoirement un sous-ensemble de <span class="math notranslate nohighlight">\(k\)</span> variables à considérer à chaque étape de choix du meilleur noeud de l’arbre.</p>
 </section>
 <section id="algorithme">
-<h2>Algorithme<a class="headerlink" href="#algorithme" title="Link to this heading">#</a></h2>
+<h2>Algorithme<a class="headerlink" href="#algorithme" title="Lien vers cette rubrique">#</a></h2>
 <section id="algorithme-des-forets-aleatoires">
-<h3>Algorithme des forêts aléatoires<a class="headerlink" href="#algorithme-des-forets-aleatoires" title="Link to this heading">#</a></h3>
+<h3>Algorithme des forêts aléatoires<a class="headerlink" href="#algorithme-des-forets-aleatoires" title="Lien vers cette rubrique">#</a></h3>
 <p>L”<a class="reference internal" href="#rf-algorithm">Algorithm 11</a> décrit la procédure générale de construction d’une forêt aléatoire.</p>
 <div class="proof algorithm admonition" id="rf-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 11 </span></p>
@@ -386,7 +377,7 @@ document.write(`
 </section>
 </div></section>
 <section id="choix-de-k">
-<h3>Choix de <span class="math notranslate nohighlight">\(k\)</span><a class="headerlink" href="#choix-de-k" title="Link to this heading">#</a></h3>
+<h3>Choix de <span class="math notranslate nohighlight">\(k\)</span><a class="headerlink" href="#choix-de-k" title="Lien vers cette rubrique">#</a></h3>
 <p>On retrouve dans le choix de <span class="math notranslate nohighlight">\(k\)</span> un compromis biais-variance :</p>
 <ul class="simple">
 <li><p>lorsque <span class="math notranslate nohighlight">\(k\)</span> diminue, la tendance est à se rapprocher d’un choix aléatoire des variables
@@ -398,9 +389,9 @@ sont choisis au hasard, et seuls les points de coupure utiliseront l’échantil
 </section>
 </section>
 <section id="exemples">
-<h2>Exemples<a class="headerlink" href="#exemples" title="Link to this heading">#</a></h2>
+<h2>Exemples<a class="headerlink" href="#exemples" title="Lien vers cette rubrique">#</a></h2>
 <section id="illustration-en-classification">
-<h3>Illustration en classification<a class="headerlink" href="#illustration-en-classification" title="Link to this heading">#</a></h3>
+<h3>Illustration en classification<a class="headerlink" href="#illustration-en-classification" title="Lien vers cette rubrique">#</a></h3>
 <p>Le code suivant présente la classificatiob du jeu de données Moons par une forêt aléatoire à 500 arbres de décision</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -448,7 +439,7 @@ sont choisis au hasard, et seuls les points de coupure utiliseront l’échantil
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Forêt aléatoire&#39;)
 </pre></div>
 </div>
-<img alt="_images/53349a8920782bdadb4dba9bc65c14fb2cb944bb5e18a9130eb878e1976853f8.png" src="_images/53349a8920782bdadb4dba9bc65c14fb2cb944bb5e18a9130eb878e1976853f8.png" />
+<img alt="_images/83cffbaf2b147fc29a75e0c0463955fe85612c72a1fd34e236345c7c2431787a.png" src="_images/83cffbaf2b147fc29a75e0c0463955fe85612c72a1fd34e236345c7c2431787a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -466,7 +457,7 @@ sont choisis au hasard, et seuls les points de coupure utiliseront l’échantil
 </div>
 </section>
 <section id="illustration-en-regression">
-<h3>Illustration en régression<a class="headerlink" href="#illustration-en-regression" title="Link to this heading">#</a></h3>
+<h3>Illustration en régression<a class="headerlink" href="#illustration-en-regression" title="Lien vers cette rubrique">#</a></h3>
 <p>On construit une fonction périodique bruitée <span class="math notranslate nohighlight">\(f(x) = \sin(5x)+sin(\frac{x}{2}) + \sigma\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> suivant une loi normale <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)</span>. Le code suivant présente la régression obtenue par forêt aléatoire de 300 arbres.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,7 +491,13 @@ sont choisis au hasard, et seuls les points de coupure utiliseront l’échantil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ad43c2f344f22bba0716e8e3715e67eea0641a1c27afcbe0db59feba08edafc.png" src="_images/6ad43c2f344f22bba0716e8e3715e67eea0641a1c27afcbe0db59feba08edafc.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:25: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+&lt;&gt;:25: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+/var/folders/x4/250fr1v51tgfhyjmj63qtg_w0000gp/T/ipykernel_35073/3980678465.py:25: SyntaxWarning: invalid escape sequence &#39;\s&#39;
+  plt.title(&#39;$y=\sin(x/2) +\sin(5x) +  \sigma$, $\sigma$ bruit Gaussien. Fôret aléatoire à  {0:d} arbres&#39;.format(num));
+</pre></div>
+</div>
+<img alt="_images/495307979501ec42bd57e69557b01f71bea51b6b4c353da28e3457012e8e8ace.png" src="_images/495307979501ec42bd57e69557b01f71bea51b6b4c353da28e3457012e8e8ace.png" />
 </div>
 </div>
 <div class="cell docutils container">

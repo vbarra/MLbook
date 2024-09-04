@@ -43,7 +43,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,21 +52,13 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/translations.js?v=bf059b8c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'kernelTrick';</script>
@@ -219,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Manifold learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docManifold.html">Ressources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mds.html">Positionnement multidimensionnel</a></li>
 
 
@@ -358,7 +349,7 @@ document.write(`
   <p>Il est possible de construire des séparateurs non linéaires très performants, en introduisant l’astuce du noyau dans des algorithmes type SVM.</p>
 <p>De manière très macroscopique, il s’agit de transformer les données de <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> en des vecteurs <span class="math notranslate nohighlight">\(\mathbf z\in \mathbb{R}^{d'},d'&gt;d\)</span> (voire dans un espace <span class="math notranslate nohighlight">\(E\)</span> général, de dimension possiblement infinie), via une fonction <span class="math notranslate nohighlight">\(\mathbf z = \phi(\mathbf x)\)</span> en choisissant <span class="math notranslate nohighlight">\(\phi\)</span> de sorte que les données d’entraînement <span class="math notranslate nohighlight">\(\{ \phi(\mathbf  x_i), y_i \}\)</span> soient linéairement séparables dans <span class="math notranslate nohighlight">\(\mathbb{R}^{d'}\)</span> (ou linéairement séparables avec probabilité 1, en vertu du théorème de Cover).</p>
 <section class="tex2jax_ignore mathjax_ignore" id="astuce-du-noyau">
-<h1>Astuce du noyau<a class="headerlink" href="#astuce-du-noyau" title="Link to this heading">#</a></h1>
+<h1>Astuce du noyau<a class="headerlink" href="#astuce-du-noyau" title="Lien vers cette rubrique">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Video</span>
@@ -373,9 +364,9 @@ document.write(`
  </video></div></div>
 </div>
 <section id="choix-de-phi">
-<h2>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#choix-de-phi" title="Link to this heading">#</a></h2>
+<h2>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#choix-de-phi" title="Lien vers cette rubrique">#</a></h2>
 <section id="existence-de-phi">
-<h3>Existence de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#existence-de-phi" title="Link to this heading">#</a></h3>
+<h3>Existence de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#existence-de-phi" title="Lien vers cette rubrique">#</a></h3>
 <p>Première question à se poser, <span class="math notranslate nohighlight">\(\phi\)</span> existe t elle ? La réponse est donnée par le théorème de Cover.</p>
 <p>Soient <span class="math notranslate nohighlight">\(\mathcal S\)</span> une famille de surfaces et <span class="math notranslate nohighlight">\(\mathcal{H} = \{\mathbf x_1\ldots \mathbf x_n\}\)</span> un ensemble de vecteurs <span class="math notranslate nohighlight">\(\mathbf x_i\in X\)</span>, <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> de classe <span class="math notranslate nohighlight">\(y_i \)</span>. On considère un problème de classification binaire pour lequel <span class="math notranslate nohighlight">\(y_i\in \mathcal{H}_1\)</span> où <span class="math notranslate nohighlight">\(y_i\in\mathcal{H}_2\)</span></p>
 <p>On dira que <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> est séparable par rapport à <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> s’il existe <span class="math notranslate nohighlight">\(S_i\in\mathcal{S}\)</span> réalisant la classification <span class="math notranslate nohighlight">\(\mathcal{H}_1 / \mathcal{H}_2\)</span> de <span class="math notranslate nohighlight">\(\mathcal{H}\)</span>.</p>
@@ -429,7 +420,7 @@ document.write(`
 <p>Le résultat précédent, valable pour des fonctions polynomiales, se généralise à d’autres familles de fonctions. Notons que la définition analytique des fonctions <span class="math notranslate nohighlight">\(\phi_i\)</span> n’est pas toujours facile, et l’astuce du noyau  permet de s’affranchir de cette difficulté.</p>
 </section>
 <section id="id2">
-<h3>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>Choix de <span class="math notranslate nohighlight">\(\phi\)</span><a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
 <p>Deuxième question : comment choisir <span class="math notranslate nohighlight">\(\phi\)</span> ? Il ne s’agit bien sur pas de construire explicitement cette fonction. Il s’agit également de prendre garde à la taille de l’espace d’arrivée (<span class="math notranslate nohighlight">\(d'\)</span>), les calculs  pouvant devenir prohibitifs et le sur apprentissage pouvant également apparaître.</p>
 <p>Etant donné <span class="math notranslate nohighlight">\(\mathbf z = \phi(\mathbf x)\)</span>, on remplace alors <span class="math notranslate nohighlight">\(\mathbf x\)</span> par <span class="math notranslate nohighlight">\(\mathbf z\)</span> dans la formulation du problème QP :</p>
 <div class="math notranslate nohighlight">
@@ -463,7 +454,7 @@ f(\mathbf x) = \textrm{sign}(\displaystyle\sum_{i=1}^n \alpha_i y_i ( K(\mathbf 
 </section>
 </section>
 <section id="choix-de-k">
-<h2>Choix de <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#choix-de-k" title="Link to this heading">#</a></h2>
+<h2>Choix de <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#choix-de-k" title="Lien vers cette rubrique">#</a></h2>
 <p>Pour construire un noyau <span class="math notranslate nohighlight">\(K\)</span>, il faut que ce noyau calcule un produit scalaire dans l’espace d’arrivée, pour une certaine fonction <span class="math notranslate nohighlight">\(\phi\)</span>. Pour ce faire, deux stratégies sont possibles :</p>
 <ul class="simple">
 <li><p>Poser une fonction <span class="math notranslate nohighlight">\(\phi\)</span> et en déduire <span class="math notranslate nohighlight">\(K\)</span>. Hormis dans des cas très simples, cela n’est pas réalisable. On peut par exemple, dans le cas de <span class="math notranslate nohighlight">\(\phi:\mathbb{R}^2\rightarrow \mathbb{R}^3\)</span>, trouver un séparateur non linéaire dans <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> (ellipses) en construisant un séparateur linéaire dans <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. En effet :</p></li>
@@ -521,24 +512,24 @@ exp( - \frac{ \parallel \mathbf x - \mathbf x_i \parallel ^2 }{2 \sigma^2})+ b ]
 <figure class="align-default" id="polyd-ref">
 <img alt="_images/polyd.png" src="_images/polyd.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence du degré du polynôme pour le noyau polynomial</span><a class="headerlink" href="#polyd-ref" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence du degré du polynôme pour le noyau polynomial</span><a class="headerlink" href="#polyd-ref" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="polytheta-ref">
 <img alt="_images/polytheta.png" src="_images/polytheta.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence de <span class="math notranslate nohighlight">\(\theta\)</span>  pour le noyau polynomial</span><a class="headerlink" href="#polytheta-ref" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence de <span class="math notranslate nohighlight">\(\theta\)</span>  pour le noyau polynomial</span><a class="headerlink" href="#polytheta-ref" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="rbfsigma-ref">
 <img alt="_images/rbfsigma.png" src="_images/rbfsigma.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence de la largeur de bande pour le noyau gausssien</span><a class="headerlink" href="#rbfsigma-ref" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence de la largeur de bande pour le noyau gausssien</span><a class="headerlink" href="#rbfsigma-ref" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="noyaux-de-donnees-non-quantitatives">
-<h2>Noyaux de données non quantitatives<a class="headerlink" href="#noyaux-de-donnees-non-quantitatives" title="Link to this heading">#</a></h2>
+<h2>Noyaux de données non quantitatives<a class="headerlink" href="#noyaux-de-donnees-non-quantitatives" title="Lien vers cette rubrique">#</a></h2>
 <p>Il est également possible de définir des noyaux sur des données non numériques, telles que des chaînes de caractères, des graphes. Il suffit pour cela de disposer d’une mesure de similarité entre deux objets. Par exemple :</p>
 <ul class="simple">
 <li><p>si <span class="math notranslate nohighlight">\(s,s'\)</span> sont deux chaînes de caractères, <span class="math notranslate nohighlight">\(K(s,s')\)</span> peut quantifier la différence de longueur, le nombre de lettres différentes, la distance d’édition minimale,…</p></li>
@@ -546,7 +537,7 @@ exp( - \frac{ \parallel \mathbf x - \mathbf x_i \parallel ^2 }{2 \sigma^2})+ b ]
 </ul>
 </section>
 <section id="generalisation-d-algorithmes">
-<h2>Généralisation d’algorithmes<a class="headerlink" href="#generalisation-d-algorithmes" title="Link to this heading">#</a></h2>
+<h2>Généralisation d’algorithmes<a class="headerlink" href="#generalisation-d-algorithmes" title="Lien vers cette rubrique">#</a></h2>
 <p>L’astuce du noyau se généralise à tout algorithme fondé sur un produit scalaire. On peut citer par exemple :</p>
 <ul class="simple">
 <li><p>le perceptron linéaire</p></li>
