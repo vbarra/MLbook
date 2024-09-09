@@ -93,14 +93,19 @@ def Ellipse(splot, mean, cov, color):
     u = w[0] / linalg.norm(w[0])
     angle = np.arctan(u[1] / u[0])
     angle = 180 * angle / np.pi  
-    ell = mpl.patches.Ellipse(mean, 2 * v[0] ** 0.5, 2 * v[1] ** 0.5,
-                              180 + angle, facecolor=color, edgecolor='yellow',
+    ell = mpl.patches.Ellipse(mean, width = 2 * v[0] ** 0.5, height = 2 * v[1] ** 0.5,
+                              facecolor=color, edgecolor='yellow',
                               linewidth=2, zorder=2)
+    transf = matplotlib.transforms.Affine2D() \
+        .rotate_deg(180 + angle)
+
+    ell.set_transform(transf)
     ell.set_clip_box(splot.bbox)
     ell.set_alpha(0.5)
     splot.add_artist(ell)
     splot.set_xticks(())
     splot.set_yticks(())
+    
     
 
 def plot_data(lda, X, y, y_pred, title,i):
@@ -270,12 +275,12 @@ On suppose ici le cas de la classification binaire  : $y_i\in\{0,1\}\forall i\in
 
 - Maximiser la distance entre les représentants par projection sur une droite $Lin( \mathbf w)$ revient donc à résoudre :
 
-$$
+$$\begin{eqnarray}
 \displaystyle\max_{\mathbf w} \left [ {\mathbf w}^T{ \mu_0}- {\mathbf w}^T\mu_1\right ]^2 &=&\displaystyle\max_{\mathbf w} \left [ \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )^T \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [\left (\mu_0-\mu_1\right )^T{\mathbf w}{\mathbf w}^T\left (\mu_0-\mu_1\right )\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T \left (\mu_0-\mu_1\right )\left (\mu_0-\mu_1\right )^T{\mathbf w}\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T { S_B}{\mathbf w}\right ]
-$$ 
+\end{eqnarray}$$ 
 
 où ${ S_B}$ est la matrice de covariance interclasse.
 
@@ -290,13 +295,14 @@ où ${ S_W}$ est la matrice de covariance intraclasse.
 
 Ainsi, l'analyse discriminante de Fisher revient à résoudre le problème d'optimisation suivant :
 
-$$\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}$$
+$$\begin{eqnarray}
+\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}$$
 ou de manière équivalente
 
 $$
 &&\displaystyle\max_{\mathbf w} {\mathbf w}^T { S_B}{\mathbf w}\\
 &s.c&\;\; {\mathbf w}^T { S_W} {\mathbf w}=1
-$$ 
+\end{eqnarray}$$ 
 
 L'annulation du gradient du Lagrangien donne  $2{ S_B}{\mathbf w}-2\lambda { S_W}{\mathbf w}=0$, d'où $\left ( { S_B}-\lambda { S_W}\right ) {\mathbf w}=0$. ${\mathbf w}$ est donc vecteur propre de $\left ( { S_B}-\lambda { S_W}\right )$ associé à 0. 
 
