@@ -1,20 +1,17 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 1314, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/Cellar/python@3.12/3.12.3/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+  File "/opt/homebrew/Cellar/python@3.9/3.9.19/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
     return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/usr/local/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/Users/vibarra/Venv/lib/python3.9/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -81,29 +78,17 @@ plt.tight_layout()
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[2], line 51[0m
-[1;32m     49[0m y_pred [38;5;241m=[39m lda[38;5;241m.[39mfit(X,y)[38;5;241m.[39mpredict(X)
-[1;32m     50[0m splot [38;5;241m=[39m plot_data(lda, X,y, y_pred, [38;5;124m"[39m[38;5;124mCovariances égales[39m[38;5;124m"[39m,[38;5;241m1[39m)
-[0;32m---> 51[0m [43mplot_cov[49m[43m([49m[43mlda[49m[43m,[49m[43m [49m[43msplot[49m[43m)[49m
-[1;32m     52[0m plt[38;5;241m.[39maxis([38;5;124m'[39m[38;5;124mtight[39m[38;5;124m'[39m)
-[1;32m     54[0m (X,y)[38;5;241m=[39mdataset_cov(fixed[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[2], line 24[0m
+[1;32m     17[0m [38;5;66;03m# Génération des données[39;00m
+[1;32m     19[0m cmap [38;5;241m=[39m colors[38;5;241m.[39mLinearSegmentedColormap(
+[1;32m     20[0m     [38;5;124m'[39m[38;5;124mred_blue_classes[39m[38;5;124m'[39m,
+[1;32m     21[0m     {[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m: [([38;5;241m0[39m, [38;5;241m1[39m, [38;5;241m1[39m), ([38;5;241m1[39m, [38;5;241m0.7[39m, [38;5;241m0.7[39m)],
+[1;32m     22[0m      [38;5;124m'[39m[38;5;124mgreen[39m[38;5;124m'[39m: [([38;5;241m0[39m, [38;5;241m0.7[39m, [38;5;241m0.7[39m), ([38;5;241m1[39m, [38;5;241m0.7[39m, [38;5;241m0.7[39m)],
+[1;32m     23[0m      [38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m: [([38;5;241m0[39m, [38;5;241m0.7[39m, [38;5;241m0.7[39m), ([38;5;241m1[39m, [38;5;241m1[39m, [38;5;241m1[39m)]})
+[0;32m---> 24[0m [43mplt[49m[38;5;241;43m.[39;49m[43mcm[49m[38;5;241;43m.[39;49m[43mregister_cmap[49m(cmap[38;5;241m=[39mcmap)
+[1;32m     27[0m [38;5;66;03m#  Gaussiennes multivariées, covariances égales ou non[39;00m
+[1;32m     28[0m [38;5;28;01mdef[39;00m [38;5;21mdataset_cov[39m(fixed [38;5;241m=[39m [38;5;28;01mTrue[39;00m):
 
-Cell [0;32mIn[2], line 11[0m, in [0;36mplot_cov[0;34m(method, splot)[0m
-[1;32m      9[0m [38;5;28;01mdef[39;00m [38;5;21mplot_cov[39m(method, splot):
-[1;32m     10[0m     [38;5;28;01mif[39;00m method[38;5;241m==[39mlda:
-[0;32m---> 11[0m         [43mEllipse[49m[43m([49m[43msplot[49m[43m,[49m[43m [49m[43mmethod[49m[38;5;241;43m.[39;49m[43mmeans_[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m,[49m[43m [49m[43mmethod[49m[38;5;241;43m.[39;49m[43mcovariance_[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mred[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m     12[0m         Ellipse(splot, method[38;5;241m.[39mmeans_[[38;5;241m1[39m], method[38;5;241m.[39mcovariance_, [38;5;124m'[39m[38;5;124mblue[39m[38;5;124m'[39m)
-[1;32m     13[0m     [38;5;28;01melse[39;00m:
-
-Cell [0;32mIn[1], line 16[0m, in [0;36mEllipse[0;34m(splot, mean, cov, color)[0m
-[1;32m     14[0m angle [38;5;241m=[39m np[38;5;241m.[39marctan(u[[38;5;241m1[39m] [38;5;241m/[39m u[[38;5;241m0[39m])
-[1;32m     15[0m angle [38;5;241m=[39m [38;5;241m180[39m [38;5;241m*[39m angle [38;5;241m/[39m np[38;5;241m.[39mpi  
-[0;32m---> 16[0m ell [38;5;241m=[39m [43mmpl[49m[38;5;241;43m.[39;49m[43mpatches[49m[38;5;241;43m.[39;49m[43mEllipse[49m[43m([49m[43mmean[49m[43m,[49m[43m [49m[38;5;241;43m2[39;49m[43m [49m[38;5;241;43m*[39;49m[43m [49m[43mv[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m [49m[38;5;241;43m0.5[39;49m[43m,[49m[43m [49m[38;5;241;43m2[39;49m[43m [49m[38;5;241;43m*[39;49m[43m [49m[43mv[49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m [49m[38;5;241;43m0.5[39;49m[43m,[49m
-[1;32m     17[0m [43m                          [49m[38;5;241;43m180[39;49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43mangle[49m[43m,[49m[43m [49m[43mfacecolor[49m[38;5;241;43m=[39;49m[43mcolor[49m[43m,[49m[43m [49m[43medgecolor[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43myellow[39;49m[38;5;124;43m'[39;49m[43m,[49m
-[1;32m     18[0m [43m                          [49m[43mlinewidth[49m[38;5;241;43m=[39;49m[38;5;241;43m2[39;49m[43m,[49m[43m [49m[43mzorder[49m[38;5;241;43m=[39;49m[38;5;241;43m2[39;49m[43m)[49m
-[1;32m     19[0m ell[38;5;241m.[39mset_clip_box(splot[38;5;241m.[39mbbox)
-[1;32m     20[0m ell[38;5;241m.[39mset_alpha([38;5;241m0.5[39m)
-
-[0;31mTypeError[0m: Ellipse.__init__() takes 4 positional arguments but 5 were given
+[0;31mAttributeError[0m: module 'matplotlib.cm' has no attribute 'register_cmap'
 
