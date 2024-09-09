@@ -129,7 +129,7 @@ def plot_data(lda, X, y, y_pred, title,i):
                          np.linspace(y_min, y_max, ny))
     Z = lda.predict_proba(np.c_[xx.ravel(), yy.ravel()])
     Z = Z[:, 1].reshape(xx.shape)
-    plt.pcolormesh(xx, yy, Z, cmap='red_blue_classes',norm=colors.Normalize(0., 1.))
+    plt.pcolormesh(xx, yy, Z, cmap=cmap,norm=colors.Normalize(0., 1.))
     plt.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 
     plt.plot(lda.means_[0][0], lda.means_[0][1],
