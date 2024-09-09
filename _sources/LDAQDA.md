@@ -93,14 +93,19 @@ def Ellipse(splot, mean, cov, color):
     u = w[0] / linalg.norm(w[0])
     angle = np.arctan(u[1] / u[0])
     angle = 180 * angle / np.pi  
-    ell = mpl.patches.Ellipse(mean, 2 * v[0] ** 0.5, 2 * v[1] ** 0.5,
-                              180 + angle, facecolor=color, edgecolor='yellow',
+    ell = mpl.patches.Ellipse(mean, width = 2 * v[0] ** 0.5, height = 2 * v[1] ** 0.5,
+                              facecolor=color, edgecolor='yellow',
                               linewidth=2, zorder=2)
+    transf = mpl.transforms.Affine2D() \
+        .rotate_deg(180 + angle)
+
+    ell.set_transform(transf)
     ell.set_clip_box(splot.bbox)
     ell.set_alpha(0.5)
     splot.add_artist(ell)
     splot.set_xticks(())
     splot.set_yticks(())
+    
     
 
 def plot_data(lda, X, y, y_pred, title,i):
@@ -129,7 +134,7 @@ def plot_data(lda, X, y, y_pred, title,i):
                          np.linspace(y_min, y_max, ny))
     Z = lda.predict_proba(np.c_[xx.ravel(), yy.ravel()])
     Z = Z[:, 1].reshape(xx.shape)
-    plt.pcolormesh(xx, yy, Z, cmap='red_blue_classes',norm=colors.Normalize(0., 1.))
+    plt.pcolormesh(xx, yy, Z, cmap=cmap,norm=colors.Normalize(0., 1.))
     plt.contour(xx, yy, Z, [0.5], linewidths=2., colors='k')
 
     plt.plot(lda.means_[0][0], lda.means_[0][1],
@@ -217,12 +222,7 @@ def plot_cov(method, splot):
 
 # Génération des données
 
-cmap = colors.LinearSegmentedColormap(
-    'red_blue_classes',
-    {'red': [(0, 1, 1), (1, 0.7, 0.7)],
-     'green': [(0, 0.7, 0.7), (1, 0.7, 0.7)],
-     'blue': [(0, 0.7, 0.7), (1, 1, 1)]})
-plt.cm.register_cmap(cmap=cmap)
+cmap = plt.get_cmap('Reds')
 
 
 #  Gaussiennes multivariées, covariances égales ou non
@@ -275,12 +275,12 @@ On suppose ici le cas de la classification binaire  : $y_i\in\{0,1\}\forall i\in
 
 - Maximiser la distance entre les représentants par projection sur une droite $Lin( \mathbf w)$ revient donc à résoudre :
 
-$$
+$$\begin{eqnarray}
 \displaystyle\max_{\mathbf w} \left [ {\mathbf w}^T{ \mu_0}- {\mathbf w}^T\mu_1\right ]^2 &=&\displaystyle\max_{\mathbf w} \left [ \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )^T \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [\left (\mu_0-\mu_1\right )^T{\mathbf w}{\mathbf w}^T\left (\mu_0-\mu_1\right )\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T \left (\mu_0-\mu_1\right )\left (\mu_0-\mu_1\right )^T{\mathbf w}\right ]\\
 &=&\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T { S_B}{\mathbf w}\right ]
-$$ 
+\end{eqnarray}$$ 
 
 où ${ S_B}$ est la matrice de covariance interclasse.
 
@@ -295,13 +295,14 @@ où ${ S_W}$ est la matrice de covariance intraclasse.
 
 Ainsi, l'analyse discriminante de Fisher revient à résoudre le problème d'optimisation suivant :
 
-$$\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}$$
+$$\begin{eqnarray}
+\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}$$
 ou de manière équivalente
 
 $$
 &&\displaystyle\max_{\mathbf w} {\mathbf w}^T { S_B}{\mathbf w}\\
 &s.c&\;\; {\mathbf w}^T { S_W} {\mathbf w}=1
-$$ 
+\end{eqnarray}$$ 
 
 L'annulation du gradient du Lagrangien donne  $2{ S_B}{\mathbf w}-2\lambda { S_W}{\mathbf w}=0$, d'où $\left ( { S_B}-\lambda { S_W}\right ) {\mathbf w}=0$. ${\mathbf w}$ est donc vecteur propre de $\left ( { S_B}-\lambda { S_W}\right )$ associé à 0. 
 
