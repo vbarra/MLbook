@@ -410,14 +410,19 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
     <span class="n">u</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
-    <span class="n">ell</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span>
-                              <span class="mi">180</span> <span class="o">+</span> <span class="n">angle</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+    <span class="n">ell</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span>
+                              <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
                               <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">transf</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Affine2D</span><span class="p">()</span> \
+        <span class="o">.</span><span class="n">rotate_deg</span><span class="p">(</span><span class="mi">180</span> <span class="o">+</span> <span class="n">angle</span><span class="p">)</span>
+
+    <span class="n">ell</span><span class="o">.</span><span class="n">set_transform</span><span class="p">(</span><span class="n">transf</span><span class="p">)</span>
     <span class="n">ell</span><span class="o">.</span><span class="n">set_clip_box</span><span class="p">(</span><span class="n">splot</span><span class="o">.</span><span class="n">bbox</span><span class="p">)</span>
     <span class="n">ell</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">splot</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ell</span><span class="p">)</span>
     <span class="n">splot</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
     <span class="n">splot</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
+    
     
 
 <span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>
@@ -514,7 +519,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6902e14f6dfb43042458ae05e14bc7f9f36d2c5ad94d9c3a8124ab7829258a03.png" src="_images/6902e14f6dfb43042458ae05e14bc7f9f36d2c5ad94d9c3a8124ab7829258a03.png" />
+<img alt="_images/d855a9f70bc47a25d5f9f035fca55ddcb0e25778059b6eb9cee07ce8dcd4fa69.png" src="_images/d855a9f70bc47a25d5f9f035fca55ddcb0e25778059b6eb9cee07ce8dcd4fa69.png" />
 </div>
 </div>
 <p>Voici un exemple de LDA sur deux classes.</p>
@@ -578,35 +583,7 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">46</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="n">splot</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;Covariances égales&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">plot_cov</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="n">splot</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">dataset_cov</span><span class="p">(</span><span class="n">fixed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">Cell In[2], line 11,</span> in <span class="ni">plot_cov</span><span class="nt">(method, splot)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">plot_cov</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">splot</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">if</span> <span class="n">method</span><span class="o">==</span><span class="n">lda</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">11</span>         <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">Ellipse</span><span class="p">(</span><span class="n">splot</span><span class="p">,</span> <span class="n">method</span><span class="o">.</span><span class="n">means_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">method</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">Cell In[1], line 16,</span> in <span class="ni">Ellipse</span><span class="nt">(splot, mean, cov, color)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">angle</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">ell</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Ellipse</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>                           <span class="mi">180</span> <span class="o">+</span> <span class="n">angle</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>                           <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ell</span><span class="o">.</span><span class="n">set_clip_box</span><span class="p">(</span><span class="n">splot</span><span class="o">.</span><span class="n">bbox</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">ell</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: __init__() takes 4 positional arguments but 5 were given
-</pre></div>
-</div>
-<img alt="_images/aac33d96db163c9f05fa059255415a2010c8c796a81ebf17240dabd4dfe9f0b2.png" src="_images/aac33d96db163c9f05fa059255415a2010c8c796a81ebf17240dabd4dfe9f0b2.png" />
+<img alt="_images/7e6b687e5b65d28983871159cdf329a4569088404b1d65264df947721c4fdb3e.png" src="_images/7e6b687e5b65d28983871159cdf329a4569088404b1d65264df947721c4fdb3e.png" />
 </div>
 </div>
 </section>
@@ -622,12 +599,12 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <li><p>Maximiser la distance entre les représentants par projection sur une droite <span class="math notranslate nohighlight">\(Lin( \mathbf w)\)</span> revient donc à résoudre :</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[\begin{split}\begin{eqnarray}
 \displaystyle\max_{\mathbf w} \left [ {\mathbf w}^T{ \mu_0}- {\mathbf w}^T\mu_1\right ]^2 &amp;=&amp;\displaystyle\max_{\mathbf w} \left [ \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )^T \left ({\mathbf w}^T\mu_0- {\mathbf w}^T\mu_1\right )\right ]\\
 &amp;=&amp;\displaystyle\max_{\mathbf w} \left [\left (\mu_0-\mu_1\right )^T{\mathbf w}{\mathbf w}^T\left (\mu_0-\mu_1\right )\right ]\\
 &amp;=&amp;\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T \left (\mu_0-\mu_1\right )\left (\mu_0-\mu_1\right )^T{\mathbf w}\right ]\\
 &amp;=&amp;\displaystyle\max_{\mathbf w} \left [{\mathbf w}^T { S_B}{\mathbf w}\right ]
-\end{split}\]</div>
+\end{eqnarray}\end{split}\]</div>
 <p>où <span class="math notranslate nohighlight">\({ S_B}\)</span> est la matrice de covariance interclasse.</p>
 <ul class="simple">
 <li><p>Préserver la cohésion des classes revient à minimiser la variance intra classe. Après projection, cette dernière se définit pour la classe <span class="math notranslate nohighlight">\(j\in[\![1,1]\!]\)</span> par <span class="math notranslate nohighlight">\({\mathbf w}^T \Sigma_j {\mathbf w}\)</span>, où <span class="math notranslate nohighlight">\(\Sigma_j\)</span> est la matrice de covariance de la classe <span class="math notranslate nohighlight">\(j\)</span>. L’objectif se traduit donc par :</p></li>
@@ -639,13 +616,14 @@ g_i(\mathbf x_0) = P(\omega=\omega_i |{\mathbf x} = { \mathbf x_0}) \; = \; \fra
 <p>où <span class="math notranslate nohighlight">\({ S_W}\)</span> est la matrice de covariance intraclasse.</p>
 <p>Ainsi, l’analyse discriminante de Fisher revient à résoudre le problème d’optimisation suivant :</p>
 <div class="math notranslate nohighlight">
-\[\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}\]</div>
+\[\begin{eqnarray}
+\displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}\]</div>
 <p>ou de manière équivalente</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 &amp;&amp;\displaystyle\max_{\mathbf w} {\mathbf w}^T { S_B}{\mathbf w}\\
 &amp;s.c&amp;\;\; {\mathbf w}^T { S_W} {\mathbf w}=1
-\end{split}\]</div>
+\end{eqnarray}\end{split}\]</div>
 <p>L’annulation du gradient du Lagrangien donne  <span class="math notranslate nohighlight">\(2{ S_B}{\mathbf w}-2\lambda { S_W}{\mathbf w}=0\)</span>, d’où <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right ) {\mathbf w}=0\)</span>. <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est donc vecteur propre de <span class="math notranslate nohighlight">\(\left ( { S_B}-\lambda { S_W}\right )\)</span> associé à 0.</p>
 <p>Alors <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}{\mathbf w}=\lambda{\mathbf w}\)</span> et <span class="math notranslate nohighlight">\({\mathbf w}\)</span> vecteur propre de  <span class="math notranslate nohighlight">\({ S_W}^{-1}{ S_B}\)</span> associé au multiplicateur de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span>. Or <span class="math notranslate nohighlight">\(Rg({ S_W}^{-1}{ S_B})=1\)</span>, car <span class="math notranslate nohighlight">\( S_B\)</span> est de rang 1 (c’est la projection sur <span class="math notranslate nohighlight">\(Lin \left(\left (\mu_0-\mu_1\right )\right)\)</span> donc <span class="math notranslate nohighlight">\({\mathbf w}\)</span> est unique.</p>
 </section>
@@ -735,6 +713,15 @@ Donc</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-15.185617112135642,
+ 12.52711932600968,
+ -8.517468243660087,
+ 30.319472781271916)
+</pre></div>
+</div>
+<img alt="_images/23eec3661152aca794f4dd1f21ba1d662e9fe517fa87ccd8551fe71a76391bbb.png" src="_images/23eec3661152aca794f4dd1f21ba1d662e9fe517fa87ccd8551fe71a76391bbb.png" />
 </div>
 </div>
 </section>
