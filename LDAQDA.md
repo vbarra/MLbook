@@ -96,7 +96,7 @@ def Ellipse(splot, mean, cov, color):
     ell = mpl.patches.Ellipse(mean, width = 2 * v[0] ** 0.5, height = 2 * v[1] ** 0.5,
                               facecolor=color, edgecolor='yellow',
                               linewidth=2, zorder=2)
-    transf = matplotlib.transforms.Affine2D() \
+    transf = mpl.transforms.Affine2D() \
         .rotate_deg(180 + angle)
 
     ell.set_transform(transf)
