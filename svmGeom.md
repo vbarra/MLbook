@@ -193,7 +193,7 @@ Video("videos/influencec.mp4",embed =True,width=500)
 ```
 
 
-```{code-cell}
+```python
 :tags: [margin,remove-output]
 from sklearn.svm import SVC
 X,y=...
