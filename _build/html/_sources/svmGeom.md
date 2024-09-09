@@ -139,7 +139,6 @@ L'hyperplan ainsi défini a besoin de très peu de vecteurs de support (méthode
 
 
 ```python
-:tags: [margin,remove-output]
 from sklearn.svm import LinearSVC
 X,y=...
 svm_clf=LinearSVC(random_state=0,tol=1e-05)
@@ -194,7 +193,6 @@ Video("videos/influencec.mp4",embed =True,width=500)
 
 
 ```python
-:tags: [margin,remove-output]
 from sklearn.svm import SVC
 X,y=...
 svm_clf=SVC(kernel="linear", C=1E10)

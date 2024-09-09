@@ -35,6 +35,7 @@ parts:
         - file: gradientboosting
   - caption: Manifold learning
     chapters:
+        - file: docmanifold
         - file: mds
         - file: isomap
         - file: lle
