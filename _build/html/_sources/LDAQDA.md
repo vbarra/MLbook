@@ -295,11 +295,11 @@ où ${ S_W}$ est la matrice de covariance intraclasse.
 
 Ainsi, l'analyse discriminante de Fisher revient à résoudre le problème d'optimisation suivant :
 
-$$\begin{eqnarray}
+$$
 \displaystyle\max_{\mathbf w}\frac{{\mathbf w}^T { S_B}{\mathbf w}}{{\mathbf w}^T { S_W} {\mathbf w}}$$
 ou de manière équivalente
 
-$$
+$$\begin{eqnarray}
 &&\displaystyle\max_{\mathbf w} {\mathbf w}^T { S_B}{\mathbf w}\\
 &s.c&\;\; {\mathbf w}^T { S_W} {\mathbf w}=1
 \end{eqnarray}$$ 
