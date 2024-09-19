@@ -10,4 +10,5 @@ jupytext:
 # Ressources
 
 - [Diapositives](./Diapos/classification.pdf) du cours
+- [Jeu de données](./Diapos/bankruptcy.zip) 
 
