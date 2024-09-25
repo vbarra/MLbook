@@ -61,7 +61,7 @@ Le choix de $k$ est donc lié aux choix des paramètres de l'arbre, notamment au
 
 ## Exemples
 ### Illustration en classification
-Le code suivant présente la classificatiob du jeu de données Moons par une forêt aléatoire à 500 arbres de décision 
+Le code suivant présente la classification du jeu de données Moons par une forêt aléatoire à 500 arbres de décision 
 
 
 ```{code-cell} ipython3

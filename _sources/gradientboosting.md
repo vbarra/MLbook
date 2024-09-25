@@ -66,11 +66,66 @@ L'idée précédente, qui consiste à écrire les résidus comme des gradients, 
 ```
 
 
-
 La méthode agit de la même manière qu'une descente de gradient en ajustant l'hypothèse $h_t$ en fonction de l'opposé du gradient de la fonction de perte $\ell$. 
 
 Nous avons introduit la méthode avec la fonction de perte quadratique, mais toute fonction de coût et les gradients associés peuvent être utilisés.
 
+Le code suivant propose un exemple en utilisant un arbre de décision en régression comme modèle.
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+from sklearn.tree import DecisionTreeRegressor
+
+random.seed(42)
+nb = 100
+xs = np.linspace(0, 10, nb)
+X = xs.reshape(-1, 1)
+ys = np.sin(xs) + np.cos(0.2* xs**2)
+for i in range(0, nb):
+     ys[i] += random.random() - 0.5
+
+def update(pred,i):
+    plt.figure(figsize=(12, 3))
+    plt.subplot(131)
+    plt.plot(xs, ys, label="True")
+    plt.plot(xs, pred, label="Predicted")
+    plt.legend()
+    plt.title("Result "+str(i))
+
+    err = pred - ys
+    
+    plt.subplot(132)
+    plt.ylim(ys.min() - 0.3, ys.max())
+    plt.plot(xs, err)
+    plt.title("Error")
+    
+    model = DecisionTreeRegressor(max_depth=3)
+    model.fit(X, ys - pred)
+    new_pred = model.predict(X)
+    pred += new_pred
+
+    plt.subplot(133)
+    plt.plot(xs, new_pred)
+    plt.ylim(ys.min() - 0.3, ys.max())
+    plt.title("Local correction")
+
+    plt.tight_layout()
+    return pred
+
+pred = np.zeros_like(ys)
+for i in np.arange(40):
+    pred = update(pred,i)
+    plt.close()
+```
+
+
+
+```{code-cell} ipython3
+from IPython.display import Video
+Video("videos/gradient_boosting.mp4",embed =True,width=700)
+```
 
 Parmi tous les algorithmes de gradient boosting, XGBoost (Extreme Gradient Boosting),  LightGBM, tous deux utilisant des arbres de régression comme hypothèses, ont démontré leur efficacité lors de nombreux défis. En 2018, CatBoost a permis d'adapter ce type d'approche à des données catégorielles.
 
