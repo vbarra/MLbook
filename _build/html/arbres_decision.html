@@ -14,19 +14,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
@@ -35,12 +35,12 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="_static/documentation_options.js?v=72dce1d2"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -75,27 +75,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Passer au contenu principal</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Haut de page
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,8 +113,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -243,7 +244,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -252,7 +253,7 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -526,7 +527,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/460aa9ba58d6164865dcfc59935a329eb606b6cd91f8f3bdae68d21cf8ba2155.png" src="_images/460aa9ba58d6164865dcfc59935a329eb606b6cd91f8f3bdae68d21cf8ba2155.png" />
+<img alt="_images/f0120aef7644705f9b1551c1c260b1b0e548ad7506064399fff6c16e520dae0c.png" src="_images/f0120aef7644705f9b1551c1c260b1b0e548ad7506064399fff6c16e520dae0c.png" />
 </div>
 </div>
 <p>On entraîne un arbre de décision avec les valeurs de <span class="math notranslate nohighlight">\(\gamma\)</span>.</p>
@@ -568,7 +569,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/32b2ca6e0aa98af44dfd36b7996b09b5ddfc5d1edbb705005669b93b7a98b33e.png" src="_images/32b2ca6e0aa98af44dfd36b7996b09b5ddfc5d1edbb705005669b93b7a98b33e.png" />
+<img alt="_images/ada1518aa86ac0005d42062036fb5bb83e844b15d02b7c8d595dfdd43e921033.png" src="_images/ada1518aa86ac0005d42062036fb5bb83e844b15d02b7c8d595dfdd43e921033.png" />
 </div>
 </div>
 <p>En calculant les précisions sur l’ensemle de test, on voit que l’arbre construit pour <span class="math notranslate nohighlight">\(\gamma=0.015\)</span> amène au meilleur résultat.</p>
@@ -588,7 +589,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4a65a91672eb07244850cce9103698e0af307a58d5006c2aee9ed397bad5af4e.png" src="_images/4a65a91672eb07244850cce9103698e0af307a58d5006c2aee9ed397bad5af4e.png" />
+<img alt="_images/36aea7885c73970751e02c0793050c311a1571c167b037524b21a24f4a314780.png" src="_images/36aea7885c73970751e02c0793050c311a1571c167b037524b21a24f4a314780.png" />
 </div>
 </div>
 </section>
@@ -609,7 +610,7 @@ Si <span class="math notranslate nohighlight">\(\forall\ i\in [\![1,n]\!]\ y_i=\
 </ol>
 <p>Pour illustrer l’application de l’algorithme ID3, on reprend un exemple fourni par son créateur  (John Quilan).
 On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait (soleil, couvert, pluie), la température (chaud, bon frais), le taux d’humidité (normal, haut) et le vent (oui, non).  On se donne 14 individus décrits par ces 4 paramètres, la variable de décision <span class="math notranslate nohighlight">\(y\)</span> associée étant « Va jouer au golf » (0 pour non, 1 pour oui) :</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
 <th class="head"><p>C</p></th>
@@ -720,10 +721,11 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </tr>
 </tbody>
 </table>
+</div>
 <p>On initialise l’arbre avec un noeud racine contenant <span class="math notranslate nohighlight">\(Z=\{(\boldsymbol x_i,y_i),i\in[\![1,14]\!]\}\)</span>.  On illustre alors la première étape de l’algorithme.</p>
 <p>On a <span class="math notranslate nohighlight">\(q_0=5/14\)</span> et <span class="math notranslate nohighlight">\(q_1=9/14\)</span>,  et <span class="math notranslate nohighlight">\(H(Z) = 0.41+0.53 = 0.94\)</span>.</p>
 <p>Pour chaque caractéristique, on calcule ensuite le gain :</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>C</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(y=1\)</span></p></th>
@@ -753,6 +755,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </tr>
 </tbody>
 </table>
+</div>
 <p>soit <span class="math notranslate nohighlight">\(G(Z,C)\)</span> = 0.247.</p>
 <p>On procède de même pour les trois autres attributs pour trouver <span class="math notranslate nohighlight">\(G(Z,T)\)</span>=0.029, <span class="math notranslate nohighlight">\(G(Z,H)\)</span>=0.152 et <span class="math notranslate nohighlight">\(G(Z,V)\)</span>=0.048. L’attribut retenu est donc <span class="math notranslate nohighlight">\(C\)</span> et on obtient l’arbre de gauche sur la figure ci-dessous, avec <span class="math notranslate nohighlight">\(Z_1\)</span> = <span class="math notranslate nohighlight">\(\{x_1,x_2,x_8,x_9,x_{11}\}\)</span>, <span class="math notranslate nohighlight">\(Z_2=\{x_3,x_7,x_{12},x_{13}\}\)</span> et <span class="math notranslate nohighlight">\(Z_3=\{x_4,x_5,x_6,x_{10},x_{14}\}\)</span>.</p>
 <p>Le noeud associé à la branche « couvert » ne contient que des individus tels que <span class="math notranslate nohighlight">\(y=1\)</span>.  Il se transforme donc en feuille avec une valeur de décision à 1. Pour les deux autres noeuds, on applique récursivement l’algorithme pour aboutir à l’arbre de droite de la figure.</p>
@@ -762,7 +765,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 <section id="arbres-de-regression">
 <h2>Arbres de régression<a class="headerlink" href="#arbres-de-regression" title="Lien vers cette rubrique">#</a></h2>
 <p>Les arbres de décision peuvent être également utilisés pour des tâches de régression. Des régressions linéaires locales sont apprises sur les données d’entraînement pour approcher la distribution des points dans <span class="math notranslate nohighlight">\(X\)</span>. Si la profondeur de l’arbre est trop importante, l’arbre apprend des niveaux de détails trop fins et sur apprend. Le nombre minimum d’exemples pour être une feuille de l’arbre quant à lui permet dans un certain sens de contrôler la régularisation du régresseur.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Profondeur 4</p></th>
 <th class="head"><p>Profondeur 10</p></th>
@@ -774,6 +777,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Video</span>
@@ -788,7 +792,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
  </video></div></div>
 </div>
 <p>Ici, 500 points échantillonnés selon <span class="math notranslate nohighlight">\(y=4\left ( x-\frac{1}{2}\right)^2+\mathcal{N}(0,1)\)</span></p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>4 exemples</p></th>
 <th class="head"><p>20 exemples</p></th>
@@ -800,6 +804,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Video</span>
@@ -891,9 +896,9 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f4ff1c16940d979d7e69a977235ccaad9bae5f09c9f3f2044e45232e11214088.png" src="_images/f4ff1c16940d979d7e69a977235ccaad9bae5f09c9f3f2044e45232e11214088.png" />
-<img alt="_images/cc1b2d619c98837ea10440cd8d23b76c89b7a32b45cbf3eb93f26931bb270b47.png" src="_images/cc1b2d619c98837ea10440cd8d23b76c89b7a32b45cbf3eb93f26931bb270b47.png" />
-<img alt="_images/cbaeb74ca86c5041d03b441ed05ed51146ae8fc0f9aa74afd9c3121ec296a595.png" src="_images/cbaeb74ca86c5041d03b441ed05ed51146ae8fc0f9aa74afd9c3121ec296a595.png" />
+<img alt="_images/7c65a66ca48b04727c069ffd2597fd909edb8b0f28f7a23516a1170c330135b2.png" src="_images/7c65a66ca48b04727c069ffd2597fd909edb8b0f28f7a23516a1170c330135b2.png" />
+<img alt="_images/b6e00f6b7a734e3c525d662e50eb8cd71be55c42031282f62137e8be84fd2915.png" src="_images/b6e00f6b7a734e3c525d662e50eb8cd71be55c42031282f62137e8be84fd2915.png" />
+<img alt="_images/0805742af7bb49c67c870024238bd80338dbcd24535ad37841cd9f220c1054ca.png" src="_images/0805742af7bb49c67c870024238bd80338dbcd24535ad37841cd9f220c1054ca.png" />
 </div>
 </div>
 </section>
@@ -926,7 +931,7 @@ On considère 4 attributs C,T,H,V mesurant respectivement le temps qu’il fait 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1024,8 +1029,8 @@ Par Vincent BARRA
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
