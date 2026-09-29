@@ -475,15 +475,61 @@ A l’inverse, un classifieur faible produit, pour un certain <span class="math 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/vibarra/Venv/lib/python3.9/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-  warnings.warn(
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">InvalidParameterError</span><span class="g g-Whitespace">                     </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">50</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">for</span> <span class="n">clf</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">title</span> <span class="ow">in</span> <span class="p">((</span><span class="n">adaDT_clf</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Arbres de décision&#39;</span><span class="p">),</span> 
+<span class="g g-Whitespace">     </span><span class="mi">48</span>                     <span class="p">(</span><span class="n">adaSVC_clf</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;SVM&#39;</span><span class="p">),</span> 
+<span class="g g-Whitespace">     </span><span class="mi">49</span>                     <span class="p">(</span><span class="n">adaGAU_clf</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;Classifieur naïf gaussien&#39;</span><span class="p">)):</span>
+<span class="ne">---&gt; </span><span class="mi">50</span>     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+<span class="nn">File ~/Venv/lib/python3.9/site-packages/sklearn/base.py:1382,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1377</span> <span class="n">partial_fit_and_fitted</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1378</span>     <span class="n">fit_method</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;partial_fit&quot;</span> <span class="ow">and</span> <span class="n">_is_fitted</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1381</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">global_skip_validation</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">partial_fit_and_fitted</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1382</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1385</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1387</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1388</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1389</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Venv/lib/python3.9/site-packages/sklearn/base.py:436,</span> in <span class="ni">BaseEstimator._validate_params</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span> <span class="k">def</span> <span class="nf">_validate_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Validate types and values of constructor parameters</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span><span class="sd">     The expected type and values must be defined in the `_parameter_constraints`</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span><span class="sd">     accepted constraints.</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">436</span>     <span class="n">validate_parameter_constraints</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_constraints</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>         <span class="bp">self</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span>         <span class="n">caller_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span>     <span class="p">)</span>
+
+<span class="nn">File ~/Venv/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:98,</span> in <span class="ni">validate_parameter_constraints</span><span class="nt">(parameter_constraints, params, caller_name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">constraints_str</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">constraints</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span><span class="si">}</span><span class="s2"> or&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>         <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">constraints</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">98</span> <span class="k">raise</span> <span class="n">InvalidParameterError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">param_name</span><span class="si">!r}</span><span class="s2"> parameter of </span><span class="si">{</span><span class="n">caller_name</span><span class="si">}</span><span class="s2"> must be&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">constraints_str</span><span class="si">}</span><span class="s2">. Got </span><span class="si">{</span><span class="n">param_val</span><span class="si">!r}</span><span class="s2"> instead.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="p">)</span>
+
+<span class="ne">InvalidParameterError</span>: The &#39;algorithm&#39; parameter of AdaBoostClassifier must be a str among {&#39;SAMME&#39;}. Got &#39;SAMME.R&#39; instead.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/vibarra/Venv/lib/python3.9/site-packages/sklearn/ensemble/_weight_boosting.py:527: FutureWarning: The SAMME.R algorithm (the default) is deprecated and will be removed in 1.6. Use the SAMME algorithm to circumvent this warning.
-  warnings.warn(
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1800x400 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/9c33e135d62fcfa2b6c20cf03599ee0759a4e466b2c3dd528f7dadc036b57564.png" src="_images/9c33e135d62fcfa2b6c20cf03599ee0759a4e466b2c3dd528f7dadc036b57564.png" />
 </div>
 </div>
 </section>
