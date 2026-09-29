@@ -1,10 +1,12 @@
-# Sujets de projet, cours d'apprentissage automatique 2026-2027
+# Sujets de projet, cours d'apprentissage automatique
 
-L'objectif de ces projets est de proposer des études de régression et/ou de classification  sur des jeux de données ouverts, accessibles par API. Les API proposées exposent des historiques complets enregistrés point par point, permettant de constituer une base d'apprentissage, une base de test et une base de validation (pour l'optimisation des hyperparamètres). 
+## Objectifs
+proposer des études de régression et/ou de classification  sur des jeux de données ouverts, accessibles par API. Les API proposées exposent des historiques complets enregistrés point par point, permettant de constituer une base d'apprentissage, une base de test et une base de validation (pour l'optimisation des hyperparamètres). 
 
+## Travail demandé
 Vous établirerez un pipeline de traitement des données (récupération et préparation des données, extraction/sélection de variables, création de variables métier pertinentes, comparaison de modèles de régression et de classification à l'aide de mesures de performance, analyse de l'importance des variables d'entrée discriminantes, synthèse finale de l'étude).
 
-**Livrables**
+## Livrables
 -  un notebook Jupyter avec le code, utilisant scikit-learn, et des commentaires *pertinents*. 
 -  un modèle de référence basique (base classifier ou base regressor) avant de tester des modèles plus complexes.
 -  un script de sauvegarde locale après le requêtage de l'API pour éviter de surcharger les serveurs et limiter le temps d'attente lors de la phase de modélisation.
@@ -14,7 +16,7 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
 
 ---
 
-## Sujet 1 — Estimation de la Performance Énergétique de Logements 
+### Sujet 1 — Estimation de la performance énergétique de logements 
 
 * **Objectifs :** 
   * **en régression :** prédiction de la consommation d'énergie primaire ($kWh/m^2/an$).
@@ -25,9 +27,8 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
   1. préparation des données : traitement des valeurs manquantes et filtrage des incohérences physiques (surfaces nulles, hauteurs aberrantes).
   2. Gestion des descripteurs : création de ratios métiers (ratio surface vitrée/surface habitable, isolation relative, rapport surface/volume,...).
 
----
 
-## Sujet 2 — Prédiction de la Valeur Foncière Enrichie par l'Environnement Local
+### Sujet 2 — Prédiction de la valeur foncière enrichie par l'environnement local
 
 * **Objectif :** prédiction du prix net vendeur d'une transaction immobilière
 * **APIs**  :
@@ -41,9 +42,7 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
   2. Traitements des valeurs aberrantes : nettoyage du bruit des transactions réelles (ventes à 1€ symbolique, ventes groupées, montants aberrants).
   3. Encodage : encodage des données géographiques (latitude/longitude) et d'agencement.
 
----
-
-## Sujet 3 — Analyse de la Sévérité des Accidents de la Circulation
+### Sujet 3 — Analyse de la sévérité des accidents de la circulation
 
 * **Objectif :** classification ordinale ou multiclasse : indemne, blessé léger, hospitalisé, décédé
 * **API :** [API Accidents de la Circulation](https://opendata.paris.fr/api/v2/catalog/datasets/accidentologie0/)
@@ -51,10 +50,9 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
 * **Points d'attention :**
   1. Gestion du déséquilibre de classes : les accidents graves/mortels sont minoritaires. 
   2. Encodage et reclassification : vectorisation des variables qualitatives codées sous forme numérique (type de collision, tranche d'âge, catégorie de véhicule).
-   
----
 
-## Sujet 4 — Profilage de la Qualité Physico-Chimique de l'Eau des Rivières
+
+### Sujet 4 — Profilage de la qualité physico-chimique de l'eau des rivières
 
 * **Objectifs :** 
   * **en régression :** prédiction de la concentration en nitrates ou carbone organique dissous.
@@ -64,7 +62,7 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
 * **Point d'attention :** transformation de données depuis une structure de type "plusieurs paramètres physico-chimiques par station" vers une structure de matrice de caractéristiques (ligne = prélèvement, colonne = paramètre chimique).
 ---
 
-## Sujet 5 — Diagnostic de Qualité et Profilage Nutritionnel des Produits 
+### Sujet 5 — Diagnostic de qualité et profilage nutritionnel de produits alimentaires
 
 * **Objectifs :** 
   * **en régression :** prédiction du score nutritionnel continu / Nutri-Score numérique (valeur dans [1,100]).
@@ -76,9 +74,8 @@ Vous établirerez un pipeline de traitement des données (récupération et pré
   2. Imputation des données manquantes : traitement du bruit et des données manquantes fréquentes dans une base de données collaborative.
   3. Gestion des descripteurs :  calcul de ratios nutritionnels métiers (ratio sucre/fibres, densité calorique au 100g, ratio acides gras saturés/lipides totaux).
 
----
 
-## Sujet 6 — Estimation du Risque Financier et Profilage des PME 
+### Sujet 6 — Estimation du risque financier et profilage d'entreprises
 
 
 * **Objectifs :** 
